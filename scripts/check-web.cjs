@@ -28,6 +28,18 @@ for (const file of [
   if (!fs.statSync(path.join(output, file)).isFile())
     throw new Error("Missing entry: " + file);
 }
+const startupHTML = fs.readFileSync(path.join(output, "index.html"), "utf8");
+if (!startupHTML.includes('id="startup-progress"') || /<iframe[^>]*\ssrc=/s.test(startupHTML))
+  throw new Error("Startup screen must precede iframe loading");
+const inline = startupHTML.match(/<script>([\s\S]*?)<\/script>/);
+if (!inline || inline[1].includes("__STARTUP_JS__")) throw new Error("Startup script was not inlined");
+new vm.Script(inline[1], {filename:"index.html inline startup"});
+const startupScripts = JSON.parse(fs.readFileSync(path.join(output, "scripts.json"), "utf8"));
+if (JSON.stringify(startupScripts.map((file) => file.src)) !== JSON.stringify(manifest.scripts))
+  throw new Error("Startup script order mismatch");
+for (const file of startupScripts)
+  if (fs.statSync(path.join(output, file.src)).size !== file.bytes)
+    throw new Error("Startup byte total mismatch: " + file.src);
 const levels = JSON.parse(
   fs.readFileSync(path.join(output, "json/drama_core.json"), "utf8"),
 );

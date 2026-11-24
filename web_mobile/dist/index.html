@@ -11,24 +11,52 @@
       content="挪车打螺丝本地网页版，复用原游戏资源、玩法与关卡。"
     />
     <title>挪车打螺丝 · 离线版</title>
-    <link rel="icon" href="icons/icon-192.png" />
-    <link rel="stylesheet" href="launcher.css?v=20261124.4" />
-  <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+    <link rel="icon" href="data:," data-href="icons/icon-192.png" />
+    <style>:root{font-family:system-ui,-apple-system,"PingFang SC",sans-serif;background:#152c43;color:#183a56}
+body{margin:0}main{height:100vh;display:flex;align-items:center;justify-content:center}
+iframe{border:0;width:min(100vw,46.176vh);height:100%;background:#c9e7fd}
+[hidden]{display:none!important}
+#startup{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:#152c43;padding:24px;box-sizing:border-box}
+.startup-card{width:min(100%,360px);box-sizing:border-box;padding:28px 24px;border-radius:22px;background:#f4f8fc;box-shadow:0 16px 60px #0003}
+.startup-card h1{font-size:23px;margin:0 0 22px}
+.startup-card p{font-size:14px;line-height:1.65;margin:12px 0;overflow-wrap:anywhere}
+.startup-card .startup-name{font-weight:600;color:#56738c;margin:0 0 8px}
+#startup-progress{display:block;width:100%;height:14px;accent-color:#287cbd}
+#startup-time,#startup-help{color:#647587}
+#startup-retry{font:inherit;width:100%;margin-top:10px;border:0;border-radius:12px;padding:12px;background:#e5edf5;color:#183a56;cursor:pointer}
+.menu{position:fixed;z-index:11;bottom:max(12px,env(safe-area-inset-bottom));right:12px;border:0;border-radius:12px;padding:9px 14px;background:#183a56;color:white;font:14px system-ui}
+#mobile-menu{left:12px;right:auto}
+dialog{border:0;border-radius:22px;width:360px;max-width:calc(100vw - 28px);box-sizing:border-box;padding:24px}
+dialog::backdrop{background:#10253e88}
+</style>
+    <link rel="stylesheet" data-href="launcher.css?v=20261124.5" />
+  <link rel="manifest" data-href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" data-href="icons/icon-180.png" />
     <meta name="theme-color" content="#183a56" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="挪车螺丝" />
-    <link rel="stylesheet" href="mobile.css" />
+    <link rel="stylesheet" data-href="mobile.css" />
   </head>
   <body>
     <main>
       <iframe
         id="game"
-        src="game.html?v=20261124.4"
+        data-src="game.html?v=20261124.5"
         title="挪车打螺丝游戏"
         allow="autoplay; fullscreen"
       ></iframe>
     </main>
+    <section id="startup" aria-labelledby="startup-title">
+      <div class="startup-card">
+        <p class="startup-name">挪车打螺丝</p>
+        <h1 id="startup-title">正在准备游戏</h1>
+        <progress id="startup-progress" max="100" aria-label="当前阶段加载进度"></progress>
+        <p id="startup-detail" role="status">页面已打开，即将开始加载…</p>
+        <p id="startup-time">已等待 0 秒</p>
+        <p id="startup-help">首次加载需要网络，进度会在这里显示。</p>
+        <button id="startup-retry" type="button">重新加载（保留存档）</button>
+      </div>
+    </section>
     <button id="open-levels" class="menu" aria-haspopup="dialog">
       选择关卡
     </button>
@@ -57,7 +85,7 @@
           inputmode="numeric"
         />
         <p>选择关卡会切换当前进度，游戏自动保存在本浏览器。</p>
-        <p class="secondary">版本：20261124.4</p>
+        <p class="secondary">版本：20261124.5</p>
         <p class="secondary">猫咪和打巨龙资源尚未缓存，暂不提供入口。</p>
         <p id="menu-status" role="status"></p>
         <button class="primary" type="submit">进入关卡</button>
@@ -65,7 +93,90 @@
         <p class="secondary">画面异常时可重启；会回到当前关卡开始，保留关卡进度。</p>
       </form>
     </dialog>
-    <script src="launcher.js?v=20261124.4"></script>
+    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261124.5" data-launcher></script>
+    <script>(() => {
+  "use strict";
+  const frame = document.querySelector("#game");
+  const screen = document.querySelector("#startup");
+  const title = document.querySelector("#startup-title");
+  const detail = document.querySelector("#startup-detail");
+  const progress = document.querySelector("#startup-progress");
+  const elapsed = document.querySelector("#startup-time");
+  const help = document.querySelector("#startup-help");
+  let started = Date.now(), activity = started, fingerprint = "", failed = false;
+  function show(data) {
+    screen.hidden = false;
+    const next = [data.stage, data.loaded, data.files, data.detail].join("|");
+    if (fingerprint !== next) { activity = Date.now(); fingerprint = next; }
+    failed = data.stage === "error";
+    title.textContent = data.title || "正在准备游戏";
+    detail.textContent = data.detail || "请稍候…";
+    if (data.total > 0) progress.value = Math.min(100, 100 * data.loaded / data.total);
+    else progress.removeAttribute("value");
+  }
+  window.NCDLSStartup = {
+    show,
+    reset() { started = activity = Date.now(); fingerprint = ""; show({stage:"shell",title:"正在重新加载",detail:"已保留存档，正在连接游戏…"}); },
+    ready() { screen.hidden = true; },
+  };
+  document.querySelector("#startup-retry").addEventListener("click", () => {
+    if (window.NCDLSStartup.retry) window.NCDLSStartup.retry();
+    else location.reload();
+  });
+  setInterval(() => {
+    if (screen.hidden) return;
+    const waiting = Math.floor((Date.now() - activity) / 1000);
+    elapsed.textContent = `已等待 ${Math.floor((Date.now() - started) / 1000)} 秒`;
+    help.textContent = failed
+      ? "请检查网络后重新加载，已保存的进度会保留。"
+      : waiting >= 12
+        ? `已有 ${waiting} 秒没有新的加载进展。可以继续等待，或检查网络后重新加载。`
+        : "正在加载当前关卡所需内容，不会自动下载全部离线包。";
+  }, 1000);
+  window.addEventListener("message", (event) => {
+    if (event.origin !== location.origin || event.source !== frame.contentWindow) return;
+    if (event.data?.type === "ncdls:progress") show(event.data);
+    if (event.data?.type === "ncdls:ready") window.NCDLSStartup.ready();
+  });
+  function loadPage() {
+    const begin = () => {
+      performance.mark("ncdls:shell-painted");
+      for (const link of document.querySelectorAll("link[data-href]")) {
+        link.href = link.dataset.href;
+      }
+      for (const source of document.querySelectorAll("script[data-src]")) {
+        const script = document.createElement("script");
+        script.src = source.dataset.src;
+        script.onload = () => {
+          if (source.hasAttribute("data-launcher")) {
+            show({stage:"frame",title:"正在连接游戏",detail:"正在获取游戏入口和加载清单…"});
+            frame.src = frame.dataset.src;
+          }
+        };
+        script.onerror = () => show({stage:"error",title:"页面组件加载失败",detail:"暂时无法连接，请重新加载。"});
+        document.head.append(script);
+      }
+    };
+    const afterPaint = () => requestAnimationFrame(() =>
+      requestAnimationFrame(() => setTimeout(begin, 0)),
+    );
+    // Paint timing is available in Chromium; older Safari falls back to yielding
+    // past two animation frames and a task before starting any external work.
+    if (typeof PerformanceObserver !== "undefined" &&
+        PerformanceObserver.supportedEntryTypes?.includes("paint")) {
+      const observer = new PerformanceObserver((list) => {
+        if (list.getEntries().some((entry) => entry.name === "first-contentful-paint")) {
+          observer.disconnect();
+          afterPaint();
+        }
+      });
+      observer.observe({type:"paint",buffered:true});
+    } else afterPaint();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", loadPage, {once:true});
+  else loadPage();
+})();
+</script>
   <button id="mobile-menu" class="menu" aria-haspopup="dialog">离线与存档</button>
 <dialog id="mobile-panel" aria-labelledby="mobile-title">
   <div class="heading">
@@ -116,6 +227,6 @@
   ></textarea>
 </dialog>
 
-<script src="mobile.js"></script>
+<script type="application/x-ncdls-script" data-src="mobile.js"></script>
 </body>
 </html>

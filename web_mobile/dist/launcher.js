@@ -1,6 +1,6 @@
 (() => {
   const frame = document.querySelector("#game");
-  const gameURL = frame.getAttribute("src");
+  const gameURL = frame.getAttribute("data-src") || frame.getAttribute("src");
   const dialog = document.querySelector("#levels");
   const mode = document.querySelector("#mode");
   const level = document.querySelector("#level");
@@ -37,6 +37,8 @@
       try { frame.contentWindow.W?.ICache?.saveData(); } catch { /* Use the last saved progress. */ }
       if (!dialog.open) dialog.showModal();
       status.textContent = "正在重新加载游戏，存档会保留…";
+      window.NCDLSStartup?.reset();
+      if (window.NCDLSStartup) dialog.close();
       // Tear down the old document before starting another engine. This also
       // stops its timers and releases the old WebGL context and scene caches.
       await new Promise((resolve) => {
@@ -57,12 +59,14 @@
       frame.focus();
     } catch (error) {
       status.textContent = "重启未完成：" + error.message;
+      window.NCDLSStartup?.show({stage:"error",title:"重启未完成",detail:error.message});
     } finally {
       restarting = false;
       restart.disabled = false;
     }
   }
   restart.addEventListener("click", restartGame);
+  if (window.NCDLSStartup) window.NCDLSStartup.retry = restartGame;
   window.addEventListener("message", (event) => {
     if (event.origin === location.origin && event.source === frame.contentWindow &&
         event.data?.type === "ncdls:restart") restartGame();

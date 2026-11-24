@@ -12,17 +12,29 @@
     />
     <title>挪车打螺丝 · 网页版</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="launcher.css?v=20261124.4" />
+    <style>/*__STARTUP_CSS__*/</style>
+    <link rel="stylesheet" data-href="launcher.css?v=20261124.5" />
   </head>
   <body>
     <main>
       <iframe
         id="game"
-        src="game.html?v=20261124.4"
+        data-src="game.html?v=20261124.5"
         title="挪车打螺丝游戏"
         allow="autoplay; fullscreen"
       ></iframe>
     </main>
+    <section id="startup" aria-labelledby="startup-title">
+      <div class="startup-card">
+        <p class="startup-name">挪车打螺丝</p>
+        <h1 id="startup-title">正在准备游戏</h1>
+        <progress id="startup-progress" max="100" aria-label="当前阶段加载进度"></progress>
+        <p id="startup-detail" role="status">页面已打开，即将开始加载…</p>
+        <p id="startup-time">已等待 0 秒</p>
+        <p id="startup-help">首次加载需要网络，进度会在这里显示。</p>
+        <button id="startup-retry" type="button">重新加载（保留存档）</button>
+      </div>
+    </section>
     <button id="open-levels" class="menu" aria-haspopup="dialog">
       选择关卡
     </button>
@@ -51,7 +63,7 @@
           inputmode="numeric"
         />
         <p>选择关卡会切换当前进度，游戏自动保存在本浏览器。</p>
-        <p class="secondary">版本：20261124.4</p>
+        <p class="secondary">版本：20261124.5</p>
         <p class="secondary">猫咪和打巨龙资源尚未缓存，暂不提供入口。</p>
         <p id="menu-status" role="status"></p>
         <button class="primary" type="submit">进入关卡</button>
@@ -59,6 +71,7 @@
         <p class="secondary">画面异常时可重启；会回到当前关卡开始，保留关卡进度。</p>
       </form>
     </dialog>
-    <script src="launcher.js?v=20261124.4"></script>
+    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261124.5" data-launcher></script>
+    <script>/*__STARTUP_JS__*/</script>
   </body>
 </html>

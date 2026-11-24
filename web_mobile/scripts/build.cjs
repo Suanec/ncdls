@@ -67,7 +67,9 @@ try {
   for (const file of base.scripts) fs.unlinkSync(path.join(output, file));
   fs.writeFileSync(path.join(output, runtimeFile), runtime);
   base.scripts = [runtimeFile];
-  fs.writeFileSync(path.join(output, "scripts.json"), JSON.stringify(base.scripts));
+  fs.writeFileSync(path.join(output, "scripts.json"), JSON.stringify([
+    { src: runtimeFile, bytes: Buffer.byteLength(runtime) },
+  ]));
   for (const name of ["mobile.js", "mobile.css", "manifest.webmanifest"])
     fs.copyFileSync(path.join(mobile, "src", name), path.join(output, name));
   require("./icons.cjs")(path.join(output, "icons"));
@@ -77,22 +79,22 @@ try {
     .replace("挪车打螺丝 · 网页版", "挪车打螺丝 · 离线版")
     .replace(
       '<link rel="icon" href="data:," />',
-      '<link rel="icon" href="icons/icon-192.png" />',
+      '<link rel="icon" href="data:," data-href="icons/icon-192.png" />',
     )
     .replace(
       "</head>",
-      `<link rel="manifest" href="manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+      `<link rel="manifest" data-href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" data-href="icons/icon-180.png" />
     <meta name="theme-color" content="#183a56" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="挪车螺丝" />
-    <link rel="stylesheet" href="mobile.css" />
+    <link rel="stylesheet" data-href="mobile.css" />
   </head>`,
     )
     .replace(
       "</body>",
       fs.readFileSync(path.join(mobile, "src/mobile-panel.html"), "utf8") +
-        '\n<script src="mobile.js"></script>\n</body>',
+        '\n<script type="application/x-ncdls-script" data-src="mobile.js"></script>\n</body>',
     );
   fs.writeFileSync(index, html);
   const describe = (file) => {

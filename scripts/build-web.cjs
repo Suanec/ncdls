@@ -79,6 +79,14 @@ try {
     path.join(output, "libs/laya.physics.wasm.wasm"),
   );
   fs.cpSync(template, output, { recursive: true });
+  const indexFile = path.join(output, "index.html");
+  let entryHTML = fs.readFileSync(indexFile, "utf8");
+  for (const [marker, name] of [["/*__STARTUP_CSS__*/", "startup.css"], ["/*__STARTUP_JS__*/", "startup.js"]]) {
+    if (!entryHTML.includes(marker)) throw new Error("Startup shell marker missing: " + marker);
+    entryHTML = entryHTML.replace(marker, () => fs.readFileSync(path.join(template, name), "utf8"));
+    fs.unlinkSync(path.join(output, name));
+  }
+  fs.writeFileSync(indexFile, entryHTML);
   const sources = [
     "vendor/laya/laya.core.js",
     "vendor/laya/laya.ani.js",
@@ -132,7 +140,9 @@ try {
     fs.writeFileSync(path.join(output, target), code);
     scripts.push(target);
   }
-  fs.writeFileSync(path.join(output, "scripts.json"), JSON.stringify(scripts));
+  fs.writeFileSync(path.join(output, "scripts.json"), JSON.stringify(scripts.map((src) => ({
+    src, bytes: fs.statSync(path.join(output, src)).size,
+  }))));
   const files = walk(output)
     .sort()
     .map((file) => {

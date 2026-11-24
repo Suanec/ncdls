@@ -13,6 +13,9 @@ const docHandlers = {}, winHandlers = {};
 let initialized = false, atCreation;
 const context = {
   URL, console: {error() {}}, HTMLCanvasElement: class {},
+  performance: {now:()=>0,getEntriesByType:()=>[]},
+  setInterval:()=>1,clearInterval(){},setTimeout,clearTimeout,
+  requestAnimationFrame:fn=>queueMicrotask(fn),
   location: {href: 'https://example.test/ncdls/game.html?v=test', origin: 'https://example.test'},
   document: {
     querySelector: (s) => ({'#status':status, '#boot':boot, '#reload-game':reload})[s],
@@ -23,7 +26,7 @@ const context = {
   W: {M2: class {constructor() { initialized=true; atCreation=context.Laya.Config.useWebGL2; }}},
   parent: {postMessage() {}},
   addEventListener: (type, fn) => {winHandlers[type] = fn;},
-  fetch: async () => ({json:async()=>[]}),
+  fetch: async () => ({ok:true,json:async()=>[]}),
 };
 context.window = context;
 vm.runInNewContext(fs.readFileSync(path.join(root, 'web/browser.js'),'utf8'), context);

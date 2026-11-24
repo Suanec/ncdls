@@ -3,6 +3,16 @@
   const status = document.querySelector("#status");
   const modules = new Map();
   const reload = document.querySelector("#reload-game");
+  let bootFailed = false, assetTimer;
+  const mib = (bytes) => (bytes / 1048576).toFixed(1) + " MB";
+  function report(data) {
+    if (bootFailed && data.stage !== "error") return;
+    status.textContent = data.title + (data.detail ? " · " + data.detail : "");
+    window.parent.postMessage({ type: "ncdls:progress", ...data }, location.origin);
+  }
+  const painted = () => new Promise((resolve) =>
+    requestAnimationFrame(() => requestAnimationFrame(resolve)),
+  );
   reload.addEventListener("click", () => {
     if (window.parent !== window) {
       window.parent.postMessage({ type: "ncdls:restart" }, location.origin);
@@ -53,38 +63,103 @@
       window.NCDLSWeb.renderCompatibility = "engine-default";
       window.NCDLSWeb.config = config;
       window.NCDLSWeb.loadingUI = loadingUI;
+      const assetsStarted = performance.now();
+      report({stage:"assets",title:"正在加载本关资源",detail:"正在准备关卡、车辆和图片…"});
       window.NCDLSWeb.main = new W.M2(config, loadingUI);
       document.querySelector("#boot").classList.add("hidden");
       window.parent.postMessage({ type: "ncdls:started" }, location.origin);
+      assetTimer = setInterval(() => {
+        if (bootFailed) return;
+        const resources = performance.getEntriesByType("resource")
+          .filter((entry) => entry.startTime >= assetsStarted);
+        const bytes = resources.reduce((sum, entry) => sum + (entry.decodedBodySize || 0), 0);
+        report({stage:"assets",title:"正在加载本关资源",files:resources.length,loaded:bytes,
+          detail:`已完成 ${resources.length} 项资源 · ${mib(bytes)}`});
+        const game = window.Game;
+        if (game?.scene3D && !game.initing && !loadingUI.instance) {
+          clearInterval(assetTimer);
+          report({stage:"drawing",title:"正在准备游戏画面",detail:"本关资源已就绪，即将进入游戏…"});
+          painted().then(() => {
+            if (!bootFailed) window.parent.postMessage({type:"ncdls:ready"}, location.origin);
+          });
+        }
+      }, 500);
     },
   };
   function fail(error) {
+    bootFailed = true;
+    clearInterval(assetTimer);
     const message = error?.stack || error?.message || String(error);
     window.NCDLSWeb.errors.push(message);
     console.error("[web]", error);
-    status.textContent = "加载出错：" + (error?.message || message);
+    report({stage:"error",title:"加载未完成",detail:error?.message || message});
     document.querySelector("#boot").classList.remove("hidden");
     reload.hidden = false;
   }
   window.addEventListener("error", (e) => fail(e.error || e.message));
   window.addEventListener("unhandledrejection", (e) => fail(e.reason));
   async function boot() {
-    const response = await fetch("scripts.json");
-    const scripts = await response.json();
-    let loaded = 0;
-    // Fetch required runtime scripts together; async=false keeps execution order.
-    await Promise.all(scripts.map((source) => new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      script.async = false;
-      script.src = source;
-      script.onload = () => {
-        loaded++;
-        status.textContent = `正在加载游戏 ${Math.round((loaded / scripts.length) * 100)}%`;
-        resolve();
-      };
-      script.onerror = () => reject(new Error("无法加载 " + source));
-      document.head.append(script);
-    })));
+    report({stage:"manifest",title:"正在读取加载清单",detail:"只加载游戏运行文件和当前关卡资源…"});
+    const response = await fetch("scripts.json", {cache:"no-cache"});
+    if (!response.ok) throw new Error("无法读取加载清单，请重新加载。");
+    const scripts = (await response.json()).map((entry) =>
+      typeof entry === "string" ? {src:entry,bytes:0} : entry,
+    );
+    const total = scripts.reduce((sum, file) => sum + file.bytes, 0);
+    let loaded = 0, lastNotice = 0;
+    function progress(force = false) {
+      if (!force && Date.now() - lastNotice < 200) return;
+      lastNotice = Date.now();
+      report({stage:"scripts",title:"正在下载游戏运行文件",loaded,total,
+        detail:total ? `${mib(loaded)} / ${mib(total)}（${Math.min(100,Math.floor(loaded/total*100))}%）` : `已接收 ${mib(loaded)}`});
+    }
+    progress(true);
+    // Download once with byte progress, then execute in the original order.
+    // Blob scripts also work when the original response is served from the SW.
+    const downloads = await Promise.all(scripts.map(async (file) => {
+      const controller = new AbortController();
+      let idle;
+      const arm = () => { clearTimeout(idle); idle = setTimeout(() => controller.abort(), 60000); };
+      try {
+        arm();
+        const resource = await fetch(file.src, {signal:controller.signal});
+        if (!resource.ok) throw new Error("运行文件下载失败，请重新加载。");
+        const chunks = [];
+        let bytes = 0;
+        if (resource.body?.getReader) {
+          const reader = resource.body.getReader();
+          for (;;) {
+            const {done,value} = await reader.read();
+            if (done) break;
+            chunks.push(value); bytes += value.byteLength; loaded += value.byteLength;
+            arm(); progress();
+          }
+        } else {
+          const data = await resource.arrayBuffer();
+          chunks.push(data); bytes = data.byteLength; loaded += bytes; progress();
+        }
+        if (file.bytes && bytes !== file.bytes) throw new Error("运行文件不完整或站点正在更新，请重新加载。");
+        return new Blob(chunks, {type:"text/javascript"});
+      } catch (error) {
+        throw new Error(error.name === "AbortError" ? "网络已超过 60 秒没有响应，请检查网络后重新加载。" : error.message);
+      } finally { clearTimeout(idle); }
+    }));
+    progress(true);
+    report({stage:"engine",title:"正在启动游戏",detail:"运行文件已下载，正在初始化游戏引擎…"});
+    await painted();
+    for (const blob of downloads) {
+      const url = URL.createObjectURL(blob);
+      try {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = url;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error("游戏运行文件执行失败，请重新加载。"));
+          document.head.append(script);
+        });
+        if (bootFailed) return;
+      } finally { URL.revokeObjectURL(url); }
+    }
   }
   boot().catch(fail);
 })();

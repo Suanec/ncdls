@@ -1,0 +1,57 @@
+{
+  "release": "20261124.5",
+  "iphoneVerified": false,
+  "steps": [
+    "HTML progress screen visible before iframe starts",
+    "Real streamed byte progress and visible no-progress warning; no fake percentage",
+    "First paint precedes other same-origin requests; runtime fetched exactly once; four cars/seven parks",
+    "HTTP 503 shows error; retry rebuilds engine and enters first level"
+  ],
+  "paintAndGame": {
+    "cars": [
+      121,
+      150,
+      202,
+      260
+    ],
+    "parks": [
+      36,
+      43,
+      50,
+      57,
+      71,
+      78,
+      85
+    ],
+    "errors": [],
+    "fcp": 116,
+    "shellPainted": 139.59999990463257,
+    "requests": [
+      {
+        "name": "http://127.0.0.1:53922/ncdls/launcher.css?v=20261124.5",
+        "startTime": 140.90000009536743
+      },
+      {
+        "name": "http://127.0.0.1:53922/ncdls/mobile.css",
+        "startTime": 141.09999990463257
+      },
+      {
+        "name": "http://127.0.0.1:53922/ncdls/launcher.js?v=20261124.5",
+        "startTime": 141.5
+      },
+      {
+        "name": "http://127.0.0.1:53922/ncdls/mobile.js",
+        "startTime": 141.59999990463257
+      },
+      {
+        "name": "http://127.0.0.1:53922/ncdls/icons/icon-192.png",
+        "startTime": 147.69999980926514
+      },
+      {
+        "name": "http://127.0.0.1:53922/ncdls/game.html?v=20261124.5",
+        "startTime": 1948.1999998092651
+      }
+    ]
+  },
+  "success": true
+}

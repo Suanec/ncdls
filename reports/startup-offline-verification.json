@@ -1,0 +1,26 @@
+{
+  "url": "http://127.0.0.1:54181/ncdls/",
+  "release": "20261124.5",
+  "iphoneVerified": false,
+  "steps": [
+    "Default start: no SW registration/full manifest/other mode resources",
+    "Two save-preserving first-level restarts",
+    "Red car responds to real pointer click",
+    "Explicit button downloaded all 1901 files",
+    "Network disabled: reload renders four cars and seven parks",
+    "Automatic worker update downloads no game resources",
+    "Automatic activation preserves previous complete offline package",
+    "Manual full update reuses verified old resources",
+    "Old launcher explicit update action downloads before activation",
+    "Phone viewport Chrome: four cars/seven parks (not iOS Safari)"
+  ],
+  "fullDownloadRequests": 23,
+  "packRequests": 21,
+  "updateRequests": [
+    "/ncdls/sw.js",
+    "/ncdls/offline-manifest.json",
+    "/ncdls/sw.js"
+  ],
+  "pageErrors": [],
+  "success": true
+}
