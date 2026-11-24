@@ -1,0 +1,271 @@
+{
+  "url": "https://suanec.github.io/ncdls/",
+  "release": "20261124.3",
+  "cars": [
+    {
+      "id": 891,
+      "color": "黄",
+      "expected": {
+        "x": -1.8972222222222226,
+        "y": 0,
+        "z": -0.008333333333333748
+      },
+      "position": {
+        "x": -1.8972222222222226,
+        "y": 0,
+        "z": -0.008333333333333748
+      }
+    },
+    {
+      "id": 923,
+      "color": "绿",
+      "expected": {
+        "x": -1.313888888888889,
+        "y": 0,
+        "z": -2.7583333333333337
+      },
+      "position": {
+        "x": -1.313888888888889,
+        "y": 0,
+        "z": -2.7583333333333337
+      }
+    },
+    {
+      "id": 1032,
+      "color": "红",
+      "expected": {
+        "x": 1.0194444444444442,
+        "y": 0,
+        "z": 0.1861111111111109
+      },
+      "position": {
+        "x": 1.0194444444444442,
+        "y": 0,
+        "z": 0.1861111111111109
+      }
+    },
+    {
+      "id": 1132,
+      "color": "蓝",
+      "expected": {
+        "x": 1.7972222222222218,
+        "y": 0,
+        "z": -2.202777777777778
+      },
+      "position": {
+        "x": 1.7972222222222218,
+        "y": 0,
+        "z": -2.202777777777778
+      }
+    }
+  ],
+  "parks": [
+    644,
+    654,
+    661,
+    668,
+    751,
+    761,
+    768
+  ],
+  "gameErrors": [],
+  "webgl2": true,
+  "registeredOfflineWorker": false,
+  "elapsedMs": 32935,
+  "pageErrors": [],
+  "failedRequests": [],
+  "iphoneVerified": false,
+  "checkedAt": "2026-11-24T10:51:42.469Z",
+  "success": true,
+  "pointerClickVerified": true,
+  "visualVerified": true,
+  "screwsBeforeClick": 24,
+  "screwsAfterClick": 20,
+  "screenshots": {
+    "firstLevel": "first-level-live.png",
+    "redCarMoved": "first-level-live-red-click.png"
+  },
+  "interactionSamples": [
+    {
+      "name": "ready",
+      "time": 1795517591386,
+      "visibility": "visible",
+      "timer": 617,
+      "loop": 617,
+      "draw": 6927,
+      "triangle": 155893,
+      "cars": [
+        {
+          "id": 829,
+          "color": "黄",
+          "pos": {
+            "x": -1.8972222222222226,
+            "z": -0.008333333333333748
+          }
+        },
+        {
+          "id": 861,
+          "color": "绿",
+          "pos": {
+            "x": -1.313888888888889,
+            "z": -2.7583333333333337
+          }
+        },
+        {
+          "id": 973,
+          "color": "红",
+          "pos": {
+            "x": 1.0194444444444442,
+            "z": 0.1861111111111109
+          }
+        },
+        {
+          "id": 1082,
+          "color": "蓝",
+          "pos": {
+            "x": 1.7972222222222218,
+            "z": -2.202777777777778
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "wait4",
+      "time": 1795517595732,
+      "visibility": "visible",
+      "timer": 729,
+      "loop": 729,
+      "draw": 10844,
+      "triangle": 817023,
+      "cars": [
+        {
+          "id": 829,
+          "color": "黄",
+          "pos": {
+            "x": -1.8972222222222226,
+            "z": -0.008333333333333748
+          }
+        },
+        {
+          "id": 861,
+          "color": "绿",
+          "pos": {
+            "x": -1.313888888888889,
+            "z": -2.7583333333333337
+          }
+        },
+        {
+          "id": 973,
+          "color": "红",
+          "pos": {
+            "x": 1.0194444444444442,
+            "z": 0.1861111111111109
+          }
+        },
+        {
+          "id": 1082,
+          "color": "蓝",
+          "pos": {
+            "x": 1.7972222222222218,
+            "z": -2.202777777777778
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "red-click",
+      "time": 1795517598655,
+      "visibility": "visible",
+      "timer": 795,
+      "loop": 795,
+      "draw": 13477,
+      "triangle": 1186649,
+      "cars": [
+        {
+          "id": 829,
+          "color": "黄",
+          "pos": {
+            "x": -1.8972222222222226,
+            "z": -0.008333333333333748
+          }
+        },
+        {
+          "id": 861,
+          "color": "绿",
+          "pos": {
+            "x": -1.313888888888889,
+            "z": -2.7583333333333337
+          }
+        },
+        {
+          "id": 973,
+          "color": "红",
+          "pos": {
+            "x": 7.79316520690918,
+            "z": 11.35276985168457
+          }
+        },
+        {
+          "id": 1082,
+          "color": "蓝",
+          "pos": {
+            "x": 1.7972222222222218,
+            "z": -2.202777777777778
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "resize",
+      "time": 1795517600594,
+      "visibility": "visible",
+      "timer": 835,
+      "loop": 835,
+      "draw": 15960,
+      "triangle": 1410763,
+      "cars": [
+        {
+          "id": 829,
+          "color": "黄",
+          "pos": {
+            "x": -1.8972222222222226,
+            "z": -0.008333333333333748
+          }
+        },
+        {
+          "id": 861,
+          "color": "绿",
+          "pos": {
+            "x": -1.313888888888889,
+            "z": -2.7583333333333337
+          }
+        },
+        {
+          "id": 973,
+          "color": "红",
+          "pos": {
+            "x": -12,
+            "z": 8
+          }
+        },
+        {
+          "id": 1082,
+          "color": "蓝",
+          "pos": {
+            "x": 1.7972222222222218,
+            "z": -2.202777777777778
+          }
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "limitations": [
+    "iPhone iOS 15 hardware not tested.",
+    "Earlier online captures showed a loading image while game runtime was ready; two subsequent fresh Chrome sessions rendered correctly. Cause of earlier captures remains unestablished.",
+    "Only level 1 tested."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "url": "https://suanec.github.io/ncdls/",
+  "release": "20261124.3",
+  "commit": "4546f11e7a2c4283fd098ae2cee84ccd40cf301e",
+  "runUrl": "https://github.com/Suanec/ncdls/actions/runs/45376980908",
+  "githubActionsConclusion": "success",
+  "version": "df6c8fd05d75bd352bf4",
+  "filesVerified": [
+    "index.html",
+    "game.html",
+    "browser.js",
+    "launcher.js",
+    "launcher.css",
+    "style.css",
+    "mobile.js",
+    "runtime/src/shared/W.js",
+    "runtime/src/game/main.js",
+    "sw.js"
+  ],
+  "offlineFileCount": 1915,
+  "checkedAt": "2026-11-24T10:43:01.777308+00:00",
+  "browserVisualVerified": true,
+  "iphoneVerified": false,
+  "verificationLimit": "Published canonical URL visually verified in two fresh Chrome sessions; four distinct cars and seven parks, and red car click reduced screws from 24 to 20. Earlier live captures stayed on the loading image despite ready runtime; cause not established, so this is not a claim that all rendering issues are resolved. iPhone Safari hardware not verified. Levels 2-10 not tested at user request.",
+  "liveVisualReport": "first-level-live.json",
+  "liveScreenshot": "first-level-live.png"
+}

@@ -9,6 +9,8 @@
 - 游戏代码及部署：[Suanec/ncdls](https://github.com/Suanec/ncdls)。
 - 主页仓库：[Suanec/suanec.github.io](https://github.com/Suanec/suanec.github.io)。仅在 `_data/navigation.yml` 增加“挪车打螺丝”入口，不复制游戏资源进去、不更换原主页。
 
+游戏入口固定为 `https://suanec.github.io/ncdls/`，每次发布更新同一地址，不需要修改书签或手动添加版本号。`?v=...` 不是历史版本选择器，也不会单独生成存档。普通在线页面刷新后获取新版；保存过离线包时按本文“后续更新游戏”操作。
+
 游戏独立部署在 `/ncdls/`。它的 Service Worker 和离线资源缓存只覆盖该目录，不接管主页及其他项目页面。浏览器 `localStorage` 按同源共享，游戏使用自己的 `user_json_ncdls_web` 键。
 
 ## 第一次在手机上打开
