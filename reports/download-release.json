@@ -1,0 +1,21 @@
+{
+  "release": "20261124.4",
+  "manifestVersion": "c760242245435b9bd38b",
+  "packs": 21,
+  "files": 1901,
+  "scripts": [
+    "runtime/game-93cc5c95db898d1fd1bd.js"
+  ],
+  "samplePack": "offline-packs/cb0bc65b1efd3af37dd0.json",
+  "samplePackDecodedBytes": 2799318,
+  "sampleTransfer": "200 1.090702 12.397068 1473629",
+  "contentEncoding": [
+    "gzip"
+  ],
+  "sha256Verified": true,
+  "url": "https://suanec.github.io/ncdls/",
+  "commit": "642c7829abce7837520b08f1b9fbb2431f968105",
+  "runUrl": "https://github.com/Suanec/ncdls/actions/runs/45387530411",
+  "githubActionsConclusion": "success",
+  "iphoneVerified": false
+}

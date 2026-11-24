@@ -1,0 +1,140 @@
+{
+  "url": "https://suanec.github.io/ncdls/",
+  "release": "20261124.4",
+  "iphoneVerified": false,
+  "runtime": {
+    "cars": [
+      {
+        "id": 682,
+        "color": "黄"
+      },
+      {
+        "id": 711,
+        "color": "绿"
+      },
+      {
+        "id": 794,
+        "color": "红"
+      },
+      {
+        "id": 880,
+        "color": "蓝"
+      }
+    ],
+    "parks": [
+      482,
+      490,
+      497,
+      504,
+      561,
+      568,
+      575
+    ],
+    "resources": 120
+  },
+  "fullDownloadMs": 199464,
+  "downloadRequests": [
+    {
+      "url": "https://suanec.github.io/ncdls/sw.js",
+      "at": 1795521031691
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-manifest.json",
+      "at": 1795521032193
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/cb0bc65b1efd3af37dd0.json",
+      "at": 1795521032861
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/0eeceab031276ee062cf.json",
+      "at": 1795521032861
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/b375e0f3a1edc1165d63.json",
+      "at": 1795521045030
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/f4a5064817b6ea282780.json",
+      "at": 1795521061917
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/637814d4261a024f9bd8.json",
+      "at": 1795521074823
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/f7fc471d5120775e8ec8.json",
+      "at": 1795521078837
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/8c734653a01afd82363c.json",
+      "at": 1795521081645
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/c85a4731f49687cd9943.json",
+      "at": 1795521084489
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/d1e435a56fa48bf91434.json",
+      "at": 1795521090180
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/f59dd8fa8ad9c16d431f.json",
+      "at": 1795521105101
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/804e7f215f5fce67a681.json",
+      "at": 1795521114152
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/56029a7f2e5cb8171b3a.json",
+      "at": 1795521126150
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/fcd7189cd936dfd8cd01.json",
+      "at": 1795521139030
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/445da9fdfcccb97efe5d.json",
+      "at": 1795521150667
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/4d250652b39cbeb61c81.json",
+      "at": 1795521159645
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/3439d6dd8d8e15c39ed1.json",
+      "at": 1795521171586
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/a6aa8a45c0da0c98bbb5.json",
+      "at": 1795521184404
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/f054ffa2abef1a580016.json",
+      "at": 1795521188001
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/575c3a6fe519aa1820ed.json",
+      "at": 1795521192559
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/7ff1ad8cc67b568f0c59.json",
+      "at": 1795521203563
+    },
+    {
+      "url": "https://suanec.github.io/ncdls/offline-packs/38b3605a1749f074069d.json",
+      "at": 1795521211369
+    }
+  ],
+  "downloadState": "离线资源已就绪 · 44.4 MB。可以断网重新打开游戏。",
+  "offlineVerified": true,
+  "errors": [],
+  "checkedAt": "2026-11-24T11:53:54.879Z",
+  "success": true,
+  "runtimeInitializedMs": 40468,
+  "onlineInitialVisualVerified": false,
+  "onlineInitialVisualState": "Loading image remained visible even though runtime initialization completed.",
+  "offlineFirstLevelVisualVerified": true,
+  "verificationScope": "Full download and offline reload, not a claim that online startup rendering is resolved."
+}

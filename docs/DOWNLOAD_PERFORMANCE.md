@@ -33,6 +33,14 @@
 - [浏览器检查记录](../reports/download-browser-verification.json)
 - 回归检查：`npm run check:mobile`，包含 `scripts/check-mobile-download.cjs`。
 
+## 正式站点核验
+
+提交 `642c7829abce7837520b08f1b9fbb2431f968105` 已通过 [GitHub Actions](https://github.com/Suanec/ncdls/actions/runs/45387530411) 发布。正式入口显示 `20261124.4`；线上清单版本为 `c760242245435b9bd38b`，共 21 个包、1,901 个文件。抽样资源包确认启用 HTTP gzip，解压后哈希与清单一致。
+
+在这台 Mac 的 Chrome 中从正式地址冷下载，完整下载共 23 次请求，耗时 199.46 秒（约 3 分 20 秒）；随后切断网络、刷新页面，第一关画面正常。见 [线上下载记录](../reports/download-live-verification.json)、[部署校验](../reports/download-release.json) 和 [断网重开画面](../reports/download-live-offline.png)。这不是 iPhone 速度保证。
+
+同次测试首次在线启动仍出现加载页停留：运行时已经初始化，画面没有退出加载页。下载完成后断网重开画面正常。本版解决大量小文件请求造成的下载等待，没有将独立的在线加载画面问题标记为已修复。
+
 ## 手机如何使用新版
 
 1. 关闭当前仍在慢速下载的游戏标签页，重新用 Safari 打开固定入口。
