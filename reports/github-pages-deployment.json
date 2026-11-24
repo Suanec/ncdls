@@ -1,0 +1,91 @@
+{
+  "url": "https://suanec.github.io/ncdls/",
+  "version": "df745fc334edaad1708d",
+  "resourceCount": 1915,
+  "bytes": 46509073,
+  "sampledResources": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "mime": "text/html; charset=utf-8",
+      "hashMatches": true
+    },
+    {
+      "path": "game.html",
+      "status": 200,
+      "mime": "text/html; charset=utf-8",
+      "hashMatches": true
+    },
+    {
+      "path": "mobile.js",
+      "status": 200,
+      "mime": "application/javascript; charset=utf-8",
+      "hashMatches": true
+    },
+    {
+      "path": "browser.js",
+      "status": 200,
+      "mime": "application/javascript; charset=utf-8",
+      "hashMatches": true
+    },
+    {
+      "path": "scripts.json",
+      "status": 200,
+      "mime": "application/json; charset=utf-8",
+      "hashMatches": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "status": 200,
+      "mime": "application/manifest+json; charset=utf-8",
+      "hashMatches": true
+    },
+    {
+      "path": "icons/icon-192.png",
+      "status": 200,
+      "mime": "image/png",
+      "hashMatches": true
+    },
+    {
+      "path": "icons/icon-512.png",
+      "status": 200,
+      "mime": "image/png",
+      "hashMatches": true
+    },
+    {
+      "path": "libs/laya.physics.wasm.wasm",
+      "status": 200,
+      "mime": "application/wasm",
+      "hashMatches": true
+    },
+    {
+      "path": "json/drama_core.json",
+      "status": 200,
+      "mime": "application/json; charset=utf-8",
+      "hashMatches": true
+    },
+    {
+      "path": "runtime/src/game/main.js",
+      "status": 200,
+      "mime": "application/javascript; charset=utf-8",
+      "hashMatches": true
+    }
+  ],
+  "serviceWorkerVersionMatches": true,
+  "runUrl": "https://github.com/Suanec/ncdls/actions/runs/45359398917",
+  "githubActionsConclusion": "success",
+  "iphoneVerified": false,
+  "checkedAt": "2026-11-24T08:53:10.077Z",
+  "gameCommit": "e88e8dd326fcea8b25d4507c1786e30ff8f6b500",
+  "homepage": {
+    "url": "https://suanec.github.io/",
+    "commit": "7b7ccce",
+    "changedFile": "_data/navigation.yml",
+    "sourceLinesAdded": 3,
+    "gameLinkVisible": true,
+    "originalLinksRetained": true,
+    "runUrl": "https://github.com/Suanec/suanec.github.io/actions/runs/45359745720",
+    "conclusion": "success"
+  },
+  "buildNote": "GitHub Node 24 produces slightly different PNG compression bytes from local Node 26; deployed manifest and sampled resource hashes match each other."
+}

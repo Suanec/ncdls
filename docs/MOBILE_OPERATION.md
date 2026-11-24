@@ -107,3 +107,13 @@
 GitHub 文档：[Actions 部署 Pages](https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically)、[Pages 的 HTTPS](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https)。
 
 本机已完成 Chrome 手机视口下的离线冷启动、五种玩法抽样、存档导入导出和缓存更新验证；不代表 iPhone 真机已验证。请按本文完成一次手机飞行模式测试。
+
+## 本次部署验收
+
+2026-11-24 已完成独立游戏和主页入口部署。游戏发布任务及主页构建均成功；游戏地址返回 HTTP 200，页面、脚本、图标、关卡配置、WASM 抽样哈希与线上离线清单一致。主页可见游戏链接，原有链接均保留。
+
+- [游戏发布记录](https://github.com/Suanec/ncdls/actions/runs/45359398917)
+- [主页更新记录](https://github.com/Suanec/suanec.github.io/actions/runs/45359745720)
+- [本地验收报告](../reports/github-pages-deployment.json)
+
+手机网络可达性和 iPhone 飞行模式冷启动仍需在你的手机上按本文实测。
