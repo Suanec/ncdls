@@ -20341,7 +20341,15 @@ define("libs/min/W.min.js", function (require, module, exports) {
           return 0 < this[t(482, 538)][t(710, 661)];
         }
         ["gO"]() {
-          return i.o(this);
+          const instance = i.o(this);
+          // The native pool getter can return a Sprite3D without reserving it.
+          // Reserve before handing it to a caller, so another car/parking slot
+          // cannot borrow the same live node during asynchronous initialization.
+          if (instance instanceof SP3D) {
+            this.pool_set.delete(instance);
+            this.u_set.add(instance);
+          }
+          return instance;
         }
         [S(573, 393)]() {
           function n(t, e) {

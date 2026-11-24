@@ -21,13 +21,13 @@
   "files": [
     {
       "path": "browser.js",
-      "bytes": 3370,
-      "sha256": "c893578874d6fcf8ab5d15616db5e99a686ea6fe6ef52a1e2c70405b57e442cd"
+      "bytes": 3516,
+      "sha256": "847c58403402902be09087b2d9b7a4fd917937f3693f9947673e33a42f936ddb"
     },
     {
       "path": "game.html",
       "bytes": 647,
-      "sha256": "258939d96d95cd3578e662d646b77ba10c4c99a2cb1eaad67e49c42c0c9d8781"
+      "sha256": "1c6e210a2dcd620698ce29ca7810d049f989c6f3af7cac311eae3d61e0e935f0"
     },
     {
       "path": "icons/icon-180.png",
@@ -66,8 +66,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 4412,
-      "sha256": "331926f30fc01aa4cdc4687b22ce64d4f9d30eff594ac61ce2dde08054c09bc9"
+      "bytes": 4536,
+      "sha256": "d1c3911f14b8b44dffe2b2f28c05e78ca459d380dfa8c70f42a12b159e3875c9"
     },
     {
       "path": "json/drama_core.json",
@@ -176,13 +176,13 @@
     },
     {
       "path": "mobile.js",
-      "bytes": 10312,
-      "sha256": "61fdc15a51c39ac85e1e8d6ce3a625cd13d92d5bbf6fc7155afaeabdf49589f8"
+      "bytes": 10173,
+      "sha256": "a46541cf669d0dca62c5d80390d956afedefb2f47b9e3ee3559a0e307c243dad"
     },
     {
       "path": "offline-manifest.json",
       "bytes": 301755,
-      "sha256": "c25479a600861a5a2fa83a70ba7ba46579de665cf11fc31f4166ef6673784568"
+      "sha256": "29b1f2def6be6e54e274a3b0c42dc90582e8b5ba73eda23d9ace6ddbf34dc4aa"
     },
     {
       "path": "prefab/record_button.json",
@@ -9506,8 +9506,8 @@
     },
     {
       "path": "runtime/src/game/main.js",
-      "bytes": 1482027,
-      "sha256": "8c08b2a774d1c11eb4254c934e584bdd981fd47a5bfd867d32a209e9e38489c4"
+      "bytes": 1482392,
+      "sha256": "dab85febfa8b3ea39e12c895094ba6ec10e4d4896c2a2c569c99ecacad73664f"
     },
     {
       "path": "runtime/src/platform/ads.js",
@@ -9531,8 +9531,8 @@
     },
     {
       "path": "runtime/src/shared/W.js",
-      "bytes": 1672198,
-      "sha256": "adebd217b2104d008a8dac48a84330cf08a1f1b32ecba69922f5255947e78034"
+      "bytes": 1672613,
+      "sha256": "c791c70cee81a717cf489863c9e58f0fe801df65d7f450a9051660566858efa6"
     },
     {
       "path": "runtime/src/shared/utils.js",
@@ -9596,8 +9596,8 @@
     },
     {
       "path": "sw.js",
-      "bytes": 7772,
-      "sha256": "9503dd2e591a59519c7a3bdda2ae30f1eb99994bc524f7084a12c5fdfa1089da"
+      "bytes": 9493,
+      "sha256": "d6804538629ab5e5c745014346f222b8d7f957ebe5f2f50557321a48070f7973"
     },
     {
       "path": "texture.png",
@@ -9605,5 +9605,5 @@
       "sha256": "bf9e603d0fd5aa64a961a8d88281e13c756062225f6ae67ee098fffc7cab0e68"
     }
   ],
-  "mobileVersion": "7d9fafd7d575b65c36b7"
+  "mobileVersion": "d085472e7276a21a0444"
 }

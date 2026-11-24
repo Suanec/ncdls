@@ -71,16 +71,20 @@
   async function boot() {
     const response = await fetch("scripts.json");
     const scripts = await response.json();
-    for (let i = 0; i < scripts.length; i++) {
-      status.textContent = `正在加载游戏 ${Math.round((i / scripts.length) * 100)}%`;
-      await new Promise((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = scripts[i];
-        script.onload = resolve;
-        script.onerror = () => reject(new Error("无法加载 " + scripts[i]));
-        document.head.append(script);
-      });
-    }
+    let loaded = 0;
+    // Fetch required runtime scripts together; async=false keeps execution order.
+    await Promise.all(scripts.map((source) => new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.async = false;
+      script.src = source;
+      script.onload = () => {
+        loaded++;
+        status.textContent = `正在加载游戏 ${Math.round((loaded / scripts.length) * 100)}%`;
+        resolve();
+      };
+      script.onerror = () => reject(new Error("无法加载 " + source));
+      document.head.append(script);
+    })));
   }
   boot().catch(fail);
 })();

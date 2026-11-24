@@ -42016,14 +42016,19 @@ define("libs/min/bundle.min.js", function (require, module, exports) {
                     W.Mem.setMenu({ id: d5.effect_RoleSit }, { snc: 16 }),
                     W.Mem.setMenu({ id: d5.effect_full }, { snc: 16 }),
                     W.Mem.setMenu({ id: d5.effect_car }, { snc: 16 }),
-                    W.Mem.loadPrefabs(W.MEM_LOAD_TYPE.SHOW_NOW, this, function () {
-                      FGUI.open(iv.Path);
-                    }),
+                    // Web: create models when the current level requests them.
+                    // Keep pool limits, but skip eagerly cloning hundreds of nodes.
+                    window.NCDLSWeb
+                      ? FGUI.open(iv.Path)
+                      : W.Mem.loadPrefabs(W.MEM_LOAD_TYPE.SHOW_NOW, this, function () {
+                          FGUI.open(iv.Path);
+                        }),
                     this.sendData());
                 }),
               ));
           }
           sendData() {
+            if (window.NCDLSWeb) return; // No web leaderboard; load no ranking atlas.
             (Ad.setUserCloudStorage(W.ICache.getGrade()),
               Laya.loader.load(
                 ["res/atlas/img/rank.atlas"],
@@ -42044,7 +42049,7 @@ define("libs/min/bundle.min.js", function (require, module, exports) {
         (iN.onEvtSound = gH(() => {
           ((Laya.SoundManager.musicMuted = 0 == cx.sound_switch), W.Sound.playMusic(d5.homebgm.id));
           W.Time.getNow();
-          f.PreLoadSound(
+          if (!window.NCDLSWeb) f.PreLoadSound(
             [
               d5.Buttonsound.id,
               d5.click.id,

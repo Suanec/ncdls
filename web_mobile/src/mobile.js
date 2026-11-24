@@ -12,7 +12,7 @@
   let registration,
     busy = false,
     reloading = false,
-    installError = "";
+    downloaded = false;
   const supported =
     isSecureContext && "serviceWorker" in navigator && "caches" in window;
   const mib = (size) => (size / 1024 / 1024).toFixed(1) + " MB";
@@ -49,49 +49,42 @@
       download.disabled = true;
       return;
     }
-    update.hidden = !registration?.waiting;
     if (busy) return;
-    const worker = registration?.active;
-    if (worker) {
-      const status = await workerStatus(worker);
+    const waiting = registration?.waiting;
+    const pending = waiting && await workerStatus(waiting);
+    update.hidden = !pending?.ready && !downloaded;
+    download.textContent = registration?.active ? "检查并下载更新" : "保存离线资源";
+    if (pending?.ready) {
+      display("完整新版已下载。点击“应用更新并重启游戏”后生效。", true);
+      progress.hidden = true;
+    } else if (pending) {
+      display("有新版本可下载。当前游戏可继续玩；点击下方按钮才下载完整新版。");
+    } else if (registration?.active) {
+      const status = await workerStatus(registration.active);
       if (status.ready) {
-        display(
-          `离线资源已就绪 · ${mib(status.bytes)}。可以断网重新打开游戏。`,
-          true,
-        );
+        display(`离线资源已就绪 · ${mib(status.bytes)}。可以断网重新打开游戏。`, true);
         progress.hidden = true;
-        download.textContent = "检查并下载更新";
-      } else display("离线资源不完整，请联网后重新保存。");
+      } else display("当前按需在线加载。点击“保存离线资源”下载完整游戏，之后可离线玩。");
     } else {
-      const response = await fetch("offline-manifest.json");
-      if (!response.ok) throw new Error("无法读取资源清单");
-      const manifest = await response.json();
-      display(`保存约 ${mib(manifest.totalBytes)} 的资源后，就能离线玩。`);
+      display("默认按关卡加载资源。点击“保存离线资源”才下载全部资源，之后可离线玩。");
     }
     download.disabled = !navigator.onLine;
   }
-  function watch(worker) {
-    if (!worker) return;
-    busy = true;
-    download.disabled = true;
-    const changed = () => {
-      if (worker.state === "installed" || worker.state === "activated") {
-        busy = false;
-        download.disabled = false;
-        if (registration?.waiting) {
-          update.hidden = false;
-          display("新版离线资源已下载。点击“应用更新并重启游戏”后生效。", true);
-        } else if (worker.state === "activated") refresh().catch(showError);
-      } else if (worker.state === "redundant") {
-        busy = false;
-        download.disabled = false;
-        showError(
-          new Error(installError || "下载中断，已保存的资源会在重试时复用"),
-        );
-      }
-    };
-    worker.addEventListener("statechange", changed);
-    changed();
+  function installedWorker(worker) {
+    if (!worker) return Promise.reject(new Error("离线组件未启动，请重试"));
+    return new Promise((resolve, reject) => {
+      const changed = () => {
+        if (["installed", "activating", "activated"].includes(worker.state)) {
+          worker.removeEventListener("statechange", changed);
+          resolve(worker);
+        } else if (worker.state === "redundant") {
+          worker.removeEventListener("statechange", changed);
+          reject(new Error("离线组件更新失败，请重试"));
+        }
+      };
+      worker.addEventListener("statechange", changed);
+      changed();
+    });
   }
   function showError(error) {
     display(error.message || String(error));
@@ -106,7 +99,7 @@
     .addEventListener("click", () => panel.close());
   download.addEventListener("click", async () => {
     if (!supported || busy) return;
-    installError = "";
+    downloaded = false;
     busy = true;
     download.disabled = true;
     progress.hidden = false;
@@ -116,24 +109,12 @@
         scope: "./",
         updateViaCache: "none",
       });
-      registration.addEventListener("updatefound", () =>
-        watch(registration.installing),
+      if (!registration.installing) await registration.update();
+      const worker = await installedWorker(
+        registration.installing || registration.waiting || registration.active,
       );
-      if (registration.installing) watch(registration.installing);
-      else {
-        await registration.update();
-        if (registration.installing) watch(registration.installing);
-        else if (
-          registration.active &&
-          !(await workerStatus(registration.active)).ready
-        ) {
-          registration.active.postMessage({ type: "repair" });
-        } else {
-          busy = false;
-          download.disabled = false;
-          await refresh();
-        }
-      }
+      // Explicit user action authorizes the complete offline package download.
+      worker.postMessage({ type: "download-all" });
       navigator.storage?.persist?.().catch(() => {});
     } catch (error) {
       busy = false;
@@ -141,7 +122,10 @@
     }
   });
   update.addEventListener("click", () => {
-    if (!registration?.waiting) return;
+    if (!registration?.waiting) {
+      if (downloaded) location.reload();
+      return;
+    }
     reloading = true;
     update.disabled = true;
     registration.waiting.postMessage({ type: "activate-update" });
@@ -161,23 +145,17 @@
           `正在保存 ${progress.value}% · ${mib(data.bytes)} / ${mib(data.totalBytes)}（${data.files}/${data.totalFiles}）`,
         );
       } else if (data.type === "error") {
-        installError = data.message;
         busy = false;
         showError(new Error(data.message));
-      } else if (
-        data.type === "ready" ||
-        (data.type === "downloaded" && !registration?.installing)
-      ) {
+      } else if (data.type === "ready" || data.type === "downloaded") {
+        if (data.type === "downloaded") downloaded = true;
         busy = false;
         refresh().catch(showError);
       }
     });
     navigator.serviceWorker.addEventListener("controllerchange", () => {
       if (reloading) location.reload();
-      else {
-        busy = false;
-        refresh().catch(showError);
-      }
+      else if (!busy) refresh().catch(showError);
     });
   }
   window.addEventListener("online", () => refresh().catch(showError));

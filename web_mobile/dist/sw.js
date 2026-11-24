@@ -1,5 +1,5 @@
 /* Built with a content-derived version; old versions stay active until their tabs close. */
-const VERSION = "7d9fafd7d575b65c36b7";
+const VERSION = "d085472e7276a21a0444";
 const SCOPE = new URL(self.registration.scope);
 const PREFIX = `ncdls-mobile:${SCOPE.pathname}:`;
 const CACHE = PREFIX + VERSION;
@@ -26,6 +26,9 @@ async function download() {
   const manifest = await response.json();
   if (manifest.version !== VERSION) throw new Error("站点正在更新，请稍后重试");
   const cache = await caches.open(CACHE);
+  const previousCaches = await Promise.all((await caches.keys())
+    .filter((name) => name.startsWith(PREFIX) && name !== CACHE)
+    .map((name) => caches.open(name)));
   let index = 0,
     files = 0,
     bytes = 0,
@@ -50,7 +53,17 @@ async function download() {
         const file = manifest.files[index++];
         const url = absolute(file.path);
         if (!url.startsWith(SCOPE.href)) throw new Error("无效资源路径");
-        const saved = await cache.match(url);
+        let saved = await cache.match(url);
+        if (!saved || saved.headers.get("x-ncdls-sha256") !== file.sha256) {
+          for (const previous of previousCaches) {
+            const candidate = await previous.match(url);
+            if (candidate?.headers.get("x-ncdls-sha256") === file.sha256) {
+              await cache.put(url, candidate.clone());
+              saved = candidate;
+              break;
+            }
+          }
+        }
         if (!saved || saved.headers.get("x-ncdls-sha256") !== file.sha256) {
           const resource = await fetch(url, {
             cache: "no-store",
@@ -124,28 +137,39 @@ function saveResources() {
       });
   return downloadJob;
 }
-self.addEventListener("install", (event) => event.waitUntil(saveResources()));
+// Browser update checks must not download the entire game in the background.
+// Full download starts only after the user presses the offline-download button.
+self.addEventListener("install", () => {});
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE);
-      if (!(await cache.match(READY))) throw new Error("离线资源未完整保存");
-      for (const name of await caches.keys())
-        if (name.startsWith(PREFIX) && name !== CACHE)
-          await caches.delete(name);
+      const ready = Boolean(await cache.match(READY));
+      // A first installation can activate before the requested download finishes.
+      // Never remove a complete older package in that state.
+      if (ready) {
+        for (const name of await caches.keys())
+          if (name.startsWith(PREFIX) && name !== CACHE) await caches.delete(name);
+      }
       await self.clients.claim();
-      await broadcast({ type: "ready" });
+      if (ready) await broadcast({ type: "ready" });
     })(),
   );
 });
 
 self.addEventListener("message", (event) => {
   if (event.data?.type === "activate-update") {
-    event.waitUntil(self.skipWaiting());
+    event.waitUntil((async () => {
+      const cache = await caches.open(CACHE);
+      // Old cached launchers only know this explicit update action.
+      // Treat that user click as a full-download request before activation.
+      if (!(await cache.match(READY))) await saveResources();
+      if (await cache.match(READY)) await self.skipWaiting();
+    })());
     return;
   }
-  if (event.data?.type === "repair") {
+  if (["download-all", "repair"].includes(event.data?.type)) {
     event.waitUntil(saveResources());
     return;
   }
@@ -180,6 +204,19 @@ self.addEventListener("message", (event) => {
     })(),
   );
 });
+
+async function resourceCache() {
+  const current = await caches.open(CACHE);
+  if (await current.match(READY)) return current;
+  // An automatically installed worker may activate after the last old tab closes.
+  // Keep serving the last complete package until the user downloads this version.
+  for (const name of (await caches.keys()).reverse()) {
+    if (!name.startsWith(PREFIX) || name === CACHE) continue;
+    const previous = await caches.open(name);
+    if (await previous.match(READY)) return previous;
+  }
+  return current;
+}
 
 async function rangeResponse(request, response) {
   const range = request.headers.get("range");
@@ -221,7 +258,7 @@ self.addEventListener("fetch", (event) => {
       url.search = "";
       url.hash = "";
       if (url.pathname === SCOPE.pathname) url.pathname += "index.html";
-      const cache = await caches.open(CACHE);
+      const cache = await resourceCache();
       const saved = await cache.match(url.href);
       if (saved) return rangeResponse(request, saved);
       try {
