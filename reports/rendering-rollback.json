@@ -1,0 +1,22 @@
+{
+  "url": "https://suanec.github.io/ncdls/",
+  "release": "20261124.2",
+  "commit": "573891d81f8a9a3af9bdf0641ab17cad9e53314c",
+  "runUrl": "https://github.com/Suanec/ncdls/actions/runs/45371406056",
+  "githubActionsConclusion": "success",
+  "version": "5c48d90e97c49b2515c8",
+  "filesVerified": [
+    "index.html",
+    "game.html",
+    "browser.js",
+    "launcher.js",
+    "launcher.css",
+    "style.css",
+    "sw.js"
+  ],
+  "offlineFileCount": 1915,
+  "checkedAt": "2026-11-24T10:09:05.343913+00:00",
+  "browserVisualVerified": false,
+  "iphoneVerified": false,
+  "verificationLimit": "WebGL1 mitigation reverted after user-reported slowdown and unchanged missing vehicles. Build, regression checks, deployment and live artifact hashes verified. Original rendering defect unresolved. No new browser or iPhone visual verification."
+}
