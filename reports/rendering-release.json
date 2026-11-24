@@ -1,0 +1,22 @@
+{
+  "url": "https://suanec.github.io/ncdls/",
+  "release": "20261124.1",
+  "commit": "df09abe8b9b36e0ee2ca5e0b21c7bbd48ee5f548",
+  "runUrl": "https://github.com/Suanec/ncdls/actions/runs/45369210406",
+  "githubActionsConclusion": "success",
+  "version": "bf81f00e0f6be410f57f",
+  "filesVerified": [
+    "index.html",
+    "game.html",
+    "browser.js",
+    "launcher.js",
+    "launcher.css",
+    "style.css",
+    "sw.js"
+  ],
+  "offlineFileCount": 1915,
+  "checkedAt": "2026-11-24T09:54:29.889496+00:00",
+  "browserVisualVerified": false,
+  "iphoneVerified": false,
+  "verificationLimit": "Final browser control was unavailable. Build, regression checks, deployment and live artifact hashes verified; user-device visual retest required."
+}
