@@ -29,8 +29,8 @@ context.window = context;
 vm.runInNewContext(fs.readFileSync(path.join(root, 'web/browser.js'),'utf8'), context);
 assert.equal(initialized,false);
 context.NCDLSWeb.start({},{});
-assert.equal(atCreation,false,'WebGL1 must be selected before the engine creates its context');
-assert.equal(context.NCDLSWeb.renderCompatibility,'webgl1-compat');
+assert.equal(atCreation,true,'Bootstrap must preserve the engine renderer preference');
+assert.equal(context.NCDLSWeb.renderCompatibility,'engine-default');
 assert.equal(context.MediaMetaMap.ani9.base_url,'https://example.test/ncdls');
 let prevented=false;
 docHandlers.webglcontextlost({target:new context.HTMLCanvasElement(),preventDefault(){prevented=true;}});
@@ -71,5 +71,5 @@ async function checkRestart(selectedMode, selectedLevel, badBoot=false) {
   await checkRestart(0,100);
   await checkRestart(5,3);
   await checkRestart(0,1,true);
-  console.log('WebGL1 bootstrap ordering, context-loss recovery, classic/variant restart and failed-boot recovery passed.');
+  console.log('Default renderer preservation, context-loss recovery, classic/variant restart and failed-boot recovery passed.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

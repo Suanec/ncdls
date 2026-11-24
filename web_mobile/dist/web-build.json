@@ -21,13 +21,13 @@
   "files": [
     {
       "path": "browser.js",
-      "bytes": 3647,
-      "sha256": "e997dbf551858cafd486c3189fd3cb76df348f7ecb8e83e2784d94a6d68defe5"
+      "bytes": 3370,
+      "sha256": "c893578874d6fcf8ab5d15616db5e99a686ea6fe6ef52a1e2c70405b57e442cd"
     },
     {
       "path": "game.html",
       "bytes": 647,
-      "sha256": "e9da8085ea123ef9295134019c2bde536734fda440a73cbd1477b82078ada996"
+      "sha256": "258939d96d95cd3578e662d646b77ba10c4c99a2cb1eaad67e49c42c0c9d8781"
     },
     {
       "path": "icons/icon-180.png",
@@ -67,7 +67,7 @@
     {
       "path": "index.html",
       "bytes": 4412,
-      "sha256": "20dbaa1b300c27c8e6c1087a884626feb3959595676821dcea0c4449ead90890"
+      "sha256": "331926f30fc01aa4cdc4687b22ce64d4f9d30eff594ac61ce2dde08054c09bc9"
     },
     {
       "path": "json/drama_core.json",
@@ -182,7 +182,7 @@
     {
       "path": "offline-manifest.json",
       "bytes": 301755,
-      "sha256": "c3dc931b3f84266b2038662831c9b1140020f9bd50f935f2588e506e62d036b1"
+      "sha256": "c25479a600861a5a2fa83a70ba7ba46579de665cf11fc31f4166ef6673784568"
     },
     {
       "path": "prefab/record_button.json",
@@ -9597,7 +9597,7 @@
     {
       "path": "sw.js",
       "bytes": 7772,
-      "sha256": "017bdc273e69fc92b68560c00cd6b6c49f85ef19aebd3475f00ca518909807d6"
+      "sha256": "9503dd2e591a59519c7a3bdda2ae30f1eb99994bc524f7084a12c5fdfa1089da"
     },
     {
       "path": "texture.png",
@@ -9605,5 +9605,5 @@
       "sha256": "bf9e603d0fd5aa64a961a8d88281e13c756062225f6ae67ee098fffc7cab0e68"
     }
   ],
-  "mobileVersion": "4e47058102d7e6dd7db2"
+  "mobileVersion": "7d9fafd7d575b65c36b7"
 }

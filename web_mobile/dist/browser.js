@@ -50,11 +50,7 @@
       metadata.pub.esp = [];
       metadata.m2.oss_cache = null;
       metadata.m2.n = "ncdls_web";
-      // Prefer the legacy WebGL1 path for this restored Laya 2.13 build while
-      // addressing partial browser renders. Set it before M2 creates the context.
-      // Laya's iOS 15 compatibility guidance: https://ask.layabox.com/d/50469
-      Laya.Config.useWebGL2 = false;
-      window.NCDLSWeb.renderCompatibility = "webgl1-compat";
+      window.NCDLSWeb.renderCompatibility = "engine-default";
       window.NCDLSWeb.config = config;
       window.NCDLSWeb.loadingUI = loadingUI;
       window.NCDLSWeb.main = new W.M2(config, loadingUI);
