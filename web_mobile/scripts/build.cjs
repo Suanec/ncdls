@@ -57,6 +57,17 @@ try {
   if (build.status !== 0) throw new Error(build.stderr || build.stdout);
   const base = JSON.parse(fs.readFileSync(path.join(output, "web-build.json")));
   fs.rmSync(path.join(output, "web-build.json"));
+  // All modules are already wrapped in define(). Concatenate in their original
+  // order so slow connections need one runtime request instead of fifteen.
+  const runtime = base.scripts.map((file) =>
+    `\n;\n${fs.readFileSync(path.join(output, file), "utf8")}\n`,
+  ).join("").trimEnd() + "\n";
+  const runtimeFile = `runtime/game-${sha(runtime).slice(0, 20)}.js`;
+  new (require("node:vm").Script)(runtime, { filename: runtimeFile });
+  for (const file of base.scripts) fs.unlinkSync(path.join(output, file));
+  fs.writeFileSync(path.join(output, runtimeFile), runtime);
+  base.scripts = [runtimeFile];
+  fs.writeFileSync(path.join(output, "scripts.json"), JSON.stringify(base.scripts));
   for (const name of ["mobile.js", "mobile.css", "manifest.webmanifest"])
     fs.copyFileSync(path.join(mobile, "src", name), path.join(output, name));
   require("./icons.cjs")(path.join(output, "icons"));
@@ -93,8 +104,9 @@ try {
     };
   };
   const resources = walk(output).sort().map(describe);
+  const packs = require("./packs.cjs")(output, resources);
   const worker = fs.readFileSync(path.join(mobile, "src/sw.js"), "utf8");
-  const version = sha(JSON.stringify(resources) + worker).slice(0, 20);
+  const version = sha(JSON.stringify(resources) + JSON.stringify(packs) + worker).slice(0, 20);
   fs.writeFileSync(
     path.join(output, "sw.js"),
     worker.replace("__MOBILE_VERSION__", version),
@@ -105,6 +117,7 @@ try {
       version,
       totalBytes: resources.reduce((sum, f) => sum + f.bytes, 0),
       files: resources,
+      packs,
     }),
   );
   const files = walk(output).sort().map(describe);

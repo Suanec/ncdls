@@ -27,7 +27,7 @@
     {
       "path": "game.html",
       "bytes": 647,
-      "sha256": "1c6e210a2dcd620698ce29ca7810d049f989c6f3af7cac311eae3d61e0e935f0"
+      "sha256": "258c023fb89817bb7ee9e979ae182ddd16145ead96a2c0643db36408fa3fd7fa"
     },
     {
       "path": "img/rank/paihang_3.png",
@@ -52,7 +52,7 @@
     {
       "path": "index.html",
       "bytes": 2264,
-      "sha256": "1609c06013488254b526d99082e19539b4c43a658b908c697d3b753cb263ab03"
+      "sha256": "1b80f54047819002ad7c935833c779a4b8e1f5b69247410d78f8b1cf00438847"
     },
     {
       "path": "json/drama_core.json",

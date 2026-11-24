@@ -22,6 +22,7 @@ assert.equal(
   manifest.version,
   sha(
     JSON.stringify(manifest.files) +
+      JSON.stringify(manifest.packs) +
       fs.readFileSync(path.join(mobile, "src/sw.js"), "utf8"),
   ).slice(0, 20),
 );
@@ -30,14 +31,35 @@ assert.equal(
   manifest.files.reduce((sum, f) => sum + f.bytes, 0),
 );
 const offline = new Set(manifest.files.map((f) => f.path));
+const packPaths = new Set(manifest.packs.map((p) => p.path));
 for (const file of build.files)
-  if (!["sw.js", "offline-manifest.json"].includes(file.path))
+  if (!["sw.js", "offline-manifest.json"].includes(file.path) && !packPaths.has(file.path))
     assert(offline.has(file.path), "Not cached: " + file.path);
 for (const file of manifest.files) {
   const data = fs.readFileSync(path.join(output, file.path));
   assert.equal(data.length, file.bytes);
   assert.equal(sha(data), file.sha256);
 }
+const packed = new Set();
+const expectedFiles = new Map(manifest.files.map((f) => [f.path, f]));
+for (const pack of manifest.packs) {
+  const data = fs.readFileSync(path.join(output, pack.path));
+  assert.equal(data.length, pack.bytes);
+  assert.equal(sha(data), pack.sha256);
+  const decoded = JSON.parse(data);
+  assert.equal(decoded.format, 1);
+  assert.deepEqual(decoded.files.map(([name]) => name), pack.files);
+  for (const [name, encoded] of decoded.files) {
+    assert(!packed.has(name), "Duplicate packed file: " + name);
+    packed.add(name);
+    const file = expectedFiles.get(name), bytes = Buffer.from(encoded, "base64");
+    assert(file, "Unknown packed file: " + name);
+    assert.equal(bytes.length, file.bytes);
+    assert.equal(sha(bytes), file.sha256);
+  }
+}
+assert.deepEqual(packed, offline);
+assert.equal(manifest.scripts?.length ?? build.scripts.length, 1);
 const app = JSON.parse(
   fs.readFileSync(path.join(output, "manifest.webmanifest")),
 );
@@ -51,5 +73,5 @@ assert(
     .includes(`const VERSION = "${manifest.version}"`),
 );
 console.log(
-  `Mobile offline manifest verified: ${offline.size} files, ${(manifest.totalBytes / 1048576).toFixed(1)} MiB.`,
+  `Mobile offline manifest verified: ${offline.size} files in ${manifest.packs.length} packs, ${(manifest.totalBytes / 1048576).toFixed(1)} MiB.`,
 );

@@ -2,21 +2,7 @@
   "version": 1,
   "decodedAssets": 885,
   "scripts": [
-    "runtime/vendor/laya/laya.core.js",
-    "runtime/vendor/laya/laya.ani.js",
-    "runtime/vendor/laya/laya.d3.js",
-    "runtime/vendor/laya/laya.ui.js",
-    "runtime/vendor/runtime/spine-core-3.8.js",
-    "runtime/vendor/runtime/laya.spine.js",
-    "runtime/vendor/runtime/laya.physics.wasm.js",
-    "runtime/vendor/runtime/fairygui.js",
-    "runtime/src/shared/utils.js",
-    "runtime/src/shared/W.js",
-    "runtime/src/shared/B.js",
-    "runtime/src/shared/C.js",
-    "runtime/src/shared/M.js",
-    "runtime/src/platform/ads.js",
-    "runtime/src/game/main.js"
+    "runtime/game-93cc5c95db898d1fd1bd.js"
   ],
   "files": [
     {
@@ -27,7 +13,7 @@
     {
       "path": "game.html",
       "bytes": 647,
-      "sha256": "1c6e210a2dcd620698ce29ca7810d049f989c6f3af7cac311eae3d61e0e935f0"
+      "sha256": "258c023fb89817bb7ee9e979ae182ddd16145ead96a2c0643db36408fa3fd7fa"
     },
     {
       "path": "icons/icon-180.png",
@@ -67,7 +53,7 @@
     {
       "path": "index.html",
       "bytes": 4536,
-      "sha256": "d1c3911f14b8b44dffe2b2f28c05e78ca459d380dfa8c70f42a12b159e3875c9"
+      "sha256": "e47891fe259b1d3bd173def2e339a0abd10d13bf8e798cbe3f2def976eee31c9"
     },
     {
       "path": "json/drama_core.json",
@@ -176,13 +162,118 @@
     },
     {
       "path": "mobile.js",
-      "bytes": 10173,
-      "sha256": "a46541cf669d0dca62c5d80390d956afedefb2f47b9e3ee3559a0e307c243dad"
+      "bytes": 10555,
+      "sha256": "fdd5656a4a183e2f800577c909e60f318e1e5eca4b533b762ae7398cd8c12042"
     },
     {
       "path": "offline-manifest.json",
-      "bytes": 301755,
-      "sha256": "29b1f2def6be6e54e274a3b0c42dc90582e8b5ba73eda23d9ace6ddbf34dc4aa"
+      "bytes": 415946,
+      "sha256": "aa7623051ce7c52e98413f0540cb65c68130602e8db6b30a3ef70756a8b34965"
+    },
+    {
+      "path": "offline-packs/0eeceab031276ee062cf.json",
+      "bytes": 2807701,
+      "sha256": "0eeceab031276ee062cfa7e2000cc7b257ee4e0ea63a9c4af62f3fd391626438"
+    },
+    {
+      "path": "offline-packs/3439d6dd8d8e15c39ed1.json",
+      "bytes": 2789683,
+      "sha256": "3439d6dd8d8e15c39ed11b0d6e1e233a104229dbb921d226b98cd2b4ba26c10f"
+    },
+    {
+      "path": "offline-packs/38b3605a1749f074069d.json",
+      "bytes": 136644,
+      "sha256": "38b3605a1749f074069d27023740640b14fbbfdd8a9da373211730ea1dd814a3"
+    },
+    {
+      "path": "offline-packs/445da9fdfcccb97efe5d.json",
+      "bytes": 2793751,
+      "sha256": "445da9fdfcccb97efe5de2f475b90c15aafdd4651013c295829ea75a10338334"
+    },
+    {
+      "path": "offline-packs/4d250652b39cbeb61c81.json",
+      "bytes": 2675102,
+      "sha256": "4d250652b39cbeb61c8161c04db1dcae64bbbbd8510a42d849ea1dcfafe72cc9"
+    },
+    {
+      "path": "offline-packs/56029a7f2e5cb8171b3a.json",
+      "bytes": 2796158,
+      "sha256": "56029a7f2e5cb8171b3ab56443bacd089f9495af4a0165e9c71b4b8c76b35fad"
+    },
+    {
+      "path": "offline-packs/575c3a6fe519aa1820ed.json",
+      "bytes": 1351023,
+      "sha256": "575c3a6fe519aa1820edd81a94e57e0e78eb239e1d7ea0de56d9be66fa8c1a34"
+    },
+    {
+      "path": "offline-packs/637814d4261a024f9bd8.json",
+      "bytes": 1980119,
+      "sha256": "637814d4261a024f9bd89fdbdbbe18cf7e5b16de384d3ffaa753985195ba484c"
+    },
+    {
+      "path": "offline-packs/7ff1ad8cc67b568f0c59.json",
+      "bytes": 12388726,
+      "sha256": "7ff1ad8cc67b568f0c59bb3506f3a917bf9db7d231992eda7f609cad8e837418"
+    },
+    {
+      "path": "offline-packs/804e7f215f5fce67a681.json",
+      "bytes": 2799589,
+      "sha256": "804e7f215f5fce67a68119760f242856a488c470a6520ca3262f669b65b637e5"
+    },
+    {
+      "path": "offline-packs/8c734653a01afd82363c.json",
+      "bytes": 2777899,
+      "sha256": "8c734653a01afd82363cead21a6967f8085e553c8f172a2dcccfd62542808351"
+    },
+    {
+      "path": "offline-packs/a6aa8a45c0da0c98bbb5.json",
+      "bytes": 2518699,
+      "sha256": "a6aa8a45c0da0c98bbb5151a20955e4ca16e4ba0a05527aaa4045c7350da462f"
+    },
+    {
+      "path": "offline-packs/b375e0f3a1edc1165d63.json",
+      "bytes": 2800029,
+      "sha256": "b375e0f3a1edc1165d63187432057d0a8e9f53fb3f0efa518f1bc1ac74c97dd2"
+    },
+    {
+      "path": "offline-packs/c85a4731f49687cd9943.json",
+      "bytes": 2800704,
+      "sha256": "c85a4731f49687cd99434a76ff53a260501275db782b479e9c19a9d74cc3bd43"
+    },
+    {
+      "path": "offline-packs/d01727329d0257d2b1ed.json",
+      "bytes": 2799310,
+      "sha256": "d01727329d0257d2b1ed62915de4ecf37b6f494ca5bdea568b2d9ef773ad1a8a"
+    },
+    {
+      "path": "offline-packs/d1e435a56fa48bf91434.json",
+      "bytes": 2766722,
+      "sha256": "d1e435a56fa48bf914343abe1544496e073d95aed28833fd673ef7f79f430a67"
+    },
+    {
+      "path": "offline-packs/f054ffa2abef1a580016.json",
+      "bytes": 2799554,
+      "sha256": "f054ffa2abef1a580016de66f1bc940726b08156101e968928aafd490ae6bacc"
+    },
+    {
+      "path": "offline-packs/f4a5064817b6ea282780.json",
+      "bytes": 2419695,
+      "sha256": "f4a5064817b6ea2827804f1180ee4e1b21e9e034f7a1894bf925a138e07e57f4"
+    },
+    {
+      "path": "offline-packs/f59dd8fa8ad9c16d431f.json",
+      "bytes": 2754744,
+      "sha256": "f59dd8fa8ad9c16d431faf0e415fc308c8eaac7d16730b53839acbf71cd647b0"
+    },
+    {
+      "path": "offline-packs/f7fc471d5120775e8ec8.json",
+      "bytes": 2390032,
+      "sha256": "f7fc471d5120775e8ec80d603ca542e759fdff27488c612c98e9dcce4d37604a"
+    },
+    {
+      "path": "offline-packs/fcd7189cd936dfd8cd01.json",
+      "bytes": 2798438,
+      "sha256": "fcd7189cd936dfd8cd01d1c3c518182d136d67ea8062890ae297fb0033439386"
     },
     {
       "path": "prefab/record_button.json",
@@ -9505,84 +9596,14 @@
       "sha256": "5e695dd6345ae39d8efe18943a8aa731c031e9ccf254b12561ea5aa34f2b634b"
     },
     {
-      "path": "runtime/src/game/main.js",
-      "bytes": 1482392,
-      "sha256": "dab85febfa8b3ea39e12c895094ba6ec10e4d4896c2a2c569c99ecacad73664f"
-    },
-    {
-      "path": "runtime/src/platform/ads.js",
-      "bytes": 400530,
-      "sha256": "91a50715b4780f290c271131042491f8e43dd5d18db8d40cddd3cd15037a1136"
-    },
-    {
-      "path": "runtime/src/shared/B.js",
-      "bytes": 178147,
-      "sha256": "974d32e40d7d0bdd1cfdc2360d31901fbcf709f6037ebd2446991d653b6b817c"
-    },
-    {
-      "path": "runtime/src/shared/C.js",
-      "bytes": 168354,
-      "sha256": "39c22ddfd1bf94a060d7b771237164ce7b854333f3d3cb53165e9e553fa4c65c"
-    },
-    {
-      "path": "runtime/src/shared/M.js",
-      "bytes": 126690,
-      "sha256": "e7c333593532591d806cb2ef5ece034e320697219bdd25a0605f3424dd18cc5d"
-    },
-    {
-      "path": "runtime/src/shared/W.js",
-      "bytes": 1672613,
-      "sha256": "c791c70cee81a717cf489863c9e58f0fe801df65d7f450a9051660566858efa6"
-    },
-    {
-      "path": "runtime/src/shared/utils.js",
-      "bytes": 141498,
-      "sha256": "4452f0be2dd50d15140eef21988950eb49de2b1ba945361c4c15b8c49a98513f"
-    },
-    {
-      "path": "runtime/vendor/laya/laya.ani.js",
-      "bytes": 185044,
-      "sha256": "525703542b27666fc3f5ad0eb5274f4ad107024b9d9267941c54bb8e9384a353"
-    },
-    {
-      "path": "runtime/vendor/laya/laya.core.js",
-      "bytes": 1207278,
-      "sha256": "93c9c1b7e2868f3c76cab40e67f3d4a97eaa6a2ed7f4e4ef257b1deb17e19b3f"
-    },
-    {
-      "path": "runtime/vendor/laya/laya.d3.js",
-      "bytes": 1912923,
-      "sha256": "b3f768820bc0ff1a2c100c3926b2fb2a5395f85bb078620735024595b808baa8"
-    },
-    {
-      "path": "runtime/vendor/laya/laya.ui.js",
-      "bytes": 285737,
-      "sha256": "7e7cf338a93ea066acc1810d871a9817b6290c32c11ea88f824ae6735ce79af3"
-    },
-    {
-      "path": "runtime/vendor/runtime/fairygui.js",
-      "bytes": 592965,
-      "sha256": "bbc447b77e7ee0950d78269743457b7258a961e017bbf65c0b6c059872ff2bcb"
-    },
-    {
-      "path": "runtime/vendor/runtime/laya.physics.wasm.js",
-      "bytes": 650350,
-      "sha256": "2c7df9ebbf42dec101e76cf24230b4f16eca682d23325be8fb104f75c33b326a"
-    },
-    {
-      "path": "runtime/vendor/runtime/laya.spine.js",
-      "bytes": 23623,
-      "sha256": "5d89118d9e3355a6008b16aabd190284c8bd2ab1c4f7beccbefff30f8a891f6f"
-    },
-    {
-      "path": "runtime/vendor/runtime/spine-core-3.8.js",
-      "bytes": 263290,
-      "sha256": "49ea401f2252bf3b2e4076603f1acf11c55ba8772899c0cfbbc581cb8ef62840"
+      "path": "runtime/game-93cc5c95db898d1fd1bd.js",
+      "bytes": 9291493,
+      "sha256": "93cc5c95db898d1fd1bd54021078eee9c8b551c8116b04bafc029538e3c29bab"
     },
     {
       "path": "scripts.json",
-      "bytes": 492,
-      "sha256": "bc4346dc438371aa39e586e477aebb2a210b8f1e426c05b8246461e3da54f13e"
+      "bytes": 40,
+      "sha256": "a5a4b521c7b5faae0d0c497abc4d8f375cbf1db44e30ae1120a86b7a736edf77"
     },
     {
       "path": "sh.bin",
@@ -9596,8 +9617,8 @@
     },
     {
       "path": "sw.js",
-      "bytes": 9493,
-      "sha256": "d6804538629ab5e5c745014346f222b8d7f957ebe5f2f50557321a48070f7973"
+      "bytes": 14046,
+      "sha256": "89220a32c7fca6c543f546234fca742e466f2b9e917e1b62af5d6cb36c123d0a"
     },
     {
       "path": "texture.png",
@@ -9605,5 +9626,5 @@
       "sha256": "bf9e603d0fd5aa64a961a8d88281e13c756062225f6ae67ee098fffc7cab0e68"
     }
   ],
-  "mobileVersion": "d085472e7276a21a0444"
+  "mobileVersion": "65329463da324add30c5"
 }

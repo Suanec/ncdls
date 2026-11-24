@@ -142,7 +142,11 @@
           (data.bytes / Math.max(1, data.totalBytes)) * 100,
         );
         display(
-          `正在保存 ${progress.value}% · ${mib(data.bytes)} / ${mib(data.totalBytes)}（${data.files}/${data.totalFiles}）`,
+          data.phase === "reuse"
+            ? `正在检查已保存的资源（${data.files}/${data.totalFiles}），可复用的文件不会重复下载…`
+            : data.totalPacks
+              ? `下载资源包 ${data.completedPacks}/${data.totalPacks} · 已接收 ${mib(data.receivedBytes)} · 已保存 ${progress.value}%（${data.files}/${data.totalFiles}）`
+              : `正在保存 ${progress.value}% · ${mib(data.bytes)} / ${mib(data.totalBytes)}（${data.files}/${data.totalFiles}）`,
         );
       } else if (data.type === "error") {
         busy = false;

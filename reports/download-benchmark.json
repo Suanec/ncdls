@@ -1,0 +1,28 @@
+{
+  "perResponseDelayMs": 100,
+  "files": 1901,
+  "actualPhoneNetwork": false,
+  "results": {
+    "old": {
+      "elapsedMs": 51450,
+      "requests": 1903,
+      "packs": 0,
+      "app": "ncdls-mobile",
+      "version": "20151574a66154af177b",
+      "type": "downloaded",
+      "files": 1901,
+      "bytes": 46514300
+    },
+    "new": {
+      "elapsedMs": 2551,
+      "requests": 23,
+      "packs": 21,
+      "app": "ncdls-mobile",
+      "version": "20151574a66154af177b",
+      "type": "downloaded",
+      "files": 1901,
+      "bytes": 46514300
+    }
+  },
+  "success": true
+}
