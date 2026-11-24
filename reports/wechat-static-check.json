@@ -1,0 +1,45 @@
+{
+  "kind": "static-only",
+  "gameCodeExecuted": false,
+  "simulatorLaunched": false,
+  "scriptCount": 38,
+  "literalImportsResolved": 21,
+  "assetsVerified": 1886,
+  "subpackages": 10,
+  "missingSubpackages": [
+    "room_2",
+    "room_3",
+    "room_4",
+    "room_5",
+    "room_6",
+    "room_7",
+    "room_8",
+    "room_9",
+    "room_10",
+    "room_11",
+    "room_12"
+  ],
+  "mainSourceBytes": 956300,
+  "totalSourceBytes": 28544812,
+  "packageSourceBytes": {
+    "atlas": 2707476,
+    "home": 3177926,
+    "sounds": 839531,
+    "dls_main": 2864172,
+    "dls_nz": 970521,
+    "dls_sea": 2091585,
+    "dls_snow": 4565466,
+    "dls_star": 410494,
+    "room_1": 694197,
+    "libs": 9267144
+  },
+  "sizeNote": "Source-byte estimate; the official compiler determines final packaged size.",
+  "dynamicRequires": [
+    {
+      "file": "game.js",
+      "expression": "name.startsWith('.'"
+    }
+  ],
+  "dynamicRequireNote": "Splash receives ./weapp-adapter.js from game.js; loadLib is a root-relative compatibility helper.",
+  "parkingControllersUnlocked": 2
+}

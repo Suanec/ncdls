@@ -1,0 +1,23 @@
+{
+  "name": "ncdls-study",
+  "version": "0.1.0",
+  "private": true,
+  "description": "挪车打螺丝学习源码、微信还原工程与可运行的本地网页版",
+  "scripts": {
+    "check": "node scripts/check.cjs",
+    "resources": "node scripts/resources.cjs",
+    "sync:resources": "node scripts/sync-resources.cjs",
+    "build:wechat": "node scripts/build-wechat.cjs",
+    "check:wechat": "node scripts/check-wechat.cjs",
+    "decode:configs": "node scripts/decode-configs.cjs",
+    "build:web": "node scripts/build-web.cjs",
+    "check:web": "node scripts/check-web.cjs",
+    "serve:web": "node scripts/serve-web.cjs",
+    "web": "npm run build:web && npm run serve:web",
+    "serve:web:lan": "node scripts/serve-web.cjs --lan",
+    "web:lan": "npm run build:web && npm run serve:web:lan"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

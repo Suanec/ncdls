@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "raw": true
+    },
+    "search.exclude": {
+      "raw/**": true,
+      "vendor/**": true
+    },
+    "editor.wordWrap": "off",
+    "editor.tabSize": 2
+  }
+}

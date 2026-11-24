@@ -1,0 +1,83 @@
+{
+  "src/game/main.js": {
+    "literalHosts": {
+      "yw-1254280439.cos.ap-guangzhou.myqcloud.com": [
+        107
+      ],
+      "1254280439-3c74rpfh1t.ap-guangzhou.tencentscf.com": [
+        318
+      ],
+      "cdn.game.chot.cn": [
+        1162
+      ],
+      "api.datanexus.qq.com": [
+        7647,
+        7663,
+        10251,
+        10851,
+        11062
+      ],
+      "api.game.chot.cn": [
+        8141
+      ],
+      "mmocgame.qpic.cn": [
+        8167
+      ],
+      "sr-home-1257214331.cos.ap-guangzhou.myqcloud.com": [
+        10653
+      ]
+    }
+  },
+  "src/platform/ads.js": {
+    "literalHosts": {
+      "api.game.chot.cn": [
+        1016
+      ],
+      "mmocgame.qpic.cn": [
+        1031
+      ],
+      "gamectrl.ikun666666.com": [
+        1191
+      ],
+      "analytics.oceanengine.com": [
+        3544,
+        5022
+      ],
+      "gate.snssdk.com": [
+        3912
+      ],
+      "api1.game.chot.cn": [
+        5023
+      ],
+      "ad.partner.gifshow.com": [
+        8846
+      ]
+    }
+  },
+  "src/shared/W.js": {
+    "literalHosts": {
+      "192.168.2.245:8001": [
+        2358
+      ]
+    }
+  },
+  "sdkOperations": [
+    "game.ieksdofefkwefsl",
+    "game.init_app",
+    "rank.get_world_rank",
+    "rank.receive_level",
+    "share.append_share",
+    "share.get_share_info",
+    "share.get_shared_rewards",
+    "statistic.jump_out",
+    "statistic.start",
+    "user.count",
+    "user.explain_platform_data",
+    "user.get_user_data",
+    "user.login",
+    "user.report_game_data",
+    "user.subscribe_game",
+    "user.update_user_data"
+  ],
+  "scope": "静态字面量和调用点清单，不等于抓包记录；含多平台分支，未发出任何游戏请求。"
+}

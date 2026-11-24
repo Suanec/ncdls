@@ -1,0 +1,28 @@
+{
+  "appid": "wx70d8aa25ec591f7a",
+  "cacheVersion": "25",
+  "packages": [
+    {
+      "name": "__PLUGINCODE__.wxapkg",
+      "bytes": 1984312,
+      "sha256": "fbb7f3957002e54705c8d21570e34e4ccd2a5f298823a91027b6d7cdd2adf99b",
+      "decryptedSha256": "4f2a66ffa3e38aea38d70436cc72d3c53cb7fe184d5b232c2a92a2741228ab0e",
+      "files": 2
+    }
+  ],
+  "files": [
+    {
+      "package": "__PLUGINCODE__.wxapkg",
+      "path": "plugin.json",
+      "bytes": 19,
+      "sha256": "fa169fb2395681fcdf0b3a86553d7a66cd896d9eb9325b6f34235247c0f4d7e8"
+    },
+    {
+      "package": "__PLUGINCODE__.wxapkg",
+      "path": "plugin.js",
+      "bytes": 1984222,
+      "sha256": "56f96c784bc7ad9da5a65584f8d702f55614a626a05a896b5d32308639e81cff"
+    }
+  ],
+  "uniqueFiles": 2
+}

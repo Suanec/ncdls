@@ -1,0 +1,28 @@
+{
+  "sourceVersion": 43,
+  "countingRule": "玩法表去掉 id=0 空占位行；地图表保留有效的 0 号地图",
+  "levelCounts": {
+    "drama_temp": 294,
+    "cat_temp": 12,
+    "star_temp": 12,
+    "sea_temp": 27,
+    "snow_temp": 30,
+    "nezha_temp": 30,
+    "ncdjl_temp": 110
+  },
+  "totalLevelConfigs": 515,
+  "unique2DMapNames": 347,
+  "carMapStats": 236,
+  "carLayouts": 235,
+  "plateGroups": 269,
+  "difficultyProfiles": 58,
+  "colourWeightProfiles": 24,
+  "referenceChecks": {
+    "missing2DNames": [],
+    "missingCarLayouts": [],
+    "missingDirectDifficultyProfiles": [],
+    "missingPlateGroups": []
+  },
+  "gameCodeExecuted": false,
+  "note": "配置条数不等于本地可玩关数；打巨龙 other 与 dls_cat 的远程资源尚未缓存。"
+}

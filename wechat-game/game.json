@@ -1,0 +1,53 @@
+{
+  "deviceOrientation": "portrait",
+  "showStatusBar": false,
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "openDataContext": "OpenWalls/",
+  "subpackages": [
+    {
+      "name": "atlas",
+      "root": "res/atlas/"
+    },
+    {
+      "name": "home",
+      "root": "res/home/"
+    },
+    {
+      "name": "sounds",
+      "root": "res/sounds/"
+    },
+    {
+      "name": "dls_main",
+      "root": "res/dls_main/"
+    },
+    {
+      "name": "dls_nz",
+      "root": "res/dls_nz/"
+    },
+    {
+      "name": "dls_sea",
+      "root": "res/dls_sea/"
+    },
+    {
+      "name": "dls_snow",
+      "root": "res/dls_snow/"
+    },
+    {
+      "name": "dls_star",
+      "root": "res/dls_star/"
+    },
+    {
+      "name": "room_1",
+      "root": "res/room_1/"
+    },
+    {
+      "name": "libs",
+      "root": "libs/"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "name": "atlas",
+    "root": "/res/atlas/",
+    "cached": true
+  },
+  {
+    "name": "home",
+    "root": "/res/home/",
+    "cached": true
+  },
+  {
+    "name": "sounds",
+    "root": "/res/sounds/",
+    "cached": true
+  },
+  {
+    "name": "dls_main",
+    "root": "/res/dls_main/",
+    "cached": true
+  },
+  {
+    "name": "dls_nz",
+    "root": "/res/dls_nz/",
+    "cached": true
+  },
+  {
+    "name": "dls_sea",
+    "root": "/res/dls_sea/",
+    "cached": true
+  },
+  {
+    "name": "dls_snow",
+    "root": "/res/dls_snow/",
+    "cached": true
+  },
+  {
+    "name": "dls_star",
+    "root": "/res/dls_star/",
+    "cached": true
+  },
+  {
+    "name": "room_1",
+    "root": "/res/room_1/",
+    "cached": true
+  },
+  {
+    "name": "room_2",
+    "root": "/res/room_2/",
+    "cached": false
+  },
+  {
+    "name": "room_3",
+    "root": "/res/room_3/",
+    "cached": false
+  },
+  {
+    "name": "room_4",
+    "root": "/res/room_4/",
+    "cached": false
+  },
+  {
+    "name": "room_5",
+    "root": "/res/room_5/",
+    "cached": false
+  },
+  {
+    "name": "room_6",
+    "root": "/res/room_6/",
+    "cached": false
+  },
+  {
+    "name": "room_7",
+    "root": "/res/room_7/",
+    "cached": false
+  },
+  {
+    "name": "room_8",
+    "root": "/res/room_8/",
+    "cached": false
+  },
+  {
+    "name": "room_9",
+    "root": "/res/room_9/",
+    "cached": false
+  },
+  {
+    "name": "room_10",
+    "root": "/res/room_10/",
+    "cached": false
+  },
+  {
+    "name": "room_11",
+    "root": "/res/room_11/",
+    "cached": false
+  },
+  {
+    "name": "room_12",
+    "root": "/res/room_12/",
+    "cached": false
+  },
+  {
+    "name": "libs",
+    "root": "/libs/",
+    "cached": true
+  }
+]

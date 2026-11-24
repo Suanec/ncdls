@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+.sync-backups/
+
+# WeChat local preferences and temporary builds
+project.private.config.json
+.wechat-build-*/
+wechat-game.previous/
+
+# Temporary web builds
+.web-build-*/
+web-game.previous/

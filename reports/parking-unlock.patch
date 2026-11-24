@@ -1,0 +1,105 @@
+--- a/src/game/main.js
++++ b/src/game/main.js
+@@ -21800,10 +21800,12 @@
+             (this.worldScale = new Laya.Vector3(0.35, 0.5, 0.75)));
+         }
+         get video() {
+-          return !this.vip && this.tex.active;
++          // 本地学习版：所有已有车位始终可用。
++          return !1;
+         }
+         set video(a) {
+-          this.vip || (this.tex.active = a);
++          // 忽略关卡配置、远端开关及重开关卡传入的锁定状态。
++          this.tex && (this.tex.active = !1);
+         }
+         get vip() {
+           return "car_vippark" == this.sp3.name;
+@@ -27122,16 +27124,16 @@
+             (this.worldScale = new Laya.Vector3(0.35, 0.5, 0.75)));
+         }
+         get video() {
+-          return !this.vip && this.tex.active;
++          // 本地学习版：所有已有车位始终可用。
++          return !1;
+         }
+         set video(a) {
+-          this.vip ||
+-            ((this.tex.active = a),
+-            "car_share" != this.sp3.name ||
+-              this.video ||
+-              (this.ring.meshRenderer.sharedMaterial = bs.Get(
+-                d5.nuochedajulong_Assets_Game_Tex_Materials_car_park,
+-              )));
++          // 本地学习版：分享位与视频位均直接开放，并恢复普通车位材质。
++          this.tex && (this.tex.active = !1);
++          this.ring &&
++            (this.ring.meshRenderer.sharedMaterial = bs.Get(
++              d5.nuochedajulong_Assets_Game_Tex_Materials_car_park,
++            ));
+         }
+         get vip() {
+           return "car_vippark" == this.sp3.name;
+@@ -27152,7 +27154,7 @@
+             cG.CalculateWorldCorners(this, this.Shadow),
+             "car_share" == this.sp3.name &&
+               (this.ring.meshRenderer.sharedMaterial = bs.Get(
+-                d5.nuochedajulong_Assets_Game_Tex_Materials_car_park_black,
++                d5.nuochedajulong_Assets_Game_Tex_Materials_car_park,
+               )));
+         }
+         onDestroy() {
+@@ -28741,7 +28743,7 @@
+                 (h.transform.localPosition = new Laya.Vector3()),
+                 (h.transform.localRotationEuler = new Laya.Vector3()));
+               d = W.Comp.auto(h, S, !0);
+-              (this.car_park.push(d), (d.video = e || g));
++              (this.car_park.push(d), (d.video = !1));
+             }
+             b = gH(
+               (a) =>
+@@ -28901,15 +28903,8 @@
+           }
+         }
+         onClickPark(a) {
+-          a.video &&
+-            (a.share
+-              ? Ad.onBtnShare(() => {
+-                  a.video = !1;
+-                })
+-              : (cp.AdClick(bW),
+-                Ad.showVideoAd(() => {
+-                  (cp.AdFinish(bW), (a.video = !1));
+-                })));
++          // 点击车位不再触发分享、广告或广告埋点。
++          a.video = !1;
+         }
+         moveScrew() {
+           let a, b;
+@@ -37909,7 +37904,7 @@
+                 (g.transform.localPosition = new Laya.Vector3()),
+                 (g.transform.localRotationEuler = new Laya.Vector3()));
+               d = W.Comp.auto(g, dD, !0);
+-              (this.car_park.push(d), (d.video = h || e));
++              (this.car_park.push(d), (d.video = !1));
+             }
+           });
+         }
+@@ -38007,15 +38002,8 @@
+           }
+         }
+         onClickPark(a) {
+-          a.video &&
+-            (a.share
+-              ? Ad.onBtnShare((b) => {
+-                  b ? (a.video = !1) : Ad.showToast("请分享更多的群，谢谢！");
+-                })
+-              : (cp.AdClick(I),
+-                Ad.showVideoAd(() => {
+-                  (cp.AdFinish(I), (a.video = !1));
+-                })));
++          // 点击车位不再触发分享、广告或广告埋点。
++          a.video = !1;
+         }
+         moveScrew() {
+           let a, b;

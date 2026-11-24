@@ -1,0 +1,40 @@
+{
+  "deviceOrientation": "portrait",
+  "showStatusBar": false,
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "openDataContext": "OpenWalls/",
+  "subContext": "OpenWalls/",
+  "parallelPreloadSubpackages": [{ "name": "libs" }],
+  "__warning__": "无效的 game.json [\"parallelPreloadSubpackages\"]",
+  "subPackages": [
+    { "name": "atlas", "root": "/res/atlas/" },
+    { "name": "home", "root": "/res/home/" },
+    { "name": "sounds", "root": "/res/sounds/" },
+    { "name": "dls_main", "root": "/res/dls_main/" },
+    { "name": "dls_nz", "root": "/res/dls_nz/" },
+    { "name": "dls_sea", "root": "/res/dls_sea/" },
+    { "name": "dls_snow", "root": "/res/dls_snow/" },
+    { "name": "dls_star", "root": "/res/dls_star/" },
+    { "name": "room_1", "root": "/res/room_1/" },
+    { "name": "room_2", "root": "/res/room_2/" },
+    { "name": "room_3", "root": "/res/room_3/" },
+    { "name": "room_4", "root": "/res/room_4/" },
+    { "name": "room_5", "root": "/res/room_5/" },
+    { "name": "room_6", "root": "/res/room_6/" },
+    { "name": "room_7", "root": "/res/room_7/" },
+    { "name": "room_8", "root": "/res/room_8/" },
+    { "name": "room_9", "root": "/res/room_9/" },
+    { "name": "room_10", "root": "/res/room_10/" },
+    { "name": "room_11", "root": "/res/room_11/" },
+    { "name": "room_12", "root": "/res/room_12/" },
+    { "name": "libs", "root": "/libs/" }
+  ],
+  "gamePlugins": {
+    "layaPlugin": { "version": "2.13.0", "provider": "wx70d8aa25ec591f7a", "path": "laya-libs" }
+  }
+}

@@ -1,0 +1,230 @@
+[
+  {
+    "originalModule": "index.js",
+    "projectFile": "src/bootstrap/index.js",
+    "sourceBundle": "source/game.js",
+    "lines": 5
+  },
+  {
+    "originalModule": "splash.js",
+    "projectFile": "src/bootstrap/splash.js",
+    "sourceBundle": "source/game.js",
+    "lines": 1223
+  },
+  {
+    "originalModule": "weapp-adapter.js",
+    "projectFile": "src/platform/weapp-adapter.js",
+    "sourceBundle": "source/game.js",
+    "lines": 1306
+  },
+  {
+    "originalModule": "game.js",
+    "projectFile": "src/bootstrap/game.js",
+    "sourceBundle": "source/game.js",
+    "lines": 9
+  },
+  {
+    "originalModule": "libs/min/B.min.js",
+    "projectFile": "src/shared/B.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 5435
+  },
+  {
+    "originalModule": "libs/min/C.min.js",
+    "projectFile": "src/shared/C.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 5157
+  },
+  {
+    "originalModule": "libs/min/M.min.js",
+    "projectFile": "src/shared/M.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 4015
+  },
+  {
+    "originalModule": "libs/min/W.min.js",
+    "projectFile": "src/shared/W.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 42404
+  },
+  {
+    "originalModule": "libs/min/ad.min.js",
+    "projectFile": "src/platform/ads.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 11350
+  },
+  {
+    "originalModule": "libs/min/bundle.min.js",
+    "projectFile": "src/game/main.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 43225
+  },
+  {
+    "originalModule": "libs/min/fairygui.min.js",
+    "projectFile": "vendor/runtime/fairygui.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 15517
+  },
+  {
+    "originalModule": "libs/min/laya.physics.wasm.min.js",
+    "projectFile": "vendor/runtime/laya.physics.wasm.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 14751
+  },
+  {
+    "originalModule": "libs/min/laya.spine.min.js",
+    "projectFile": "vendor/runtime/laya.spine.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 693
+  },
+  {
+    "originalModule": "libs/min/laya.wxmini.min.js",
+    "projectFile": "src/platform/laya-wechat-adapter.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 1411
+  },
+  {
+    "originalModule": "libs/min/spine-core-3.8.min.js",
+    "projectFile": "vendor/runtime/spine-core-3.8.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 7010
+  },
+  {
+    "originalModule": "libs/min/utils.min.js",
+    "projectFile": "src/shared/utils.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 4065
+  },
+  {
+    "originalModule": "libs/game.js",
+    "projectFile": "src/bootstrap/load-libraries.js",
+    "sourceBundle": "source/libs/game.js",
+    "lines": 19
+  },
+  {
+    "originalModule": "res/atlas/game.js",
+    "projectFile": "src/subpackages/atlas/game.js",
+    "sourceBundle": "source/res/atlas/game.js",
+    "lines": 2
+  },
+  {
+    "originalModule": "res/dls_nz/game.js",
+    "projectFile": "src/subpackages/dls_nz/game.js",
+    "sourceBundle": "source/res/dls_nz/game.js",
+    "lines": 2
+  },
+  {
+    "originalModule": "res/dls_sea/game.js",
+    "projectFile": "src/subpackages/dls_sea/game.js",
+    "sourceBundle": "source/res/dls_sea/game.js",
+    "lines": 2
+  },
+  {
+    "originalModule": "res/dls_star/game.js",
+    "projectFile": "src/subpackages/dls_star/game.js",
+    "sourceBundle": "source/res/dls_star/game.js",
+    "lines": 2
+  },
+  {
+    "originalModule": "res/home/game.js",
+    "projectFile": "src/subpackages/home/game.js",
+    "sourceBundle": "source/res/home/game.js",
+    "lines": 2
+  },
+  {
+    "originalModule": "res/room_1/game.js",
+    "projectFile": "src/subpackages/room_1/game.js",
+    "sourceBundle": "source/res/room_1/game.js",
+    "lines": 2
+  },
+  {
+    "originalModule": "res/sounds/game.js",
+    "projectFile": "src/subpackages/sounds/game.js",
+    "sourceBundle": "source/res/sounds/game.js",
+    "lines": 2
+  },
+  {
+    "originalModule": "OpenWalls/js/bundle.js",
+    "projectFile": "src/open-data/js/bundle.js",
+    "sourceBundle": "source/subContext.js",
+    "lines": 660
+  },
+  {
+    "originalModule": "OpenWalls/libs/laya.opendata.js",
+    "projectFile": "src/open-data/libs/laya.opendata.js",
+    "sourceBundle": "source/subContext.js",
+    "lines": 17780
+  },
+  {
+    "originalModule": "OpenWalls/weapp-adapter.js",
+    "projectFile": "src/open-data/weapp-adapter.js",
+    "sourceBundle": "source/subContext.js",
+    "lines": 1315
+  },
+  {
+    "originalModule": "OpenWalls/index.js",
+    "projectFile": "src/open-data/index.js",
+    "sourceBundle": "source/subContext.js",
+    "lines": 8
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a",
+    "projectFile": "vendor/laya/plugin-entry.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 4
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/index.js",
+    "projectFile": "vendor/laya/index.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 14
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/laya.ani.js",
+    "projectFile": "vendor/laya/laya.ani.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 4497
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/laya.core.js",
+    "projectFile": "vendor/laya/laya.core.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 32988
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/laya.d3.js",
+    "projectFile": "vendor/laya/laya.d3.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 44219
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/laya.html.js",
+    "projectFile": "vendor/laya/laya.html.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 1937
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/laya.particle.js",
+    "projectFile": "vendor/laya/laya.particle.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 1015
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/laya.physics_o.js",
+    "projectFile": "vendor/laya/laya.physics_o.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 2379
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/laya.tiledmap.js",
+    "projectFile": "vendor/laya/laya.tiledmap.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 1672
+  },
+  {
+    "originalModule": "__plugin__/wx70d8aa25ec591f7a/laya.ui.js",
+    "projectFile": "vendor/laya/laya.ui.js",
+    "sourceBundle": "dependency-laya-plugin/source/plugin.js",
+    "lines": 8056
+  }
+]

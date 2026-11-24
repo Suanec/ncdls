@@ -1,0 +1,1693 @@
+{
+  "cacheVersion": "43",
+  "package": "dls_main",
+  "derivedFrom": "decoded drama_core.json and src/game/main.js",
+  "modes": {
+    "normal": [
+      {
+        "configId": 15,
+        "map": "Level_刘炜_卡皮巴拉11",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉11"
+        ]
+      },
+      {
+        "configId": 17,
+        "map": "Level_王丹_卡皮巴拉08",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉08"
+        ]
+      },
+      {
+        "configId": 19,
+        "map": "Level_刘炜_4",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉01"
+        ]
+      },
+      {
+        "configId": 21,
+        "map": "Level_王丹_卡皮巴拉09",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉09"
+        ]
+      },
+      {
+        "configId": 23,
+        "map": "Level_王丹_卡皮巴拉10",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉10"
+        ]
+      },
+      {
+        "configId": 25,
+        "map": "Level_王丹_卡皮巴拉03",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉03"
+        ]
+      },
+      {
+        "configId": 27,
+        "map": "Level_王丹_卡皮巴拉04",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉04"
+        ]
+      },
+      {
+        "configId": 29,
+        "map": "Level_王丹_卡皮巴拉05",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉05"
+        ]
+      },
+      {
+        "configId": 31,
+        "map": "Level_王丹_卡皮巴拉06",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉06"
+        ]
+      },
+      {
+        "configId": 33,
+        "map": "Level_王丹_8",
+        "resources": [
+          "dls2d_Map_挪车_08"
+        ]
+      },
+      {
+        "configId": 35,
+        "map": "Level_王丹_卡皮巴拉07",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉07"
+        ]
+      },
+      {
+        "configId": 37,
+        "map": "Level_刘炜_5",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉02"
+        ]
+      },
+      {
+        "configId": 39,
+        "map": "Level_刘炜_6",
+        "resources": [
+          "dls2d_Map_挪车_08"
+        ]
+      },
+      {
+        "configId": 41,
+        "map": "Level_刘炜_卡皮巴拉12",
+        "resources": [
+          "dls2d_Map_挪车_08",
+          "dls2d_Img_挪车_卡皮巴拉12"
+        ]
+      },
+      {
+        "configId": 42,
+        "map": "Level_刘炜_卡皮巴拉15",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_卡皮巴拉15"
+        ]
+      },
+      {
+        "configId": 46,
+        "map": "Level_冉兰兰_海洋蜗牛",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋蜗牛"
+        ]
+      },
+      {
+        "configId": 47,
+        "map": "Level_刘炜_卡皮巴拉14",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_卡皮巴拉14"
+        ]
+      },
+      {
+        "configId": 51,
+        "map": "Level_冉兰兰_海洋乌贼",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋乌贼"
+        ]
+      },
+      {
+        "configId": 52,
+        "map": "Level_刘炜_卡皮巴拉16",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_卡皮巴拉16"
+        ]
+      },
+      {
+        "configId": 56,
+        "map": "Level_冉兰兰_海洋灯鱼",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋灯鱼"
+        ]
+      },
+      {
+        "configId": 57,
+        "map": "Level_刘炜_卡皮巴拉13",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_卡皮巴拉13"
+        ]
+      },
+      {
+        "configId": 61,
+        "map": "Level_冉兰兰_海洋水母",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋水母"
+        ]
+      },
+      {
+        "configId": 62,
+        "map": "Level_骆亚琼_动物鳄鱼",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物鳄鱼"
+        ]
+      },
+      {
+        "configId": 66,
+        "map": "Level_刘炜_海洋河豚",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋河豚"
+        ]
+      },
+      {
+        "configId": 67,
+        "map": "Level_骆亚琼_海洋寄居蟹",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋寄居蟹"
+        ]
+      },
+      {
+        "configId": 71,
+        "map": "Level_骆亚琼_海洋鱼",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋鱼"
+        ]
+      },
+      {
+        "configId": 73,
+        "map": "Level_骆亚琼_海洋金鱼",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋金鱼"
+        ]
+      },
+      {
+        "configId": 75,
+        "map": "Level_骆亚琼_海洋鳗鱼",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋鳗鱼"
+        ]
+      },
+      {
+        "configId": 77,
+        "map": "Level_刘炜_动物青蛙",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物青蛙"
+        ]
+      },
+      {
+        "configId": 79,
+        "map": "Level_刘炜_海洋魟鱼",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_海洋魟鱼"
+        ]
+      },
+      {
+        "configId": 81,
+        "map": "Level_王丹_财猫关01",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关01"
+        ]
+      },
+      {
+        "configId": 83,
+        "map": "Level_王丹_财猫关02",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关02"
+        ]
+      },
+      {
+        "configId": 85,
+        "map": "Level_王丹_财猫关03",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关03"
+        ]
+      },
+      {
+        "configId": 87,
+        "map": "Level_王丹_财猫关04",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关04"
+        ]
+      },
+      {
+        "configId": 89,
+        "map": "Level_王丹_财猫关05",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关05"
+        ]
+      },
+      {
+        "configId": 91,
+        "map": "Level_王丹_财猫关06",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关06"
+        ]
+      },
+      {
+        "configId": 93,
+        "map": "Level_王丹_财猫关07",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关07"
+        ]
+      },
+      {
+        "configId": 95,
+        "map": "Level_王丹_财猫关08",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关08"
+        ]
+      },
+      {
+        "configId": 97,
+        "map": "Level_王丹_财猫关09",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关09"
+        ]
+      },
+      {
+        "configId": 99,
+        "map": "Level_王丹_财猫关10",
+        "resources": [
+          "dls2d_Map_挪车_09",
+          "dls2d_Img_挪车_财猫关10"
+        ]
+      },
+      {
+        "configId": 101,
+        "map": "Level_王丹_动物兔子01",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物兔子01"
+        ]
+      },
+      {
+        "configId": 103,
+        "map": "Level_王丹_动物兔子02",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物兔子02"
+        ]
+      },
+      {
+        "configId": 105,
+        "map": "Level_王丹_动物兔子03",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物兔子03"
+        ]
+      },
+      {
+        "configId": 107,
+        "map": "Level_王丹_动物兔子04",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物兔子04"
+        ]
+      },
+      {
+        "configId": 109,
+        "map": "Level_王丹_动物兔子05",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物兔子05"
+        ]
+      },
+      {
+        "configId": 111,
+        "map": "Level_王丹_动物兔子06",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物兔子06"
+        ]
+      },
+      {
+        "configId": 113,
+        "map": "Level_骆亚琼_动物大象",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物大象"
+        ]
+      },
+      {
+        "configId": 115,
+        "map": "Level_骆亚琼_动物恐龙01",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物恐龙01"
+        ]
+      },
+      {
+        "configId": 117,
+        "map": "Level_骆亚琼_动物恐龙02",
+        "resources": [
+          "dls2d_Map_挪车_10",
+          "dls2d_Img_挪车_动物恐龙02"
+        ]
+      },
+      {
+        "configId": 119,
+        "map": "Level_刘炜_卡皮巴拉17",
+        "resources": [
+          "dls2d_Map_挪车_11",
+          "dls2d_Img_挪车_卡皮巴拉17"
+        ]
+      },
+      {
+        "configId": 120,
+        "map": "Level_王丹_01",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 121,
+        "map": "Level_刘炜_卡皮巴拉18",
+        "resources": [
+          "dls2d_Map_挪车_11",
+          "dls2d_Img_挪车_卡皮巴拉18"
+        ]
+      },
+      {
+        "configId": 122,
+        "map": "Level_王丹_02",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 123,
+        "map": "Level_刘炜_卡皮巴拉19",
+        "resources": [
+          "dls2d_Map_挪车_11",
+          "dls2d_Img_挪车_卡皮巴拉19"
+        ]
+      },
+      {
+        "configId": 124,
+        "map": "Level_王丹_03",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 125,
+        "map": "Level_刘炜_卡皮巴拉20",
+        "resources": [
+          "dls2d_Map_挪车_11",
+          "dls2d_Img_挪车_卡皮巴拉20"
+        ]
+      },
+      {
+        "configId": 126,
+        "map": "Level_王丹_04",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 127,
+        "map": "Level_刘炜_卡皮巴拉21",
+        "resources": [
+          "dls2d_Map_挪车_11",
+          "dls2d_Img_挪车_卡皮巴拉21"
+        ]
+      },
+      {
+        "configId": 128,
+        "map": "Level_王丹_05",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 129,
+        "map": "Level_刘炜_卡皮巴拉22",
+        "resources": [
+          "dls2d_Map_挪车_11",
+          "dls2d_Img_挪车_卡皮巴拉22"
+        ]
+      },
+      {
+        "configId": 130,
+        "map": "Level_王丹_06",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 131,
+        "map": "Level_刘炜_245",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉26"
+        ]
+      },
+      {
+        "configId": 132,
+        "map": "Level_王丹_07",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 133,
+        "map": "Level_王丹_卡皮巴拉28",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉28"
+        ]
+      },
+      {
+        "configId": 134,
+        "map": "Level_王丹_08",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 135,
+        "map": "Level_王丹_卡皮巴拉29",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉29"
+        ]
+      },
+      {
+        "configId": 136,
+        "map": "Level_王丹_09",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 137,
+        "map": "Level_王丹_卡皮巴拉30",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉30"
+        ]
+      },
+      {
+        "configId": 138,
+        "map": "Level_王丹_10",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 139,
+        "map": "Level_王丹_卡皮巴拉31",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉31"
+        ]
+      },
+      {
+        "configId": 140,
+        "map": "Level_王丹_11",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 141,
+        "map": "Level_刘炜_243",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉24"
+        ]
+      },
+      {
+        "configId": 142,
+        "map": "Level_王丹_12",
+        "resources": [
+          "dls2d_Map_挪车_11"
+        ]
+      },
+      {
+        "configId": 143,
+        "map": "Level_刘炜_244",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉25"
+        ]
+      },
+      {
+        "configId": 144,
+        "map": "Level_王丹_13",
+        "resources": [
+          "dls2d_Map_挪车_12"
+        ]
+      },
+      {
+        "configId": 145,
+        "map": "Level_王丹_卡皮巴拉23",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉23"
+        ]
+      },
+      {
+        "configId": 146,
+        "map": "Level_王丹_14",
+        "resources": [
+          "dls2d_Map_挪车_12"
+        ]
+      },
+      {
+        "configId": 147,
+        "map": "Level_刘炜_246",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉27"
+        ]
+      },
+      {
+        "configId": 148,
+        "map": "Level_王丹_15",
+        "resources": [
+          "dls2d_Map_挪车_12"
+        ]
+      },
+      {
+        "configId": 149,
+        "map": "Level_刘炜_卡皮巴拉38",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉38"
+        ]
+      },
+      {
+        "configId": 150,
+        "map": "Level_王丹_16",
+        "resources": [
+          "dls2d_Map_挪车_12"
+        ]
+      },
+      {
+        "configId": 151,
+        "map": "Level_刘炜_卡皮巴拉35",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉35"
+        ]
+      },
+      {
+        "configId": 152,
+        "map": "Level_王丹_17",
+        "resources": [
+          "dls2d_Map_挪车_12"
+        ]
+      },
+      {
+        "configId": 153,
+        "map": "Level_刘炜_卡皮巴拉34",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉34"
+        ]
+      },
+      {
+        "configId": 154,
+        "map": "Level_王丹_18",
+        "resources": [
+          "dls2d_Map_挪车_12"
+        ]
+      },
+      {
+        "configId": 155,
+        "map": "Level_骆亚琼_37",
+        "resources": [
+          "dls2d_Map_挪车_12",
+          "dls2d_Img_挪车_卡皮巴拉37"
+        ]
+      },
+      {
+        "configId": 156,
+        "map": "Level_刘炜_141无图",
+        "resources": [
+          "dls2d_Map_挪车_12"
+        ]
+      },
+      {
+        "configId": 157,
+        "map": "Level_王丹_卡皮巴拉39",
+        "resources": [
+          "dls2d_Map_挪车_13",
+          "dls2d_Img_挪车_卡皮巴拉39"
+        ]
+      },
+      {
+        "configId": 158,
+        "map": "Level_王丹_卡皮巴拉40",
+        "resources": [
+          "dls2d_Map_挪车_13",
+          "dls2d_Img_挪车_卡皮巴拉40"
+        ]
+      },
+      {
+        "configId": 159,
+        "map": "Level_王丹_卡皮巴拉41",
+        "resources": [
+          "dls2d_Map_挪车_13",
+          "dls2d_Img_挪车_卡皮巴拉41"
+        ]
+      },
+      {
+        "configId": 160,
+        "map": "Level_新增普通1",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 161,
+        "map": "Level_王丹_卡皮巴拉36",
+        "resources": [
+          "dls2d_Map_挪车_13",
+          "dls2d_Img_挪车_卡皮巴拉36"
+        ]
+      },
+      {
+        "configId": 162,
+        "map": "Level_新增普通2",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 163,
+        "map": "Level_王丹_卡皮巴拉33",
+        "resources": [
+          "dls2d_Map_挪车_13",
+          "dls2d_Img_挪车_卡皮巴拉33"
+        ]
+      },
+      {
+        "configId": 164,
+        "map": "Level_新增普通3",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 165,
+        "map": "Level_王丹_卡皮巴拉32",
+        "resources": [
+          "dls2d_Map_挪车_13",
+          "dls2d_Img_挪车_卡皮巴拉32"
+        ]
+      },
+      {
+        "configId": 166,
+        "map": "Level_卡皮巴拉43",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉43"
+        ]
+      },
+      {
+        "configId": 167,
+        "map": "Level_新增普通8",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 168,
+        "map": "Level_卡皮巴拉44",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉44"
+        ]
+      },
+      {
+        "configId": 169,
+        "map": "Level_新增普通5",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 170,
+        "map": "Level_卡皮巴拉71",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉71"
+        ]
+      },
+      {
+        "configId": 171,
+        "map": "Level_新增普通6",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 172,
+        "map": "Level_卡皮巴拉45",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉45"
+        ]
+      },
+      {
+        "configId": 173,
+        "map": "Level_新增普通7",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 174,
+        "map": "Level_卡皮巴拉46",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉46"
+        ]
+      },
+      {
+        "configId": 175,
+        "map": "Level_新增普通10",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 176,
+        "map": "Level_卡皮巴拉47",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉47"
+        ]
+      },
+      {
+        "configId": 177,
+        "map": "Level_新增普通11",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 178,
+        "map": "Level_卡皮巴拉48",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉48"
+        ]
+      },
+      {
+        "configId": 179,
+        "map": "Level_新增普通12",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 180,
+        "map": "Level_卡皮巴拉49",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉49"
+        ]
+      },
+      {
+        "configId": 181,
+        "map": "Level_新增普通13",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 182,
+        "map": "Level_卡皮巴拉51",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉51"
+        ]
+      },
+      {
+        "configId": 183,
+        "map": "Level_新增普通14",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 184,
+        "map": "Level_卡皮巴拉50",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉50"
+        ]
+      },
+      {
+        "configId": 185,
+        "map": "Level_新增普通16",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 186,
+        "map": "Level_卡皮巴拉52",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉52"
+        ]
+      },
+      {
+        "configId": 187,
+        "map": "Level_新增普通17",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 188,
+        "map": "Level_卡皮巴拉61",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉61"
+        ]
+      },
+      {
+        "configId": 189,
+        "map": "Level_新增普通18",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 190,
+        "map": "Level_卡皮巴拉67",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉67"
+        ]
+      },
+      {
+        "configId": 191,
+        "map": "Level_新增普通20",
+        "resources": [
+          "dls2d_Map_挪车_14"
+        ]
+      },
+      {
+        "configId": 192,
+        "map": "Level_卡皮巴拉68",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉68"
+        ]
+      },
+      {
+        "configId": 193,
+        "map": "Level_新增普通21",
+        "resources": [
+          "dls2d_Map_挪车_15"
+        ]
+      },
+      {
+        "configId": 194,
+        "map": "Level_卡皮巴拉69",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉69"
+        ]
+      },
+      {
+        "configId": 195,
+        "map": "Level_新增普通22",
+        "resources": [
+          "dls2d_Map_挪车_15"
+        ]
+      },
+      {
+        "configId": 196,
+        "map": "Level_卡皮巴拉70",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉70"
+        ]
+      },
+      {
+        "configId": 197,
+        "map": "Level_新增普通23",
+        "resources": [
+          "dls2d_Map_挪车_15"
+        ]
+      },
+      {
+        "configId": 198,
+        "map": "Level_新增普通24",
+        "resources": [
+          "dls2d_Map_挪车_15"
+        ]
+      },
+      {
+        "configId": 199,
+        "map": "Level_新增普通25",
+        "resources": [
+          "dls2d_Map_挪车_15"
+        ]
+      },
+      {
+        "configId": 230,
+        "map": "Level_卡皮巴拉53",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉53"
+        ]
+      },
+      {
+        "configId": 231,
+        "map": "Level_卡皮巴拉54",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉54"
+        ]
+      },
+      {
+        "configId": 232,
+        "map": "Level_卡皮巴拉55",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉55"
+        ]
+      },
+      {
+        "configId": 233,
+        "map": "Level_卡皮巴拉56",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉56"
+        ]
+      },
+      {
+        "configId": 234,
+        "map": "Level_卡皮巴拉57",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉57"
+        ]
+      },
+      {
+        "configId": 235,
+        "map": "Level_卡皮巴拉58",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉58"
+        ]
+      },
+      {
+        "configId": 236,
+        "map": "Level_新增普通30",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 237,
+        "map": "Level_卡皮巴拉59",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉59"
+        ]
+      },
+      {
+        "configId": 238,
+        "map": "Level_卡皮巴拉60",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉60"
+        ]
+      },
+      {
+        "configId": 239,
+        "map": "Level_卡皮巴拉62",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉62"
+        ]
+      },
+      {
+        "configId": 240,
+        "map": "Level_卡皮巴拉63",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉63"
+        ]
+      },
+      {
+        "configId": 241,
+        "map": "Level_卡皮巴拉64",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉64"
+        ]
+      },
+      {
+        "configId": 242,
+        "map": "Level_卡皮巴拉65",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉65"
+        ]
+      },
+      {
+        "configId": 243,
+        "map": "Level_新增普通28",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 244,
+        "map": "Level_卡皮巴拉66",
+        "resources": [
+          "dls2d_Map_挪车_15",
+          "dls2d_Img_挪车_卡皮巴拉66"
+        ]
+      },
+      {
+        "configId": 245,
+        "map": "Level_哪吒_莲花哪吒",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 246,
+        "map": "Level_哪吒_石矶娘娘",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 247,
+        "map": "Level_哪吒_仙翁",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 248,
+        "map": "Level_哪吒_敖丙",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 249,
+        "map": "Level_哪吒_太乙真人0",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 250,
+        "map": "Level_哪吒_鳄鱼哪吒",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 251,
+        "map": "Level_哪吒_哪吒0",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 252,
+        "map": "Level_哪吒_结界",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 253,
+        "map": "Level_哪吒_卡皮唐僧",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 254,
+        "map": "Level_哪吒_如来卡皮",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 255,
+        "map": "Level_哪吒_豚肥坡",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 256,
+        "map": "Level_哪吒_申公豹",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 257,
+        "map": "Level_新增普通39",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 258,
+        "map": "Level_哪吒_哪吒办公",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 259,
+        "map": "Level_新增普通31",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 260,
+        "map": "Level_哪吒_哪吒1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 261,
+        "map": "Level_哪吒_敖闰0",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 262,
+        "map": "Level_哪吒_敖光",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 263,
+        "map": "Level_哪吒_哪吒刷牙",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 264,
+        "map": "Level_哪吒_太乙真人1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 265,
+        "map": "Level_哪吒_哪吒2",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 266,
+        "map": "Level_哪吒_熬润1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 267,
+        "map": "Level_哪吒_无量仙翁",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 268,
+        "map": "Level_哪吒_申小豹",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 269,
+        "map": "Level_哪吒_哪吒3",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 270,
+        "map": "Level_哪吒_哪吒4",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 271,
+        "map": "Level_哪吒_哪吒5",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 272,
+        "map": "Level_哪吒_殷夫人",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 273,
+        "map": "Level_哪吒_敖光1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 274,
+        "map": "Level_哪吒_太乙真人2",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 275,
+        "map": "Level_哪吒_申公豹1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 276,
+        "map": "Level_哪吒_哪吒6",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 277,
+        "map": "Level_新增普通36",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 278,
+        "map": "Level_卡皮巴拉72",
+        "resources": [
+          "dls2d_Map_挪车_18",
+          "dls2d_Img_挪车_卡皮巴拉72"
+        ]
+      },
+      {
+        "configId": 279,
+        "map": "Level_卡皮巴拉73",
+        "resources": [
+          "dls2d_Map_挪车_18",
+          "dls2d_Img_挪车_卡皮巴拉73"
+        ]
+      },
+      {
+        "configId": 280,
+        "map": "Level_卡皮巴拉74",
+        "resources": [
+          "dls2d_Map_挪车_18",
+          "dls2d_Img_挪车_卡皮巴拉74"
+        ]
+      },
+      {
+        "configId": 281,
+        "map": "Level_卡皮巴拉75",
+        "resources": [
+          "dls2d_Map_挪车_18",
+          "dls2d_Img_挪车_卡皮巴拉75"
+        ]
+      },
+      {
+        "configId": 282,
+        "map": "Level_卡皮巴拉76",
+        "resources": [
+          "dls2d_Map_挪车_18",
+          "dls2d_Img_挪车_卡皮巴拉76"
+        ]
+      },
+      {
+        "configId": 283,
+        "map": "Level_哪吒_卡皮唐僧",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 284,
+        "map": "Level_卡皮巴拉77",
+        "resources": [
+          "dls2d_Map_挪车_18",
+          "dls2d_Img_挪车_卡皮巴拉77"
+        ]
+      },
+      {
+        "configId": 285,
+        "map": "Level_新增普通26",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 286,
+        "map": "Level_新增普通27",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 287,
+        "map": "Level_新增普通29",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 288,
+        "map": "Level_新增普通32",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 289,
+        "map": "Level_新增普通33",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 290,
+        "map": "Level_新增普通34",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 291,
+        "map": "Level_新增普通35",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 292,
+        "map": "Level_新增普通37",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 293,
+        "map": "Level_新增普通38",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      },
+      {
+        "configId": 294,
+        "map": "Level_新增普通40",
+        "resources": [
+          "dls2d_Map_挪车_16"
+        ]
+      }
+    ],
+    "nezha": [
+      {
+        "configId": 1,
+        "map": "Level_哪吒_莲花哪吒",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 2,
+        "map": "Level_哪吒_石矶娘娘",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 3,
+        "map": "Level_哪吒_仙翁",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 4,
+        "map": "Level_哪吒_敖丙",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 5,
+        "map": "Level_哪吒_太乙真人0",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 6,
+        "map": "Level_哪吒_鳄鱼哪吒",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 7,
+        "map": "Level_哪吒_哪吒0",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 8,
+        "map": "Level_哪吒_结界",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 9,
+        "map": "Level_哪吒_卡皮唐僧",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 10,
+        "map": "Level_哪吒_如来卡皮",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 11,
+        "map": "Level_哪吒_豚肥坡",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 12,
+        "map": "Level_哪吒_申公豹",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 13,
+        "map": "Level_哪吒_哪吒办公",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 14,
+        "map": "Level_哪吒_哪吒1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 15,
+        "map": "Level_哪吒_敖闰0",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 16,
+        "map": "Level_哪吒_敖光",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 17,
+        "map": "Level_哪吒_哪吒刷牙",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 18,
+        "map": "Level_哪吒_太乙真人1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 19,
+        "map": "Level_哪吒_哪吒2",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 20,
+        "map": "Level_哪吒_熬润1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 21,
+        "map": "Level_哪吒_无量仙翁",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 22,
+        "map": "Level_哪吒_申小豹",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 23,
+        "map": "Level_哪吒_哪吒3",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 24,
+        "map": "Level_哪吒_哪吒4",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 25,
+        "map": "Level_哪吒_哪吒5",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 26,
+        "map": "Level_哪吒_殷夫人",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 27,
+        "map": "Level_哪吒_敖光1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 28,
+        "map": "Level_哪吒_太乙真人2",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 29,
+        "map": "Level_哪吒_申公豹1",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      },
+      {
+        "configId": 30,
+        "map": "Level_哪吒_哪吒6",
+        "resources": [
+          "dls2d_Map_挪车_17"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2382 @@
+{
+  "scope": "MediaMetaMap.ani9.rl 的资源路径静态对照；不含运行时拼接的新地址",
+  "groups": {
+    "atlas": {
+      "id": 1,
+      "referenced": 197,
+      "cached": 197,
+      "missing": []
+    },
+    "dls_cat": {
+      "id": 51,
+      "referenced": 11,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 51000,
+          "path": "res/dls_cat/cat/Cat10.skel"
+        },
+        {
+          "resourceId": 51001,
+          "path": "res/dls_cat/cat/Cat12.skel"
+        },
+        {
+          "resourceId": 51002,
+          "path": "res/dls_cat/cat/Cat13.skel"
+        },
+        {
+          "resourceId": 51003,
+          "path": "res/dls_cat/cat/Cat14.skel"
+        },
+        {
+          "resourceId": 51004,
+          "path": "res/dls_cat/cat/Cat15.skel"
+        },
+        {
+          "resourceId": 51005,
+          "path": "res/dls_cat/cat/Cat16.skel"
+        },
+        {
+          "resourceId": 51006,
+          "path": "res/dls_cat/cat/Cat17.skel"
+        },
+        {
+          "resourceId": 51007,
+          "path": "res/dls_cat/cat/Cat18.skel"
+        },
+        {
+          "resourceId": 51008,
+          "path": "res/dls_cat/cat/Cat19.skel"
+        },
+        {
+          "resourceId": 51009,
+          "path": "res/dls_cat/cat/Cat20.skel"
+        },
+        {
+          "resourceId": 51010,
+          "path": "res/dls_cat/cat/Cat9.skel"
+        }
+      ]
+    },
+    "dls_main": {
+      "id": 52,
+      "referenced": 225,
+      "cached": 225,
+      "missing": []
+    },
+    "dls_nz": {
+      "id": 53,
+      "referenced": 90,
+      "cached": 90,
+      "missing": []
+    },
+    "dls_sea": {
+      "id": 54,
+      "referenced": 231,
+      "cached": 231,
+      "missing": []
+    },
+    "dls_snow": {
+      "id": 55,
+      "referenced": 147,
+      "cached": 147,
+      "missing": []
+    },
+    "dls_star": {
+      "id": 56,
+      "referenced": 37,
+      "cached": 37,
+      "missing": []
+    },
+    "home": {
+      "id": 3,
+      "referenced": 269,
+      "cached": 269,
+      "missing": []
+    },
+    "other": {
+      "id": 4,
+      "referenced": 246,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 4000,
+          "path": "res/other/nuochedajulong/bullet/Item_Missile.lh"
+        },
+        {
+          "resourceId": 4001,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Car_1.lmat"
+        },
+        {
+          "resourceId": 4002,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Car_2.lmat"
+        },
+        {
+          "resourceId": 4003,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Car_3.lmat"
+        },
+        {
+          "resourceId": 4004,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Car_4.lmat"
+        },
+        {
+          "resourceId": 4005,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Car_5.lmat"
+        },
+        {
+          "resourceId": 4006,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Car_6.lmat"
+        },
+        {
+          "resourceId": 4007,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Car_7.lmat"
+        },
+        {
+          "resourceId": 4008,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Car_8.lmat"
+        },
+        {
+          "resourceId": 4009,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Corlor_base.lmat"
+        },
+        {
+          "resourceId": 4010,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Snake1.lmat"
+        },
+        {
+          "resourceId": 4011,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Snake2.lmat"
+        },
+        {
+          "resourceId": 4012,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Snake3.lmat"
+        },
+        {
+          "resourceId": 4013,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Snake4.lmat"
+        },
+        {
+          "resourceId": 4014,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Snake5.lmat"
+        },
+        {
+          "resourceId": 4015,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Snake6.lmat"
+        },
+        {
+          "resourceId": 4016,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Snake7.lmat"
+        },
+        {
+          "resourceId": 4017,
+          "path": "res/other/nuochedajulong/car/Assets/Game_Mat/CarScrew/Mat/Snake8.lmat"
+        },
+        {
+          "resourceId": 4018,
+          "path": "res/other/nuochedajulong/car/Bullet.lh"
+        },
+        {
+          "resourceId": 4019,
+          "path": "res/other/nuochedajulong/car/Car_10.lh"
+        },
+        {
+          "resourceId": 4020,
+          "path": "res/other/nuochedajulong/car/Car_4.lh"
+        },
+        {
+          "resourceId": 4021,
+          "path": "res/other/nuochedajulong/car/Car_6.lh"
+        },
+        {
+          "resourceId": 4022,
+          "path": "res/other/nuochedajulong/effect/effect_Boom.lh"
+        },
+        {
+          "resourceId": 4023,
+          "path": "res/other/nuochedajulong/effect/effect_change.lh"
+        },
+        {
+          "resourceId": 4024,
+          "path": "res/other/nuochedajulong/effect/effect_EnvSnow.lh"
+        },
+        {
+          "resourceId": 4025,
+          "path": "res/other/nuochedajulong/effect/effect_fire_1.lh"
+        },
+        {
+          "resourceId": 4026,
+          "path": "res/other/nuochedajulong/effect/effect_fire_2.lh"
+        },
+        {
+          "resourceId": 4027,
+          "path": "res/other/nuochedajulong/effect/effect_fire_3.lh"
+        },
+        {
+          "resourceId": 4028,
+          "path": "res/other/nuochedajulong/effect/effect_fire_4.lh"
+        },
+        {
+          "resourceId": 4029,
+          "path": "res/other/nuochedajulong/effect/effect_fire_5.lh"
+        },
+        {
+          "resourceId": 4030,
+          "path": "res/other/nuochedajulong/effect/effect_fire_6.lh"
+        },
+        {
+          "resourceId": 4031,
+          "path": "res/other/nuochedajulong/effect/effect_fire_7.lh"
+        },
+        {
+          "resourceId": 4032,
+          "path": "res/other/nuochedajulong/effect/effect_fire_8.lh"
+        },
+        {
+          "resourceId": 4033,
+          "path": "res/other/nuochedajulong/effect/effect_Item.lh"
+        },
+        {
+          "resourceId": 4034,
+          "path": "res/other/nuochedajulong/effect/effect_Lingting.lh"
+        },
+        {
+          "resourceId": 4035,
+          "path": "res/other/nuochedajulong/effect/effect_MissileStart.lh"
+        },
+        {
+          "resourceId": 4036,
+          "path": "res/other/nuochedajulong/effect/effect_snow.lh"
+        },
+        {
+          "resourceId": 4037,
+          "path": "res/other/nuochedajulong/effect/effect_speed.lh"
+        },
+        {
+          "resourceId": 4038,
+          "path": "res/other/nuochedajulong/effect/effect_Spitfire.lh"
+        },
+        {
+          "resourceId": 4039,
+          "path": "res/other/nuochedajulong/effect/effect_wudi.lh"
+        },
+        {
+          "resourceId": 4040,
+          "path": "res/other/nuochedajulong/effect/ice.lh"
+        },
+        {
+          "resourceId": 4041,
+          "path": "res/other/nuochedajulong/env/floor1.lh"
+        },
+        {
+          "resourceId": 4042,
+          "path": "res/other/nuochedajulong/env/floor2.lh"
+        },
+        {
+          "resourceId": 4043,
+          "path": "res/other/nuochedajulong/env/floor3.lh"
+        },
+        {
+          "resourceId": 4044,
+          "path": "res/other/nuochedajulong/env/floor4.lh"
+        },
+        {
+          "resourceId": 4045,
+          "path": "res/other/nuochedajulong/env/floor5.lh"
+        },
+        {
+          "resourceId": 4046,
+          "path": "res/other/nuochedajulong/env/floor6.lh"
+        },
+        {
+          "resourceId": 4047,
+          "path": "res/other/nuochedajulong/fgui/NcdjlGame.bin"
+        },
+        {
+          "resourceId": 4048,
+          "path": "res/other/nuochedajulong/fgui/NcdjlGame_atlas0.png"
+        },
+        {
+          "resourceId": 4049,
+          "path": "res/other/nuochedajulong/fgui/NcdjlProp.bin"
+        },
+        {
+          "resourceId": 4050,
+          "path": "res/other/nuochedajulong/fgui/NcdjlProp_atlas0.png"
+        },
+        {
+          "resourceId": 4051,
+          "path": "res/other/nuochedajulong/fgui/NcdjlResultRevive.bin"
+        },
+        {
+          "resourceId": 4052,
+          "path": "res/other/nuochedajulong/fgui/NcdjlResultRevive_atlas0.png"
+        },
+        {
+          "resourceId": 4053,
+          "path": "res/other/nuochedajulong/fgui/NcdjlResultWin.bin"
+        },
+        {
+          "resourceId": 4054,
+          "path": "res/other/nuochedajulong/fgui/NcdjlResultWin_atlas0.png"
+        },
+        {
+          "resourceId": 4055,
+          "path": "res/other/nuochedajulong/map/Level1.lh"
+        },
+        {
+          "resourceId": 4056,
+          "path": "res/other/nuochedajulong/map/Level10.lh"
+        },
+        {
+          "resourceId": 4057,
+          "path": "res/other/nuochedajulong/map/Level100.lh"
+        },
+        {
+          "resourceId": 4058,
+          "path": "res/other/nuochedajulong/map/Level101.lh"
+        },
+        {
+          "resourceId": 4059,
+          "path": "res/other/nuochedajulong/map/Level102.lh"
+        },
+        {
+          "resourceId": 4060,
+          "path": "res/other/nuochedajulong/map/Level103.lh"
+        },
+        {
+          "resourceId": 4061,
+          "path": "res/other/nuochedajulong/map/Level104.lh"
+        },
+        {
+          "resourceId": 4062,
+          "path": "res/other/nuochedajulong/map/Level105.lh"
+        },
+        {
+          "resourceId": 4063,
+          "path": "res/other/nuochedajulong/map/Level106.lh"
+        },
+        {
+          "resourceId": 4064,
+          "path": "res/other/nuochedajulong/map/Level108.lh"
+        },
+        {
+          "resourceId": 4065,
+          "path": "res/other/nuochedajulong/map/Level109.lh"
+        },
+        {
+          "resourceId": 4066,
+          "path": "res/other/nuochedajulong/map/Level11.lh"
+        },
+        {
+          "resourceId": 4067,
+          "path": "res/other/nuochedajulong/map/Level110.lh"
+        },
+        {
+          "resourceId": 4068,
+          "path": "res/other/nuochedajulong/map/Level12.lh"
+        },
+        {
+          "resourceId": 4069,
+          "path": "res/other/nuochedajulong/map/Level13.lh"
+        },
+        {
+          "resourceId": 4070,
+          "path": "res/other/nuochedajulong/map/Level14.lh"
+        },
+        {
+          "resourceId": 4071,
+          "path": "res/other/nuochedajulong/map/Level15.lh"
+        },
+        {
+          "resourceId": 4072,
+          "path": "res/other/nuochedajulong/map/Level16.lh"
+        },
+        {
+          "resourceId": 4073,
+          "path": "res/other/nuochedajulong/map/Level17.lh"
+        },
+        {
+          "resourceId": 4074,
+          "path": "res/other/nuochedajulong/map/Level18.lh"
+        },
+        {
+          "resourceId": 4075,
+          "path": "res/other/nuochedajulong/map/Level19.lh"
+        },
+        {
+          "resourceId": 4076,
+          "path": "res/other/nuochedajulong/map/Level2.lh"
+        },
+        {
+          "resourceId": 4077,
+          "path": "res/other/nuochedajulong/map/Level20.lh"
+        },
+        {
+          "resourceId": 4078,
+          "path": "res/other/nuochedajulong/map/Level21.lh"
+        },
+        {
+          "resourceId": 4079,
+          "path": "res/other/nuochedajulong/map/Level22.lh"
+        },
+        {
+          "resourceId": 4080,
+          "path": "res/other/nuochedajulong/map/Level23.lh"
+        },
+        {
+          "resourceId": 4081,
+          "path": "res/other/nuochedajulong/map/Level24.lh"
+        },
+        {
+          "resourceId": 4082,
+          "path": "res/other/nuochedajulong/map/Level25.lh"
+        },
+        {
+          "resourceId": 4083,
+          "path": "res/other/nuochedajulong/map/Level26.lh"
+        },
+        {
+          "resourceId": 4084,
+          "path": "res/other/nuochedajulong/map/Level27.lh"
+        },
+        {
+          "resourceId": 4085,
+          "path": "res/other/nuochedajulong/map/Level28.lh"
+        },
+        {
+          "resourceId": 4086,
+          "path": "res/other/nuochedajulong/map/Level29.lh"
+        },
+        {
+          "resourceId": 4087,
+          "path": "res/other/nuochedajulong/map/Level3.lh"
+        },
+        {
+          "resourceId": 4088,
+          "path": "res/other/nuochedajulong/map/Level30.lh"
+        },
+        {
+          "resourceId": 4089,
+          "path": "res/other/nuochedajulong/map/Level31.lh"
+        },
+        {
+          "resourceId": 4090,
+          "path": "res/other/nuochedajulong/map/Level32.lh"
+        },
+        {
+          "resourceId": 4091,
+          "path": "res/other/nuochedajulong/map/Level33.lh"
+        },
+        {
+          "resourceId": 4092,
+          "path": "res/other/nuochedajulong/map/Level34.lh"
+        },
+        {
+          "resourceId": 4093,
+          "path": "res/other/nuochedajulong/map/Level35.lh"
+        },
+        {
+          "resourceId": 4094,
+          "path": "res/other/nuochedajulong/map/Level36.lh"
+        },
+        {
+          "resourceId": 4095,
+          "path": "res/other/nuochedajulong/map/Level37.lh"
+        },
+        {
+          "resourceId": 4096,
+          "path": "res/other/nuochedajulong/map/Level38.lh"
+        },
+        {
+          "resourceId": 4097,
+          "path": "res/other/nuochedajulong/map/Level39.lh"
+        },
+        {
+          "resourceId": 4098,
+          "path": "res/other/nuochedajulong/map/Level4.lh"
+        },
+        {
+          "resourceId": 4099,
+          "path": "res/other/nuochedajulong/map/Level40.lh"
+        },
+        {
+          "resourceId": 4100,
+          "path": "res/other/nuochedajulong/map/Level41.lh"
+        },
+        {
+          "resourceId": 4101,
+          "path": "res/other/nuochedajulong/map/Level42.lh"
+        },
+        {
+          "resourceId": 4102,
+          "path": "res/other/nuochedajulong/map/Level43.lh"
+        },
+        {
+          "resourceId": 4103,
+          "path": "res/other/nuochedajulong/map/Level44.lh"
+        },
+        {
+          "resourceId": 4104,
+          "path": "res/other/nuochedajulong/map/Level45.lh"
+        },
+        {
+          "resourceId": 4105,
+          "path": "res/other/nuochedajulong/map/Level46.lh"
+        },
+        {
+          "resourceId": 4106,
+          "path": "res/other/nuochedajulong/map/Level47.lh"
+        },
+        {
+          "resourceId": 4107,
+          "path": "res/other/nuochedajulong/map/Level48.lh"
+        },
+        {
+          "resourceId": 4108,
+          "path": "res/other/nuochedajulong/map/Level49.lh"
+        },
+        {
+          "resourceId": 4109,
+          "path": "res/other/nuochedajulong/map/Level5.lh"
+        },
+        {
+          "resourceId": 4110,
+          "path": "res/other/nuochedajulong/map/Level50.lh"
+        },
+        {
+          "resourceId": 4111,
+          "path": "res/other/nuochedajulong/map/Level51.lh"
+        },
+        {
+          "resourceId": 4112,
+          "path": "res/other/nuochedajulong/map/Level52.lh"
+        },
+        {
+          "resourceId": 4113,
+          "path": "res/other/nuochedajulong/map/Level53.lh"
+        },
+        {
+          "resourceId": 4114,
+          "path": "res/other/nuochedajulong/map/Level54.lh"
+        },
+        {
+          "resourceId": 4115,
+          "path": "res/other/nuochedajulong/map/Level55.lh"
+        },
+        {
+          "resourceId": 4116,
+          "path": "res/other/nuochedajulong/map/Level56.lh"
+        },
+        {
+          "resourceId": 4117,
+          "path": "res/other/nuochedajulong/map/Level57.lh"
+        },
+        {
+          "resourceId": 4118,
+          "path": "res/other/nuochedajulong/map/Level58.lh"
+        },
+        {
+          "resourceId": 4119,
+          "path": "res/other/nuochedajulong/map/Level59.lh"
+        },
+        {
+          "resourceId": 4120,
+          "path": "res/other/nuochedajulong/map/Level6.lh"
+        },
+        {
+          "resourceId": 4121,
+          "path": "res/other/nuochedajulong/map/Level60.lh"
+        },
+        {
+          "resourceId": 4122,
+          "path": "res/other/nuochedajulong/map/Level61.lh"
+        },
+        {
+          "resourceId": 4123,
+          "path": "res/other/nuochedajulong/map/Level62.lh"
+        },
+        {
+          "resourceId": 4124,
+          "path": "res/other/nuochedajulong/map/Level63.lh"
+        },
+        {
+          "resourceId": 4125,
+          "path": "res/other/nuochedajulong/map/Level64.lh"
+        },
+        {
+          "resourceId": 4126,
+          "path": "res/other/nuochedajulong/map/Level65.lh"
+        },
+        {
+          "resourceId": 4127,
+          "path": "res/other/nuochedajulong/map/Level66.lh"
+        },
+        {
+          "resourceId": 4128,
+          "path": "res/other/nuochedajulong/map/Level67.lh"
+        },
+        {
+          "resourceId": 4129,
+          "path": "res/other/nuochedajulong/map/Level68.lh"
+        },
+        {
+          "resourceId": 4130,
+          "path": "res/other/nuochedajulong/map/Level69.lh"
+        },
+        {
+          "resourceId": 4131,
+          "path": "res/other/nuochedajulong/map/Level7.lh"
+        },
+        {
+          "resourceId": 4132,
+          "path": "res/other/nuochedajulong/map/Level70.lh"
+        },
+        {
+          "resourceId": 4133,
+          "path": "res/other/nuochedajulong/map/Level71.lh"
+        },
+        {
+          "resourceId": 4134,
+          "path": "res/other/nuochedajulong/map/Level72.lh"
+        },
+        {
+          "resourceId": 4135,
+          "path": "res/other/nuochedajulong/map/Level73.lh"
+        },
+        {
+          "resourceId": 4136,
+          "path": "res/other/nuochedajulong/map/Level74.lh"
+        },
+        {
+          "resourceId": 4137,
+          "path": "res/other/nuochedajulong/map/Level75.lh"
+        },
+        {
+          "resourceId": 4138,
+          "path": "res/other/nuochedajulong/map/Level76.lh"
+        },
+        {
+          "resourceId": 4139,
+          "path": "res/other/nuochedajulong/map/Level77.lh"
+        },
+        {
+          "resourceId": 4140,
+          "path": "res/other/nuochedajulong/map/Level78.lh"
+        },
+        {
+          "resourceId": 4141,
+          "path": "res/other/nuochedajulong/map/Level79.lh"
+        },
+        {
+          "resourceId": 4142,
+          "path": "res/other/nuochedajulong/map/Level8.lh"
+        },
+        {
+          "resourceId": 4143,
+          "path": "res/other/nuochedajulong/map/Level80.lh"
+        },
+        {
+          "resourceId": 4144,
+          "path": "res/other/nuochedajulong/map/Level81.lh"
+        },
+        {
+          "resourceId": 4145,
+          "path": "res/other/nuochedajulong/map/Level82.lh"
+        },
+        {
+          "resourceId": 4146,
+          "path": "res/other/nuochedajulong/map/Level83.lh"
+        },
+        {
+          "resourceId": 4147,
+          "path": "res/other/nuochedajulong/map/Level84.lh"
+        },
+        {
+          "resourceId": 4148,
+          "path": "res/other/nuochedajulong/map/Level85.lh"
+        },
+        {
+          "resourceId": 4149,
+          "path": "res/other/nuochedajulong/map/Level86.lh"
+        },
+        {
+          "resourceId": 4150,
+          "path": "res/other/nuochedajulong/map/Level88.lh"
+        },
+        {
+          "resourceId": 4151,
+          "path": "res/other/nuochedajulong/map/Level89.lh"
+        },
+        {
+          "resourceId": 4152,
+          "path": "res/other/nuochedajulong/map/Level9.lh"
+        },
+        {
+          "resourceId": 4153,
+          "path": "res/other/nuochedajulong/map/Level90.lh"
+        },
+        {
+          "resourceId": 4154,
+          "path": "res/other/nuochedajulong/map/Level91.lh"
+        },
+        {
+          "resourceId": 4155,
+          "path": "res/other/nuochedajulong/map/Level92.lh"
+        },
+        {
+          "resourceId": 4156,
+          "path": "res/other/nuochedajulong/map/Level93.lh"
+        },
+        {
+          "resourceId": 4157,
+          "path": "res/other/nuochedajulong/map/Level94.lh"
+        },
+        {
+          "resourceId": 4158,
+          "path": "res/other/nuochedajulong/map/Level95.lh"
+        },
+        {
+          "resourceId": 4159,
+          "path": "res/other/nuochedajulong/map/Level96.lh"
+        },
+        {
+          "resourceId": 4160,
+          "path": "res/other/nuochedajulong/map/Level97.lh"
+        },
+        {
+          "resourceId": 4161,
+          "path": "res/other/nuochedajulong/map/Level98.lh"
+        },
+        {
+          "resourceId": 4162,
+          "path": "res/other/nuochedajulong/map/Level99.lh"
+        },
+        {
+          "resourceId": 4163,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_0.lmat"
+        },
+        {
+          "resourceId": 4164,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_1.lmat"
+        },
+        {
+          "resourceId": 4165,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_2.lmat"
+        },
+        {
+          "resourceId": 4166,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_3.lmat"
+        },
+        {
+          "resourceId": 4167,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_4.lmat"
+        },
+        {
+          "resourceId": 4168,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_5.lmat"
+        },
+        {
+          "resourceId": 4169,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_6.lmat"
+        },
+        {
+          "resourceId": 4170,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_7.lmat"
+        },
+        {
+          "resourceId": 4171,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_8.lmat"
+        },
+        {
+          "resourceId": 4172,
+          "path": "res/other/nuochedajulong/mat/Game_Mat/number_9.lmat"
+        },
+        {
+          "resourceId": 4173,
+          "path": "res/other/nuochedajulong/path/Dynamic_level10.lh"
+        },
+        {
+          "resourceId": 4174,
+          "path": "res/other/nuochedajulong/path/Dynamic_level13.lh"
+        },
+        {
+          "resourceId": 4175,
+          "path": "res/other/nuochedajulong/path/Dynamic_level3.lh"
+        },
+        {
+          "resourceId": 4176,
+          "path": "res/other/nuochedajulong/path/Dynamic_level4.lh"
+        },
+        {
+          "resourceId": 4177,
+          "path": "res/other/nuochedajulong/path/Dynamic_level5.lh"
+        },
+        {
+          "resourceId": 4178,
+          "path": "res/other/nuochedajulong/path/Dynamic_level6.lh"
+        },
+        {
+          "resourceId": 4179,
+          "path": "res/other/nuochedajulong/path/Dynamic_level7.lh"
+        },
+        {
+          "resourceId": 4180,
+          "path": "res/other/nuochedajulong/path/Dynamic_level8_jx.lh"
+        },
+        {
+          "resourceId": 4181,
+          "path": "res/other/nuochedajulong/path/Dynamic_level9.lh"
+        },
+        {
+          "resourceId": 4182,
+          "path": "res/other/nuochedajulong/player/player1.lh"
+        },
+        {
+          "resourceId": 4183,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/9.lmat"
+        },
+        {
+          "resourceId": 4184,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/car_arrow2.lmat"
+        },
+        {
+          "resourceId": 4185,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/car_arrow5.lmat"
+        },
+        {
+          "resourceId": 4186,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/car_park.lmat"
+        },
+        {
+          "resourceId": 4187,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/car_park2.lmat"
+        },
+        {
+          "resourceId": 4188,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/car_park3.lmat"
+        },
+        {
+          "resourceId": 4189,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/car_park4.lmat"
+        },
+        {
+          "resourceId": 4190,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/car_park_black.lmat"
+        },
+        {
+          "resourceId": 4191,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/Env.lmat"
+        },
+        {
+          "resourceId": 4192,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/Env2.lmat"
+        },
+        {
+          "resourceId": 4193,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/prop_ad3.lmat"
+        },
+        {
+          "resourceId": 4194,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/tex_ad.lmat"
+        },
+        {
+          "resourceId": 4195,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/tex_ad2.lmat"
+        },
+        {
+          "resourceId": 4196,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/tex_share.lmat"
+        },
+        {
+          "resourceId": 4197,
+          "path": "res/other/nuochedajulong/prop/Assets/Game_Tex/Materials/tex_vip.lmat"
+        },
+        {
+          "resourceId": 4198,
+          "path": "res/other/nuochedajulong/prop/car_park.lh"
+        },
+        {
+          "resourceId": 4199,
+          "path": "res/other/nuochedajulong/prop/car_share.lh"
+        },
+        {
+          "resourceId": 4200,
+          "path": "res/other/nuochedajulong/prop/car_vippark.lh"
+        },
+        {
+          "resourceId": 4201,
+          "path": "res/other/nuochedajulong/prop/hp_prop_Screw.lh"
+        },
+        {
+          "resourceId": 4202,
+          "path": "res/other/nuochedajulong/prop/prop_ad1.lh"
+        },
+        {
+          "resourceId": 4203,
+          "path": "res/other/nuochedajulong/prop/prop_belt.lh"
+        },
+        {
+          "resourceId": 4204,
+          "path": "res/other/nuochedajulong/prop/prop_carout2.lh"
+        },
+        {
+          "resourceId": 4205,
+          "path": "res/other/nuochedajulong/prop2/Item_Ice.lh"
+        },
+        {
+          "resourceId": 4206,
+          "path": "res/other/nuochedajulong/prop2/Item_Moderate.lh"
+        },
+        {
+          "resourceId": 4207,
+          "path": "res/other/nuochedajulong/prop2/Item_Rate.lh"
+        },
+        {
+          "resourceId": 4208,
+          "path": "res/other/nuochedajulong/prop2/Item_Repel.lh"
+        },
+        {
+          "resourceId": 4209,
+          "path": "res/other/nuochedajulong/prop3/Item_Shield.lh"
+        },
+        {
+          "resourceId": 4210,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake1.lmat"
+        },
+        {
+          "resourceId": 4211,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake1_red.lmat"
+        },
+        {
+          "resourceId": 4212,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake1_write.lmat"
+        },
+        {
+          "resourceId": 4213,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake2.lmat"
+        },
+        {
+          "resourceId": 4214,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake3.lmat"
+        },
+        {
+          "resourceId": 4215,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake4.lmat"
+        },
+        {
+          "resourceId": 4216,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake5.lmat"
+        },
+        {
+          "resourceId": 4217,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake6.lmat"
+        },
+        {
+          "resourceId": 4218,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake7.lmat"
+        },
+        {
+          "resourceId": 4219,
+          "path": "res/other/nuochedajulong/role/Assets/Game_Mat/CarScrew/Mat/Snake8.lmat"
+        },
+        {
+          "resourceId": 4220,
+          "path": "res/other/nuochedajulong/role/Role.lh"
+        },
+        {
+          "resourceId": 4221,
+          "path": "res/other/nuochedajulong/role/Snake_1.lh"
+        },
+        {
+          "resourceId": 4222,
+          "path": "res/other/nuochedajulong/scene/SampleScene.ls"
+        },
+        {
+          "resourceId": 4223,
+          "path": "res/other/nuochedajulong/sorted_carPathJson.json"
+        },
+        {
+          "resourceId": 4224,
+          "path": "res/other/nuochedajulong/sounds/boom.mp3"
+        },
+        {
+          "resourceId": 4225,
+          "path": "res/other/nuochedajulong/sounds/Buttonsound.mp3"
+        },
+        {
+          "resourceId": 4226,
+          "path": "res/other/nuochedajulong/sounds/click.mp3"
+        },
+        {
+          "resourceId": 4227,
+          "path": "res/other/nuochedajulong/sounds/coin.mp3"
+        },
+        {
+          "resourceId": 4228,
+          "path": "res/other/nuochedajulong/sounds/crush.mp3"
+        },
+        {
+          "resourceId": 4229,
+          "path": "res/other/nuochedajulong/sounds/drive.mp3"
+        },
+        {
+          "resourceId": 4230,
+          "path": "res/other/nuochedajulong/sounds/frozen.mp3"
+        },
+        {
+          "resourceId": 4231,
+          "path": "res/other/nuochedajulong/sounds/gamebgm.mp3"
+        },
+        {
+          "resourceId": 4232,
+          "path": "res/other/nuochedajulong/sounds/get_item.mp3"
+        },
+        {
+          "resourceId": 4233,
+          "path": "res/other/nuochedajulong/sounds/hard_start.mp3"
+        },
+        {
+          "resourceId": 4234,
+          "path": "res/other/nuochedajulong/sounds/hit.mp3"
+        },
+        {
+          "resourceId": 4235,
+          "path": "res/other/nuochedajulong/sounds/homebgm.mp3"
+        },
+        {
+          "resourceId": 4236,
+          "path": "res/other/nuochedajulong/sounds/king_help.mp3"
+        },
+        {
+          "resourceId": 4237,
+          "path": "res/other/nuochedajulong/sounds/lose.mp3"
+        },
+        {
+          "resourceId": 4238,
+          "path": "res/other/nuochedajulong/sounds/princess_help.mp3"
+        },
+        {
+          "resourceId": 4239,
+          "path": "res/other/nuochedajulong/sounds/refresh.mp3"
+        },
+        {
+          "resourceId": 4240,
+          "path": "res/other/nuochedajulong/sounds/revive.mp3"
+        },
+        {
+          "resourceId": 4241,
+          "path": "res/other/nuochedajulong/sounds/shield.mp3"
+        },
+        {
+          "resourceId": 4242,
+          "path": "res/other/nuochedajulong/sounds/shield_break.mp3"
+        },
+        {
+          "resourceId": 4243,
+          "path": "res/other/nuochedajulong/sounds/traffic.mp3"
+        },
+        {
+          "resourceId": 4244,
+          "path": "res/other/nuochedajulong/sounds/warnning.mp3"
+        },
+        {
+          "resourceId": 4245,
+          "path": "res/other/nuochedajulong/sounds/win.mp3"
+        }
+      ]
+    },
+    "room_1": {
+      "id": 57,
+      "referenced": 21,
+      "cached": 21,
+      "missing": []
+    },
+    "room_10": {
+      "id": 66,
+      "referenced": 31,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 66000,
+          "path": "res/room_10/laya_icon/roleui/Room_10_1.png"
+        },
+        {
+          "resourceId": 66001,
+          "path": "res/room_10/laya_icon/roomui/Room_10_1.png"
+        },
+        {
+          "resourceId": 66002,
+          "path": "res/room_10/laya_icon/roomui/Room_10_10.png"
+        },
+        {
+          "resourceId": 66003,
+          "path": "res/room_10/laya_icon/roomui/Room_10_11.png"
+        },
+        {
+          "resourceId": 66004,
+          "path": "res/room_10/laya_icon/roomui/Room_10_12.png"
+        },
+        {
+          "resourceId": 66005,
+          "path": "res/room_10/laya_icon/roomui/Room_10_13.png"
+        },
+        {
+          "resourceId": 66006,
+          "path": "res/room_10/laya_icon/roomui/Room_10_14.png"
+        },
+        {
+          "resourceId": 66007,
+          "path": "res/room_10/laya_icon/roomui/Room_10_15.png"
+        },
+        {
+          "resourceId": 66008,
+          "path": "res/room_10/laya_icon/roomui/Room_10_2.png"
+        },
+        {
+          "resourceId": 66009,
+          "path": "res/room_10/laya_icon/roomui/Room_10_3.png"
+        },
+        {
+          "resourceId": 66010,
+          "path": "res/room_10/laya_icon/roomui/Room_10_4.png"
+        },
+        {
+          "resourceId": 66011,
+          "path": "res/room_10/laya_icon/roomui/Room_10_5.png"
+        },
+        {
+          "resourceId": 66012,
+          "path": "res/room_10/laya_icon/roomui/Room_10_6.png"
+        },
+        {
+          "resourceId": 66013,
+          "path": "res/room_10/laya_icon/roomui/Room_10_7.png"
+        },
+        {
+          "resourceId": 66014,
+          "path": "res/room_10/laya_icon/roomui/Room_10_8.png"
+        },
+        {
+          "resourceId": 66015,
+          "path": "res/room_10/laya_icon/roomui/Room_10_9.png"
+        },
+        {
+          "resourceId": 66016,
+          "path": "res/room_10/Room_10_1.lh"
+        },
+        {
+          "resourceId": 66017,
+          "path": "res/room_10/Room_10_10.lh"
+        },
+        {
+          "resourceId": 66018,
+          "path": "res/room_10/Room_10_11.lh"
+        },
+        {
+          "resourceId": 66019,
+          "path": "res/room_10/Room_10_12.lh"
+        },
+        {
+          "resourceId": 66020,
+          "path": "res/room_10/Room_10_13.lh"
+        },
+        {
+          "resourceId": 66021,
+          "path": "res/room_10/Room_10_14.lh"
+        },
+        {
+          "resourceId": 66022,
+          "path": "res/room_10/Room_10_15.lh"
+        },
+        {
+          "resourceId": 66023,
+          "path": "res/room_10/Room_10_2.lh"
+        },
+        {
+          "resourceId": 66024,
+          "path": "res/room_10/Room_10_3.lh"
+        },
+        {
+          "resourceId": 66025,
+          "path": "res/room_10/Room_10_4.lh"
+        },
+        {
+          "resourceId": 66026,
+          "path": "res/room_10/Room_10_5.lh"
+        },
+        {
+          "resourceId": 66027,
+          "path": "res/room_10/Room_10_6.lh"
+        },
+        {
+          "resourceId": 66028,
+          "path": "res/room_10/Room_10_7.lh"
+        },
+        {
+          "resourceId": 66029,
+          "path": "res/room_10/Room_10_8.lh"
+        },
+        {
+          "resourceId": 66030,
+          "path": "res/room_10/Room_10_9.lh"
+        }
+      ]
+    },
+    "room_11": {
+      "id": 67,
+      "referenced": 31,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 67000,
+          "path": "res/room_11/laya_icon/roleui/Room_11_1.png"
+        },
+        {
+          "resourceId": 67001,
+          "path": "res/room_11/laya_icon/roomui/Room_11_1.png"
+        },
+        {
+          "resourceId": 67002,
+          "path": "res/room_11/laya_icon/roomui/Room_11_10.png"
+        },
+        {
+          "resourceId": 67003,
+          "path": "res/room_11/laya_icon/roomui/Room_11_11.png"
+        },
+        {
+          "resourceId": 67004,
+          "path": "res/room_11/laya_icon/roomui/Room_11_12.png"
+        },
+        {
+          "resourceId": 67005,
+          "path": "res/room_11/laya_icon/roomui/Room_11_13.png"
+        },
+        {
+          "resourceId": 67006,
+          "path": "res/room_11/laya_icon/roomui/Room_11_14.png"
+        },
+        {
+          "resourceId": 67007,
+          "path": "res/room_11/laya_icon/roomui/Room_11_15.png"
+        },
+        {
+          "resourceId": 67008,
+          "path": "res/room_11/laya_icon/roomui/Room_11_2.png"
+        },
+        {
+          "resourceId": 67009,
+          "path": "res/room_11/laya_icon/roomui/Room_11_3.png"
+        },
+        {
+          "resourceId": 67010,
+          "path": "res/room_11/laya_icon/roomui/Room_11_4.png"
+        },
+        {
+          "resourceId": 67011,
+          "path": "res/room_11/laya_icon/roomui/Room_11_5.png"
+        },
+        {
+          "resourceId": 67012,
+          "path": "res/room_11/laya_icon/roomui/Room_11_6.png"
+        },
+        {
+          "resourceId": 67013,
+          "path": "res/room_11/laya_icon/roomui/Room_11_7.png"
+        },
+        {
+          "resourceId": 67014,
+          "path": "res/room_11/laya_icon/roomui/Room_11_8.png"
+        },
+        {
+          "resourceId": 67015,
+          "path": "res/room_11/laya_icon/roomui/Room_11_9.png"
+        },
+        {
+          "resourceId": 67016,
+          "path": "res/room_11/Room_11_1.lh"
+        },
+        {
+          "resourceId": 67017,
+          "path": "res/room_11/Room_11_10.lh"
+        },
+        {
+          "resourceId": 67018,
+          "path": "res/room_11/Room_11_11.lh"
+        },
+        {
+          "resourceId": 67019,
+          "path": "res/room_11/Room_11_12.lh"
+        },
+        {
+          "resourceId": 67020,
+          "path": "res/room_11/Room_11_13.lh"
+        },
+        {
+          "resourceId": 67021,
+          "path": "res/room_11/Room_11_14.lh"
+        },
+        {
+          "resourceId": 67022,
+          "path": "res/room_11/Room_11_15.lh"
+        },
+        {
+          "resourceId": 67023,
+          "path": "res/room_11/Room_11_2.lh"
+        },
+        {
+          "resourceId": 67024,
+          "path": "res/room_11/Room_11_3.lh"
+        },
+        {
+          "resourceId": 67025,
+          "path": "res/room_11/Room_11_4.lh"
+        },
+        {
+          "resourceId": 67026,
+          "path": "res/room_11/Room_11_5.lh"
+        },
+        {
+          "resourceId": 67027,
+          "path": "res/room_11/Room_11_6.lh"
+        },
+        {
+          "resourceId": 67028,
+          "path": "res/room_11/Room_11_7.lh"
+        },
+        {
+          "resourceId": 67029,
+          "path": "res/room_11/Room_11_8.lh"
+        },
+        {
+          "resourceId": 67030,
+          "path": "res/room_11/Room_11_9.lh"
+        }
+      ]
+    },
+    "room_12": {
+      "id": 68,
+      "referenced": 41,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 68000,
+          "path": "res/room_12/laya_icon/roleui/Room_12_1.png"
+        },
+        {
+          "resourceId": 68001,
+          "path": "res/room_12/laya_icon/roomui/Room_12_1.png"
+        },
+        {
+          "resourceId": 68002,
+          "path": "res/room_12/laya_icon/roomui/Room_12_10.png"
+        },
+        {
+          "resourceId": 68003,
+          "path": "res/room_12/laya_icon/roomui/Room_12_11.png"
+        },
+        {
+          "resourceId": 68004,
+          "path": "res/room_12/laya_icon/roomui/Room_12_12.png"
+        },
+        {
+          "resourceId": 68005,
+          "path": "res/room_12/laya_icon/roomui/Room_12_13.png"
+        },
+        {
+          "resourceId": 68006,
+          "path": "res/room_12/laya_icon/roomui/Room_12_14.png"
+        },
+        {
+          "resourceId": 68007,
+          "path": "res/room_12/laya_icon/roomui/Room_12_15.png"
+        },
+        {
+          "resourceId": 68008,
+          "path": "res/room_12/laya_icon/roomui/Room_12_16.png"
+        },
+        {
+          "resourceId": 68009,
+          "path": "res/room_12/laya_icon/roomui/Room_12_17.png"
+        },
+        {
+          "resourceId": 68010,
+          "path": "res/room_12/laya_icon/roomui/Room_12_18.png"
+        },
+        {
+          "resourceId": 68011,
+          "path": "res/room_12/laya_icon/roomui/Room_12_19.png"
+        },
+        {
+          "resourceId": 68012,
+          "path": "res/room_12/laya_icon/roomui/Room_12_2.png"
+        },
+        {
+          "resourceId": 68013,
+          "path": "res/room_12/laya_icon/roomui/Room_12_20.png"
+        },
+        {
+          "resourceId": 68014,
+          "path": "res/room_12/laya_icon/roomui/Room_12_3.png"
+        },
+        {
+          "resourceId": 68015,
+          "path": "res/room_12/laya_icon/roomui/Room_12_4.png"
+        },
+        {
+          "resourceId": 68016,
+          "path": "res/room_12/laya_icon/roomui/Room_12_5.png"
+        },
+        {
+          "resourceId": 68017,
+          "path": "res/room_12/laya_icon/roomui/Room_12_6.png"
+        },
+        {
+          "resourceId": 68018,
+          "path": "res/room_12/laya_icon/roomui/Room_12_7.png"
+        },
+        {
+          "resourceId": 68019,
+          "path": "res/room_12/laya_icon/roomui/Room_12_8.png"
+        },
+        {
+          "resourceId": 68020,
+          "path": "res/room_12/laya_icon/roomui/Room_12_9.png"
+        },
+        {
+          "resourceId": 68021,
+          "path": "res/room_12/Room_12_1.lh"
+        },
+        {
+          "resourceId": 68022,
+          "path": "res/room_12/Room_12_10.lh"
+        },
+        {
+          "resourceId": 68023,
+          "path": "res/room_12/Room_12_11.lh"
+        },
+        {
+          "resourceId": 68024,
+          "path": "res/room_12/Room_12_12.lh"
+        },
+        {
+          "resourceId": 68025,
+          "path": "res/room_12/Room_12_13.lh"
+        },
+        {
+          "resourceId": 68026,
+          "path": "res/room_12/Room_12_14.lh"
+        },
+        {
+          "resourceId": 68027,
+          "path": "res/room_12/Room_12_15.lh"
+        },
+        {
+          "resourceId": 68028,
+          "path": "res/room_12/Room_12_16.lh"
+        },
+        {
+          "resourceId": 68029,
+          "path": "res/room_12/Room_12_17.lh"
+        },
+        {
+          "resourceId": 68030,
+          "path": "res/room_12/Room_12_18.lh"
+        },
+        {
+          "resourceId": 68031,
+          "path": "res/room_12/Room_12_19.lh"
+        },
+        {
+          "resourceId": 68032,
+          "path": "res/room_12/Room_12_2.lh"
+        },
+        {
+          "resourceId": 68033,
+          "path": "res/room_12/Room_12_20.lh"
+        },
+        {
+          "resourceId": 68034,
+          "path": "res/room_12/Room_12_3.lh"
+        },
+        {
+          "resourceId": 68035,
+          "path": "res/room_12/Room_12_4.lh"
+        },
+        {
+          "resourceId": 68036,
+          "path": "res/room_12/Room_12_5.lh"
+        },
+        {
+          "resourceId": 68037,
+          "path": "res/room_12/Room_12_6.lh"
+        },
+        {
+          "resourceId": 68038,
+          "path": "res/room_12/Room_12_7.lh"
+        },
+        {
+          "resourceId": 68039,
+          "path": "res/room_12/Room_12_8.lh"
+        },
+        {
+          "resourceId": 68040,
+          "path": "res/room_12/Room_12_9.lh"
+        }
+      ]
+    },
+    "room_2": {
+      "id": 58,
+      "referenced": 21,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 58000,
+          "path": "res/room_2/laya_icon/roleui/Room_2_1.png"
+        },
+        {
+          "resourceId": 58001,
+          "path": "res/room_2/laya_icon/roomui/Room_2_1.png"
+        },
+        {
+          "resourceId": 58002,
+          "path": "res/room_2/laya_icon/roomui/Room_2_10.png"
+        },
+        {
+          "resourceId": 58003,
+          "path": "res/room_2/laya_icon/roomui/Room_2_2.png"
+        },
+        {
+          "resourceId": 58004,
+          "path": "res/room_2/laya_icon/roomui/Room_2_3.png"
+        },
+        {
+          "resourceId": 58005,
+          "path": "res/room_2/laya_icon/roomui/Room_2_4.png"
+        },
+        {
+          "resourceId": 58006,
+          "path": "res/room_2/laya_icon/roomui/Room_2_5.png"
+        },
+        {
+          "resourceId": 58007,
+          "path": "res/room_2/laya_icon/roomui/Room_2_6.png"
+        },
+        {
+          "resourceId": 58008,
+          "path": "res/room_2/laya_icon/roomui/Room_2_7.png"
+        },
+        {
+          "resourceId": 58009,
+          "path": "res/room_2/laya_icon/roomui/Room_2_8.png"
+        },
+        {
+          "resourceId": 58010,
+          "path": "res/room_2/laya_icon/roomui/Room_2_9.png"
+        },
+        {
+          "resourceId": 58011,
+          "path": "res/room_2/Room_2_1.lh"
+        },
+        {
+          "resourceId": 58012,
+          "path": "res/room_2/Room_2_10.lh"
+        },
+        {
+          "resourceId": 58013,
+          "path": "res/room_2/Room_2_2.lh"
+        },
+        {
+          "resourceId": 58014,
+          "path": "res/room_2/Room_2_3.lh"
+        },
+        {
+          "resourceId": 58015,
+          "path": "res/room_2/Room_2_4.lh"
+        },
+        {
+          "resourceId": 58016,
+          "path": "res/room_2/Room_2_5.lh"
+        },
+        {
+          "resourceId": 58017,
+          "path": "res/room_2/Room_2_6.lh"
+        },
+        {
+          "resourceId": 58018,
+          "path": "res/room_2/Room_2_7.lh"
+        },
+        {
+          "resourceId": 58019,
+          "path": "res/room_2/Room_2_8.lh"
+        },
+        {
+          "resourceId": 58020,
+          "path": "res/room_2/Room_2_9.lh"
+        }
+      ]
+    },
+    "room_3": {
+      "id": 59,
+      "referenced": 21,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 59000,
+          "path": "res/room_3/laya_icon/roleui/Room_3_1.png"
+        },
+        {
+          "resourceId": 59001,
+          "path": "res/room_3/laya_icon/roomui/Room_3_1.png"
+        },
+        {
+          "resourceId": 59002,
+          "path": "res/room_3/laya_icon/roomui/Room_3_10.png"
+        },
+        {
+          "resourceId": 59003,
+          "path": "res/room_3/laya_icon/roomui/Room_3_2.png"
+        },
+        {
+          "resourceId": 59004,
+          "path": "res/room_3/laya_icon/roomui/Room_3_3.png"
+        },
+        {
+          "resourceId": 59005,
+          "path": "res/room_3/laya_icon/roomui/Room_3_4.png"
+        },
+        {
+          "resourceId": 59006,
+          "path": "res/room_3/laya_icon/roomui/Room_3_5.png"
+        },
+        {
+          "resourceId": 59007,
+          "path": "res/room_3/laya_icon/roomui/Room_3_6.png"
+        },
+        {
+          "resourceId": 59008,
+          "path": "res/room_3/laya_icon/roomui/Room_3_7.png"
+        },
+        {
+          "resourceId": 59009,
+          "path": "res/room_3/laya_icon/roomui/Room_3_8.png"
+        },
+        {
+          "resourceId": 59010,
+          "path": "res/room_3/laya_icon/roomui/Room_3_9.png"
+        },
+        {
+          "resourceId": 59011,
+          "path": "res/room_3/Room_3_1.lh"
+        },
+        {
+          "resourceId": 59012,
+          "path": "res/room_3/Room_3_10.lh"
+        },
+        {
+          "resourceId": 59013,
+          "path": "res/room_3/Room_3_2.lh"
+        },
+        {
+          "resourceId": 59014,
+          "path": "res/room_3/Room_3_3.lh"
+        },
+        {
+          "resourceId": 59015,
+          "path": "res/room_3/Room_3_4.lh"
+        },
+        {
+          "resourceId": 59016,
+          "path": "res/room_3/Room_3_5.lh"
+        },
+        {
+          "resourceId": 59017,
+          "path": "res/room_3/Room_3_6.lh"
+        },
+        {
+          "resourceId": 59018,
+          "path": "res/room_3/Room_3_7.lh"
+        },
+        {
+          "resourceId": 59019,
+          "path": "res/room_3/Room_3_8.lh"
+        },
+        {
+          "resourceId": 59020,
+          "path": "res/room_3/Room_3_9.lh"
+        }
+      ]
+    },
+    "room_4": {
+      "id": 60,
+      "referenced": 21,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 60000,
+          "path": "res/room_4/laya_icon/roleui/Room_4_1.png"
+        },
+        {
+          "resourceId": 60001,
+          "path": "res/room_4/laya_icon/roomui/Room_4_1.png"
+        },
+        {
+          "resourceId": 60002,
+          "path": "res/room_4/laya_icon/roomui/Room_4_10.png"
+        },
+        {
+          "resourceId": 60003,
+          "path": "res/room_4/laya_icon/roomui/Room_4_2.png"
+        },
+        {
+          "resourceId": 60004,
+          "path": "res/room_4/laya_icon/roomui/Room_4_3.png"
+        },
+        {
+          "resourceId": 60005,
+          "path": "res/room_4/laya_icon/roomui/Room_4_4.png"
+        },
+        {
+          "resourceId": 60006,
+          "path": "res/room_4/laya_icon/roomui/Room_4_5.png"
+        },
+        {
+          "resourceId": 60007,
+          "path": "res/room_4/laya_icon/roomui/Room_4_6.png"
+        },
+        {
+          "resourceId": 60008,
+          "path": "res/room_4/laya_icon/roomui/Room_4_7.png"
+        },
+        {
+          "resourceId": 60009,
+          "path": "res/room_4/laya_icon/roomui/Room_4_8.png"
+        },
+        {
+          "resourceId": 60010,
+          "path": "res/room_4/laya_icon/roomui/Room_4_9.png"
+        },
+        {
+          "resourceId": 60011,
+          "path": "res/room_4/Room_4_1.lh"
+        },
+        {
+          "resourceId": 60012,
+          "path": "res/room_4/Room_4_10.lh"
+        },
+        {
+          "resourceId": 60013,
+          "path": "res/room_4/Room_4_2.lh"
+        },
+        {
+          "resourceId": 60014,
+          "path": "res/room_4/Room_4_3.lh"
+        },
+        {
+          "resourceId": 60015,
+          "path": "res/room_4/Room_4_4.lh"
+        },
+        {
+          "resourceId": 60016,
+          "path": "res/room_4/Room_4_5.lh"
+        },
+        {
+          "resourceId": 60017,
+          "path": "res/room_4/Room_4_6.lh"
+        },
+        {
+          "resourceId": 60018,
+          "path": "res/room_4/Room_4_7.lh"
+        },
+        {
+          "resourceId": 60019,
+          "path": "res/room_4/Room_4_8.lh"
+        },
+        {
+          "resourceId": 60020,
+          "path": "res/room_4/Room_4_9.lh"
+        }
+      ]
+    },
+    "room_5": {
+      "id": 61,
+      "referenced": 21,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 61000,
+          "path": "res/room_5/laya_icon/roleui/Room_5_1.png"
+        },
+        {
+          "resourceId": 61001,
+          "path": "res/room_5/laya_icon/roomui/Room_5_1.png"
+        },
+        {
+          "resourceId": 61002,
+          "path": "res/room_5/laya_icon/roomui/Room_5_10.png"
+        },
+        {
+          "resourceId": 61003,
+          "path": "res/room_5/laya_icon/roomui/Room_5_2.png"
+        },
+        {
+          "resourceId": 61004,
+          "path": "res/room_5/laya_icon/roomui/Room_5_3.png"
+        },
+        {
+          "resourceId": 61005,
+          "path": "res/room_5/laya_icon/roomui/Room_5_4.png"
+        },
+        {
+          "resourceId": 61006,
+          "path": "res/room_5/laya_icon/roomui/Room_5_5.png"
+        },
+        {
+          "resourceId": 61007,
+          "path": "res/room_5/laya_icon/roomui/Room_5_6.png"
+        },
+        {
+          "resourceId": 61008,
+          "path": "res/room_5/laya_icon/roomui/Room_5_7.png"
+        },
+        {
+          "resourceId": 61009,
+          "path": "res/room_5/laya_icon/roomui/Room_5_8.png"
+        },
+        {
+          "resourceId": 61010,
+          "path": "res/room_5/laya_icon/roomui/Room_5_9.png"
+        },
+        {
+          "resourceId": 61011,
+          "path": "res/room_5/Room_5_1.lh"
+        },
+        {
+          "resourceId": 61012,
+          "path": "res/room_5/Room_5_10.lh"
+        },
+        {
+          "resourceId": 61013,
+          "path": "res/room_5/Room_5_2.lh"
+        },
+        {
+          "resourceId": 61014,
+          "path": "res/room_5/Room_5_3.lh"
+        },
+        {
+          "resourceId": 61015,
+          "path": "res/room_5/Room_5_4.lh"
+        },
+        {
+          "resourceId": 61016,
+          "path": "res/room_5/Room_5_5.lh"
+        },
+        {
+          "resourceId": 61017,
+          "path": "res/room_5/Room_5_6.lh"
+        },
+        {
+          "resourceId": 61018,
+          "path": "res/room_5/Room_5_7.lh"
+        },
+        {
+          "resourceId": 61019,
+          "path": "res/room_5/Room_5_8.lh"
+        },
+        {
+          "resourceId": 61020,
+          "path": "res/room_5/Room_5_9.lh"
+        }
+      ]
+    },
+    "room_6": {
+      "id": 62,
+      "referenced": 21,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 62000,
+          "path": "res/room_6/laya_icon/roleui/Room_6_1.png"
+        },
+        {
+          "resourceId": 62001,
+          "path": "res/room_6/laya_icon/roomui/Room_6_1.png"
+        },
+        {
+          "resourceId": 62002,
+          "path": "res/room_6/laya_icon/roomui/Room_6_10.png"
+        },
+        {
+          "resourceId": 62003,
+          "path": "res/room_6/laya_icon/roomui/Room_6_2.png"
+        },
+        {
+          "resourceId": 62004,
+          "path": "res/room_6/laya_icon/roomui/Room_6_3.png"
+        },
+        {
+          "resourceId": 62005,
+          "path": "res/room_6/laya_icon/roomui/Room_6_4.png"
+        },
+        {
+          "resourceId": 62006,
+          "path": "res/room_6/laya_icon/roomui/Room_6_5.png"
+        },
+        {
+          "resourceId": 62007,
+          "path": "res/room_6/laya_icon/roomui/Room_6_6.png"
+        },
+        {
+          "resourceId": 62008,
+          "path": "res/room_6/laya_icon/roomui/Room_6_7.png"
+        },
+        {
+          "resourceId": 62009,
+          "path": "res/room_6/laya_icon/roomui/Room_6_8.png"
+        },
+        {
+          "resourceId": 62010,
+          "path": "res/room_6/laya_icon/roomui/Room_6_9.png"
+        },
+        {
+          "resourceId": 62011,
+          "path": "res/room_6/Room_6_1.lh"
+        },
+        {
+          "resourceId": 62012,
+          "path": "res/room_6/Room_6_10.lh"
+        },
+        {
+          "resourceId": 62013,
+          "path": "res/room_6/Room_6_2.lh"
+        },
+        {
+          "resourceId": 62014,
+          "path": "res/room_6/Room_6_3.lh"
+        },
+        {
+          "resourceId": 62015,
+          "path": "res/room_6/Room_6_4.lh"
+        },
+        {
+          "resourceId": 62016,
+          "path": "res/room_6/Room_6_5.lh"
+        },
+        {
+          "resourceId": 62017,
+          "path": "res/room_6/Room_6_6.lh"
+        },
+        {
+          "resourceId": 62018,
+          "path": "res/room_6/Room_6_7.lh"
+        },
+        {
+          "resourceId": 62019,
+          "path": "res/room_6/Room_6_8.lh"
+        },
+        {
+          "resourceId": 62020,
+          "path": "res/room_6/Room_6_9.lh"
+        }
+      ]
+    },
+    "room_7": {
+      "id": 63,
+      "referenced": 21,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 63000,
+          "path": "res/room_7/laya_icon/roleui/Room_7_1.png"
+        },
+        {
+          "resourceId": 63001,
+          "path": "res/room_7/laya_icon/roomui/Room_7_1.png"
+        },
+        {
+          "resourceId": 63002,
+          "path": "res/room_7/laya_icon/roomui/Room_7_10.png"
+        },
+        {
+          "resourceId": 63003,
+          "path": "res/room_7/laya_icon/roomui/Room_7_2.png"
+        },
+        {
+          "resourceId": 63004,
+          "path": "res/room_7/laya_icon/roomui/Room_7_3.png"
+        },
+        {
+          "resourceId": 63005,
+          "path": "res/room_7/laya_icon/roomui/Room_7_4.png"
+        },
+        {
+          "resourceId": 63006,
+          "path": "res/room_7/laya_icon/roomui/Room_7_5.png"
+        },
+        {
+          "resourceId": 63007,
+          "path": "res/room_7/laya_icon/roomui/Room_7_6.png"
+        },
+        {
+          "resourceId": 63008,
+          "path": "res/room_7/laya_icon/roomui/Room_7_7.png"
+        },
+        {
+          "resourceId": 63009,
+          "path": "res/room_7/laya_icon/roomui/Room_7_8.png"
+        },
+        {
+          "resourceId": 63010,
+          "path": "res/room_7/laya_icon/roomui/Room_7_9.png"
+        },
+        {
+          "resourceId": 63011,
+          "path": "res/room_7/Room_7_1.lh"
+        },
+        {
+          "resourceId": 63012,
+          "path": "res/room_7/Room_7_10.lh"
+        },
+        {
+          "resourceId": 63013,
+          "path": "res/room_7/Room_7_2.lh"
+        },
+        {
+          "resourceId": 63014,
+          "path": "res/room_7/Room_7_3.lh"
+        },
+        {
+          "resourceId": 63015,
+          "path": "res/room_7/Room_7_4.lh"
+        },
+        {
+          "resourceId": 63016,
+          "path": "res/room_7/Room_7_5.lh"
+        },
+        {
+          "resourceId": 63017,
+          "path": "res/room_7/Room_7_6.lh"
+        },
+        {
+          "resourceId": 63018,
+          "path": "res/room_7/Room_7_7.lh"
+        },
+        {
+          "resourceId": 63019,
+          "path": "res/room_7/Room_7_8.lh"
+        },
+        {
+          "resourceId": 63020,
+          "path": "res/room_7/Room_7_9.lh"
+        }
+      ]
+    },
+    "room_8": {
+      "id": 64,
+      "referenced": 31,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 64000,
+          "path": "res/room_8/laya_icon/roleui/Room_8_1.png"
+        },
+        {
+          "resourceId": 64001,
+          "path": "res/room_8/laya_icon/roomui/Room_8_1.png"
+        },
+        {
+          "resourceId": 64002,
+          "path": "res/room_8/laya_icon/roomui/Room_8_10.png"
+        },
+        {
+          "resourceId": 64003,
+          "path": "res/room_8/laya_icon/roomui/Room_8_11.png"
+        },
+        {
+          "resourceId": 64004,
+          "path": "res/room_8/laya_icon/roomui/Room_8_12.png"
+        },
+        {
+          "resourceId": 64005,
+          "path": "res/room_8/laya_icon/roomui/Room_8_13.png"
+        },
+        {
+          "resourceId": 64006,
+          "path": "res/room_8/laya_icon/roomui/Room_8_14.png"
+        },
+        {
+          "resourceId": 64007,
+          "path": "res/room_8/laya_icon/roomui/Room_8_15.png"
+        },
+        {
+          "resourceId": 64008,
+          "path": "res/room_8/laya_icon/roomui/Room_8_2.png"
+        },
+        {
+          "resourceId": 64009,
+          "path": "res/room_8/laya_icon/roomui/Room_8_3.png"
+        },
+        {
+          "resourceId": 64010,
+          "path": "res/room_8/laya_icon/roomui/Room_8_4.png"
+        },
+        {
+          "resourceId": 64011,
+          "path": "res/room_8/laya_icon/roomui/Room_8_5.png"
+        },
+        {
+          "resourceId": 64012,
+          "path": "res/room_8/laya_icon/roomui/Room_8_6.png"
+        },
+        {
+          "resourceId": 64013,
+          "path": "res/room_8/laya_icon/roomui/Room_8_7.png"
+        },
+        {
+          "resourceId": 64014,
+          "path": "res/room_8/laya_icon/roomui/Room_8_8.png"
+        },
+        {
+          "resourceId": 64015,
+          "path": "res/room_8/laya_icon/roomui/Room_8_9.png"
+        },
+        {
+          "resourceId": 64016,
+          "path": "res/room_8/Room_8_1.lh"
+        },
+        {
+          "resourceId": 64017,
+          "path": "res/room_8/Room_8_10.lh"
+        },
+        {
+          "resourceId": 64018,
+          "path": "res/room_8/Room_8_11.lh"
+        },
+        {
+          "resourceId": 64019,
+          "path": "res/room_8/Room_8_12.lh"
+        },
+        {
+          "resourceId": 64020,
+          "path": "res/room_8/Room_8_13.lh"
+        },
+        {
+          "resourceId": 64021,
+          "path": "res/room_8/Room_8_14.lh"
+        },
+        {
+          "resourceId": 64022,
+          "path": "res/room_8/Room_8_15.lh"
+        },
+        {
+          "resourceId": 64023,
+          "path": "res/room_8/Room_8_2.lh"
+        },
+        {
+          "resourceId": 64024,
+          "path": "res/room_8/Room_8_3.lh"
+        },
+        {
+          "resourceId": 64025,
+          "path": "res/room_8/Room_8_4.lh"
+        },
+        {
+          "resourceId": 64026,
+          "path": "res/room_8/Room_8_5.lh"
+        },
+        {
+          "resourceId": 64027,
+          "path": "res/room_8/Room_8_6.lh"
+        },
+        {
+          "resourceId": 64028,
+          "path": "res/room_8/Room_8_7.lh"
+        },
+        {
+          "resourceId": 64029,
+          "path": "res/room_8/Room_8_8.lh"
+        },
+        {
+          "resourceId": 64030,
+          "path": "res/room_8/Room_8_9.lh"
+        }
+      ]
+    },
+    "room_9": {
+      "id": 65,
+      "referenced": 41,
+      "cached": 0,
+      "missing": [
+        {
+          "resourceId": 65000,
+          "path": "res/room_9/laya_icon/roleui/Room_9_1.png"
+        },
+        {
+          "resourceId": 65001,
+          "path": "res/room_9/laya_icon/roomui/Room_9_1.png"
+        },
+        {
+          "resourceId": 65002,
+          "path": "res/room_9/laya_icon/roomui/Room_9_10.png"
+        },
+        {
+          "resourceId": 65003,
+          "path": "res/room_9/laya_icon/roomui/Room_9_11.png"
+        },
+        {
+          "resourceId": 65004,
+          "path": "res/room_9/laya_icon/roomui/Room_9_12.png"
+        },
+        {
+          "resourceId": 65005,
+          "path": "res/room_9/laya_icon/roomui/Room_9_13.png"
+        },
+        {
+          "resourceId": 65006,
+          "path": "res/room_9/laya_icon/roomui/Room_9_14.png"
+        },
+        {
+          "resourceId": 65007,
+          "path": "res/room_9/laya_icon/roomui/Room_9_15.png"
+        },
+        {
+          "resourceId": 65008,
+          "path": "res/room_9/laya_icon/roomui/Room_9_16.png"
+        },
+        {
+          "resourceId": 65009,
+          "path": "res/room_9/laya_icon/roomui/Room_9_17.png"
+        },
+        {
+          "resourceId": 65010,
+          "path": "res/room_9/laya_icon/roomui/Room_9_18.png"
+        },
+        {
+          "resourceId": 65011,
+          "path": "res/room_9/laya_icon/roomui/Room_9_19.png"
+        },
+        {
+          "resourceId": 65012,
+          "path": "res/room_9/laya_icon/roomui/Room_9_2.png"
+        },
+        {
+          "resourceId": 65013,
+          "path": "res/room_9/laya_icon/roomui/Room_9_20.png"
+        },
+        {
+          "resourceId": 65014,
+          "path": "res/room_9/laya_icon/roomui/Room_9_3.png"
+        },
+        {
+          "resourceId": 65015,
+          "path": "res/room_9/laya_icon/roomui/Room_9_4.png"
+        },
+        {
+          "resourceId": 65016,
+          "path": "res/room_9/laya_icon/roomui/Room_9_5.png"
+        },
+        {
+          "resourceId": 65017,
+          "path": "res/room_9/laya_icon/roomui/Room_9_6.png"
+        },
+        {
+          "resourceId": 65018,
+          "path": "res/room_9/laya_icon/roomui/Room_9_7.png"
+        },
+        {
+          "resourceId": 65019,
+          "path": "res/room_9/laya_icon/roomui/Room_9_8.png"
+        },
+        {
+          "resourceId": 65020,
+          "path": "res/room_9/laya_icon/roomui/Room_9_9.png"
+        },
+        {
+          "resourceId": 65021,
+          "path": "res/room_9/Room_9_1.lh"
+        },
+        {
+          "resourceId": 65022,
+          "path": "res/room_9/Room_9_10.lh"
+        },
+        {
+          "resourceId": 65023,
+          "path": "res/room_9/Room_9_11.lh"
+        },
+        {
+          "resourceId": 65024,
+          "path": "res/room_9/Room_9_12.lh"
+        },
+        {
+          "resourceId": 65025,
+          "path": "res/room_9/Room_9_13.lh"
+        },
+        {
+          "resourceId": 65026,
+          "path": "res/room_9/Room_9_14.lh"
+        },
+        {
+          "resourceId": 65027,
+          "path": "res/room_9/Room_9_15.lh"
+        },
+        {
+          "resourceId": 65028,
+          "path": "res/room_9/Room_9_16.lh"
+        },
+        {
+          "resourceId": 65029,
+          "path": "res/room_9/Room_9_17.lh"
+        },
+        {
+          "resourceId": 65030,
+          "path": "res/room_9/Room_9_18.lh"
+        },
+        {
+          "resourceId": 65031,
+          "path": "res/room_9/Room_9_19.lh"
+        },
+        {
+          "resourceId": 65032,
+          "path": "res/room_9/Room_9_2.lh"
+        },
+        {
+          "resourceId": 65033,
+          "path": "res/room_9/Room_9_20.lh"
+        },
+        {
+          "resourceId": 65034,
+          "path": "res/room_9/Room_9_3.lh"
+        },
+        {
+          "resourceId": 65035,
+          "path": "res/room_9/Room_9_4.lh"
+        },
+        {
+          "resourceId": 65036,
+          "path": "res/room_9/Room_9_5.lh"
+        },
+        {
+          "resourceId": 65037,
+          "path": "res/room_9/Room_9_6.lh"
+        },
+        {
+          "resourceId": 65038,
+          "path": "res/room_9/Room_9_7.lh"
+        },
+        {
+          "resourceId": 65039,
+          "path": "res/room_9/Room_9_8.lh"
+        },
+        {
+          "resourceId": 65040,
+          "path": "res/room_9/Room_9_9.lh"
+        }
+      ]
+    },
+    "sounds": {
+      "id": 6,
+      "referenced": 11,
+      "cached": 11,
+      "missing": []
+    }
+  }
+}

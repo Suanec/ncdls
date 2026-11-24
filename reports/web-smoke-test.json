@@ -1,0 +1,98 @@
+{
+  "testedAt": "2026-11-24",
+  "browser": "Installed Google Chrome, isolated headless profile",
+  "firstLevel": {
+    "input": "mouse clicks following original tutorial",
+    "won": true,
+    "screwsCollected": 24,
+    "nextGrade": 2,
+    "uncaughtErrors": []
+  },
+  "sampledModes": [
+    {
+      "mode": 0,
+      "level": 2,
+      "gaming": true,
+      "initing": false,
+      "cars": 45,
+      "screws": 264,
+      "errors": [],
+      "external": []
+    },
+    {
+      "mode": 2,
+      "level": 1,
+      "gaming": true,
+      "initing": false,
+      "cars": 46,
+      "screws": 264,
+      "errors": [],
+      "external": []
+    },
+    {
+      "mode": 3,
+      "level": 1,
+      "gaming": true,
+      "initing": false,
+      "cars": 55,
+      "screws": 324,
+      "errors": [],
+      "external": []
+    },
+    {
+      "mode": 4,
+      "level": 1,
+      "gaming": true,
+      "initing": false,
+      "cars": 44,
+      "screws": 264,
+      "errors": [],
+      "external": []
+    },
+    {
+      "mode": 5,
+      "level": 1,
+      "gaming": true,
+      "initing": false,
+      "cars": 48,
+      "screws": 288,
+      "errors": [],
+      "external": []
+    }
+  ],
+  "htmlSelector": {
+    "mode": 5,
+    "level": 2,
+    "cars": 59,
+    "gaming": true,
+    "errors": []
+  },
+  "limits": [
+    "Only representative levels were tested; all 393 available-mode configurations were not played.",
+    "No physical phone or Safari test.",
+    "Cat and dragon asset groups were not cached."
+  ],
+  "layoutViewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "deviceScaleFactor": 1
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "deviceScaleFactor": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 2
+    }
+  ],
+  "reloadPersistence": {
+    "savedClassicGrade": 2,
+    "restoredClassicGrade": 2,
+    "storageKey": "user_json_ncdls_web",
+    "errors": []
+  }
+}

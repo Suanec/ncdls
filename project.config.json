@@ -1,0 +1,24 @@
+{
+  "description": "挪车打螺丝本地学习工程；仅经静态检查，未运行模拟器",
+  "miniprogramRoot": "wechat-game/",
+  "compileType": "game",
+  "appid": "touristappid",
+  "projectname": "ncdls-local-study",
+  "setting": {
+    "es6": false,
+    "enhance": false,
+    "minified": false,
+    "urlCheck": false,
+    "compileHotReLoad": false,
+    "ignoreUploadUnusedFiles": false,
+    "useStaticServer": false
+  },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}
