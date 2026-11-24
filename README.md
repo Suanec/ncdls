@@ -1,5 +1,7 @@
 # 挪车打螺丝学习工程
 
+**手机浏览器入口：** [挪车打螺丝](https://suanec.github.io/ncdls/)。从首次打开、添加主屏幕到离线下载，按 [手机逐步操作文档](docs/MOBILE_OPERATION.md) 操作。游戏通过独立仓库 Pages 部署，个人主页只增加入口链接。部署状态见 [Actions](https://github.com/Suanec/ncdls/actions)。
+
 **网页版已加入：** 执行 `npm run web`，打开 <http://127.0.0.1:8088/> 即可游玩。复用原引擎、资源、玩法和关卡，附带选关菜单；详见 [网页版运行说明](docs/WEB.md)。无需安装依赖或微信开发者工具。
 
 手机试玩：手机与电脑连接同一 Wi-Fi，执行 `npm run serve:web:lan`，在手机浏览器打开终端打印的 `LAN` 地址。
