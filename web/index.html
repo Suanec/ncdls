@@ -13,13 +13,13 @@
     <title>挪车打螺丝 · 网页版</title>
     <link rel="icon" href="data:," />
     <style>/*__STARTUP_CSS__*/</style>
-    <link rel="stylesheet" data-href="launcher.css?v=20261124.5" />
+    <link rel="stylesheet" data-href="launcher.css?v=20261124.6" />
   </head>
   <body>
     <main>
       <iframe
         id="game"
-        data-src="game.html?v=20261124.5"
+        data-src="game.html?v=20261124.6"
         title="挪车打螺丝游戏"
         allow="autoplay; fullscreen"
       ></iframe>
@@ -63,15 +63,23 @@
           inputmode="numeric"
         />
         <p>选择关卡会切换当前进度，游戏自动保存在本浏览器。</p>
-        <p class="secondary">版本：20261124.5</p>
+        <p class="secondary">版本：20261124.6</p>
         <p class="secondary">猫咪和打巨龙资源尚未缓存，暂不提供入口。</p>
         <p id="menu-status" role="status"></p>
         <button class="primary" type="submit">进入关卡</button>
         <button id="restart-game" type="button">重启游戏（保留存档）</button>
         <p class="secondary">画面异常时可重启；会回到当前关卡开始，保留关卡进度。</p>
+        <button id="diagnose-game" type="button">检测卡顿（保留现场）</button>
+        <p id="diagnose-summary" role="status"></p>
+        <section id="diagnose-result" hidden>
+          <p>复制下面的诊断信息，发回聊天即可。检测不会重开关卡。</p>
+          <textarea id="diagnose-content" rows="6" readonly aria-label="游戏诊断信息"></textarea>
+          <button id="diagnose-copy" type="button">复制诊断信息</button>
+          <p id="diagnose-copy-status" role="status"></p>
+        </section>
       </form>
     </dialog>
-    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261124.5" data-launcher></script>
+    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261124.6" data-launcher></script>
     <script>/*__STARTUP_JS__*/</script>
   </body>
 </html>

@@ -1,0 +1,59 @@
+{
+  "baseline": "20261124.5 / 2ec51ac",
+  "iphone15Verified": false,
+  "scope": "Local macOS browsers with phone viewport and iOS user-agent; real touch taps, no screen lock. Does not reproduce the reported phone freeze. Parking-full failure is not classified as a frozen loop.",
+  "runs": [
+    {
+      "engine": "chrome",
+      "level": 2,
+      "clicks": 25,
+      "frameBefore": 482,
+      "frameAfter": 3702,
+      "errors": [],
+      "sameScene": true,
+      "gaming": false,
+      "won": false,
+      "grade": 2,
+      "stalledDuringClicks": false
+    },
+    {
+      "engine": "chrome",
+      "level": 294,
+      "clicks": 69,
+      "frameBefore": 486,
+      "frameAfter": 6286,
+      "errors": [],
+      "sameScene": true,
+      "gaming": false,
+      "won": false,
+      "grade": 294,
+      "stalledDuringClicks": false
+    },
+    {
+      "engine": "webkit",
+      "level": 2,
+      "clicks": 16,
+      "frameBefore": 265,
+      "frameAfter": 1641,
+      "errors": [],
+      "sameScene": true,
+      "gaming": false,
+      "won": false,
+      "grade": 2,
+      "stalledDuringClicks": false
+    },
+    {
+      "engine": "webkit",
+      "level": 294,
+      "clicks": 32,
+      "frameBefore": 259,
+      "frameAfter": 2089,
+      "errors": [],
+      "sameScene": true,
+      "gaming": false,
+      "won": false,
+      "grade": 294,
+      "stalledDuringClicks": false
+    }
+  ]
+}

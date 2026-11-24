@@ -123,4 +123,68 @@
         button.disabled = false;
       }
     });
+  // A small parent-page history survives a stalled game animation loop.
+  // No uploads, storage writes, extra asset requests or automatic restarts.
+  const diagnose = document.querySelector('#diagnose-game');
+  if (diagnose) {
+    const history = [];
+    function sample() {
+      try {
+        const g = frame.contentWindow, l = g.Laya, h = g.NCDLSWeb?.hooks;
+        return { time: Date.now(), hidden: g.document.hidden,
+          frame: l?.timer?.currFrame ?? null, loop: g.W?.FPS?.lc ?? null,
+          rendering: l?.stage?.renderingEnabled ?? null,
+          engineVisible: l?.stage?.isVisibility ?? null,
+          timerScale: l?.timer?.scale ?? null, ...h?.runtimeState?.() };
+      } catch (error) { return { time: Date.now(), readError: String(error) }; }
+    }
+    setInterval(() => { history.push(sample()); if (history.length > 20) history.shift(); }, 1000);
+    function snapshot() {
+      const g = frame.contentWindow, l = g.Laya, web = g.NCDLSWeb, game = g.Game;
+      const ui = g.GameUI?.displayObject?._events?.mousedown;
+      const listeners = (Array.isArray(ui) ? ui : ui ? [ui] : []);
+      return { ...sample(), mode: web?.hooks?.mode.GetMode(), level: web?.hooks?.mode.GetGrade(),
+        initializing: game?.initing, gaming: game?.hfsm.isGaming, win: game?.hfsm.isWin,
+        fail: game?.hfsm.isFail, gameTime: game?.count_time,
+        stage: l?.stage && { width:l.stage.width, height:l.stage.height,
+          visible:l.stage.visible, focused:l.stage.isFocused, frameRate:l.stage.frameRate },
+        webglLost: l?.WebGLContext?.mainContext?.isContextLost?.(),
+        errors: web?.errors?.slice(-10),
+        input: { enabled:l?.MouseManager?.enabled, touchId:l?.MouseManager?.instance?._curTouchID,
+          heldGestures:listeners.map(e => e.caller?._identifier).filter(v => v !== undefined),
+          downs:l?.TouchManager?.I?.preDowns?.length },
+        timers: l && Object.fromEntries(['systemTimer','startTimer','physicsTimer','updateTimer','lateTimer','timer']
+          .map(name => [name, l[name] && {frame:l[name].currFrame,time:l[name].currTimer,delta:l[name].delta,scale:l[name].scale}])),
+        cars: game?.map_script?.list_cars?.slice(0,40).map(c => ({ id:c.sp3?.id, color:c.str_color,
+          active:c.sp3?.activeInHierarchy, idle:c.hfsm.isIdle, park:c.hfsm.isPark, wait:c.hfsm.isWait,
+          position:c.sp3 && {x:c.sp3.transform.position.x,y:c.sp3.transform.position.y,z:c.sp3.transform.position.z} })),
+        cards: game?.map_2d?.graphs?.slice(0,24).map(c => ({name:c.name,x:c.x,y:c.y,rotation:c.rotation,
+          disposed:c.isDisposed,rig:c.rig && {type:c.rig.type,enabled:c.rig.enabled}})) };
+    }
+    const summary = document.querySelector('#diagnose-summary');
+    const output = document.querySelector('#diagnose-content');
+    diagnose.addEventListener('click', async () => {
+      diagnose.disabled = true;
+      summary.textContent = '正在读取游戏状态，请稍等…';
+      try {
+        const before = snapshot(), recent = history.slice();
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        const after = snapshot();
+        const verdict = after.webglLost ? '绘图环境已中断' : after.errors?.length ? '记录到运行错误' :
+          after.frame === null ? '游戏尚未初始化' : before.frame === after.frame ? '检测到游戏帧没有推进' :
+          after.rendering === false ? '游戏绘制处于停用状态' : after.paused ? '游戏处于暂停状态' :
+          '游戏帧仍在推进，需要结合车辆和卡片状态排查';
+        output.value = JSON.stringify({release:'20261124.6',verdict,userAgent:navigator.userAgent,
+          viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},history:recent,before,after},null,2);
+        summary.textContent = verdict + '。请复制诊断信息发回聊天。';
+        document.querySelector('#diagnose-result').hidden = false;
+      } catch (error) { summary.textContent = '读取未完成：' + error.message; }
+      finally { diagnose.disabled = false; }
+    });
+    document.querySelector('#diagnose-copy').addEventListener('click', async () => {
+      const tip = document.querySelector('#diagnose-copy-status');
+      try { await navigator.clipboard.writeText(output.value); tip.textContent = '已复制，可以粘贴回聊天。'; }
+      catch { output.focus(); output.select(); tip.textContent = '请长按文本框，全选并复制。'; }
+    });
+  }
 })();

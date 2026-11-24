@@ -139,3 +139,8 @@ p {
     height: 100%;
   }
 }
+
+#levels { max-height: calc(100vh - 28px); max-height: calc(100dvh - 28px); overflow: auto; }
+#diagnose-game { width: 100%; margin-top: 12px; }
+#diagnose-content { width: 100%; font-size: 13px; }
+#diagnose-summary:empty, #diagnose-copy-status:empty { display: none; }

@@ -119,6 +119,7 @@ try {
         original,
         `(window.NCDLSWeb.hooks = {
       mode: eP, game: iJ, ui: iv,
+      runtimeState() { return { paused: !!cx.pause, pauseDialog: !!cx.pause_dialog }; },
       openLevel(mode, level) {
         eP.SetMode(mode);
         switch (mode) {

@@ -1,0 +1,46 @@
+{
+  "mode": "classic",
+  "verification": "Isolated browser: invoked existing GameMode.Save and GetLevelTemp; restored original grade and mode. Runtime mapping only, not persistence timing or play-through of 294 levels.",
+  "rows": [
+    {
+      "setRead": 293,
+      "beforeGrade": 293,
+      "beforeTemplate": 293,
+      "afterGrade": 294,
+      "afterTemplate": 294,
+      "afterMap3d": 851
+    },
+    {
+      "setRead": 294,
+      "beforeGrade": 294,
+      "beforeTemplate": 294,
+      "afterGrade": 296,
+      "afterTemplate": 2,
+      "afterMap3d": 11
+    },
+    {
+      "setRead": 295,
+      "beforeGrade": 295,
+      "beforeTemplate": 1,
+      "afterGrade": 296,
+      "afterTemplate": 2,
+      "afterMap3d": 11
+    },
+    {
+      "setRead": 296,
+      "beforeGrade": 296,
+      "beforeTemplate": 2,
+      "afterGrade": 297,
+      "afterTemplate": 3,
+      "afterMap3d": 4
+    },
+    {
+      "setRead": 588,
+      "beforeGrade": 588,
+      "beforeTemplate": 294,
+      "afterGrade": 590,
+      "afterTemplate": 2,
+      "afterMap3d": 11
+    }
+  ]
+}

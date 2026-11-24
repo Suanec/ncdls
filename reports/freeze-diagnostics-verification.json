@@ -1,0 +1,11 @@
+{
+  "release": "20261124.6",
+  "engine": "WebKit 26.5 on macOS (not iOS 15)",
+  "checks": [
+    "Live game: detects advancing frames and reads pause/input/car/card state",
+    "Injected stopped game loop: parent diagnosis remains accessible, detects freeze, preserves scene and save",
+    "Copy button succeeds or offers selectable-text fallback"
+  ],
+  "success": true,
+  "pageErrors": []
+}
