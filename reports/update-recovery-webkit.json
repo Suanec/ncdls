@@ -1,0 +1,58 @@
+{
+  "release": "20261124.7",
+  "engine": "webkit",
+  "iphone15Verified": false,
+  "checks": [
+    "Reproduced: version query still opens v5 under its offline worker",
+    "Existing v5 full cache upgrades to v7 without any runtime or pack transfer",
+    "Pause diagnosis reads the existing engine state without changing the runtime bundle",
+    "Online recovery works with an old game tab still open, preserves save/caches/unrelated SW, and opens v7 without a controller",
+    "Recovered online game starts without automatically registering or downloading an offline package",
+    "Recovered page ignores unrelated download messages and can manually save offline resources again"
+  ],
+  "updateRequests": [
+    {
+      "path": "sw.js",
+      "bytes": 15713,
+      "latest": true
+    },
+    {
+      "path": "offline-manifest.json",
+      "bytes": 415947,
+      "latest": true
+    },
+    {
+      "path": "sw.js",
+      "bytes": 15713,
+      "latest": true
+    },
+    {
+      "path": "game.html",
+      "bytes": 647,
+      "latest": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 11372,
+      "latest": true
+    },
+    {
+      "path": "launcher.css",
+      "bytes": 2696,
+      "latest": true
+    },
+    {
+      "path": "launcher.js",
+      "bytes": 9531,
+      "latest": true
+    },
+    {
+      "path": "mobile.js",
+      "bytes": 12157,
+      "latest": true
+    }
+  ],
+  "updateDecodedBytes": 483776,
+  "offlineReload": "Not verified: a prior attempt returned Playwright WebKit internal error during offline navigation; Chrome offline check passed.",
+  "success": true
+}

@@ -12,7 +12,8 @@
   let registration,
     busy = false,
     reloading = false,
-    downloaded = false;
+    downloaded = false,
+    activeWorker = null, lastMessage = 0, checkingDownload = false;
   const supported =
     isSecureContext && "serviceWorker" in navigator && "caches" in window;
   const mib = (size) => (size / 1024 / 1024).toFixed(1) + " MB";
@@ -101,6 +102,7 @@
     if (!supported || busy) return;
     downloaded = false;
     busy = true;
+    lastMessage = Date.now();
     download.disabled = true;
     progress.hidden = false;
     display("正在准备离线资源，请保持页面打开…");
@@ -114,6 +116,7 @@
         registration.installing || registration.waiting || registration.active,
       );
       // Explicit user action authorizes the complete offline package download.
+      activeWorker = worker;
       worker.postMessage({ type: "download-all" });
       navigator.storage?.persist?.().catch(() => {});
     } catch (error) {
@@ -134,6 +137,9 @@
     navigator.serviceWorker.addEventListener("message", (event) => {
       const data = event.data;
       if (data?.app !== "ncdls-mobile") return;
+      const workers = [activeWorker, registration?.active, registration?.waiting, registration?.installing];
+      if (!workers.some(worker => worker && worker === event.source)) return;
+      lastMessage = Date.now();
       if (data.type === "progress") {
         busy = true;
         progress.hidden = false;
@@ -141,12 +147,15 @@
         progress.value = Math.floor(
           (data.bytes / Math.max(1, data.totalBytes)) * 100,
         );
+        const transfer = data.transfer;
+        const waiting = transfer?.waitingSeconds >= 3
+          ? ` · ${transfer.buffered ? "正在接收" : "等待数据"} ${transfer.waitingSeconds} 秒（尝试 ${transfer.attempt}/3）` : "";
         display(
-          data.phase === "reuse"
+          (data.phase === "reuse"
             ? `正在检查已保存的资源（${data.files}/${data.totalFiles}），可复用的文件不会重复下载…`
-            : data.totalPacks
-              ? `下载资源包 ${data.completedPacks}/${data.totalPacks} · 已接收 ${mib(data.receivedBytes)} · 已保存 ${progress.value}%（${data.files}/${data.totalFiles}）`
-              : `正在保存 ${progress.value}% · ${mib(data.bytes)} / ${mib(data.totalBytes)}（${data.files}/${data.totalFiles}）`,
+            : data.phase === "download"
+              ? `下载${transfer?.path?.startsWith("runtime/") ? "游戏运行文件" : data.totalPacks ? `资源包 ${data.completedPacks}/${data.totalPacks}` : "更新文件"} · 已接收 ${mib(data.receivedBytes)} · 已保存 ${progress.value}%（${data.files}/${data.totalFiles}）`
+              : `正在保存 ${progress.value}% · ${mib(data.bytes)} / ${mib(data.totalBytes)}（${data.files}/${data.totalFiles}）`) + waiting,
         );
       } else if (data.type === "error") {
         busy = false;
@@ -162,6 +171,25 @@
       else if (!busy) refresh().catch(showError);
     });
   }
+  // iOS may terminate a background worker while its page still says "busy".
+  setInterval(async () => {
+    if (!busy || checkingDownload || Date.now() - lastMessage < 15000) return;
+    checkingDownload = true;
+    try {
+      const worker = activeWorker || registration?.waiting || registration?.active;
+      if (!worker) throw new Error("离线组件未启动，请重试或使用下方在线恢复入口。");
+      const status = await workerStatus(worker);
+      if (status.downloading === false) {
+        busy = false;
+        if (status.ready) { downloaded = true; await refresh(); }
+        else showError(new Error("下载已中断，已保存资源保留。可以重试，或使用下方入口切回在线版。"));
+      }
+      lastMessage = Date.now();
+    } catch (error) {
+      busy = false;
+      showError(error);
+    } finally { checkingDownload = false; }
+  }, 5000);
   window.addEventListener("online", () => refresh().catch(showError));
   window.addEventListener("offline", () => refresh().catch(showError));
   if (

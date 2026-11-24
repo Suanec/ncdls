@@ -2,7 +2,7 @@
   "version": 1,
   "decodedAssets": 885,
   "scripts": [
-    "runtime/game-4edfcbd187ee89c920b0.js"
+    "runtime/game-93cc5c95db898d1fd1bd.js"
   ],
   "files": [
     {
@@ -13,7 +13,7 @@
     {
       "path": "game.html",
       "bytes": 647,
-      "sha256": "d318b5bebbbd94ca067b4243b62bdc32144d1150a94fa6acc3935dfd5bd86da2"
+      "sha256": "2ed8ec9e51275f711ba57b0f59fb89af265ab6793ffc9123d850ebc32b073da3"
     },
     {
       "path": "icons/icon-180.png",
@@ -52,8 +52,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 11266,
-      "sha256": "516cfcfbd998f3ca930f3543b64102e242059cb72641d7ba5e3ad7ee3a892d97"
+      "bytes": 11372,
+      "sha256": "d9cba20d0bc441c51475bed92df4386b45d50c97663234713a1ba27c8e96bd01"
     },
     {
       "path": "json/drama_core.json",
@@ -72,8 +72,8 @@
     },
     {
       "path": "launcher.js",
-      "bytes": 9492,
-      "sha256": "6a692546c9dd678c22c0dd48dc8ce1d25be87cef8bc9b6ffbd284ca5a8dd591a"
+      "bytes": 9531,
+      "sha256": "dd87765154573913726ee32fbb52e090df5e837c4f06eaa21b1e79979b8be1ac"
     },
     {
       "path": "libs/laya.physics.wasm.wasm",
@@ -162,18 +162,13 @@
     },
     {
       "path": "mobile.js",
-      "bytes": 10555,
-      "sha256": "fdd5656a4a183e2f800577c909e60f318e1e5eca4b533b762ae7398cd8c12042"
+      "bytes": 12157,
+      "sha256": "7577bef44b4246f14ba53a4597bc1048c8c10a5ecbc96ac53dff2d8d51cf231d"
     },
     {
       "path": "offline-manifest.json",
       "bytes": 415947,
-      "sha256": "fc620ebb79010631ec56bb1bdbc45bd03e470ff32ed7525a0bd2f2a7bf049f9d"
-    },
-    {
-      "path": "offline-packs/0680f9a1426746d7d5bc.json",
-      "bytes": 136676,
-      "sha256": "0680f9a1426746d7d5bcbf31a16c5022c4f584347fd06c3c38a817a9218ac292"
+      "sha256": "64927478dfd5bc95b699821f1974a8242a3ae230cfaeef48bc1366d4c6b79e50"
     },
     {
       "path": "offline-packs/3439d6dd8d8e15c39ed1.json",
@@ -181,9 +176,9 @@
       "sha256": "3439d6dd8d8e15c39ed11b0d6e1e233a104229dbb921d226b98cd2b4ba26c10f"
     },
     {
-      "path": "offline-packs/41f6947ae62478a0d932.json",
-      "bytes": 2799366,
-      "sha256": "41f6947ae62478a0d93222a0b9f83208e66356f2be7eb5fc1f01503dbd2ae7b2"
+      "path": "offline-packs/3dd4bb7eb2e1984c6465.json",
+      "bytes": 2790770,
+      "sha256": "3dd4bb7eb2e1984c646534d9c9fd72c22fa7e4a9f456288742ac7f40a6c05407"
     },
     {
       "path": "offline-packs/445da9fdfcccb97efe5d.json",
@@ -206,19 +201,19 @@
       "sha256": "575c3a6fe519aa1820edd81a94e57e0e78eb239e1d7ea0de56d9be66fa8c1a34"
     },
     {
-      "path": "offline-packs/5f34f4f50177c33b1351.json",
-      "bytes": 2797859,
-      "sha256": "5f34f4f50177c33b13517ee8ff93931cfcb88e9b7e1344f9b6179f7579e4245e"
-    },
-    {
       "path": "offline-packs/637814d4261a024f9bd8.json",
       "bytes": 1980119,
       "sha256": "637814d4261a024f9bd89fdbdbbe18cf7e5b16de384d3ffaa753985195ba484c"
     },
     {
-      "path": "offline-packs/7d9b3fd0a2231e851435.json",
-      "bytes": 2798600,
-      "sha256": "7d9b3fd0a2231e8514357b2662b6b395767c155019b607805ddf1ee705c069de"
+      "path": "offline-packs/7120b8795cc46b0b6162.json",
+      "bytes": 2807734,
+      "sha256": "7120b8795cc46b0b6162a2380945899a173e6fa2f0e64dedf0d9d37d0708dc87"
+    },
+    {
+      "path": "offline-packs/7ff1ad8cc67b568f0c59.json",
+      "bytes": 12388726,
+      "sha256": "7ff1ad8cc67b568f0c59bb3506f3a917bf9db7d231992eda7f609cad8e837418"
     },
     {
       "path": "offline-packs/804e7f215f5fce67a681.json",
@@ -231,14 +226,14 @@
       "sha256": "8c734653a01afd82363cead21a6967f8085e553c8f172a2dcccfd62542808351"
     },
     {
-      "path": "offline-packs/a27b6d762c7278dd0546.json",
-      "bytes": 12388842,
-      "sha256": "a27b6d762c7278dd054690a84952dcf050d52bf1debc530d23fc48d2d60c4696"
-    },
-    {
       "path": "offline-packs/a6aa8a45c0da0c98bbb5.json",
       "bytes": 2518699,
       "sha256": "a6aa8a45c0da0c98bbb5151a20955e4ca16e4ba0a05527aaa4045c7350da462f"
+    },
+    {
+      "path": "offline-packs/b94984224ddf33f97d76.json",
+      "bytes": 136676,
+      "sha256": "b94984224ddf33f97d76b904f6c929d6eb4b4ca7d79a102acd8e3761fb7e9059"
     },
     {
       "path": "offline-packs/c85a4731f49687cd9943.json",
@@ -249,6 +244,11 @@
       "path": "offline-packs/d1e435a56fa48bf91434.json",
       "bytes": 2766722,
       "sha256": "d1e435a56fa48bf914343abe1544496e073d95aed28833fd673ef7f79f430a67"
+    },
+    {
+      "path": "offline-packs/d3097182835b8e631b18.json",
+      "bytes": 2799649,
+      "sha256": "d3097182835b8e631b18cf3269c8e03f255101ee2e2203256933bf83a34365cf"
     },
     {
       "path": "offline-packs/e1762c054f4684399038.json",
@@ -279,6 +279,11 @@
       "path": "prefab/record_button.json",
       "bytes": 613,
       "sha256": "f47a0bcded8df5ee7325e76ec78611cdb22e1eb7fc06dc1e2db74ced490dc148"
+    },
+    {
+      "path": "recover.html",
+      "bytes": 3124,
+      "sha256": "a1c95c47d0f2d4a223ac5e103602f68795ccccb94e49e0d71b3e78790efe951b"
     },
     {
       "path": "res/atlas/cat/Cat0.atlas",
@@ -9596,14 +9601,14 @@
       "sha256": "5e695dd6345ae39d8efe18943a8aa731c031e9ccf254b12561ea5aa34f2b634b"
     },
     {
-      "path": "runtime/game-4edfcbd187ee89c920b0.js",
-      "bytes": 9291582,
-      "sha256": "4edfcbd187ee89c920b046b4c0e1fb3b811fcf326d5c6519f4d8768252f1793a"
+      "path": "runtime/game-93cc5c95db898d1fd1bd.js",
+      "bytes": 9291493,
+      "sha256": "93cc5c95db898d1fd1bd54021078eee9c8b551c8116b04bafc029538e3c29bab"
     },
     {
       "path": "scripts.json",
       "bytes": 64,
-      "sha256": "d447d329f56c5e9d87f148f514b686be87b4aad3f4d1330841535f2635ef4894"
+      "sha256": "3046ffe1a7d457e1f652a55d314192bb801b820af696c32421076c7e54e2ba6a"
     },
     {
       "path": "sh.bin",
@@ -9617,8 +9622,8 @@
     },
     {
       "path": "sw.js",
-      "bytes": 14046,
-      "sha256": "4d0f0d84834f68bba266d3bf0373448693d6f3ef810a03e81b589224cdd81c17"
+      "bytes": 15713,
+      "sha256": "0fe50136eb506d7d3813a52ecdff09b53cd3309661b62ceac8aebdf4bb4cb795"
     },
     {
       "path": "texture.png",
@@ -9626,5 +9631,5 @@
       "sha256": "bf9e603d0fd5aa64a961a8d88281e13c756062225f6ae67ee098fffc7cab0e68"
     }
   ],
-  "mobileVersion": "430e5fd7e52059dd4c46"
+  "mobileVersion": "7e7fbd7debe185cff971"
 }

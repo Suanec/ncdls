@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>更新游戏页面 · 保留存档</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px 20px; background: #edf5fb; color: #183a56; font: 17px/1.65 system-ui, sans-serif; }
+    main { max-width: 520px; margin: 6vh auto; padding: 24px; background: white; border-radius: 20px; }
+    h1 { margin: 0 0 20px; font-size: 25px; }
+    button { width: 100%; padding: 15px; border: 0; border-radius: 12px; background: #287cbd; color: white; font: inherit; }
+    button:disabled { opacity: .6; }
+    #status { overflow-wrap: anywhere; }
+    small { color: #647587; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>更新游戏页面</h1>
+    <p>离线更新卡住或总是打开旧版时，可以先切回在线版，按需加载当前关卡。</p>
+    <p>保留关卡存档和已下载的离线资源。打开后会从当前关卡开始，离线更新可以稍后重试。</p>
+    <button id="recover" type="button">保留存档，打开最新版</button>
+    <p id="status" role="status">需要网络。无需清除 Safari 网站数据。</p>
+    <small>更新入口 · 20261124.7</small>
+  </main>
+  <script>
+  (() => {
+    const base = new URL('./', location.href);
+    const button = document.querySelector('#recover');
+    const status = document.querySelector('#status');
+    // A second navigation releases the previous document's SW controller.
+    // This page is deliberately excluded from every offline manifest.
+    if (new URL(location.href).searchParams.get('online') === '1') {
+      if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) {
+        button.disabled = true;
+        status.textContent = '正在从网络打开最新版…';
+        location.replace(base.href);
+        return;
+      }
+      status.textContent = '旧页面仍在使用离线组件。请再点一次按钮；如仍未切换，请关闭旧游戏标签页后重试。';
+    }
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      status.textContent = '正在切换到在线版，存档和已下载资源保留…';
+      try {
+        if ('serviceWorker' in navigator) {
+          const registration = await navigator.serviceWorker.getRegistration(base.href);
+          if (registration && registration.scope !== base.href)
+            throw new Error('此页面由其他站点的离线组件管理，未改动它。');
+          if (registration && !(await registration.unregister()))
+            throw new Error('离线组件未能退出，请关闭旧游戏标签页后重试。');
+        }
+        const next = new URL('recover.html', base);
+        next.searchParams.set('online', '1');
+        next.searchParams.set('t', String(Date.now()));
+        location.replace(next.href);
+      } catch (error) {
+        status.textContent = '切换未完成：' + error.message;
+        button.disabled = false;
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

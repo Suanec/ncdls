@@ -1,5 +1,5 @@
 /* Built with a content-derived version; old versions stay active until their tabs close. */
-const VERSION = "430e5fd7e52059dd4c46";
+const VERSION = "7e7fbd7debe185cff971";
 const SCOPE = new URL(self.registration.scope);
 const PREFIX = `ncdls-mobile:${SCOPE.pathname}:`;
 const CACHE = PREFIX + VERSION;
@@ -22,56 +22,70 @@ const digest = async (data) => Array.from(
   (b) => b.toString(16).padStart(2, "0"),
 ).join("");
 
-// Abort only when no bytes arrive for 30 seconds; slow but progressing transfers
-// can continue. Retry the failed request, not all completed resources.
-async function receive(path, onBytes = () => {}) {
+// Bound each attempt even if the browser never rejects an aborted fetch/read.
+// Streaming downloads use an idle deadline; buffered responses get more time.
+async function receive(path, onBytes = () => {}, onStatus = () => {}) {
   const url = absolute(path);
   if (!url.startsWith(SCOPE.href)) throw new Error("无效资源路径");
   for (let attempt = 0; attempt < 3; attempt++) {
     const controller = new AbortController();
-    let timer;
-    const arm = () => {
+    let timer, heartbeat, lastByte = Date.now(), buffered = false, rejectTimeout;
+    const timeout = new Promise((resolve, reject) => { rejectTimeout = reject; });
+    const arm = (ms = 30000) => {
       clearTimeout(timer);
-      timer = setTimeout(() => controller.abort(), 30000);
+      timer = setTimeout(() => {
+        const error = new Error('网络长时间无响应'); error.name = 'AbortError';
+        rejectTimeout(error);
+        controller.abort();
+      }, ms);
     };
+    const notice = () => Promise.resolve(onStatus({ path, attempt: attempt + 1,
+      waitingSeconds: Math.floor((Date.now() - lastByte) / 1000), buffered })).catch(() => {});
     try {
       arm();
-      const response = await fetch(url, {
-        cache: "no-store", credentials: "same-origin", redirect: "error",
-        signal: controller.signal,
-      });
-      if (!response.ok) throw new Error(`下载失败：${path} (${response.status})`);
-      let data;
-      if (response.body?.getReader) {
-        const reader = response.body.getReader(), chunks = [];
-        let length = 0;
-        for (;;) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          chunks.push(value);
-          length += value.byteLength;
-          arm();
-          await onBytes(value.byteLength);
+      heartbeat = setInterval(notice, 1000);
+      void notice();
+      const transfer = (async () => {
+        const response = await fetch(url, {
+          cache: "no-store", credentials: "same-origin", redirect: "error", signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(`下载失败：${path} (${response.status})`);
+        let data;
+        if (response.body?.getReader) {
+          const reader = response.body.getReader(), chunks = [];
+          let length = 0;
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (controller.signal.aborted) throw new Error('已中止过期下载');
+            if (done) break;
+            chunks.push(value); length += value.byteLength;
+            lastByte = Date.now(); arm();
+            await onBytes(value.byteLength);
+          }
+          data = new Uint8Array(length);
+          let offset = 0;
+          for (const chunk of chunks) { data.set(chunk, offset); offset += chunk.length; }
+        } else {
+          // Without a readable stream there is no way to measure byte-idle time.
+          // Do not cancel a progressing buffered transfer after just 30 seconds.
+          buffered = true; arm(120000);
+          data = new Uint8Array(await response.arrayBuffer());
+          if (controller.signal.aborted) throw new Error('已中止过期下载');
+          await onBytes(data.byteLength);
         }
-        data = new Uint8Array(length);
-        let offset = 0;
-        for (const chunk of chunks) { data.set(chunk, offset); offset += chunk.length; }
-      } else {
-        data = new Uint8Array(await response.arrayBuffer());
-        await onBytes(data.byteLength);
-      }
-      return { data, headers: response.headers };
+        return { data, headers: response.headers };
+      })();
+      return await Promise.race([transfer, timeout]);
     } catch (error) {
       controller.abort();
+      clearTimeout(timer); clearInterval(heartbeat);
       if (attempt === 2) throw new Error(
         error.name === "AbortError"
-          ? "网络长时间无响应，请恢复网络后重试；已保存的资源会保留。"
+          ? `网络长时间无响应：${path}。可重试或切回在线版；已保存资源保留。`
           : error.message,
       );
       await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)));
-    } finally {
-      clearTimeout(timer);
-    }
+    } finally { clearTimeout(timer); clearInterval(heartbeat); }
   }
 }
 
@@ -98,6 +112,8 @@ function contentType(path) {
   return types[path.split(".").pop().toLowerCase()] || "application/octet-stream";
 }
 
+let latestProgress = null;
+
 async function download() {
   const manifest = JSON.parse(new TextDecoder().decode(
     (await receive("offline-manifest.json")).data,
@@ -113,18 +129,20 @@ async function download() {
     receivedBytes = 0,
     completedPacks = 0,
     totalPacks = 0,
+    transfer = null,
     phase = "reuse";
   const progress = async (force = false) => {
     if (force || Date.now() - lastNotice > 180) {
       lastNotice = Date.now();
-      await broadcast({
+      latestProgress = {
         type: "progress",
         files,
         bytes,
         totalFiles: manifest.files.length,
         totalBytes: manifest.totalBytes,
-        phase, receivedBytes, completedPacks, totalPacks,
-      });
+        phase, receivedBytes, completedPacks, totalPacks, transfer,
+      };
+      await broadcast(latestProgress);
     }
   };
   await progress(true);
@@ -153,6 +171,7 @@ async function download() {
       missing.set(file.path, file);
     } else await complete(file);
   });
+  const transferStatus = async (info) => { transfer = info; await progress(true); };
   const received = async (length) => { receivedBytes += length; await progress(); };
   const save = async (file, data) => {
     if (data.byteLength !== file.bytes || await digest(data) !== file.sha256)
@@ -174,7 +193,7 @@ async function download() {
     const pendingBytes = pending.reduce((n, file) => n + file.bytes, 0);
     const rawBytes = pack.files.reduce((n, name) => n + expected.get(name).bytes, 0);
     // Small updates should not retransfer a whole pack just for one tiny file.
-    if (pending.length <= 8 && pendingBytes < rawBytes / 3) {
+    if (pack.files.length === 1 || (pending.length <= 8 && pendingBytes < rawBytes / 3)) {
       for (const file of pending) jobs.push({ file });
     } else { jobs.push({ pack, pending }); totalPacks++; }
   }
@@ -183,8 +202,8 @@ async function download() {
   phase = "download";
   await progress(true);
   await parallel(jobs, manifest.packs?.length ? 2 : 4, async ({ file, pack, pending }) => {
-    if (file) return save(file, (await receive(file.path, received)).data);
-    const { data } = await receive(pack.path, received);
+    if (file) return save(file, (await receive(file.path, received, transferStatus)).data);
+    const { data } = await receive(pack.path, received, transferStatus);
     if (data.byteLength !== pack.bytes || await digest(data) !== pack.sha256)
       throw new Error("资源包校验失败，请重新下载");
     const contents = JSON.parse(new TextDecoder().decode(data));
@@ -299,6 +318,8 @@ self.addEventListener("message", (event) => {
           version: VERSION,
           ...(marker ? await marker.json() : {}),
           ready: complete,
+          downloading: Boolean(downloadJob),
+          progress: downloadJob ? latestProgress : null,
         });
       } catch (error) {
         event.ports[0]?.postMessage({
@@ -359,6 +380,10 @@ self.addEventListener("fetch", (event) => {
     request.method !== "GET"
   )
     return;
+  if (url.pathname === new URL("recover.html", SCOPE).pathname) {
+    event.respondWith(fetch(new Request(request, { cache: "no-store" })));
+    return;
+  }
   event.respondWith(
     (async () => {
       url.search = "";

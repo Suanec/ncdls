@@ -19,7 +19,7 @@ const manifest = { version, files, packs: [pack], totalBytes: files.reduce((s, f
 const cacheName = `ncdls-mobile:/ncdls/:${version}`;
 const url = (name) => new URL(name, scope).href;
 
-function harness({ failOnce = false, corrupt = false, stallOnce = false } = {}) {
+function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreAbortOnce = false, hangForever = false, stallBodyOnce = false, bufferedOnce = false } = {}) {
   const stores = new Map(), listeners = new Map(), requests = [], messages = [];
   const counters = new Map();
   const caches = {
@@ -38,8 +38,8 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false } = {}) 
   const context = vm.createContext({
     URL, Headers, Response, TextDecoder, Uint8Array, AbortController,
     crypto: crypto.webcrypto, caches, atob,
-    setTimeout(fn, ms) { return setTimeout(fn, ms === 30000 ? 30 : 1); },
-    clearTimeout,
+    setTimeout(fn, ms) { return setTimeout(fn, ms === 30000 ? 30 : ms === 120000 ? 120 : 1); },
+    clearTimeout, setInterval, clearInterval, ReadableStream,
     self: {
       registration: { scope },
       clients: { async matchAll() { return [{ url: scope, postMessage(m) { messages.push(m); } }]; }, async claim() {} },
@@ -53,6 +53,12 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false } = {}) 
       counters.set(name, attempt);
       if (name === "offline-manifest.json") return new Response(JSON.stringify(manifest));
       if (name === pack.path) {
+        if (bufferedOnce && attempt === 1) return {ok:true,headers:new Headers(),body:null,
+          async arrayBuffer(){await new Promise(resolve=>setTimeout(resolve,60));return packData;}};
+        if (hangForever || (ignoreAbortOnce && attempt === 1)) return new Promise(() => {});
+        if (stallBodyOnce && attempt === 1) return new Response(new ReadableStream({
+          start(controller) { controller.enqueue(new Uint8Array([123])); }
+        }));
         if (stallOnce && attempt === 1) return new Promise((resolve, reject) => {
           options.signal.addEventListener("abort", () => {
             const error = new Error("stalled"); error.name = "AbortError"; reject(error);
@@ -118,5 +124,22 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false } = {}) 
   await stalled.download();
   assert(await stalled.ready());
   assert.equal(stalled.requests.filter(p => p === pack.path).length, 2);
-  console.log("Offline download regression passed: explicit-only download, bundle integrity, 503/idle-timeout retry, partial resume, MIME types, and no redundant pack download.");
+  const ignored = harness({ ignoreAbortOnce: true });
+  await ignored.download();
+  assert(await ignored.ready());
+  assert.equal(ignored.requests.filter(p => p === pack.path).length, 2);
+  const body = harness({ stallBodyOnce: true });
+  await body.download();
+  assert(await body.ready());
+  assert.equal(body.requests.filter(p => p === pack.path).length, 2);
+  const buffered = harness({ bufferedOnce: true });
+  await buffered.download();
+  assert(await buffered.ready());
+  assert.equal(buffered.requests.filter(p => p === pack.path).length, 1);
+  const forever = harness({ hangForever: true });
+  await assert.rejects(forever.download(), /网络长时间无响应/);
+  assert.equal(await forever.ready(), false);
+  assert.equal(forever.requests.filter(p => p === pack.path).length, 3);
+  assert(forever.messages.some(m => m.transfer?.attempt === 3));
+  console.log("Offline download regression passed: abort-ignoring fetch/body timeout, bounded retries, transfer status, explicit-only download, bundle integrity, 503/idle-timeout retry, partial resume, MIME types, and no redundant pack download.");
 })().catch((error) => { console.error(error); process.exitCode = 1; });

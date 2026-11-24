@@ -33,7 +33,7 @@ assert.equal(
 const offline = new Set(manifest.files.map((f) => f.path));
 const packPaths = new Set(manifest.packs.map((p) => p.path));
 for (const file of build.files)
-  if (!["sw.js", "offline-manifest.json"].includes(file.path) && !packPaths.has(file.path))
+  if (!["sw.js", "offline-manifest.json", "recover.html"].includes(file.path) && !packPaths.has(file.path))
     assert(offline.has(file.path), "Not cached: " + file.path);
 for (const file of manifest.files) {
   const data = fs.readFileSync(path.join(output, file.path));

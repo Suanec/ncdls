@@ -105,7 +105,7 @@ try {
       sha256: sha(data),
     };
   };
-  const resources = walk(output).sort().map(describe);
+  const resources = walk(output).sort().filter(file => path.basename(file) !== "recover.html").map(describe);
   const packs = require("./packs.cjs")(output, resources);
   const worker = fs.readFileSync(path.join(mobile, "src/sw.js"), "utf8");
   const version = sha(JSON.stringify(resources) + JSON.stringify(packs) + worker).slice(0, 20);

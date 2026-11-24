@@ -130,12 +130,12 @@
     const history = [];
     function sample() {
       try {
-        const g = frame.contentWindow, l = g.Laya, h = g.NCDLSWeb?.hooks;
+        const g = frame.contentWindow, l = g.Laya;
         return { time: Date.now(), hidden: g.document.hidden,
           frame: l?.timer?.currFrame ?? null, loop: g.W?.FPS?.lc ?? null,
           rendering: l?.stage?.renderingEnabled ?? null,
           engineVisible: l?.stage?.isVisibility ?? null,
-          timerScale: l?.timer?.scale ?? null, ...h?.runtimeState?.() };
+          timerScale: l?.timer?.scale ?? null, paused: !!g.Ad?.Var?._Global?.pause, pauseDialog: !!g.Ad?.Var?._Global?.pause_dialog };
       } catch (error) { return { time: Date.now(), readError: String(error) }; }
     }
     setInterval(() => { history.push(sample()); if (history.length > 20) history.shift(); }, 1000);
@@ -174,7 +174,7 @@
           after.frame === null ? '游戏尚未初始化' : before.frame === after.frame ? '检测到游戏帧没有推进' :
           after.rendering === false ? '游戏绘制处于停用状态' : after.paused ? '游戏处于暂停状态' :
           '游戏帧仍在推进，需要结合车辆和卡片状态排查';
-        output.value = JSON.stringify({release:'20261124.6',verdict,userAgent:navigator.userAgent,
+        output.value = JSON.stringify({release:'20261124.7',verdict,userAgent:navigator.userAgent,
           viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},history:recent,before,after},null,2);
         summary.textContent = verdict + '。请复制诊断信息发回聊天。';
         document.querySelector('#diagnose-result').hidden = false;
