@@ -1,5 +1,5 @@
 /* Built with a content-derived version; old versions stay active until their tabs close. */
-const VERSION = "a8cf8539d41a485cc758";
+const VERSION = "4e47058102d7e6dd7db2";
 const SCOPE = new URL(self.registration.scope);
 const PREFIX = `ncdls-mobile:${SCOPE.pathname}:`;
 const CACHE = PREFIX + VERSION;

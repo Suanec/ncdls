@@ -2,6 +2,24 @@
   "use strict";
   const status = document.querySelector("#status");
   const modules = new Map();
+  const reload = document.querySelector("#reload-game");
+  reload.addEventListener("click", () => {
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: "ncdls:restart" }, location.origin);
+    } else {
+      try {
+        window.W?.ICache?.saveData();
+      } catch { /* Keep the last saved progress. */ }
+      location.reload();
+    }
+  });
+  // This cached engine does not rebuild its textures and buffers on restoration.
+  // Recreate the iframe's engine instead of allowing a blank or partial scene.
+  document.addEventListener("webglcontextlost", (event) => {
+    if (!(event.target instanceof HTMLCanvasElement)) return;
+    event.preventDefault();
+    fail(new Error("绘图环境已中断，请点下方按钮重启游戏。已保存的进度会保留。"));
+  }, true);
   window.define = (id, factory) => {
     const module = { exports: {} };
     factory(
@@ -32,6 +50,11 @@
       metadata.pub.esp = [];
       metadata.m2.oss_cache = null;
       metadata.m2.n = "ncdls_web";
+      // Prefer the legacy WebGL1 path for this restored Laya 2.13 build while
+      // addressing partial browser renders. Set it before M2 creates the context.
+      // Laya's iOS 15 compatibility guidance: https://ask.layabox.com/d/50469
+      Laya.Config.useWebGL2 = false;
+      window.NCDLSWeb.renderCompatibility = "webgl1-compat";
       window.NCDLSWeb.config = config;
       window.NCDLSWeb.loadingUI = loadingUI;
       window.NCDLSWeb.main = new W.M2(config, loadingUI);
@@ -45,6 +68,7 @@
     console.error("[web]", error);
     status.textContent = "加载出错：" + (error?.message || message);
     document.querySelector("#boot").classList.remove("hidden");
+    reload.hidden = false;
   }
   window.addEventListener("error", (e) => fail(e.error || e.message));
   window.addEventListener("unhandledrejection", (e) => fail(e.reason));

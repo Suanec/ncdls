@@ -33,3 +33,13 @@ body {
 #boot.hidden {
   display: none;
 }
+#reload-game {
+  pointer-events: auto;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 18px;
+  background: #287cbd;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}

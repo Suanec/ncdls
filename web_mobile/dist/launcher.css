@@ -129,6 +129,10 @@ p {
   opacity: 0.5;
   cursor: wait;
 }
+#restart-game {
+  width: 100%;
+  margin-top: 12px;
+}
 @media (max-aspect-ratio: 640/1386) {
   iframe {
     width: 100%;

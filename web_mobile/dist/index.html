@@ -12,7 +12,7 @@
     />
     <title>挪车打螺丝 · 离线版</title>
     <link rel="icon" href="icons/icon-192.png" />
-    <link rel="stylesheet" href="launcher.css" />
+    <link rel="stylesheet" href="launcher.css?v=20261124.1" />
   <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" href="icons/icon-180.png" />
     <meta name="theme-color" content="#183a56" />
@@ -24,7 +24,7 @@
     <main>
       <iframe
         id="game"
-        src="game.html"
+        src="game.html?v=20261124.1"
         title="挪车打螺丝游戏"
         allow="autoplay; fullscreen"
       ></iframe>
@@ -57,12 +57,15 @@
           inputmode="numeric"
         />
         <p>选择关卡会切换当前进度，游戏自动保存在本浏览器。</p>
+        <p class="secondary">版本：20261124.1</p>
         <p class="secondary">猫咪和打巨龙资源尚未缓存，暂不提供入口。</p>
         <p id="menu-status" role="status"></p>
         <button class="primary" type="submit">进入关卡</button>
+        <button id="restart-game" type="button">重启游戏（保留存档）</button>
+        <p class="secondary">画面异常时可重启；会回到当前关卡开始，保留关卡进度。</p>
       </form>
     </dialog>
-    <script src="launcher.js"></script>
+    <script src="launcher.js?v=20261124.1"></script>
   <button id="mobile-menu" class="menu" aria-haspopup="dialog">离线与存档</button>
 <dialog id="mobile-panel" aria-labelledby="mobile-title">
   <div class="heading">

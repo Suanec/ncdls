@@ -21,13 +21,13 @@
   "files": [
     {
       "path": "browser.js",
-      "bytes": 2477,
-      "sha256": "6261323e86ab64e509a2dfad751622628aebe3cf906e7f7618dd67b3adb6566d"
+      "bytes": 3647,
+      "sha256": "e997dbf551858cafd486c3189fd3cb76df348f7ecb8e83e2784d94a6d68defe5"
     },
     {
       "path": "game.html",
-      "bytes": 529,
-      "sha256": "74601c712008db079cf8246c91378cb8a7fb74e668517121877d6a490ad6f3ea"
+      "bytes": 647,
+      "sha256": "e9da8085ea123ef9295134019c2bde536734fda440a73cbd1477b82078ada996"
     },
     {
       "path": "img/rank/paihang_3.png",
@@ -51,8 +51,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 1972,
-      "sha256": "7a0571d6d8dde09b5e0eff8d1f9a7e71e6ed22b1575ac0ffc753b8f47148b08a"
+      "bytes": 2264,
+      "sha256": "445349d973e5857e3a23de50e708e9fab4f8e842aa3d49d8417e702b85a27e4f"
     },
     {
       "path": "json/drama_core.json",
@@ -66,13 +66,13 @@
     },
     {
       "path": "launcher.css",
-      "bytes": 2375,
-      "sha256": "6413e916d7d83c41f402f53d7dfb2f3003f6a066faa997f74ae42b9aa81d4b68"
+      "bytes": 2428,
+      "sha256": "b99fc63b3fe4728c6b6f6547bd30a295cc178a99b8d341b4dff2a6c6d86291fa"
     },
     {
       "path": "launcher.js",
-      "bytes": 1954,
-      "sha256": "7a2fa4fc285f7571dbd4fc233d0eca341efac755f62297d5fe2dcd17d5d144be"
+      "bytes": 4756,
+      "sha256": "ca587002f45fa593db6296e35b6f58a3b22015b78524fecd1fb481937eff4447"
     },
     {
       "path": "libs/laya.physics.wasm.wasm",
@@ -9556,8 +9556,8 @@
     },
     {
       "path": "style.css",
-      "bytes": 526,
-      "sha256": "5c8daa8898e19ecbe0a647f83329ea6f4f2cb8f6a3acc365ce5fea11585b834e"
+      "bytes": 700,
+      "sha256": "55492ea370fc6b69f6bc0c4921bf1d499f521448980a21fb4d2ebdfe8d00aa8f"
     },
     {
       "path": "texture.png",
