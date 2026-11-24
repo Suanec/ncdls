@@ -1,0 +1,17 @@
+{
+  "name": "ncdls-web-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "挪车打螺丝手机离线 PWA，无需 npm 依赖",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "check": "node scripts/check.cjs",
+    "serve": "node scripts/serve.cjs",
+    "serve:lan": "node scripts/serve.cjs --lan",
+    "start": "npm run build && npm run serve",
+    "start:lan": "npm run build && npm run serve:lan"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

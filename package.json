@@ -15,7 +15,13 @@
     "serve:web": "node scripts/serve-web.cjs",
     "web": "npm run build:web && npm run serve:web",
     "serve:web:lan": "node scripts/serve-web.cjs --lan",
-    "web:lan": "npm run build:web && npm run serve:web:lan"
+    "web:lan": "npm run build:web && npm run serve:web:lan",
+    "build:mobile": "node web_mobile/scripts/build.cjs",
+    "check:mobile": "node web_mobile/scripts/check.cjs",
+    "serve:mobile": "node web_mobile/scripts/serve.cjs",
+    "serve:mobile:lan": "node web_mobile/scripts/serve.cjs --lan",
+    "mobile": "npm run build:mobile && npm run serve:mobile",
+    "mobile:lan": "npm run build:mobile && npm run serve:mobile:lan"
   },
   "engines": {
     "node": ">=18"

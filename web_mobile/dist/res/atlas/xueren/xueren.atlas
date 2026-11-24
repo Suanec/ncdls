@@ -1,0 +1,48 @@
+
+xueren.png
+size: 125,92
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tu2
+  rotate: true
+  xy: 79, 6
+  size: 84, 24
+  orig: 86, 26
+  offset: 1, 1
+  index: -1
+tu3
+  rotate: true
+  xy: 105, 46
+  size: 21, 17
+  orig: 23, 19
+  offset: 1, 1
+  index: -1
+tu4
+  rotate: false
+  xy: 2, 2
+  size: 75, 88
+  orig: 77, 90
+  offset: 1, 1
+  index: -1
+tu5
+  rotate: true
+  xy: 105, 26
+  size: 18, 17
+  orig: 20, 19
+  offset: 1, 1
+  index: -1
+tu6
+  rotate: false
+  xy: 105, 14
+  size: 11, 10
+  orig: 13, 12
+  offset: 1, 1
+  index: -1
+tu7
+  rotate: true
+  xy: 105, 69
+  size: 21, 18
+  orig: 23, 20
+  offset: 1, 1
+  index: -1

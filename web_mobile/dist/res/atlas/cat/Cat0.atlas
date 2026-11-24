@@ -1,0 +1,118 @@
+
+Cat0.png
+size: 560,508
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Heart
+  rotate: true
+  xy: 453, 218
+  size: 127, 103
+  orig: 129, 105
+  offset: 1, 1
+  index: -1
+Mouth_Sad
+  rotate: false
+  xy: 309, 31
+  size: 75, 36
+  orig: 75, 37
+  offset: 0, 1
+  index: -1
+Shadow
+  rotate: false
+  xy: 309, 2
+  size: 116, 27
+  orig: 118, 28
+  offset: 1, 1
+  index: -1
+Tear_2
+  rotate: true
+  xy: 535, 362
+  size: 28, 14
+  orig: 28, 14
+  offset: 0, 0
+  index: -1
+White_Cat/Body
+  rotate: false
+  xy: 2, 138
+  size: 308, 365
+  orig: 433, 466
+  offset: 67, 33
+  index: -1
+White_Cat/Eye
+  rotate: true
+  xy: 391, 93
+  size: 142, 58
+  orig: 142, 58
+  offset: 0, 0
+  index: -1
+White_Cat/Eye_2
+  rotate: false
+  xy: 180, 15
+  size: 127, 29
+  orig: 127, 29
+  offset: 0, 0
+  index: -1
+White_Cat/Eyebrow_Sad
+  rotate: true
+  xy: 535, 392
+  size: 111, 23
+  orig: 111, 23
+  offset: 0, 0
+  index: -1
+White_Cat/Hair
+  rotate: true
+  xy: 389, 237
+  size: 266, 62
+  orig: 266, 62
+  offset: 0, 0
+  index: -1
+White_Cat/L_Ear
+  rotate: false
+  xy: 451, 123
+  size: 97, 93
+  orig: 307, 466
+  offset: 185, 313
+  index: -1
+White_Cat/Leg
+  rotate: false
+  xy: 312, 69
+  size: 77, 153
+  orig: 77, 153
+  offset: 0, 0
+  index: -1
+White_Cat/Leg_Stand
+  rotate: false
+  xy: 453, 347
+  size: 80, 156
+  orig: 80, 156
+  offset: 0, 0
+  index: -1
+White_Cat/R_Ear
+  rotate: false
+  xy: 451, 28
+  size: 97, 93
+  orig: 307, 466
+  offset: 23, 308
+  index: -1
+White_Cat/Tail_3
+  rotate: false
+  xy: 2, 46
+  size: 280, 90
+  orig: 280, 91
+  offset: 0, 0
+  index: -1
+White_Cat/saihong
+  rotate: false
+  xy: 2, 5
+  size: 176, 39
+  orig: 176, 39
+  offset: 0, 0
+  index: -1
+sheng1
+  rotate: true
+  xy: 312, 224
+  size: 279, 75
+  orig: 279, 75
+  offset: 0, 0
+  index: -1

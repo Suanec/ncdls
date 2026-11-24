@@ -1,0 +1,80 @@
+/* Mobile viewport fallback avoids relying on typed CSS multiplication. */
+iframe {
+  width: min(100vw, 46.176vh);
+  width: min(100vw, 46.176dvh);
+}
+#mobile-menu {
+  left: max(12px, env(safe-area-inset-left));
+  right: auto;
+}
+#mobile-panel {
+  max-height: calc(100dvh - 28px);
+  overflow: auto;
+}
+#mobile-panel h2 {
+  font-size: 18px;
+  margin: 20px 0 8px;
+}
+#mobile-panel p {
+  font-size: 16px;
+}
+#mobile-panel p.secondary {
+  font-size: 14px;
+}
+#mobile-panel hr {
+  border: 0;
+  border-top: 1px solid #d9e2ed;
+  margin: 24px 0;
+}
+#offline-state {
+  font-weight: 600;
+}
+#offline-state[data-ready="true"] {
+  color: #206c50;
+}
+#offline-progress {
+  width: 100%;
+  height: 12px;
+  margin: 0 0 16px;
+  accent-color: #287cbd;
+}
+#offline-update {
+  margin-top: 12px;
+}
+.save-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.save-buttons button,
+.import-button {
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin: 0;
+  background: #e5edf5;
+  color: #183a56;
+  cursor: pointer;
+}
+#save-content {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  font:
+    13px/1.5 ui-monospace,
+    monospace;
+  border: 1px solid #c2d0dd;
+  border-radius: 10px;
+  resize: vertical;
+}
+#save-status:empty {
+  display: none;
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-aspect-ratio: 640/1386) {
+  iframe {
+    width: 100%;
+  }
+}

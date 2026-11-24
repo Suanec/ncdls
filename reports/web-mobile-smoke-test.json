@@ -1,0 +1,92 @@
+{
+  "checkedAt": "2026-11-24T08:36:20.628Z",
+  "version": "a8cf8539d41a485cc758",
+  "browser": "Local installed Chrome headless, isolated profile, 390x844 mobile viewport, DPR 2",
+  "offlineFiles": 1915,
+  "offlineBytes": 46509067,
+  "save": {
+    "viewed": true,
+    "exportedFile": "ncdls-save-2026-11-24.json",
+    "importedClassicGrade": 7,
+    "invalidImportRejected": true
+  },
+  "repair": {
+    "deletedCachedFile": "libs/laya.physics.wasm.wasm",
+    "incompleteDetected": true,
+    "downloadRestored": true
+  },
+  "offline": {
+    "modes": [
+      {
+        "mode": 0,
+        "grade": 7,
+        "cars": 42,
+        "errors": [],
+        "offline": "离线资源已就绪 · 44.4 MB。可以断网重新打开游戏。",
+        "controlled": true
+      },
+      {
+        "mode": 2,
+        "grade": 7,
+        "cars": 42,
+        "errors": [],
+        "offline": "离线资源已就绪 · 44.4 MB。可以断网重新打开游戏。",
+        "controlled": true
+      },
+      {
+        "mode": 3,
+        "grade": 7,
+        "cars": 54,
+        "errors": [],
+        "offline": "离线资源已就绪 · 44.4 MB。可以断网重新打开游戏。",
+        "controlled": true
+      },
+      {
+        "mode": 4,
+        "grade": 7,
+        "cars": 45,
+        "errors": [],
+        "offline": "离线资源已就绪 · 44.4 MB。可以断网重新打开游戏。",
+        "controlled": true
+      },
+      {
+        "mode": 5,
+        "grade": 7,
+        "cars": 59,
+        "errors": [],
+        "offline": "离线资源已就绪 · 44.4 MB。可以断网重新打开游戏。",
+        "controlled": true
+      }
+    ],
+    "range": {
+      "status": 206,
+      "length": 2,
+      "range": "bytes 0-1/166891"
+    },
+    "serverStopped": true,
+    "httpCacheDisabled": true,
+    "errors": []
+  },
+  "update": {
+    "before": {
+      "waiting": true,
+      "active": true,
+      "caches": [
+        "ncdls-mobile:/:9adfc2a3532c0270ee23",
+        "ncdls-mobile:/:a8cf8539d41a485cc758"
+      ]
+    },
+    "after": {
+      "waiting": false,
+      "caches": [
+        "ncdls-mobile:/:a8cf8539d41a485cc758"
+      ],
+      "version": "a8cf8539d41a485cc758"
+    }
+  },
+  "limitations": [
+    "Not tested on physical iPhone or Safari",
+    "Sample levels tested in all five available modes, not every level",
+    "No HTTPS site deployed; phone first install still requires one"
+  ]
+}

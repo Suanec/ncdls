@@ -1,0 +1,48 @@
+<button id="mobile-menu" class="menu" aria-haspopup="dialog">离线与存档</button>
+<dialog id="mobile-panel" aria-labelledby="mobile-title">
+  <div class="heading">
+    <h1 id="mobile-title">离线与存档</h1>
+    <button id="mobile-close" type="button" aria-label="关闭">×</button>
+  </div>
+  <p id="offline-state" role="status">正在检查离线资源…</p>
+  <progress
+    id="offline-progress"
+    max="100"
+    value="0"
+    hidden
+    aria-label="离线资源下载进度"
+  ></progress>
+  <button id="offline-download" class="primary" type="button">
+    保存离线资源
+  </button>
+  <button id="offline-update" class="primary" type="button" hidden>
+    应用更新并重启游戏
+  </button>
+  <p id="install-help">
+    iPhone：在 Safari
+    点“分享”→“添加到主屏幕”。从主屏幕打开游戏后，点“保存离线资源”，等待显示“离线资源已就绪”。
+  </p>
+  <p class="secondary">
+    首次下载需要 HTTPS
+    网址。资源保存在当前浏览器；下载时保持页面打开。更新重启会回到本关开始。
+  </p>
+  <hr />
+  <h2>我的存档</h2>
+  <p class="secondary">
+    进度保存在这台设备，导出文件可用于备份或转移到另一台设备。
+  </p>
+  <div class="save-buttons">
+    <button id="save-view" type="button">查看存档</button
+    ><button id="save-export" type="button">导出存档</button
+    ><label for="save-import" class="import-button">导入并重启</label>
+  </div>
+  <input id="save-import" type="file" accept="application/json,.json" hidden />
+  <p id="save-status" role="status"></p>
+  <textarea
+    id="save-content"
+    readonly
+    hidden
+    aria-label="本地存档内容"
+    spellcheck="false"
+  ></textarea>
+</dialog>

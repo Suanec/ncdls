@@ -4,6 +4,10 @@
 
 手机试玩：手机与电脑连接同一 Wi-Fi，执行 `npm run serve:web:lan`，在手机浏览器打开终端打印的 `LAN` 地址。
 
+**手机离线版已加入：** 执行 `npm run mobile`，打开 <http://127.0.0.1:8091/>。新增“离线与存档”菜单，可查看、导出、导入存档，下载完整资源后离线游玩。手机首次安装需要受信任的 **HTTPS** 站点；普通 LAN HTTP 仍只能在线试玩。详见 [手机离线版说明](web_mobile/README.md)。
+
+存档保存在浏览器的 `localStorage`，键名为 `user_json_ncdls_web`，不是工程中的文件。菜单“查看存档”可直接读取；电脑控制台可执行 `JSON.parse(localStorage.getItem('user_json_ncdls_web'))`。不同协议、域名/IP 或端口会分开保存，重启静态服务器不会删除进度。
+
 这是从本机微信缓存提取的客户端静态学习工程。脚本已按模块拆分并排版，图片、音效、模型和场景资源单独归档。游戏 AppID 为 `wxa3bf2c77158be359`，缓存版本为 `43`，提取日期为 2026-11-24。
 
 本目录现包含学习源码和微信小游戏还原工程：根目录 `project.config.json` 指向 `wechat-game/`，可以用本目录作为开发者工具的导入目录。微信工程只进行了静态还原和检查，没有安装开发者工具；另有经过 Chrome 抽样运行验证的网页版。原始编辑器工程和服务端代码没有恢复。
@@ -19,6 +23,7 @@
 ```text
 web/                网页启动与适配源码
 web-game/           生成的可运行静态网页版
+web_mobile/         手机 PWA 源码、完整 dist/、离线与存档说明
 project.config.json  微信开发者工具导入配置
 wechat-game/         生成的运行目录
 docs/                还原、车位、关卡、联网说明
