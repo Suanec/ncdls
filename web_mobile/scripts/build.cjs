@@ -94,7 +94,7 @@ try {
     .replace(
       "</body>",
       fs.readFileSync(path.join(mobile, "src/mobile-panel.html"), "utf8") +
-        '\n<script type="application/x-ncdls-script" data-src="mobile.js"></script>\n</body>',
+        '\n<script type="application/x-ncdls-script" data-before-game data-src="mobile.js"></script>\n</body>',
     );
   fs.writeFileSync(index, html);
   const describe = (file) => {
@@ -111,7 +111,8 @@ try {
   const version = sha(JSON.stringify(resources) + JSON.stringify(packs) + worker).slice(0, 20);
   fs.writeFileSync(
     path.join(output, "sw.js"),
-    worker.replace("__MOBILE_VERSION__", version),
+    worker.replace("__MOBILE_VERSION__", version).replace("__LAZY_FILES__",
+      JSON.stringify(Object.fromEntries(resources.map(f => [f.path, [f.bytes, f.sha256]])))),
   );
   fs.writeFileSync(
     path.join(output, "offline-manifest.json"),

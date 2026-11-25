@@ -1,0 +1,108 @@
+{
+  "release": "20261125.1",
+  "engine": "chrome",
+  "iphone15HardwareTest": false,
+  "checks": [
+    "First entry registers lazy cache without requesting full packs or offline manifest",
+    "Reload reuses runtime and visited assets with zero resource network requests",
+    "Levels 2 and 294 recover the reported visible-but-disabled-rendering state during car movement without replacing scene, cars, or grade",
+    "Intentional settings pause remains paused while drawing its dialog",
+    "Hidden document is not forced to render; visible frame resumes it",
+    "Manual full download reuses the lazily saved runtime",
+    "Full offline reload enters the game"
+  ],
+  "initialNetworkRequests": 133,
+  "secondEntryRequests": [
+    "/ncdls/icons/icon-192.png",
+    "/ncdls/icons/icon-192.png",
+    "/ncdls/sw.js"
+  ],
+  "levels": [
+    {
+      "level": 2,
+      "before": {
+        "repairs": 0,
+        "paused": false,
+        "frame": 741
+      },
+      "after": {
+        "frame": 799,
+        "rendering": true,
+        "hidden": false,
+        "visible": true,
+        "paused": false,
+        "sameScene": true,
+        "sameMap": true,
+        "sameCars": true,
+        "positionAdvanced": true,
+        "repairs": [
+          {
+            "time": 1795590938361,
+            "frame": 741,
+            "paused": false
+          }
+        ],
+        "grade": 2,
+        "errors": []
+      }
+    },
+    {
+      "level": 294,
+      "before": {
+        "repairs": 1,
+        "paused": false,
+        "frame": 922
+      },
+      "after": {
+        "frame": 983,
+        "rendering": true,
+        "hidden": false,
+        "visible": true,
+        "paused": false,
+        "sameScene": true,
+        "sameMap": true,
+        "sameCars": true,
+        "positionAdvanced": true,
+        "repairs": [
+          {
+            "time": 1795590938361,
+            "frame": 741,
+            "paused": false
+          },
+          {
+            "time": 1795590941827,
+            "frame": 922,
+            "paused": false
+          }
+        ],
+        "grade": 294,
+        "errors": []
+      }
+    }
+  ],
+  "fullDownloadRequests": [
+    "/ncdls/sw.js",
+    "/ncdls/offline-manifest.json",
+    "/ncdls/offline-packs/1ad67364130a64e0d82e.json",
+    "/ncdls/offline-packs/d3097182835b8e631b18.json",
+    "/ncdls/offline-packs/7120b8795cc46b0b6162.json",
+    "/ncdls/offline-packs/e1762c054f4684399038.json",
+    "/ncdls/offline-packs/637814d4261a024f9bd8.json",
+    "/ncdls/offline-packs/f7fc471d5120775e8ec8.json",
+    "/ncdls/offline-packs/8c734653a01afd82363c.json",
+    "/ncdls/offline-packs/c85a4731f49687cd9943.json",
+    "/ncdls/offline-packs/d1e435a56fa48bf91434.json",
+    "/ncdls/offline-packs/f59dd8fa8ad9c16d431f.json",
+    "/ncdls/offline-packs/804e7f215f5fce67a681.json",
+    "/ncdls/offline-packs/56029a7f2e5cb8171b3a.json",
+    "/ncdls/offline-packs/fcd7189cd936dfd8cd01.json",
+    "/ncdls/offline-packs/445da9fdfcccb97efe5d.json",
+    "/ncdls/offline-packs/4d250652b39cbeb61c81.json",
+    "/ncdls/offline-packs/3439d6dd8d8e15c39ed1.json",
+    "/ncdls/offline-packs/a6aa8a45c0da0c98bbb5.json",
+    "/ncdls/offline-packs/f054ffa2abef1a580016.json",
+    "/ncdls/offline-packs/575c3a6fe519aa1820ed.json",
+    "/ncdls/texture.png"
+  ],
+  "success": true
+}

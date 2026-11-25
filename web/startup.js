@@ -48,16 +48,30 @@
       for (const link of document.querySelectorAll("link[data-href]")) {
         link.href = link.dataset.href;
       }
-      for (const source of document.querySelectorAll("script[data-src]")) {
+      const sources = [...document.querySelectorAll("script[data-src]")];
+      let launcherReady = false, pending = sources.filter(s => s.hasAttribute("data-before-game")).length, launched = false;
+      const launch = () => {
+        if (launched || !launcherReady || pending) return;
+        launched = true;
+        const enter = () => {
+          show({stage:"frame",title:"正在连接游戏",detail:"优先读取已保存资源，缺少时才下载…"});
+          frame.src = frame.dataset.src;
+        };
+        if (window.NCDLSPrepareCache) window.NCDLSPrepareCache.then(enter, enter);
+        else enter();
+      };
+      for (const source of sources) {
         const script = document.createElement("script");
         script.src = source.dataset.src;
         script.onload = () => {
-          if (source.hasAttribute("data-launcher")) {
-            show({stage:"frame",title:"正在连接游戏",detail:"正在获取游戏入口和加载清单…"});
-            frame.src = frame.dataset.src;
-          }
+          if (source.hasAttribute("data-launcher")) launcherReady = true;
+          if (source.hasAttribute("data-before-game")) pending--;
+          launch();
         };
-        script.onerror = () => show({stage:"error",title:"页面组件加载失败",detail:"暂时无法连接，请重新加载。"});
+        script.onerror = () => {
+          if (source.hasAttribute("data-before-game")) { pending--; launch(); }
+          else show({stage:"error",title:"页面组件加载失败",detail:"暂时无法连接，请重新加载。"});
+        };
         document.head.append(script);
       }
     };

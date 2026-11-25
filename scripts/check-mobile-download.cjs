@@ -36,7 +36,7 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
     },
   };
   const context = vm.createContext({
-    URL, Headers, Response, TextDecoder, Uint8Array, AbortController,
+    URL, Headers, Request, Response, TextDecoder, Uint8Array, AbortController,
     crypto: crypto.webcrypto, caches, atob,
     setTimeout(fn, ms) { return setTimeout(fn, ms === 30000 ? 30 : ms === 120000 ? 120 : 1); },
     clearTimeout, setInterval, clearInterval, ReadableStream,
@@ -47,7 +47,7 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
       addEventListener(name, fn) { listeners.set(name, fn); },
     },
     async fetch(address, options) {
-      const name = new URL(address).pathname.slice("/ncdls/".length);
+      const name = new URL(address.url || address).pathname.slice("/ncdls/".length);
       requests.push(name);
       const attempt = (counters.get(name) || 0) + 1;
       counters.set(name, attempt);
@@ -71,9 +71,15 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
       throw new Error("Unexpected request " + name);
     },
   });
-  vm.runInContext(source.replace("__MOBILE_VERSION__", version), context);
+  vm.runInContext(source.replace("__MOBILE_VERSION__", version).replace("__LAZY_FILES__", JSON.stringify(Object.fromEntries(files.map(f => [f.path,[f.bytes,f.sha256]])))), context);
   return {
     stores, caches, requests, messages, listeners,
+    async resource(name, headers = {}) {
+      let response; const jobs = [];
+      listeners.get("fetch")({ request: new Request(url(name), {headers}),
+        respondWith(p) { response=p; }, waitUntil(p) { jobs.push(p); } });
+      const result = await response; await Promise.all(jobs); return result;
+    },
     async download() {
       let job;
       listeners.get("message")({ data: { type: "download-all" }, waitUntil(p) { job = p; } });
@@ -84,6 +90,32 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
 }
 
 (async () => {
+  const lazy = harness();
+  assert.equal(await (await lazy.resource("res/one.lh")).text(), raw.get("res/one.lh").toString());
+  await lazy.resource("res/one.lh");
+  assert.deepEqual(lazy.requests,["res/one.lh"],"Visited file must download only once");
+  assert.equal(await lazy.ready(),false,"Partial cache must not claim complete offline readiness");
+  const ranged = await lazy.resource("res/one.lh", {range:"bytes=2-5"});
+  assert.equal(ranged.status,206);assert.equal(await ranged.text(),raw.get("res/one.lh").toString().slice(2,6));
+  const reused = harness(), oldLazy = await reused.caches.open("ncdls-mobile:/ncdls/:old-lazy");
+  const file = files[1];
+  await oldLazy.put(url(file.path), new Response(raw.get(file.path), {headers:{"x-ncdls-sha256":file.sha256}}));
+  await reused.resource(file.path);assert.equal(reused.requests.length,0,"Reuse unchanged files across versions");
+  const changed = harness(), stale = await changed.caches.open("ncdls-mobile:/ncdls/:stale");
+  await stale.put(url(file.path), new Response("old bytes", {headers:{"x-ncdls-sha256":"old"}}));
+  await changed.resource(file.path);assert.deepEqual(changed.requests,[file.path],"Changed files must download afresh");
+  const recovered = harness();
+  const fullOld = await recovered.caches.open("ncdls-mobile:/ncdls/:old-full");
+  await fullOld.put(url("__offline_ready__"), new Response("{}"));
+  await fullOld.put(url("index.html"), new Response("old version"));
+  const newerLazy = await recovered.caches.open("ncdls-mobile:/ncdls/:newer-lazy");
+  await newerLazy.put(url("__lazy_active__"), new Response("1"));
+  assert.equal(await (await recovered.resource("index.html")).text(),raw.get("index.html").toString(),
+    "Next lazy upgrade must not resurrect the older complete package after recovery");
+  const denied = harness();
+  denied.caches.open = async () => {throw new Error("Storage disabled");};
+  assert.equal(await (await denied.resource("res/one.lh")).text(),raw.get("res/one.lh").toString(),
+    "Unavailable storage must fall back to online fetch");
   const h = harness({ failOnce: true });
   h.listeners.get("install")({ waitUntil() { throw new Error("Install must not download"); } });
   assert.equal(h.requests.length, 0);

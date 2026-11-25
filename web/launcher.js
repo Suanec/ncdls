@@ -149,7 +149,7 @@
         stage: l?.stage && { width:l.stage.width, height:l.stage.height,
           visible:l.stage.visible, focused:l.stage.isFocused, frameRate:l.stage.frameRate },
         webglLost: l?.WebGLContext?.mainContext?.isContextLost?.(),
-        errors: web?.errors?.slice(-10),
+        errors: web?.errors?.slice(-10), renderRepairs: web?.renderRepairs?.slice(-10),
         input: { enabled:l?.MouseManager?.enabled, touchId:l?.MouseManager?.instance?._curTouchID,
           heldGestures:listeners.map(e => e.caller?._identifier).filter(v => v !== undefined),
           downs:l?.TouchManager?.I?.preDowns?.length },
@@ -174,7 +174,7 @@
           after.frame === null ? '游戏尚未初始化' : before.frame === after.frame ? '检测到游戏帧没有推进' :
           after.rendering === false ? '游戏绘制处于停用状态' : after.paused ? '游戏处于暂停状态' :
           '游戏帧仍在推进，需要结合车辆和卡片状态排查';
-        output.value = JSON.stringify({release:'20261124.7',verdict,userAgent:navigator.userAgent,
+        output.value = JSON.stringify({release:'20261125.1',verdict,userAgent:navigator.userAgent,
           viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},history:recent,before,after},null,2);
         summary.textContent = verdict + '。请复制诊断信息发回聊天。';
         document.querySelector('#diagnose-result').hidden = false;

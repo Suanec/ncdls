@@ -3,6 +3,9 @@ const VERSION = "__MOBILE_VERSION__";
 const SCOPE = new URL(self.registration.scope);
 const PREFIX = `ncdls-mobile:${SCOPE.pathname}:`;
 const CACHE = PREFIX + VERSION;
+// The build supplies fingerprints, not resources. No full package is fetched on install.
+const LAZY_FILES = __LAZY_FILES__;
+const LAZY = new URL("__lazy_active__", SCOPE).href;
 const READY = new URL("__offline_ready__", SCOPE).href;
 const absolute = (path) => new URL(path, SCOPE).href;
 
@@ -284,6 +287,17 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("message", (event) => {
+  if (event.data?.type === "prepare-lazy") {
+    event.waitUntil((async () => {
+      await (await caches.open(CACHE)).put(LAZY, new Response("1"));
+      // Recovery can re-register while an old tab is still controlled. Activate
+      // this fresh registration explicitly; claim in activate once it is active.
+      await self.skipWaiting();
+      try { await self.clients.claim(); } catch { /* activate will claim */ }
+      event.ports[0]?.postMessage({ready:true});
+    })());
+    return;
+  }
   if (event.data?.type === "activate-update") {
     event.waitUntil((async () => {
       const cache = await caches.open(CACHE);
@@ -334,13 +348,19 @@ self.addEventListener("message", (event) => {
 
 async function resourceCache() {
   const current = await caches.open(CACHE);
-  if (await current.match(READY)) return current;
+  if (await current.match(READY) || await current.match(LAZY)) return current;
   // An automatically installed worker may activate after the last old tab closes.
   // Keep serving the last complete package until the user downloads this version.
   for (const name of (await caches.keys()).reverse()) {
     if (!name.startsWith(PREFIX) || name === CACHE) continue;
     const previous = await caches.open(name);
     if (await previous.match(READY)) return previous;
+    // A newer lazy session supersedes an older full package after recovery.
+    // Carry that choice forward so a future update cannot fall back to old code.
+    if (await previous.match(LAZY)) {
+      await current.put(LAZY, new Response("1")).catch(() => {});
+      return current;
+    }
   }
   return current;
 }
@@ -390,16 +410,45 @@ self.addEventListener("fetch", (event) => {
       url.hash = "";
       if (url.pathname === SCOPE.pathname) url.pathname += "index.html";
       const cache = await resourceCache();
-      const saved = await cache.match(url.href);
+      let saved = await cache.match(url.href);
+      let path;
+      try { path = decodeURIComponent(url.pathname.slice(SCOPE.pathname.length)); } catch { /* Invalid encoding is not cacheable. */ }
+      const file = LAZY_FILES[path];
+      // Reuse unchanged bytes across updates (including preserved recovery caches).
+      // Check the fingerprint so stable resource paths cannot serve an old model.
+      if (!saved && file) {
+        for (const name of await caches.keys()) {
+          if (!name.startsWith(PREFIX) || name === CACHE) continue;
+          const candidate = await (await caches.open(name)).match(url.href);
+          if (candidate?.headers.get("x-ncdls-sha256") === file[1]) {
+            saved = candidate;
+            event.waitUntil(cache.put(url.href, candidate.clone()).catch(() => {}));
+            break;
+          }
+        }
+      }
       if (saved) return rangeResponse(request, saved);
       try {
-        return await fetch(request);
+        const response = await fetch(request);
+        if (file && response.ok && response.status === 200 && !request.headers.get("range")) {
+          const copy = response.clone();
+          event.waitUntil((async () => {
+            const data = await copy.arrayBuffer();
+            if (data.byteLength !== file[0] || await digest(data) !== file[1]) return;
+            const headers = new Headers(copy.headers);
+            // Cache bytes are decoded; compressed transport headers no longer apply.
+            headers.delete("content-encoding"); headers.delete("content-length");
+            headers.set("x-ncdls-sha256", file[1]);
+            await cache.put(url.href, new Response(data, {headers}));
+          })().catch(() => {})); // Storage eviction/quota must not break online play.
+        }
+        return response;
       } catch {
         return new Response("该资源尚未保存到手机，请联网后重新下载离线包。", {
           status: 503,
           headers: { "Content-Type": "text/plain; charset=utf-8" },
         });
       }
-    })(),
+    })().catch(() => fetch(request)), // A disabled cache must not block online resources.
   );
 });

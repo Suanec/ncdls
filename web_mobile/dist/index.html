@@ -29,7 +29,7 @@ iframe{border:0;width:min(100vw,46.176vh);height:100%;background:#c9e7fd}
 dialog{border:0;border-radius:22px;width:360px;max-width:calc(100vw - 28px);box-sizing:border-box;padding:24px}
 dialog::backdrop{background:#10253e88}
 </style>
-    <link rel="stylesheet" data-href="launcher.css?v=20261124.7" />
+    <link rel="stylesheet" data-href="launcher.css?v=20261125.1" />
   <link rel="manifest" data-href="manifest.webmanifest" />
     <link rel="apple-touch-icon" data-href="icons/icon-180.png" />
     <meta name="theme-color" content="#183a56" />
@@ -41,7 +41,7 @@ dialog::backdrop{background:#10253e88}
     <main>
       <iframe
         id="game"
-        data-src="game.html?v=20261124.7"
+        data-src="game.html?v=20261125.1"
         title="挪车打螺丝游戏"
         allow="autoplay; fullscreen"
       ></iframe>
@@ -85,7 +85,7 @@ dialog::backdrop{background:#10253e88}
           inputmode="numeric"
         />
         <p>选择关卡会切换当前进度，游戏自动保存在本浏览器。</p>
-        <p class="secondary">版本：20261124.7</p>
+        <p class="secondary">版本：20261125.1</p>
         <p class="secondary">猫咪和打巨龙资源尚未缓存，暂不提供入口。</p>
         <p id="menu-status" role="status"></p>
         <button class="primary" type="submit">进入关卡</button>
@@ -101,7 +101,7 @@ dialog::backdrop{background:#10253e88}
         </section>
       </form>
     </dialog>
-    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261124.7" data-launcher></script>
+    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261125.1" data-launcher></script>
     <script>(() => {
   "use strict";
   const frame = document.querySelector("#game");
@@ -152,16 +152,30 @@ dialog::backdrop{background:#10253e88}
       for (const link of document.querySelectorAll("link[data-href]")) {
         link.href = link.dataset.href;
       }
-      for (const source of document.querySelectorAll("script[data-src]")) {
+      const sources = [...document.querySelectorAll("script[data-src]")];
+      let launcherReady = false, pending = sources.filter(s => s.hasAttribute("data-before-game")).length, launched = false;
+      const launch = () => {
+        if (launched || !launcherReady || pending) return;
+        launched = true;
+        const enter = () => {
+          show({stage:"frame",title:"正在连接游戏",detail:"优先读取已保存资源，缺少时才下载…"});
+          frame.src = frame.dataset.src;
+        };
+        if (window.NCDLSPrepareCache) window.NCDLSPrepareCache.then(enter, enter);
+        else enter();
+      };
+      for (const source of sources) {
         const script = document.createElement("script");
         script.src = source.dataset.src;
         script.onload = () => {
-          if (source.hasAttribute("data-launcher")) {
-            show({stage:"frame",title:"正在连接游戏",detail:"正在获取游戏入口和加载清单…"});
-            frame.src = frame.dataset.src;
-          }
+          if (source.hasAttribute("data-launcher")) launcherReady = true;
+          if (source.hasAttribute("data-before-game")) pending--;
+          launch();
         };
-        script.onerror = () => show({stage:"error",title:"页面组件加载失败",detail:"暂时无法连接，请重新加载。"});
+        script.onerror = () => {
+          if (source.hasAttribute("data-before-game")) { pending--; launch(); }
+          else show({stage:"error",title:"页面组件加载失败",detail:"暂时无法连接，请重新加载。"});
+        };
         document.head.append(script);
       }
     };
@@ -236,6 +250,6 @@ dialog::backdrop{background:#10253e88}
   ></textarea>
 </dialog>
 
-<script type="application/x-ncdls-script" data-src="mobile.js"></script>
+<script type="application/x-ncdls-script" data-before-game data-src="mobile.js"></script>
 </body>
 </html>

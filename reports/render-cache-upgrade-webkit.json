@@ -1,0 +1,140 @@
+{
+  "release": "20261125.1",
+  "engine": "webkit",
+  "iphone15Verified": false,
+  "checks": [
+    "Reproduced: version query still opens v5 under its offline worker",
+    "Existing v5 full cache upgrades to v20261125.1 without any runtime or pack transfer",
+    "Pause diagnosis reads the existing engine state without changing the runtime bundle",
+    "Online recovery works with an old game tab still open, preserves save/caches/unrelated SW, and opens v20261125.1 without a controller",
+    "Recovery starts latest lazy-cached game, preserves old resources and reuses the runtime without full download",
+    "Recovered page ignores unrelated download messages and can manually save offline resources again"
+  ],
+  "updateRequests": [
+    {
+      "path": "sw.js",
+      "bytes": 272220,
+      "latest": true
+    },
+    {
+      "path": "offline-manifest.json",
+      "bytes": 415947,
+      "latest": true
+    },
+    {
+      "path": "sw.js",
+      "bytes": 272220,
+      "latest": true
+    },
+    {
+      "path": "browser.js",
+      "bytes": 8377,
+      "latest": true
+    },
+    {
+      "path": "game.html",
+      "bytes": 647,
+      "latest": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 12025,
+      "latest": true
+    },
+    {
+      "path": "launcher.css",
+      "bytes": 2696,
+      "latest": true
+    },
+    {
+      "path": "launcher.js",
+      "bytes": 9578,
+      "latest": true
+    },
+    {
+      "path": "mobile.js",
+      "bytes": 14408,
+      "latest": true
+    }
+  ],
+  "updateDecodedBytes": 1008118,
+  "offlineReload": "Not verified: a prior attempt returned Playwright WebKit internal error during offline navigation; Chrome offline check passed.",
+  "recoveryRequests": [
+    {
+      "path": "recover.html",
+      "bytes": 3124,
+      "latest": true
+    },
+    {
+      "path": "recover.html",
+      "bytes": 3124,
+      "latest": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 12025,
+      "latest": true
+    },
+    {
+      "path": "launcher.css",
+      "bytes": 2696,
+      "latest": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 530,
+      "latest": true
+    },
+    {
+      "path": "mobile.css",
+      "bytes": 1352,
+      "latest": true
+    },
+    {
+      "path": "launcher.js",
+      "bytes": 9578,
+      "latest": true
+    },
+    {
+      "path": "mobile.js",
+      "bytes": 14408,
+      "latest": true
+    },
+    {
+      "path": "sw.js",
+      "bytes": 272220,
+      "latest": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 12025,
+      "latest": true
+    },
+    {
+      "path": "launcher.js",
+      "bytes": 9578,
+      "latest": true
+    },
+    {
+      "path": "launcher.css",
+      "bytes": 2696,
+      "latest": true
+    },
+    {
+      "path": "mobile.js",
+      "bytes": 14408,
+      "latest": true
+    },
+    {
+      "path": "game.html",
+      "bytes": 647,
+      "latest": true
+    },
+    {
+      "path": "browser.js",
+      "bytes": 8377,
+      "latest": true
+    }
+  ],
+  "success": true
+}

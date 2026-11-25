@@ -65,9 +65,9 @@
       if (status.ready) {
         display(`离线资源已就绪 · ${mib(status.bytes)}。可以断网重新打开游戏。`, true);
         progress.hidden = true;
-      } else display("当前按需在线加载。点击“保存离线资源”下载完整游戏，之后可离线玩。");
+      } else display("已启用按需保存：下载过的资源会复用。点击下方按钮可下载全部关卡。");
     } else {
-      display("默认按关卡加载资源。点击“保存离线资源”才下载全部资源，之后可离线玩。");
+      display("默认按关卡加载并保存资源。点击“保存离线资源”才下载全部关卡。");
     }
     download.disabled = !navigator.onLine;
   }
@@ -87,6 +87,42 @@
       changed();
     });
   }
+  // Register a small cache worker automatically, without downloading all levels.
+  // A complete older offline installation still upgrades through the explicit button.
+  async function prepareCache() {
+    if (!supported) return;
+    const existing = await navigator.serviceWorker.getRegistration(base.href);
+    if (existing) return;
+    registration = await navigator.serviceWorker.register("sw.js", {scope:"./",updateViaCache:"none"});
+    // Re-registering can revive the old registration while another tab is open.
+    // Wait for the new script before sending a message older workers do not know.
+    if (!registration.installing) await registration.update();
+    const worker = await installedWorker(registration.installing || registration.waiting || registration.active);
+    await new Promise((resolve, reject) => {
+      const channel = new MessageChannel();
+      const timer = setTimeout(() => {channel.port1.close(); reject(new Error("按需缓存准备超时"));}, 6000);
+      channel.port1.onmessage = () => {clearTimeout(timer);channel.port1.close();resolve();};
+      worker.postMessage({type:"prepare-lazy"}, [channel.port2]);
+    });
+    if (!navigator.serviceWorker.controller) await new Promise((resolve, reject) => {
+      const changed = () => {
+        if (!navigator.serviceWorker.controller) return;
+        clearTimeout(timer); navigator.serviceWorker.removeEventListener("controllerchange", changed); resolve();
+      };
+      const timer = setTimeout(() => {
+        navigator.serviceWorker.removeEventListener("controllerchange", changed); reject(new Error("按需缓存接管超时"));
+      }, 6000);
+      navigator.serviceWorker.addEventListener("controllerchange", changed); changed();
+    });
+    // These small shell files were read before the worker could control the page.
+    // Save them too so a previously visited level can reopen without a connection.
+    void Promise.all(["./","launcher.js","launcher.css","mobile.js","mobile.css"]
+      .map(file => fetch(file))).catch(() => {});
+  }
+  window.NCDLSPrepareCache = new Promise(resolve => {
+    const timer = setTimeout(resolve, 8000); // Cache failures never block online play.
+    prepareCache().catch(() => {}).finally(() => {clearTimeout(timer);resolve();});
+  });
   function showError(error) {
     display(error.message || String(error));
     if (!busy && supported) download.disabled = !navigator.onLine;

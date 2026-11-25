@@ -26,3 +26,18 @@ listeners.DOMContentLoaded();assert.equal(frames.length,0);assert.equal(added.le
 observer.callback({getEntries:()=>[{name:'first-contentful-paint'}]});
 frames.shift()();assert.equal(added.length,0);frames.shift()();assert.equal(added.length,1);
 console.log('Startup shell checks passed: HTML-first, two-frame gate, deferred iframe, measured progress, retry reset, and origin isolation.');
+
+// Mobile startup must wait for cache control, regardless of script load order.
+(async () => {
+  delete c.PerformanceObserver; delete nodes['#game'].src;
+  added.length=0; frames.length=0;
+  const mobile={dataset:{src:'mobile.js'},hasAttribute:k=>k==='data-before-game'};
+  c.document.querySelectorAll=s=>s.startsWith('link')?links:[source,mobile];
+  let resolveCache; c.NCDLSPrepareCache=new Promise(resolve=>{resolveCache=resolve;});
+  vm.runInNewContext(fs.readFileSync(path.join(root,'web/startup.js'),'utf8'),c);
+  listeners.DOMContentLoaded();frames.shift()();frames.shift()();
+  added[0].onload();assert.equal(nodes['#game'].src,undefined);
+  added[1].onload();assert.equal(nodes['#game'].src,undefined);
+  resolveCache();await Promise.resolve();assert.equal(nodes['#game'].src,'game.html?v=test');
+  console.log('Mobile iframe waits for lazy-cache preparation after the shell paints.');
+})().catch(error=>{console.error(error);process.exitCode=1;});

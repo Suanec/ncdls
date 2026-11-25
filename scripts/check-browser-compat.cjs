@@ -21,7 +21,7 @@ const context = {
     querySelector: (s) => ({'#status':status, '#boot':boot, '#reload-game':reload})[s],
     addEventListener: (type, fn) => {docHandlers[type] = fn;},
   },
-  Laya: {Config:{useWebGL2:true},Texture:{create(){}}},
+  Laya: {Stage:class {render(){return 42;}},Config:{useWebGL2:true},Texture:{create(){}}},
   MediaMetaMap: {ani9:{pub:{},m2:{}}},
   W: {M2: class {constructor() { initialized=true; atCreation=context.Laya.Config.useWebGL2; }}},
   parent: {postMessage() {}},
@@ -35,6 +35,18 @@ context.NCDLSWeb.start({},{});
 assert.equal(atCreation,true,'Bootstrap must preserve the engine renderer preference');
 assert.equal(context.NCDLSWeb.renderCompatibility,'engine-default');
 assert.equal(context.MediaMetaMap.ani9.base_url,'https://example.test/ncdls');
+const stage = new context.Laya.Stage();
+stage.isVisibility = true; stage.renderingEnabled = false;
+assert.equal(stage.render(),42); assert.equal(stage.renderingEnabled,true);
+assert.equal(context.NCDLSWeb.renderRepairs.length,1);
+context.document.hidden=true;stage.renderingEnabled=false;stage.render();
+assert.equal(stage.renderingEnabled,false,'Hidden pages must remain suspended');
+context.document.hidden=false;
+context.Laya.WebGLContext={mainContext:{isContextLost:()=>true}};
+stage.render();assert.equal(stage.renderingEnabled,false,'Do not bypass a lost WebGL context');
+context.Laya.WebGLContext.mainContext.isContextLost=()=>false;
+context.Ad={Var:{_Global:{pause:true}}};stage.render();
+assert.equal(context.Ad.Var._Global.pause,true,'Keep an intentional dialog pause');
 let prevented=false;
 docHandlers.webglcontextlost({target:new context.HTMLCanvasElement(),preventDefault(){prevented=true;}});
 assert(prevented);

@@ -45,6 +45,21 @@
   window.NCDLSWeb = {
     errors: [],
     start(config, loadingUI) {
+      // Repair the precise inconsistent state captured on iOS 15: the document
+      // and engine are visible, but rendering remains disabled. Run before a
+      // real render frame, not a background timer; leave game/dialog pause alone.
+      const render = Laya.Stage.prototype.render;
+      const repairs = window.NCDLSWeb.renderRepairs = [];
+      Laya.Stage.prototype.render = function (...args) {
+        if (!document.hidden && this.isVisibility && this.renderingEnabled === false &&
+            !Laya.WebGLContext?.mainContext?.isContextLost?.()) {
+          repairs.push({time:Date.now(),frame:Laya.timer?.currFrame,
+            paused:!!window.Ad?.Var?._Global?.pause});
+          if (repairs.length > 10) repairs.shift();
+          this.renderingEnabled = true;
+        }
+        return render.apply(this, args);
+      };
       // Keep the matching engine's texture crop routine instead of the mini-game
       // framework's WASM fast path, whose layout differs in this cached engine.
       const createTexture = Laya.Texture.create;
@@ -110,8 +125,8 @@
     function progress(force = false) {
       if (!force && Date.now() - lastNotice < 200) return;
       lastNotice = Date.now();
-      report({stage:"scripts",title:"正在下载游戏运行文件",loaded,total,
-        detail:total ? `${mib(loaded)} / ${mib(total)}（${Math.min(100,Math.floor(loaded/total*100))}%）` : `已接收 ${mib(loaded)}`});
+      report({stage:"scripts",title:"正在读取游戏运行文件",loaded,total,
+        detail:total ? `${mib(loaded)} / ${mib(total)}（${Math.min(100,Math.floor(loaded/total*100))}%）` : `已读取 ${mib(loaded)}`});
     }
     progress(true);
     // Download once with byte progress, then execute in the original order.
@@ -145,7 +160,7 @@
       } finally { clearTimeout(idle); }
     }));
     progress(true);
-    report({stage:"engine",title:"正在启动游戏",detail:"运行文件已下载，正在初始化游戏引擎…"});
+    report({stage:"engine",title:"正在启动游戏",detail:"运行文件已就绪，正在初始化游戏引擎…"});
     await painted();
     for (const blob of downloads) {
       const url = URL.createObjectURL(blob);
