@@ -1,0 +1,48 @@
+{
+  "engine": "webkit",
+  "iphoneHardware": false,
+  "levels": [
+    {
+      "level": 2,
+      "taps": 11,
+      "n": 739,
+      "fps": 60.3,
+      "gap95": 18,
+      "maxGap": 168,
+      "cpu95": 3,
+      "timer95": 1,
+      "draw95": 98,
+      "tri95": 75605,
+      "long": 1,
+      "frameRate": "fast",
+      "slow": 0,
+      "canvas": [
+        1218,
+        2637
+      ],
+      "errors": [],
+      "repairs": 0
+    },
+    {
+      "level": 294,
+      "taps": 11,
+      "n": 744,
+      "fps": 60.8,
+      "gap95": 18,
+      "maxGap": 32,
+      "cpu95": 3,
+      "timer95": 1,
+      "draw95": 155,
+      "tri95": 62120,
+      "long": 0,
+      "frameRate": "fast",
+      "slow": 0,
+      "canvas": [
+        1218,
+        2637
+      ],
+      "errors": [],
+      "repairs": 0
+    }
+  ]
+}

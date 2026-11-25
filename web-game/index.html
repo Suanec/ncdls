@@ -29,13 +29,13 @@ iframe{border:0;width:min(100vw,46.176vh);height:100%;background:#c9e7fd}
 dialog{border:0;border-radius:22px;width:360px;max-width:calc(100vw - 28px);box-sizing:border-box;padding:24px}
 dialog::backdrop{background:#10253e88}
 </style>
-    <link rel="stylesheet" data-href="launcher.css?v=20261125.1" />
+    <link rel="stylesheet" data-href="launcher.css?v=20261125.2" />
   </head>
   <body>
     <main>
       <iframe
         id="game"
-        data-src="game.html?v=20261125.1"
+        data-src="game.html?v=20261125.2"
         title="挪车打螺丝游戏"
         allow="autoplay; fullscreen"
       ></iframe>
@@ -79,7 +79,7 @@ dialog::backdrop{background:#10253e88}
           inputmode="numeric"
         />
         <p>选择关卡会切换当前进度，游戏自动保存在本浏览器。</p>
-        <p class="secondary">版本：20261125.1</p>
+        <p class="secondary">版本：20261125.2</p>
         <p class="secondary">猫咪和打巨龙资源尚未缓存，暂不提供入口。</p>
         <p id="menu-status" role="status"></p>
         <button class="primary" type="submit">进入关卡</button>
@@ -88,14 +88,15 @@ dialog::backdrop{background:#10253e88}
         <button id="diagnose-game" type="button">检测卡顿（保留现场）</button>
         <p id="diagnose-summary" role="status"></p>
         <section id="diagnose-result" hidden>
-          <p>复制下面的诊断信息，发回聊天即可。检测不会重开关卡。</p>
-          <textarea id="diagnose-content" rows="6" readonly aria-label="游戏诊断信息"></textarea>
-          <button id="diagnose-copy" type="button">复制诊断信息</button>
+          <p>复制下面不超过 600 字的摘要即可。包含打开菜单前的帧率，检测会保留当前关卡。</p>
+          <button id="diagnose-copy" type="button">复制诊断摘要</button>
+          <textarea id="diagnose-content" rows="8" readonly aria-label="游戏诊断摘要"></textarea>
+          <button id="diagnose-export" type="button">导出完整诊断文件（可选）</button>
           <p id="diagnose-copy-status" role="status"></p>
         </section>
       </form>
     </dialog>
-    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261125.1" data-launcher></script>
+    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261125.2" data-launcher></script>
     <script>(() => {
   "use strict";
   const frame = document.querySelector("#game");

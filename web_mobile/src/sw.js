@@ -389,6 +389,21 @@ async function rangeResponse(request, response) {
   return new Response(data.slice(start, end + 1), { status: 206, headers });
 }
 
+// Explicit source labels for startup. Only a cache miss reaches the network.
+function sourced(response, source) {
+  const headers = new Headers(response.headers);
+  headers.delete("content-encoding"); headers.delete("content-length");
+  headers.set("x-ncdls-source", source);
+  return new Response(response.body, {status:response.status,statusText:response.statusText,headers});
+}
+function resourceNotice(event, path, source) {
+  if (!event.clientId || !self.clients.get) return;
+  event.waitUntil(self.clients.get(event.clientId).then(client => {
+    client?.postMessage({app:"ncdls-resource",path,source});
+  }).catch(() => {}));
+}
+const fromNetwork = async request => sourced(await fetch(new Request(request, {cache:"no-store"})), "network");
+
 self.addEventListener("fetch", (event) => {
   const request = event.request,
     url = new URL(request.url);
@@ -427,9 +442,13 @@ self.addEventListener("fetch", (event) => {
           }
         }
       }
-      if (saved) return rangeResponse(request, saved);
+      if (saved) {
+        resourceNotice(event, path, "cache");
+        return sourced(await rangeResponse(request, saved), "cache");
+      }
       try {
-        const response = await fetch(request);
+        const response = await fromNetwork(request);
+        if (response.ok) resourceNotice(event, path, "network");
         if (file && response.ok && response.status === 200 && !request.headers.get("range")) {
           const copy = response.clone();
           event.waitUntil((async () => {
@@ -449,6 +468,10 @@ self.addEventListener("fetch", (event) => {
           headers: { "Content-Type": "text/plain; charset=utf-8" },
         });
       }
-    })().catch(() => fetch(request)), // A disabled cache must not block online resources.
+    })().catch(async () => {
+      const response = await fromNetwork(request);
+      if (response.ok) resourceNotice(event, url.pathname.slice(SCOPE.pathname.length), "network");
+      return response;
+    }), // A disabled cache must not block online resources.
   );
 });

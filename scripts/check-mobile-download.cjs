@@ -91,8 +91,11 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
 
 (async () => {
   const lazy = harness();
-  assert.equal(await (await lazy.resource("res/one.lh")).text(), raw.get("res/one.lh").toString());
-  await lazy.resource("res/one.lh");
+  const firstRead = await lazy.resource("res/one.lh");
+  assert.equal(firstRead.headers.get("x-ncdls-source"),"network");
+  assert.equal(await firstRead.text(),raw.get("res/one.lh").toString());
+  const cachedRead = await lazy.resource("res/one.lh");
+  assert.equal(cachedRead.headers.get("x-ncdls-source"),"cache");
   assert.deepEqual(lazy.requests,["res/one.lh"],"Visited file must download only once");
   assert.equal(await lazy.ready(),false,"Partial cache must not claim complete offline readiness");
   const ranged = await lazy.resource("res/one.lh", {range:"bytes=2-5"});

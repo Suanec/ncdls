@@ -84,6 +84,7 @@
       }
     } catch { /* Keep the restart action accessible during a failed boot. */ }
     status.textContent = "";
+    window.NCDLSDiagnostics?.rememberGameplay();
     dialog.showModal();
   });
   document
@@ -128,6 +129,24 @@
   const diagnose = document.querySelector('#diagnose-game');
   if (diagnose) {
     const history = [];
+    let gameplayPerf, parentCursor = 0, parentCount = 0;
+    const parentTimes = new Float64Array(2048);
+    function parentTick(now) {
+      if (!document.hidden) {
+        parentTimes[parentCursor] = now; parentCursor = (parentCursor+1)%parentTimes.length;
+        parentCount = Math.min(parentTimes.length,parentCount+1);
+      }
+      requestAnimationFrame(parentTick);
+    }
+    document.addEventListener("visibilitychange", () => { parentCursor = parentCount = 0; });
+    if (typeof requestAnimationFrame === "function") requestAnimationFrame(parentTick);
+    function parentFPS() {
+      const now = performance.now(), recent = Array.from(parentTimes.subarray(0,parentCount)).filter(t => t > now-10000);
+      return recent.length > 1 ? Math.round((recent.length-1)*10000/Math.max(1,now-Math.min(...recent)))/10 : 0;
+    }
+    window.NCDLSDiagnostics = {
+      rememberGameplay() { gameplayPerf = {...frame.contentWindow.NCDLSWeb?.metrics?.read(),browserFPS:parentFPS()}; },
+    };
     function sample() {
       try {
         const g = frame.contentWindow, l = g.Laya;
@@ -150,17 +169,43 @@
           visible:l.stage.visible, focused:l.stage.isFocused, frameRate:l.stage.frameRate },
         webglLost: l?.WebGLContext?.mainContext?.isContextLost?.(),
         errors: web?.errors?.slice(-10), renderRepairs: web?.renderRepairs?.slice(-10),
+        metrics: {...web?.metrics?.read(),browserFPS:parentFPS()}, renderWrites:web?.metrics?.writes,
+        config: {slow:g.Ad?.Var?._Global?.slow_switch,canvas:[l?.WebGLContext?.mainContext?.drawingBufferWidth,l?.WebGLContext?.mainContext?.drawingBufferHeight]},
         input: { enabled:l?.MouseManager?.enabled, touchId:l?.MouseManager?.instance?._curTouchID,
           heldGestures:listeners.map(e => e.caller?._identifier).filter(v => v !== undefined),
           downs:l?.TouchManager?.I?.preDowns?.length },
         timers: l && Object.fromEntries(['systemTimer','startTimer','physicsTimer','updateTimer','lateTimer','timer']
           .map(name => [name, l[name] && {frame:l[name].currFrame,time:l[name].currTimer,delta:l[name].delta,scale:l[name].scale}])),
-        cars: game?.map_script?.list_cars?.slice(0,40).map(c => ({ id:c.sp3?.id, color:c.str_color,
+        cars: game?.map_script?.list_cars?.map(c => ({ id:c.sp3?.id, color:c.str_color,
           active:c.sp3?.activeInHierarchy, idle:c.hfsm.isIdle, park:c.hfsm.isPark, wait:c.hfsm.isWait,
           position:c.sp3 && {x:c.sp3.transform.position.x,y:c.sp3.transform.position.y,z:c.sp3.transform.position.z} })),
-        cards: game?.map_2d?.graphs?.slice(0,24).map(c => ({name:c.name,x:c.x,y:c.y,rotation:c.rotation,
+        cards: game?.map_2d?.graphs?.map(c => ({name:c.name,x:c.x,y:c.y,rotation:c.rotation,
           disposed:c.isDisposed,rig:c.rig && {type:c.rig.type,enabled:c.rig.enabled}})) };
     }
+    const number = value => Number.isFinite(value) ? String(Math.round(value*10)/10) : "?";
+    function compact(before, after, verdict, perf) {
+      const state = after.initializing ? "初始化" : after.win ? "胜利" : after.fail ? "失败" : after.gaming ? "游玩" : "其他";
+      const bit = value => value == null ? "?" : Number(!!value);
+      const cars = after.cars || [], cards = after.cards || [];
+      const moving = cars.filter(c=>c.active&&!c.idle&&!c.park).length;
+      const moved = cars.filter((c,i)=>JSON.stringify(c.position)!==JSON.stringify(before.cars?.[i]?.position)).length;
+      const cardMoved = cards.filter((c,i)=>c.x!==before.cards?.[i]?.x||c.y!==before.cards?.[i]?.y||c.rotation!==before.cards?.[i]?.rotation).length;
+      const system = (navigator.userAgent.match(/(?:iPhone OS|CPU OS) ([\d_]+)/)?.[1] || "浏览器").replaceAll("_",".");
+      const writer = after.renderWrites?.at(-1)?.stack?.split("\n").at(-1)?.replace(/(?:https?:|blob:)[^\s)]+?(?=:\d+:\d+(?:\)|$))/g,"script").trim().slice(0,75);
+      const error = (after.errors?.at(-1) || after.metrics?.lastError || "无").split("\n")[0].slice(0,100);
+      return [
+        `NCDLS 20261125.2｜模式${after.mode ?? "?"} 关${after.level ?? "?"}｜${system}`,
+        `${verdict}；${state}；暂停${bit(after.paused)}/${bit(after.pauseDialog)}；隐藏${bit(after.hidden)}/可见${bit(after.engineVisible)}；绘制${bit(after.rendering)}；GL丢失${bit(after.webglLost)}`,
+        `${perf?.stale ? "停帧前" : "菜单前"}${number(perf?.seconds)}秒：引擎${number(perf?.fps)}fps；网页${number(perf?.browserFPS)}fps；慢帧(>50ms)${perf?.over50 ?? "?"}`,
+        `帧间隔P95/最长 ${number(perf?.gap95)}/${number(perf?.maxGap)}ms；执行P95/最长 ${number(perf?.cpu95)}/${number(perf?.cpuMax)}ms`,
+        `检测间帧+${number(Number.isFinite(before.frame)&&Number.isFinite(after.frame)?after.frame-before.frame:null)}；末帧距今${number(after.metrics?.lastFrameMs)}ms；恢复${after.metrics?.repairs ?? "?"}/停绘${after.metrics?.falseWrites ?? "?"}`,
+        `配置${after.stage?.frameRate ?? "?"}/低帧${after.config?.slow ?? "?"}；画布${after.config?.canvas?.join("×")}；DPR${devicePixelRatio}`,
+        `车${cars.length}(行${moving}/变化${moved})；卡${cards.length}(变化${cardMoved})；触摸${Number.isFinite(after.input?.touchId) ? after.input.touchId : "无"}/按下${after.input?.downs ?? "?"}`,
+        `错误：${error}${writer ? `；停绘来源 ${writer}` : ""}`,
+      ].join("\n").slice(0,600);
+    }
+    window.NCDLSDiagnostics.compact = compact;
+    let fullReport;
     const summary = document.querySelector('#diagnose-summary');
     const output = document.querySelector('#diagnose-content');
     diagnose.addEventListener('click', async () => {
@@ -173,13 +218,20 @@
         const verdict = after.webglLost ? '绘图环境已中断' : after.errors?.length ? '记录到运行错误' :
           after.frame === null ? '游戏尚未初始化' : before.frame === after.frame ? '检测到游戏帧没有推进' :
           after.rendering === false ? '游戏绘制处于停用状态' : after.paused ? '游戏处于暂停状态' :
-          '游戏帧仍在推进，需要结合车辆和卡片状态排查';
-        output.value = JSON.stringify({release:'20261125.1',verdict,userAgent:navigator.userAgent,
-          viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},history:recent,before,after},null,2);
-        summary.textContent = verdict + '。请复制诊断信息发回聊天。';
+          '引擎帧仍在推进';
+        fullReport = {release:'20261125.2',verdict,userAgent:navigator.userAgent,
+          viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},gameplayPerf,history:recent,before,after};
+        output.value = compact(before,after,verdict,gameplayPerf || before.metrics);
+        summary.textContent = verdict + `。摘要 ${output.value.length} 字，复制这一小段即可。`;
         document.querySelector('#diagnose-result').hidden = false;
       } catch (error) { summary.textContent = '读取未完成：' + error.message; }
       finally { diagnose.disabled = false; }
+    });
+    document.querySelector('#diagnose-export')?.addEventListener('click', () => {
+      if (!fullReport) return;
+      const url = URL.createObjectURL(new Blob([JSON.stringify(fullReport,null,2)],{type:'application/json'}));
+      const link = document.createElement('a'); link.href=url;link.download='ncdls-diagnostic-20261125.2.json';link.click();
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
     });
     document.querySelector('#diagnose-copy').addEventListener('click', async () => {
       const tip = document.querySelector('#diagnose-copy-status');

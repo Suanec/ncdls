@@ -1,0 +1,35 @@
+{
+  "release": "20261125.2",
+  "engine": "webkit",
+  "iphone15Hardware": false,
+  "checks": [
+    "First start labels real network reads, asset source counts and engine initialization; gzip response works",
+    "Reload labels runtime and level assets as local cache; no runtime/model/image redownload",
+    "Long frame appears in short summary (<=600 characters); detailed JSON exports separately",
+    "Stopped game loop is diagnosed by live parent page, preserving scene",
+    "Copy denial leaves a selectable short summary"
+  ],
+  "reloadRequests": [
+    "/manifest.webmanifest",
+    "/sw.js"
+  ],
+  "metrics": {
+    "samples": 581,
+    "stale": false,
+    "seconds": 9.9,
+    "fps": 58.6,
+    "gap95": 18,
+    "maxGap": 72,
+    "cpu95": 2,
+    "cpuMax": 66,
+    "over50": 4,
+    "lastFrameMs": 9,
+    "repairs": 0,
+    "falseWrites": 0,
+    "lastError": ""
+  },
+  "summary": "NCDLS 20261125.2｜模式0 关2｜浏览器\n引擎帧仍在推进；游玩；暂停0/0；隐藏0/可见1；绘制1；GL丢失0\n菜单前9.9秒：引擎58.8fps；网页58.7fps；慢帧(>50ms)4\n帧间隔P95/最长 18/72ms；执行P95/最长 2/66ms\n检测间帧+60；末帧距今12ms；恢复0/停绘0\n配置fast/低帧0；画布406×879；DPR1\n车45(行0/变化0)；卡61(变化0)；触摸无/按下0\n错误：无",
+  "summaryChars": 220,
+  "frozenSummary": "NCDLS 20261125.2｜模式0 关2｜浏览器\n检测到游戏帧没有推进；游玩；暂停0/0；隐藏0/可见1；绘制1；GL丢失0\n停帧前10秒：引擎59.4fps；网页59.5fps；慢帧(>50ms)4\n帧间隔P95/最长 18/72ms；执行P95/最长 2/66ms\n检测间帧+0；末帧距今2264ms；恢复0/停绘0\n配置fast/低帧0；画布406×879；DPR1\n车45(行0/变化0)；卡61(变化0)；触摸无/按下0\n错误：无",
+  "success": true
+}

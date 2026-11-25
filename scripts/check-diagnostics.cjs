@@ -1,0 +1,15 @@
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'..');
+const source=fs.readFileSync(path.join(root,'web/launcher.js'),'utf8');
+const start=source.indexOf('    const number = value =>'),end=source.indexOf('    window.NCDLSDiagnostics.compact = compact;');
+assert(start>=0&&end>start,'Diagnostic formatter markers missing');
+const context={navigator:{userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X)'},devicePixelRatio:3};
+vm.runInNewContext(source.slice(start,end)+'\nglobalThis.format=compact;',context);
+const before={frame:300,cars:[{position:{x:1,y:2,z:3}}],cards:[{x:4,y:5,rotation:0}]};
+const after={frame:300,mode:0,level:294,gaming:true,hidden:false,engineVisible:true,rendering:true,paused:false,pauseDialog:false,webglLost:false,stage:{frameRate:'fast'},config:{slow:0,canvas:[1218,2637]},metrics:{lastFrameMs:30000,repairs:10,falseWrites:11},input:{touchId:NaN,downs:0},cars:[{position:{x:1,y:2,z:3},active:true,idle:false}],cards:[{x:4,y:5,rotation:0}],errors:['Failure: '+'x'.repeat(20000)],renderWrites:[{stack:'setter\n    at blob:https://example.test/long-id:12345:67'}]};
+const original=JSON.stringify({before,after});
+const text=context.format(before,after,'检测到游戏帧没有推进',{seconds:10,stale:true,fps:58,browserFPS:60,gap95:20,maxGap:168,cpu95:4,cpuMax:160,over50:5});
+assert(text.length<=600);assert(text.includes('检测间帧+0'));assert(text.includes('停帧前10秒'));assert(text.includes('15.6.1'));assert(text.includes('触摸无'));assert(!text.includes('https://'));assert(!text.includes('"position"'));assert.equal(JSON.stringify({before,after}),original,'Formatting must preserve game state');
+const empty=context.format({frame:null},{frame:null},'游戏尚未初始化',null);
+assert(empty.length<=600&&empty.includes('检测间帧+?'));
+console.log('Short diagnostics: <=600 characters, large-error truncation, frozen-window fields, safe pre-boot state, and no mutation.');

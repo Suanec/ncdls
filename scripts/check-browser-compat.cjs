@@ -12,7 +12,7 @@ const status = element(), boot = element(), reload = element();
 const docHandlers = {}, winHandlers = {};
 let initialized = false, atCreation;
 const context = {
-  URL, console: {error() {}}, HTMLCanvasElement: class {},
+  navigator:{}, URL, console: {error() {}}, HTMLCanvasElement: class {},
   performance: {now:()=>0,getEntriesByType:()=>[]},
   setInterval:()=>1,clearInterval(){},setTimeout,clearTimeout,
   requestAnimationFrame:fn=>queueMicrotask(fn),
@@ -47,6 +47,13 @@ stage.render();assert.equal(stage.renderingEnabled,false,'Do not bypass a lost W
 context.Laya.WebGLContext.mainContext.isContextLost=()=>false;
 context.Ad={Var:{_Global:{pause:true}}};stage.render();
 assert.equal(context.Ad.Var._Global.pause,true,'Keep an intentional dialog pause');
+const meter = context.NCDLSWeb.metrics;
+for (const time of [1000,1016,1032]) meter.record(time,2);
+context.performance.now=()=>1050;
+assert.equal(meter.read().samples,3); assert.equal(meter.read().stale,false);
+context.performance.now=()=>20000;
+assert.equal(meter.read().samples,3,'Keep frame measurements preceding a long freeze');
+assert.equal(meter.read().stale,true); assert.equal(meter.read().lastFrameMs,18968);
 let prevented=false;
 docHandlers.webglcontextlost({target:new context.HTMLCanvasElement(),preventDefault(){prevented=true;}});
 assert(prevented);
