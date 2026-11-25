@@ -1,0 +1,282 @@
+{
+  "origin": "http://ncdls.test",
+  "engine": "chrome",
+  "release": "20261125.2",
+  "samples": [
+    {
+      "frame": 303,
+      "render": true,
+      "visible": true,
+      "metrics": {
+        "samples": 302,
+        "stale": false,
+        "seconds": 5,
+        "fps": 59.7,
+        "gap95": 16.9,
+        "maxGap": 23.5,
+        "cpu95": 1.8,
+        "cpuMax": 22,
+        "over50": 0,
+        "lastFrameMs": 20,
+        "repairs": 0,
+        "falseWrites": 0,
+        "lastError": ""
+      },
+      "writes": []
+    },
+    {
+      "frame": 512,
+      "render": true,
+      "visible": true,
+      "metrics": {
+        "samples": 508,
+        "stale": false,
+        "seconds": 10,
+        "fps": 50.7,
+        "gap95": 28.7,
+        "maxGap": 31.7,
+        "cpu95": 28.5,
+        "cpuMax": 31.5,
+        "over50": 0,
+        "lastFrameMs": 30,
+        "repairs": 0,
+        "falseWrites": 0,
+        "lastError": ""
+      },
+      "writes": []
+    },
+    {
+      "frame": 659,
+      "render": true,
+      "visible": true,
+      "metrics": {
+        "samples": 353,
+        "stale": false,
+        "seconds": 10,
+        "fps": 35.3,
+        "gap95": 37.5,
+        "maxGap": 40.1,
+        "cpu95": 37.3,
+        "cpuMax": 40,
+        "over50": 0,
+        "lastFrameMs": 38,
+        "repairs": 0,
+        "falseWrites": 0,
+        "lastError": ""
+      },
+      "writes": []
+    },
+    {
+      "frame": 780,
+      "render": true,
+      "visible": true,
+      "metrics": {
+        "samples": 266,
+        "stale": false,
+        "seconds": 10,
+        "fps": 26.5,
+        "gap95": 43.5,
+        "maxGap": 46.5,
+        "cpu95": 43.4,
+        "cpuMax": 46.4,
+        "over50": 0,
+        "lastFrameMs": 44,
+        "repairs": 0,
+        "falseWrites": 0,
+        "lastError": ""
+      },
+      "writes": []
+    },
+    {
+      "frame": 885,
+      "render": true,
+      "visible": true,
+      "metrics": {
+        "samples": 224,
+        "stale": false,
+        "seconds": 10,
+        "fps": 22.4,
+        "gap95": 50.2,
+        "maxGap": 55.8,
+        "cpu95": 50,
+        "cpuMax": 55.6,
+        "over50": 14,
+        "lastFrameMs": 50,
+        "repairs": 0,
+        "falseWrites": 0,
+        "lastError": ""
+      },
+      "writes": []
+    },
+    {
+      "frame": 980,
+      "render": false,
+      "visible": true,
+      "metrics": {
+        "samples": 221,
+        "stale": true,
+        "seconds": 10,
+        "fps": 22,
+        "gap95": 50.9,
+        "maxGap": 55.8,
+        "cpu95": 50.7,
+        "cpuMax": 55.6,
+        "over50": 28,
+        "lastFrameMs": 4325,
+        "repairs": 79,
+        "falseWrites": 80,
+        "lastError": ""
+      },
+      "writes": [
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 977
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 978
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 979
+        }
+      ]
+    },
+    {
+      "frame": 1065,
+      "render": false,
+      "visible": true,
+      "metrics": {
+        "samples": 221,
+        "stale": true,
+        "seconds": 10,
+        "fps": 22,
+        "gap95": 50.9,
+        "maxGap": 55.8,
+        "cpu95": 50.7,
+        "cpuMax": 55.6,
+        "over50": 28,
+        "lastFrameMs": 9330,
+        "repairs": 164,
+        "falseWrites": 165,
+        "lastError": ""
+      },
+      "writes": [
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1062
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1063
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1064
+        }
+      ]
+    },
+    {
+      "frame": 1144,
+      "render": false,
+      "visible": true,
+      "metrics": {
+        "samples": 221,
+        "stale": true,
+        "seconds": 10,
+        "fps": 22,
+        "gap95": 50.9,
+        "maxGap": 55.8,
+        "cpu95": 50.7,
+        "cpuMax": 55.6,
+        "over50": 28,
+        "lastFrameMs": 14345,
+        "repairs": 243,
+        "falseWrites": 244,
+        "lastError": ""
+      },
+      "writes": [
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1141
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1142
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1143
+        }
+      ]
+    },
+    {
+      "frame": 1217,
+      "render": false,
+      "visible": true,
+      "metrics": {
+        "samples": 221,
+        "stale": true,
+        "seconds": 10,
+        "fps": 22,
+        "gap95": 50.9,
+        "maxGap": 55.8,
+        "cpu95": 50.7,
+        "cpuMax": 55.6,
+        "over50": 28,
+        "lastFrameMs": 19366,
+        "repairs": 316,
+        "falseWrites": 317,
+        "lastError": ""
+      },
+      "writes": [
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1214
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1215
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1216
+        }
+      ]
+    },
+    {
+      "frame": 1287,
+      "render": false,
+      "visible": true,
+      "metrics": {
+        "samples": 221,
+        "stale": true,
+        "seconds": 10,
+        "fps": 22,
+        "gap95": 50.9,
+        "maxGap": 55.8,
+        "cpu95": 50.7,
+        "cpuMax": 55.6,
+        "over50": 28,
+        "lastFrameMs": 24404,
+        "repairs": 386,
+        "falseWrites": 387,
+        "lastError": ""
+      },
+      "writes": [
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1284
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1285
+        },
+        {
+          "stack": "Error\n    at Stage.set [as renderingEnabled] (eval at evaluate (:311:30), <anonymous>:2:236)\n    at l (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:165113:60)\n    at I2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163239:19)\n    at I.exports.n (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:154396:25)\n    at T2 (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:163278:36)\n    at A (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164263:24)\n    at Object.j (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:164269:62)\n    at Kt.onUpdate (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:150596:13)\n    at be._update (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:167937:41)\n    at Stage.value (blob:http://ncdls.test/4cc69ea7-620b-4db7-bf4a-45c5c2912fd6:22232:41)",
+          "frame": 1286
+        }
+      ]
+    }
+  ]
+}

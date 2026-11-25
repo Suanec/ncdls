@@ -150593,7 +150593,7 @@ define("libs/min/W.min.js", function (require, module, exports) {
             }
             this[s(789, 743)] = t;
           }
-          i.j(0);
+          // Browser host: no mini-game platform watchdog.
         }
         static [S(186, 417)](t, r, i) {
           function a(t, e) {

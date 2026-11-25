@@ -81,10 +81,28 @@
   });
   window.NCDLSWeb = {
     errors: [],
+    audioWarning: "",
     start(config, loadingUI) {
       // Repair the precise inconsistent state captured on iOS 15: the document
       // and engine are visible, but rendering remains disabled. Run before a
       // real render frame, not a background timer; leave game/dialog pause alone.
+      // AudioContext.resume can reject on iOS after interruption. It is optional
+      // audio recovery, not a game/renderer failure. Retry on the next real input.
+      if (Laya.SoundManager && Laya.WebAudioSound) {
+        let audioPending = false;
+        const warning = error => { window.NCDLSWeb.audioWarning = String(error?.message || error).slice(0,120); };
+        const recover = Laya.SoundManager._recoverWebAudio = () => {
+          const context = Laya.WebAudioSound.ctx;
+          if (!context || context.state === "running" || !context.resume || audioPending) return;
+          audioPending = true;
+          try {
+            Promise.resolve(context.resume()).then(() => {
+              if (context.state === "running") window.NCDLSWeb.audioWarning = "";
+            }, warning).finally(() => { audioPending = false; });
+          } catch (error) { warning(error); audioPending = false; }
+        };
+        document.addEventListener("pointerdown", recover, true);
+      }
       const meter = window.NCDLSWeb.metrics = frameMetrics();
       let watchedStage, timedStage;
       function watchRendering(stage) {

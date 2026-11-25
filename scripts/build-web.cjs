@@ -107,6 +107,8 @@ try {
   const scripts = [];
   for (const source of sources) {
     let code = fs.readFileSync(path.join(root, source), "utf8");
+    if (source === "src/shared/W.js")
+      code = require("./web-runtime-compat.cjs")(code);
     if (source === "src/game/main.js") {
       code = code.replace(
         /\(console\.(log|info|warn|error) = \(\) => \{\}\)/g,

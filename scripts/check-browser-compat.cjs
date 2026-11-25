@@ -21,7 +21,7 @@ const context = {
     querySelector: (s) => ({'#status':status, '#boot':boot, '#reload-game':reload})[s],
     addEventListener: (type, fn) => {docHandlers[type] = fn;},
   },
-  Laya: {Stage:class {render(){return 42;}},Config:{useWebGL2:true},Texture:{create(){}}},
+  Laya: {SoundManager:{},WebAudioSound:{ctx:null},Stage:class {render(){return 42;}},Config:{useWebGL2:true},Texture:{create(){}}},
   MediaMetaMap: {ani9:{pub:{},m2:{}}},
   W: {M2: class {constructor() { initialized=true; atCreation=context.Laya.Config.useWebGL2; }}},
   parent: {postMessage() {}},
@@ -90,6 +90,21 @@ async function checkRestart(selectedMode, selectedLevel, badBoot=false) {
   else assert.equal(opened,undefined);
 }
 (async()=>{
+  let attempts=0;
+  const previousErrors=context.NCDLSWeb.errors.length;
+  const audio=context.Laya.WebAudioSound.ctx={state:'suspended',resume(){attempts++;return Promise.reject(new Error('Failed to start the audio device'));}};
+  context.Laya.SoundManager._recoverWebAudio();context.Laya.SoundManager._recoverWebAudio();
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(attempts,1,'Do not race multiple audio resumes');
+  assert.match(context.NCDLSWeb.audioWarning,/Failed to start/);
+  assert.equal(context.NCDLSWeb.errors.length,previousErrors,'Audio rejection must not stop the game');
+  audio.resume=()=>{audio.state='running';return Promise.resolve();};
+  docHandlers.pointerdown();await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(context.NCDLSWeb.audioWarning,'','A later gesture can restore audio');
+  audio.state='suspended';audio.resume=()=>{throw Error('audio device unavailable');};
+  context.Laya.SoundManager._recoverWebAudio();
+  assert.match(context.NCDLSWeb.audioWarning,/unavailable/);
+  assert.equal(context.NCDLSWeb.errors.length,previousErrors);
   await checkRestart(0,100);
   await checkRestart(5,3);
   await checkRestart(0,1,true);

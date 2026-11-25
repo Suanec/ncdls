@@ -1,0 +1,359 @@
+{
+  "engine": "chrome",
+  "origin": "https://ncdls.test",
+  "release": "20261125.3",
+  "iphoneHardware": false,
+  "levels": [
+    {
+      "level": 2,
+      "samples": [
+        {
+          "frame": 540,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 539,
+            "stale": false,
+            "seconds": 9,
+            "fps": 59.7,
+            "gap95": 17.3,
+            "maxGap": 40.1,
+            "cpu95": 1.4,
+            "cpuMax": 30,
+            "over50": 0,
+            "lastFrameMs": 12,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 45,
+          "cards": 61,
+          "errors": []
+        },
+        {
+          "frame": 843,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 16.9,
+            "maxGap": 17.6,
+            "cpu95": 1.3,
+            "cpuMax": 6.7,
+            "over50": 0,
+            "lastFrameMs": 7,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 45,
+          "cards": 61,
+          "errors": []
+        },
+        {
+          "frame": 1145,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 17.1,
+            "maxGap": 18.6,
+            "cpu95": 1.4,
+            "cpuMax": 18.4,
+            "over50": 0,
+            "lastFrameMs": 3,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 45,
+          "cards": 61,
+          "errors": []
+        },
+        {
+          "frame": 1447,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 17.1,
+            "maxGap": 18.6,
+            "cpu95": 1.5,
+            "cpuMax": 18.4,
+            "over50": 0,
+            "lastFrameMs": 6,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 45,
+          "cards": 61,
+          "errors": []
+        },
+        {
+          "frame": 1749,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 16.8,
+            "maxGap": 17.4,
+            "cpu95": 1.4,
+            "cpuMax": 4.9,
+            "over50": 0,
+            "lastFrameMs": 4,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 45,
+          "cards": 61,
+          "errors": []
+        },
+        {
+          "frame": 2051,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 16.8,
+            "maxGap": 17.8,
+            "cpu95": 1.4,
+            "cpuMax": 2.1,
+            "over50": 0,
+            "lastFrameMs": 4,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 45,
+          "cards": 61,
+          "errors": []
+        },
+        {
+          "frame": 2353,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 16.8,
+            "maxGap": 17.8,
+            "cpu95": 1.6,
+            "cpuMax": 5.5,
+            "over50": 0,
+            "lastFrameMs": 5,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 45,
+          "cards": 61,
+          "errors": []
+        }
+      ],
+      "taps": 7,
+      "audio": {
+        "calls": 2,
+        "failed": "Failed to start the audio device",
+        "recovered": "",
+        "errors": 0,
+        "render": true
+      },
+      "summary": "NCDLS 20261125.3｜模式0 关2｜浏览器\n引擎帧仍在推进；游玩；暂停0/0；隐藏0/可见1；绘制1；GL丢失0\n菜单前10秒：引擎59.9fps；网页59.9fps；慢帧(>50ms)0\n帧间隔P95/最长 16.8/17.8ms；执行P95/最长 1.6/5.5ms\n检测间帧+60；末帧距今10ms；恢复0/停绘0\n配置fast/低帧0；画布1179×2556；DPR3\n车45(行6/变化0)；卡61(变化0)；触摸无/按下0\n错误：无"
+    },
+    {
+      "level": 294,
+      "samples": [
+        {
+          "frame": 541,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 540,
+            "stale": false,
+            "seconds": 9,
+            "fps": 60,
+            "gap95": 16.9,
+            "maxGap": 40.3,
+            "cpu95": 2,
+            "cpuMax": 15.1,
+            "over50": 0,
+            "lastFrameMs": 5,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 55,
+          "cards": 86,
+          "errors": []
+        },
+        {
+          "frame": 843,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 17.2,
+            "maxGap": 17.7,
+            "cpu95": 1.6,
+            "cpuMax": 14.4,
+            "over50": 0,
+            "lastFrameMs": 3,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 55,
+          "cards": 86,
+          "errors": []
+        },
+        {
+          "frame": 1145,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 17.5,
+            "maxGap": 17.8,
+            "cpu95": 1.2,
+            "cpuMax": 1.6,
+            "over50": 0,
+            "lastFrameMs": 4,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 55,
+          "cards": 86,
+          "errors": []
+        },
+        {
+          "frame": 1447,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 17.5,
+            "maxGap": 18.8,
+            "cpu95": 1.5,
+            "cpuMax": 5,
+            "over50": 0,
+            "lastFrameMs": 4,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 55,
+          "cards": 86,
+          "errors": []
+        },
+        {
+          "frame": 1749,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 17.5,
+            "maxGap": 18.8,
+            "cpu95": 1.6,
+            "cpuMax": 5,
+            "over50": 0,
+            "lastFrameMs": 4,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 55,
+          "cards": 86,
+          "errors": []
+        },
+        {
+          "frame": 2051,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 17.5,
+            "maxGap": 17.8,
+            "cpu95": 1.6,
+            "cpuMax": 2.3,
+            "over50": 0,
+            "lastFrameMs": 5,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 55,
+          "cards": 86,
+          "errors": []
+        },
+        {
+          "frame": 2353,
+          "render": true,
+          "visible": true,
+          "metrics": {
+            "samples": 600,
+            "stale": false,
+            "seconds": 10,
+            "fps": 60,
+            "gap95": 17.5,
+            "maxGap": 17.8,
+            "cpu95": 1.5,
+            "cpuMax": 2.3,
+            "over50": 0,
+            "lastFrameMs": 3,
+            "repairs": 0,
+            "falseWrites": 0,
+            "lastError": ""
+          },
+          "cars": 55,
+          "cards": 86,
+          "errors": []
+        }
+      ],
+      "taps": 7,
+      "audio": {
+        "calls": 2,
+        "failed": "Failed to start the audio device",
+        "recovered": "",
+        "errors": 0,
+        "render": true
+      },
+      "summary": "NCDLS 20261125.3｜模式0 关294｜浏览器\n引擎帧仍在推进；游玩；暂停0/0；隐藏0/可见1；绘制1；GL丢失0\n菜单前10秒：引擎60fps；网页60fps；慢帧(>50ms)0\n帧间隔P95/最长 17.5/17.8ms；执行P95/最长 1.5/2.3ms\n检测间帧+60；末帧距今14ms；恢复0/停绘0\n配置fast/低帧0；画布1179×2556；DPR3\n车55(行5/变化0)；卡86(变化0)；触摸无/按下0\n错误：无"
+    }
+  ],
+  "success": true
+}

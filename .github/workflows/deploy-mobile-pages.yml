@@ -11,6 +11,8 @@ on:
       - 'vendor/**'
       - 'assets/**'
       - 'scripts/build-web.cjs'
+      - 'scripts/web-runtime-compat.cjs'
+      - 'scripts/check-web-runtime.cjs'
       - 'scripts/check-web.cjs'
       - 'package.json'
   workflow_dispatch:
