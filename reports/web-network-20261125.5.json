@@ -1,0 +1,48 @@
+{
+  "external": [],
+  "methods": {
+    "GET": 327
+  },
+  "paths": {
+    "/": 1,
+    "launcher.css": 1,
+    "mobile.css": 1,
+    "launcher.js": 1,
+    "mobile.js": 1,
+    "icons": 3,
+    "game.html": 1,
+    "style.css": 1,
+    "browser.js": 1,
+    "scripts.json": 1,
+    "runtime": 1,
+    "loading": 5,
+    "libs": 1,
+    "sh.bin": 1,
+    "json": 1,
+    "res": 306
+  },
+  "phases": [
+    "startup",
+    "level 2",
+    "level 294",
+    "refresh",
+    "park and magnet"
+  ],
+  "errors": [],
+  "state": {
+    "base": "http://127.0.0.1:19276",
+    "cloud": null,
+    "channel": 0,
+    "hasWx": false,
+    "render": true
+  },
+  "release": "20261125.5",
+  "provenance": {
+    "sourceCommit": "4401c3804449d207abfc51f3eb638f2c74d44a52",
+    "capture": "Existing 2026-11-25 local Chromium request audit; archived during documentation cleanup, not rerun.",
+    "serviceWorkers": "blocked",
+    "routing": "Same-origin HTTP requests served from local web_mobile/dist. Third-party attempts recorded and aborted; none observed.",
+    "scope": "Startup, classic levels 2 and 294, refresh, park and magnet button path. Does not cover all gameplay, win screens, or original platform SDK branches.",
+    "device": "Desktop Chromium with mobile viewport, not iPhone hardware."
+  }
+}
