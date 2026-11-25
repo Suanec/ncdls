@@ -41,7 +41,7 @@ NCDLS_TLS_CERT=/absolute/path/cert.pem NCDLS_TLS_KEY=/absolute/path/key.pem npm 
 
 浏览器可能在空间不足或清理网站数据时删除缓存；离线资源就绪不代表永久保存。建议导出重要存档。Safari 网页和主屏幕应用之间是否共享数据受系统行为影响，因此应从主屏幕打开后再下载并确认自己的进度。
 
-当前可见版本为 `20261125.4`。默认复制几百字诊断摘要，完整 JSON 可单独导出；启动界面明确标注缓存读取、下载和初始化。见 [性能诊断](../docs/PERFORMANCE_DIAGNOSTICS.md)。新增前台绘制恢复和默认按需保存，见 [缓存说明](../docs/LAZY_CACHE.md) 与 [卡顿排查记录](../docs/FREEZE_DIAGNOSTICS.md)。第一关实例复用修复已通过 Chrome 画面、重启、断网重开和手机视口检查；尚未进行 iPhone 真机验证。默认按关卡加载并保存，完整 1,901 个资源仅由“保存离线资源 / 检查并下载更新”按钮触发。自动检查新版不全量下载；手动更新复用哈希一致的旧资源。见 [渲染兼容说明](../docs/RENDERING.md)。
+当前可见版本为 `20261125.5`。默认复制几百字诊断摘要，完整 JSON 可单独导出；启动界面明确标注缓存读取、下载和初始化。见 [性能诊断](../docs/PERFORMANCE_DIAGNOSTICS.md)。新增前台绘制恢复和默认按需保存，见 [缓存说明](../docs/LAZY_CACHE.md) 与 [卡顿排查记录](../docs/FREEZE_DIAGNOSTICS.md)。第一关实例复用修复已通过 Chrome 画面、重启、断网重开和手机视口检查；尚未进行 iPhone 真机验证。默认按关卡加载并保存，完整 1,901 个资源仅由“保存离线资源 / 检查并下载更新”按钮触发。自动检查新版不全量下载；手动更新复用哈希一致的旧资源。见 [渲染兼容说明](../docs/RENDERING.md)。
 
 完整下载现在通过 21 个资源包传输，旧缓存可复用；必需运行脚本合并为一次请求。默认仍按需加载。下载慢时的升级步骤及测试数据见 [下载速度说明](../docs/DOWNLOAD_PERFORMANCE.md)。
 
@@ -118,3 +118,7 @@ npm run check
 静态检查验证文件哈希、离线清单完整性、脚本语法、WASM 和关卡配置。运行验证结果见 `../reports/web-mobile-smoke-test.json`。浏览器自动化使用本机 Chrome 的手机视口，不等同于 iPhone Safari 真机验证；首次安装后请按上文进行一次飞行模式冷启动确认。
 
 机制参考：[Service Worker 使用条件](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)、[WebKit 存储策略](https://webkit.org/blog/14403/updates-to-storage-policy/)。
+
+## 首次选择与资源自动修复（20261125.5）
+
+本机没有缓存的运行文件或关卡资源时，启动游戏前选择按需加载或完整下载（约 45 MB）。后续使用已保存资源，不重复询问。完整下载复用现有资源包机制，失败可重试或改为按需加载。资源校验和自动修复、加载界面生命周期修复见 [说明](../docs/RESOURCE_LOADING.md)。

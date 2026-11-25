@@ -11,18 +11,18 @@
     "check:wechat": "node scripts/check-wechat.cjs",
     "decode:configs": "node scripts/decode-configs.cjs",
     "build:web": "node scripts/build-web.cjs",
-    "check:web": "node scripts/check-web.cjs && node scripts/check-browser-compat.cjs && node scripts/check-pool-reservation.cjs && node scripts/check-startup-shell.cjs && node scripts/check-recovery.cjs && node scripts/check-diagnostics.cjs && node scripts/check-web-runtime.cjs && node scripts/check-level-selection.cjs && node scripts/check-web-props.cjs",
+    "check:web": "node scripts/check-web.cjs && node scripts/check-browser-compat.cjs && node scripts/check-pool-reservation.cjs && node scripts/check-startup-shell.cjs && node scripts/check-recovery.cjs && node scripts/check-diagnostics.cjs && node scripts/check-web-runtime.cjs && node scripts/check-level-selection.cjs && node scripts/check-web-props.cjs && node scripts/check-load-choice.cjs",
     "serve:web": "node scripts/serve-web.cjs",
     "web": "npm run build:web && npm run serve:web",
     "serve:web:lan": "node scripts/serve-web.cjs --lan",
     "web:lan": "npm run build:web && npm run serve:web:lan",
     "build:mobile": "node web_mobile/scripts/build.cjs",
-    "check:mobile": "node web_mobile/scripts/check.cjs && node scripts/check-browser-compat.cjs && node scripts/check-pool-reservation.cjs && node scripts/check-mobile-download.cjs && node scripts/check-startup-shell.cjs && node scripts/check-recovery.cjs && node scripts/check-diagnostics.cjs && node scripts/check-web-runtime.cjs && node scripts/check-level-selection.cjs && node scripts/check-web-props.cjs",
+    "check:mobile": "node web_mobile/scripts/check.cjs && node scripts/check-browser-compat.cjs && node scripts/check-pool-reservation.cjs && node scripts/check-mobile-download.cjs && node scripts/check-startup-shell.cjs && node scripts/check-recovery.cjs && node scripts/check-diagnostics.cjs && node scripts/check-web-runtime.cjs && node scripts/check-level-selection.cjs && node scripts/check-web-props.cjs && node scripts/check-load-choice.cjs",
     "serve:mobile": "node web_mobile/scripts/serve.cjs",
     "serve:mobile:lan": "node web_mobile/scripts/serve.cjs --lan",
     "mobile": "npm run build:mobile && npm run serve:mobile",
     "mobile:lan": "npm run build:mobile && npm run serve:mobile:lan",
-    "check:browser": "node scripts/check-browser-compat.cjs && node scripts/check-pool-reservation.cjs && node scripts/check-startup-shell.cjs && node scripts/check-recovery.cjs && node scripts/check-diagnostics.cjs && node scripts/check-web-runtime.cjs && node scripts/check-level-selection.cjs && node scripts/check-web-props.cjs"
+    "check:browser": "node scripts/check-browser-compat.cjs && node scripts/check-pool-reservation.cjs && node scripts/check-startup-shell.cjs && node scripts/check-recovery.cjs && node scripts/check-diagnostics.cjs && node scripts/check-web-runtime.cjs && node scripts/check-level-selection.cjs && node scripts/check-web-props.cjs && node scripts/check-load-choice.cjs"
   },
   "engines": {
     "node": ">=18"

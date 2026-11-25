@@ -48,3 +48,14 @@
     spellcheck="false"
   ></textarea>
 </dialog>
+
+<dialog id="resource-choice" aria-labelledby="resource-choice-title">
+  <h1 id="resource-choice-title">首次打开，选择加载方式</h1>
+  <p>本机还没有游戏资源。核心运行文件约 9 MB，模型、图片等需要另外加载。</p>
+  <button id="resource-lazy" class="primary" type="button">按需加载，先开始玩</button>
+  <p class="secondary">先下载运行文件和当前关卡资源；以后遇到新内容再下载，已下载的资源会复用。</p>
+  <button id="resource-all" type="button">一次下载全部资源（约 45 MB）</button>
+  <p class="secondary">下载并保存全部资源后进入游戏，之后可以离线玩。请保持页面打开。</p>
+  <progress id="resource-choice-progress" max="100" hidden aria-label="首次完整下载进度"></progress>
+  <p id="resource-choice-status" role="status"></p>
+</dialog>

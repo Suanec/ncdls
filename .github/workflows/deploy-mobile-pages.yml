@@ -16,6 +16,10 @@ on:
       - 'scripts/web-props-compat.cjs'
       - 'scripts/check-web-props.cjs'
       - 'scripts/check-level-selection.cjs'
+      - 'scripts/check-load-choice.cjs'
+      - 'scripts/check-mobile-download.cjs'
+      - 'scripts/check-browser-compat.cjs'
+      - 'scripts/check-startup-shell.cjs'
       - 'scripts/check-web.cjs'
       - 'package.json'
   workflow_dispatch:

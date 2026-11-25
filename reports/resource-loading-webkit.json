@@ -1,0 +1,60 @@
+{
+  "engine": "webkit",
+  "release": "20261125.5",
+  "cases": [
+    {
+      "choice": "lazy",
+      "requests": 134,
+      "coreRequests": 1,
+      "packs": 0,
+      "fault": "/res/atlas/fgui/Home_atlas0.png",
+      "faultRequests": 2,
+      "progress": [
+        "正在读取加载清单",
+        "正在下载资源",
+        "正在确认运行文件来源",
+        "正在下载核心运行文件",
+        "正在下载运行文件",
+        "正在初始化游戏引擎",
+        "正在加载本关资源",
+        "正在下载资源",
+        "资源版本不匹配，正在更新",
+        "正在下载资源",
+        "正在解析资源和创建场景",
+        "正在创建游戏场景"
+      ],
+      "lateProgress": {
+        "originalError": "",
+        "originalSizingError": "TypeError: null is not an object (evaluating 'this._displayObject.size')",
+        "guarded": true
+      },
+      "revisitCached": true,
+      "errors": []
+    },
+    {
+      "choice": "all",
+      "requests": 35,
+      "coreRequests": 1,
+      "packs": 20,
+      "fault": "",
+      "faultRequests": 0,
+      "progress": [
+        "正在读取加载清单",
+        "正在确认运行文件来源",
+        "正在读取本机缓存",
+        "正在初始化游戏引擎",
+        "正在加载本关资源",
+        "正在解析资源和创建场景",
+        "正在创建游戏场景"
+      ],
+      "lateProgress": {
+        "originalError": "",
+        "originalSizingError": "TypeError: null is not an object (evaluating 'this._displayObject.size')",
+        "guarded": true
+      },
+      "revisitCached": true,
+      "errors": []
+    }
+  ],
+  "success": true
+}

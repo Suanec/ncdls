@@ -27,7 +27,7 @@ const digest = async (data) => Array.from(
 
 // Bound each attempt even if the browser never rejects an aborted fetch/read.
 // Streaming downloads use an idle deadline; buffered responses get more time.
-async function receive(path, onBytes = () => {}, onStatus = () => {}) {
+async function receive(path, onBytes = () => {}, onStatus = () => {}, verify = async () => {}) {
   const url = absolute(path);
   if (!url.startsWith(SCOPE.href)) throw new Error("无效资源路径");
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -76,12 +76,14 @@ async function receive(path, onBytes = () => {}, onStatus = () => {}) {
           if (controller.signal.aborted) throw new Error('已中止过期下载');
           await onBytes(data.byteLength);
         }
+        await verify(data);
         return { data, headers: response.headers };
       })();
       return await Promise.race([transfer, timeout]);
     } catch (error) {
       controller.abort();
       clearTimeout(timer); clearInterval(heartbeat);
+      await Promise.resolve(onStatus({path,attempt:attempt+1,retry:true,message:error.message})).catch(() => {});
       if (attempt === 2) throw new Error(
         error.name === "AbortError"
           ? `网络长时间无响应：${path}。可重试或切回在线版；已保存资源保留。`
@@ -396,82 +398,102 @@ function sourced(response, source) {
   headers.set("x-ncdls-source", source);
   return new Response(response.body, {status:response.status,statusText:response.statusText,headers});
 }
-function resourceNotice(event, path, source) {
+function resourceNotice(event, path, source, extra = {}) {
   if (!event.clientId || !self.clients.get) return;
   event.waitUntil(self.clients.get(event.clientId).then(client => {
-    client?.postMessage({app:"ncdls-resource",path,source});
+    client?.postMessage({app:"ncdls-resource",path,source,...extra});
   }).catch(() => {}));
 }
 const fromNetwork = async request => sourced(await fetch(new Request(request, {cache:"no-store"})), "network");
 
-self.addEventListener("fetch", (event) => {
-  const request = event.request,
-    url = new URL(request.url);
-  if (!/^https?:$/.test(url.protocol)) return;
-  // Only cache this app's resources; preserve other requests' original behavior.
-  if (
-    url.origin !== SCOPE.origin ||
-    !url.pathname.startsWith(SCOPE.pathname) ||
-    request.method !== "GET"
-  )
-    return;
-  if (url.pathname === new URL("recover.html", SCOPE).pathname) {
-    event.respondWith(fetch(new Request(request, { cache: "no-store" })));
-    return;
+// Hold resource bytes until verified: a partial model must never reach the engine.
+// Share concurrent retries, but send progress to every requesting game frame.
+const resourceJobs = new Map(), offlineFingerprints = new Map();
+const resourcePath = path => !/^(?:index\.html|game\.html|scripts\.json|browser\.js|launcher\.|mobile\.|manifest\.|icons\/|recover\.html)/.test(path);
+async function checkedResource(event, request, path, file, cache, saved) {
+  if (saved && saved.headers.get("x-ncdls-sha256") === file[1]) {
+    resourceNotice(event,path,"cache",{phase:"complete",bytes:file[0]});
+    return sourced(await rangeResponse(request,saved),"cache");
   }
-  event.respondWith(
-    (async () => {
-      url.search = "";
-      url.hash = "";
-      if (url.pathname === SCOPE.pathname) url.pathname += "index.html";
-      const cache = await resourceCache();
-      let saved = await cache.match(url.href);
-      let path;
-      try { path = decodeURIComponent(url.pathname.slice(SCOPE.pathname.length)); } catch { /* Invalid encoding is not cacheable. */ }
-      const file = LAZY_FILES[path];
-      // Reuse unchanged bytes across updates (including preserved recovery caches).
-      // Check the fingerprint so stable resource paths cannot serve an old model.
-      if (!saved && file) {
-        for (const name of await caches.keys()) {
-          if (!name.startsWith(PREFIX) || name === CACHE) continue;
-          const candidate = await (await caches.open(name)).match(url.href);
-          if (candidate?.headers.get("x-ncdls-sha256") === file[1]) {
-            saved = candidate;
-            event.waitUntil(cache.put(url.href, candidate.clone()).catch(() => {}));
-            break;
-          }
-        }
-      }
-      if (saved) {
-        resourceNotice(event, path, "cache");
-        return sourced(await rangeResponse(request, saved), "cache");
-      }
-      try {
-        const response = await fromNetwork(request);
-        if (response.ok) resourceNotice(event, path, "network");
-        if (file && response.ok && response.status === 200 && !request.headers.get("range")) {
-          const copy = response.clone();
-          event.waitUntil((async () => {
-            const data = await copy.arrayBuffer();
-            if (data.byteLength !== file[0] || await digest(data) !== file[1]) return;
-            const headers = new Headers(copy.headers);
-            // Cache bytes are decoded; compressed transport headers no longer apply.
-            headers.delete("content-encoding"); headers.delete("content-length");
-            headers.set("x-ncdls-sha256", file[1]);
-            await cache.put(url.href, new Response(data, {headers}));
-          })().catch(() => {})); // Storage eviction/quota must not break online play.
-        }
-        return response;
-      } catch {
-        return new Response("该资源尚未保存到手机，请联网后重新下载离线包。", {
-          status: 503,
-          headers: { "Content-Type": "text/plain; charset=utf-8" },
-        });
-      }
-    })().catch(async () => {
-      const response = await fromNetwork(request);
-      if (response.ok) resourceNotice(event, url.pathname.slice(SCOPE.pathname.length), "network");
+  const repair = Boolean(saved);
+  resourceNotice(event,path,"network",{phase:repair?"updating":"start",total:file[0]});
+  const key=path+":"+file[1];
+  let job=resourceJobs.get(key);
+  if (!job) {
+    job={events:new Set([event]),promise:null};resourceJobs.set(key,job);
+    let received=0,attempt=1,lastNotice=0,updating=repair;
+    const notice=(phase,extra={})=>{for(const target of job.events)resourceNotice(target,path,"network",{phase,total:file[0],received,...extra});};
+    job.promise=(async()=>{
+      const result=await receive(path, length=>{
+        received+=length;
+        if(Date.now()-lastNotice>200){lastNotice=Date.now();notice(updating?"updating":"progress");}
+      }, info=>{
+        if(info.attempt!==attempt){attempt=info.attempt;received=0;}
+        if(info.retry)updating=true;
+        notice(updating?"updating":"progress",{attempt,waitingSeconds:info.waitingSeconds||0});
+      },async bytes=>{
+        if(bytes.byteLength!==file[0] || await digest(bytes)!==file[1])
+          throw new Error("资源版本不匹配");
+      });
+      const response=new Response(result.data,{headers:{"Content-Type":contentType(path),"x-ncdls-sha256":file[1]}});
+      // Quota errors do not prevent online play. Only validated bytes enter cache.
+      await cache?.put(absolute(path),response.clone()).catch(()=>{});
+      notice("complete",{bytes:file[0]});
       return response;
-    }), // A disabled cache must not block online resources.
-  );
+    })().catch(error=>{notice("failed");throw error;}).finally(()=>resourceJobs.delete(key));
+  } else job.events.add(event);
+  const response=await job.promise;
+  return sourced(await rangeResponse(request,response.clone()),"network");
+}
+
+self.addEventListener("fetch", (event) => {
+  const request=event.request,url=new URL(request.url);
+  if (!/^https?:$/.test(url.protocol) || url.origin!==SCOPE.origin ||
+      !url.pathname.startsWith(SCOPE.pathname) || request.method!=="GET") return;
+  if(url.pathname===new URL("recover.html",SCOPE).pathname){
+    event.respondWith(fetch(new Request(request,{cache:"no-store"})));return;
+  }
+  event.respondWith((async()=>{
+    url.search="";url.hash="";
+    if(url.pathname===SCOPE.pathname)url.pathname+="index.html";
+    let path;try{path=decodeURIComponent(url.pathname.slice(SCOPE.pathname.length));}catch{return fromNetwork(request);}
+    let cache,saved;
+    try{cache=await resourceCache();saved=await cache.match(url.href);}catch{/* Online play without storage. */}
+    let file=LAZY_FILES[path];
+    // A deliberately retained older full offline package must stay internally
+    // consistent with its own runtime, rather than mixing in newer assets.
+    const marker=cache && await cache.match(READY);
+    if(marker){
+      const version=(await marker.json()).version;
+      if(version && !offlineFingerprints.has(version)){
+        const manifest=await cache.match(absolute("offline-manifest.json"));
+        if(manifest)offlineFingerprints.set(version,Object.fromEntries((await manifest.json()).files.map(f=>[f.path,[f.bytes,f.sha256]])));
+      }
+      file=offlineFingerprints.get(version)?.[path]||file;
+    }
+    if(!saved && file) {
+      try{for(const name of await caches.keys()){
+        if(!name.startsWith(PREFIX))continue;
+        const candidate=await(await caches.open(name)).match(url.href);
+        if(candidate?.headers.get("x-ncdls-sha256")===file[1]){saved=candidate;break;}
+      }}catch{/* Cache access is optional. */}
+    }
+    if(file && resourcePath(path)) {
+      try{return await checkedResource(event,request,path,file,cache,saved);}
+      catch{return new Response("资源更新暂未完成，请检查网络后重试。",{status:503,headers:{"Content-Type":"text/plain; charset=utf-8"}});}
+    }
+    if(saved){resourceNotice(event,path,"cache",{phase:"complete"});return sourced(await rangeResponse(request,saved),"cache");}
+    try{
+      const response=await fromNetwork(request);
+      if(response.ok)resourceNotice(event,path,"network",{phase:"complete"});
+      if(file && response.ok && response.status===200){
+        const copy=response.clone();event.waitUntil((async()=>{
+          const data=await copy.arrayBuffer();
+          if(data.byteLength!==file[0]||await digest(data)!==file[1])return;
+          await cache?.put(url.href,new Response(data,{headers:{"Content-Type":contentType(path),"x-ncdls-sha256":file[1]}}));
+        })().catch(()=>{}));
+      }
+      return response;
+    }catch{return new Response("该资源尚未保存，请联网后重试。",{status:503});}
+  })());
 });

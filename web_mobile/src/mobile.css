@@ -78,3 +78,8 @@ iframe {
     width: 100%;
   }
 }
+
+#resource-choice{max-height:calc(100vh - 40px);overflow:auto}
+#resource-choice h1{font-size:22px}
+#resource-choice p{font-size:15px;line-height:1.65}
+#resource-choice-progress{width:100%;accent-color:#287cbd}

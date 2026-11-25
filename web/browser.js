@@ -74,10 +74,41 @@
     };
     return state;
   }
-  let assetSources = {cache:0, network:0}, collectingAssets = false;
+  let assetSources = {cache:0, network:0}, collectingAssets = false, gameReady = false;
+  const resourcePending = new Map(), resourceDone = new Set();
+  let resourceFailed = "", resourceOverlay = false;
+  function resourceProgress() {
+    if (!resourcePending.size) return false;
+    const list=[...resourcePending.values()], update=list.some(item=>item.updating);
+    const active=list[0], received=list.reduce((sum,item)=>sum+(item.received||0),0);
+    const core=active.path.startsWith("runtime/");
+    report({stage:update?"updating":core?"scripts":"assets",title:update?"资源版本不匹配，正在更新":core?"正在下载核心运行文件":"正在下载资源",
+      files:resourceDone.size,loaded:received,total:core?active.total:undefined,
+      detail:`已完成 ${resourceDone.size} 项 · 待完成 ${list.length} 项 · 当前接收 ${mib(received)} · ${active.path.split("/").pop()}`});
+    resourceOverlay=true;
+    return true;
+  }
   navigator.serviceWorker?.addEventListener("message", event => {
-    if (event.data?.app !== "ncdls-resource" || !collectingAssets || event.data.path?.startsWith("runtime/")) return;
-    if (event.data.source in assetSources) assetSources[event.data.source]++;
+    const data=event.data;
+    if(data?.app!=="ncdls-resource")return;
+    if(navigator.serviceWorker.controller && event.source!==navigator.serviceWorker.controller)return;
+    if(data.phase==="failed"){
+      resourcePending.delete(data.path);resourceFailed=data.path;
+      fail(new Error("资源更新暂未完成，请检查网络后重新加载。"));return;
+    }
+    if(["start","progress","updating"].includes(data.phase)) {
+      const previous=resourcePending.get(data.path);
+      resourcePending.set(data.path,{...previous,...data,updating:previous?.updating||data.phase==="updating"});
+      resourceProgress();return;
+    }
+    resourcePending.delete(data.path);
+    if(!resourceDone.has(data.path)) {
+      resourceDone.add(data.path);
+      if(data.source in assetSources)assetSources[data.source]++;
+    }
+    if(!resourceProgress() && gameReady && resourceOverlay && !bootFailed) {
+      resourceOverlay=false;window.parent.postMessage({type:"ncdls:ready"},location.origin);
+    }
   });
   window.NCDLSWeb = {
     errors: [],
@@ -187,8 +218,25 @@
       window.NCDLSWeb.renderCompatibility = "engine-default";
       window.NCDLSWeb.config = config;
       window.NCDLSWeb.loadingUI = loadingUI;
+      // A delayed layout callback may retain an already disposed FGUI object.
+      // Keep live layout unchanged, but never resize its destroyed display object.
+      const object = window.fgui?.GObject?.prototype;
+      if (object) {
+        for (const name of ["setSize", "handleSizeChanged"]) {
+          const method=object[name];
+          object[name]=function (...args) {
+            if(this.isDisposed)return;
+            return method.apply(this,args);
+          };
+        }
+      }
+      const onProgress = loadingUI.prototype?.onEvtProgress;
+      if (onProgress) loadingUI.prototype.onEvtProgress = function (...args) {
+        if (this.isDisposed || !this.displayObject || this.progress0?.isDisposed) return;
+        return onProgress.apply(this,args);
+      };
       const assetsStarted = performance.now();
-      assetSources = {cache:0, network:0}; collectingAssets = true;
+      assetSources = {cache:0, network:0}; resourceDone.clear(); collectingAssets = true;
       report({stage:"assets",title:"正在加载本关资源",detail:"正在准备关卡、车辆和图片…"});
       window.NCDLSWeb.main = new W.M2(config, loadingUI);
       document.querySelector("#boot").classList.add("hidden");
@@ -198,13 +246,13 @@
         const resources = performance.getEntriesByType("resource")
           .filter((entry) => entry.startTime >= assetsStarted);
         const bytes = resources.reduce((sum, entry) => sum + (entry.decodedBodySize || 0), 0);
-        report({stage:"assets",title:"正在加载本关资源",files:resources.length,loaded:bytes,
+        if (!resourceProgress()) report({stage:"assets",title:"正在解析资源和创建场景",files:resources.length,loaded:bytes,
           detail: assetSources.cache + assetSources.network > 0
             ? `本机缓存 ${assetSources.cache} 项 · 网络下载 ${assetSources.network} 项 · 正在解析模型和图片`
             : `已读取 ${resources.length} 项 · ${mib(bytes)} · 正在解析模型和图片`});
         const game = window.Game;
-        if (game?.scene3D && !game.initing && !loadingUI.instance) {
-          clearInterval(assetTimer); collectingAssets = false;
+        if (game?.scene3D && !game.initing && !loadingUI.instance && !resourcePending.size) {
+          clearInterval(assetTimer); collectingAssets = false; gameReady = true; resourceOverlay = false;
           report({stage:"drawing",title:"正在创建游戏场景",detail:"资源已就绪，正在创建车辆、螺丝和画面…"});
           painted().then(() => {
             if (!bootFailed) window.parent.postMessage({type:"ncdls:ready"}, location.origin);
@@ -219,7 +267,10 @@
     const message = error?.stack || error?.message || String(error);
     window.NCDLSWeb.errors.push(message);
     console.error("[web]", error);
-    report({stage:"error",title:"加载未完成",detail:error?.message || message});
+    const friendly = resourceFailed ? "资源更新暂未完成，请检查网络后重新加载。已下载的资源和存档会保留。"
+      : /绘图环境|运行文件|加载清单|网络|站点正在更新/.test(error?.message || "") ? error.message
+      : "游戏加载暂未完成，请重新加载。已下载的资源和存档会保留。";
+    report({stage:"error",title:resourceFailed?"资源更新暂未完成":"加载未完成",detail:friendly});
     document.querySelector("#boot").classList.remove("hidden");
     reload.hidden = false;
   }
@@ -258,9 +309,10 @@
         arm();
         const resource = await fetch(file.src, {signal:controller.signal});
         if (!resource.ok) throw new Error("运行文件下载失败，请重新加载。");
+        resourcePending.delete(file.src);
         const chunks = [];
-        const source = resource.headers.get("x-ncdls-source") === "cache" || resource.headers.get("x-ncdls-sha256") ? "cache"
-          : resource.headers.get("x-ncdls-source") === "network" ? "network" : "unknown";
+        const label=resource.headers.get("x-ncdls-source");
+        const source=label==="network"?"network":label==="cache"||resource.headers.get("x-ncdls-sha256")?"cache":"unknown";
         let bytes = 0;
         const received = length => { bytes += length; loaded += length; sourceBytes[source] += length; };
         if (resource.body?.getReader) {

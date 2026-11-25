@@ -13,7 +13,7 @@
     busy = false,
     reloading = false,
     downloaded = false,
-    activeWorker = null, lastMessage = 0, checkingDownload = false;
+    activeWorker = null, lastMessage = 0, checkingDownload = false, firstDownload = null;
   const supported =
     isSecureContext && "serviceWorker" in navigator && "caches" in window;
   const mib = (size) => (size / 1024 / 1024).toFixed(1) + " MB";
@@ -134,32 +134,40 @@
   document
     .querySelector("#mobile-close")
     .addEventListener("click", () => panel.close());
-  download.addEventListener("click", async () => {
+  async function startDownload() {
     if (!supported || busy) return;
     downloaded = false;
+    activeWorker = null;
     busy = true;
     lastMessage = Date.now();
     download.disabled = true;
     progress.hidden = false;
     display("正在准备离线资源，请保持页面打开…");
     try {
-      registration = await navigator.serviceWorker.register("sw.js", {
-        scope: "./",
-        updateViaCache: "none",
-      });
-      if (!registration.installing) await registration.update();
+      // First-load preparation already installed this page's worker. Repeating
+      // update() here can take long enough to trip the download watchdog before
+      // any download has started (observed in Chrome).
+      if (!firstDownload || !registration) {
+        registration = await navigator.serviceWorker.register("sw.js", {
+          scope: "./", updateViaCache: "none",
+        });
+        if (!registration.installing) await registration.update();
+      }
       const worker = await installedWorker(
         registration.installing || registration.waiting || registration.active,
       );
       // Explicit user action authorizes the complete offline package download.
       activeWorker = worker;
+      lastMessage = Date.now();
       worker.postMessage({ type: "download-all" });
       navigator.storage?.persist?.().catch(() => {});
     } catch (error) {
       busy = false;
       showError(error);
+      if (firstDownload) { firstDownload.reject(error); firstDownload = null; }
     }
-  });
+  }
+  download.addEventListener("click", startDownload);
   update.addEventListener("click", () => {
     if (!registration?.waiting) {
       if (downloaded) location.reload();
@@ -193,11 +201,27 @@
               ? `下载${transfer?.path?.startsWith("runtime/") ? "游戏运行文件" : data.totalPacks ? `资源包 ${data.completedPacks}/${data.totalPacks}` : "更新文件"} · 已接收 ${mib(data.receivedBytes)} · 已保存 ${progress.value}%（${data.files}/${data.totalFiles}）`
               : `正在保存 ${progress.value}% · ${mib(data.bytes)} / ${mib(data.totalBytes)}（${data.files}/${data.totalFiles}）`) + waiting,
         );
+        firstDownload?.notify({text:state.textContent,percent:progress.value});
       } else if (data.type === "error") {
+        if (firstDownload) {firstDownload.reject(new Error(data.message)); firstDownload = null;}
         busy = false;
         showError(new Error(data.message));
       } else if (data.type === "ready" || data.type === "downloaded") {
         if (data.type === "downloaded") downloaded = true;
+        if (firstDownload) {
+          const pending = firstDownload; firstDownload = null;
+          (async () => {
+            if (registration?.waiting) {
+              const worker = registration.waiting;
+              worker.postMessage({type:"activate-update"});
+              await new Promise((resolve,reject) => {
+                const timer=setTimeout(()=>{worker.removeEventListener("statechange",change);reject(new Error("资源已保存，组件切换超时，请重试"));},12000);
+                const change=()=>{if(worker.state==="activated"){clearTimeout(timer);worker.removeEventListener("statechange",change);resolve();}};
+                worker.addEventListener("statechange",change);change();
+              });
+            }
+          })().then(pending.resolve,pending.reject);
+        }
         busy = false;
         refresh().catch(showError);
       }
@@ -209,7 +233,7 @@
   }
   // iOS may terminate a background worker while its page still says "busy".
   setInterval(async () => {
-    if (!busy || checkingDownload || Date.now() - lastMessage < 15000) return;
+    if (!busy || !activeWorker || checkingDownload || Date.now() - lastMessage < 15000) return;
     checkingDownload = true;
     try {
       const worker = activeWorker || registration?.waiting || registration?.active;
@@ -217,13 +241,14 @@
       const status = await workerStatus(worker);
       if (status.downloading === false) {
         busy = false;
-        if (status.ready) { downloaded = true; await refresh(); }
-        else showError(new Error("下载已中断，已保存资源保留。可以重试，或使用下方入口切回在线版。"));
+        if (status.ready) { downloaded = true; if(firstDownload){firstDownload.resolve();firstDownload=null;} await refresh(); }
+        else throw new Error("下载已中断，已保存资源保留。可以重试，或使用下方入口切回在线版。");
       }
       lastMessage = Date.now();
     } catch (error) {
       busy = false;
       showError(error);
+      if (firstDownload) {firstDownload.reject(error); firstDownload=null;}
     } finally { checkingDownload = false; }
   }, 5000);
   window.addEventListener("online", () => refresh().catch(showError));
@@ -336,5 +361,12 @@
         event.target.value = "";
       }
     });
+  window.NCDLSBeforeGame = window.NCDLSPrepareCache.then(() => window.NCDLSChooseResources({
+    base, supported,
+    downloadAll: notify => new Promise((resolve,reject) => {
+      firstDownload = {resolve,reject,notify};
+      void startDownload();
+    }),
+  }));
   refresh().catch(showError);
 })();

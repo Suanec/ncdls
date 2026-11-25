@@ -19,7 +19,7 @@ const manifest = { version, files, packs: [pack], totalBytes: files.reduce((s, f
 const cacheName = `ncdls-mobile:/ncdls/:${version}`;
 const url = (name) => new URL(name, scope).href;
 
-function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreAbortOnce = false, hangForever = false, stallBodyOnce = false, bufferedOnce = false } = {}) {
+function harness({ badAsset = false, failAsset = false, assetAlwaysBad = false, failOnce = false, corrupt = false, stallOnce = false, ignoreAbortOnce = false, hangForever = false, stallBodyOnce = false, bufferedOnce = false } = {}) {
   const stores = new Map(), listeners = new Map(), requests = [], messages = [];
   const counters = new Map();
   const caches = {
@@ -42,7 +42,7 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
     clearTimeout, setInterval, clearInterval, ReadableStream,
     self: {
       registration: { scope },
-      clients: { async matchAll() { return [{ url: scope, postMessage(m) { messages.push(m); } }]; }, async claim() {} },
+      clients: { async get(){return {postMessage(m){messages.push(m);}};}, async matchAll() { return [{ url: scope, postMessage(m) { messages.push(m); } }]; }, async claim() {} },
       async skipWaiting() {},
       addEventListener(name, fn) { listeners.set(name, fn); },
     },
@@ -67,7 +67,11 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
         if (failOnce && attempt === 1) return new Response("try again", { status: 503 });
         return new Response(corrupt ? Buffer.from("corrupt") : packData);
       }
-      if (raw.has(name)) return new Response(raw.get(name));
+      if (raw.has(name)) {
+        if(failAsset && attempt===1)return new Response("missing",{status:404});
+        if(assetAlwaysBad || badAsset && attempt===1)return new Response("partial");
+        return new Response(raw.get(name));
+      }
       throw new Error("Unexpected request " + name);
     },
   });
@@ -76,7 +80,7 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
     stores, caches, requests, messages, listeners,
     async resource(name, headers = {}) {
       let response; const jobs = [];
-      listeners.get("fetch")({ request: new Request(url(name), {headers}),
+      listeners.get("fetch")({clientId:"test-page", request: new Request(url(name), {headers}),
         respondWith(p) { response=p; }, waitUntil(p) { jobs.push(p); } });
       const result = await response; await Promise.all(jobs); return result;
     },
@@ -90,6 +94,23 @@ function harness({ failOnce = false, corrupt = false, stallOnce = false, ignoreA
 }
 
 (async () => {
+  for(const options of [{badAsset:true},{failAsset:true}]){
+    const h=harness(options),response=await h.resource("res/one.lh");
+    assert.equal(response.status,200);assert.equal(await response.text(),raw.get("res/one.lh").toString());
+    assert.equal(h.requests.filter(p=>p==="res/one.lh").length,2);
+    assert(h.messages.some(m=>m.app==="ncdls-resource"&&m.phase==="updating"),"Retry must show automatic update state");
+  }
+  const brokenAsset=harness({assetAlwaysBad:true});
+  assert.equal((await brokenAsset.resource("res/one.lh")).status,503);
+  assert.equal(brokenAsset.requests.length,3,"Bounded retries, no endless update spinner");
+  assert(!(await(await brokenAsset.caches.open(cacheName)).match(url("res/one.lh"))),"Bad bytes never enter cache");
+  assert(brokenAsset.messages.some(m=>m.phase==="failed"));
+  const mismatch=harness();await(await mismatch.caches.open(cacheName)).put(url("res/one.lh"),new Response("old",{headers:{"x-ncdls-sha256":"stale"}}));
+  assert.equal(await(await mismatch.resource("res/one.lh")).text(),raw.get("res/one.lh").toString());
+  assert(mismatch.messages.some(m=>m.phase==="updating"));
+  const concurrent=harness();const both=await Promise.all([concurrent.resource("res/one.lh"),concurrent.resource("res/one.lh")]);
+  assert.equal(concurrent.requests.length,1,"Concurrent callers share the same verified download");
+  assert.equal(await both[0].text(),await both[1].text());
   const lazy = harness();
   const firstRead = await lazy.resource("res/one.lh");
   assert.equal(firstRead.headers.get("x-ncdls-source"),"network");

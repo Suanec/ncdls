@@ -7,11 +7,12 @@
   const progress = document.querySelector("#startup-progress");
   const elapsed = document.querySelector("#startup-time");
   const help = document.querySelector("#startup-help");
-  let started = Date.now(), activity = started, fingerprint = "", failed = false;
+  let started = Date.now(), activity = started, fingerprint = "", failed = false, stage = "shell";
   function show(data) {
     screen.hidden = false;
     const next = [data.stage, data.loaded, data.files, data.detail].join("|");
     if (fingerprint !== next) { activity = Date.now(); fingerprint = next; }
+    stage = data.stage;
     failed = data.stage === "error";
     title.textContent = data.title || "正在准备游戏";
     detail.textContent = data.detail || "请稍候…";
@@ -31,7 +32,7 @@
     if (screen.hidden) return;
     const waiting = Math.floor((Date.now() - activity) / 1000);
     elapsed.textContent = `已等待 ${Math.floor((Date.now() - started) / 1000)} 秒`;
-    help.textContent = failed
+    help.textContent = stage === "choice" ? "按需加载可较快开始；全部下载适合离线游玩。" : failed
       ? "请检查网络后重新加载，已保存的进度会保留。"
       : waiting >= 12
         ? `已有 ${waiting} 秒没有新的加载进展。可以继续等待，或检查网络后重新加载。`
@@ -57,7 +58,8 @@
           show({stage:"frame",title:"正在连接游戏",detail:"优先读取已保存资源，缺少时才下载…"});
           frame.src = frame.dataset.src;
         };
-        if (window.NCDLSPrepareCache) window.NCDLSPrepareCache.then(enter, enter);
+        const gate = window.NCDLSBeforeGame || window.NCDLSPrepareCache;
+        if (gate) gate.then(enter, enter);
         else enter();
       };
       for (const source of sources) {

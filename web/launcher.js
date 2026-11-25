@@ -204,7 +204,7 @@
       const writer = after.renderWrites?.at(-1)?.stack?.split("\n").at(-1)?.replace(/(?:https?:|blob:)[^\s)]+?(?=:\d+:\d+(?:\)|$))/g,"script").trim().slice(0,75);
       const error = (after.errors?.at(-1) || after.metrics?.lastError || "无").split("\n")[0].slice(0,100);
       return [
-        `NCDLS 20261125.4｜模式${after.mode ?? "?"} 关${after.level ?? "?"}｜${system}`,
+        `NCDLS 20261125.5｜模式${after.mode ?? "?"} 关${after.level ?? "?"}｜${system}`,
         `${verdict}；${state}；暂停${bit(after.paused)}/${bit(after.pauseDialog)}；隐藏${bit(after.hidden)}/可见${bit(after.engineVisible)}；绘制${bit(after.rendering)}；GL丢失${bit(after.webglLost)}`,
         `${perf?.stale ? "停帧前" : "菜单前"}${number(perf?.seconds)}秒：引擎${number(perf?.fps)}fps；网页${number(perf?.browserFPS)}fps；慢帧(>50ms)${perf?.over50 ?? "?"}`,
         `帧间隔P95/最长 ${number(perf?.gap95)}/${number(perf?.maxGap)}ms；执行P95/最长 ${number(perf?.cpu95)}/${number(perf?.cpuMax)}ms`,
@@ -229,7 +229,7 @@
           after.frame === null ? '游戏尚未初始化' : before.frame === after.frame ? '检测到游戏帧没有推进' :
           after.rendering === false ? '游戏绘制处于停用状态' : after.paused ? '游戏处于暂停状态' :
           '引擎帧仍在推进';
-        fullReport = {release:'20261125.4',verdict,userAgent:navigator.userAgent,
+        fullReport = {release:'20261125.5',verdict,userAgent:navigator.userAgent,
           viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},gameplayPerf,history:recent,before,after};
         output.value = compact(before,after,verdict,gameplayPerf || before.metrics);
         summary.textContent = verdict + `。摘要 ${output.value.length} 字，复制这一小段即可。`;
@@ -240,7 +240,7 @@
     document.querySelector('#diagnose-export')?.addEventListener('click', () => {
       if (!fullReport) return;
       const url = URL.createObjectURL(new Blob([JSON.stringify(fullReport,null,2)],{type:'application/json'}));
-      const link = document.createElement('a'); link.href=url;link.download='ncdls-diagnostic-20261125.4.json';link.click();
+      const link = document.createElement('a'); link.href=url;link.download='ncdls-diagnostic-20261125.5.json';link.click();
       setTimeout(()=>URL.revokeObjectURL(url),1000);
     });
     document.querySelector('#diagnose-copy').addEventListener('click', async () => {

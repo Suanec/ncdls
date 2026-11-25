@@ -39,5 +39,11 @@ console.log('Startup shell checks passed: HTML-first, two-frame gate, deferred i
   added[0].onload();assert.equal(nodes['#game'].src,undefined);
   added[1].onload();assert.equal(nodes['#game'].src,undefined);
   resolveCache();await Promise.resolve();assert.equal(nodes['#game'].src,'game.html?v=test');
+  delete nodes['#game'].src;added.length=0;frames.length=0;
+  let choose;c.NCDLSBeforeGame=new Promise(resolve=>{choose=resolve;});
+  vm.runInNewContext(fs.readFileSync(path.join(root,'web/startup.js'),'utf8'),c);
+  listeners.DOMContentLoaded();frames.shift()();frames.shift()();added[0].onload();added[1].onload();
+  await Promise.resolve();assert.equal(nodes['#game'].src,undefined,'Cache readiness must not bypass user choice');
+  choose();await Promise.resolve();assert.equal(nodes['#game'].src,'game.html?v=test');
   console.log('Mobile iframe waits for lazy-cache preparation after the shell paints.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

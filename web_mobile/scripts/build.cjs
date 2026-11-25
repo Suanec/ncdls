@@ -72,6 +72,7 @@ try {
   ]));
   for (const name of ["mobile.js", "mobile.css", "manifest.webmanifest"])
     fs.copyFileSync(path.join(mobile, "src", name), path.join(output, name));
+  fs.writeFileSync(path.join(output, "mobile.js"), fs.readFileSync(path.join(mobile, "src/load-choice.js"), "utf8") + "\n" + fs.readFileSync(path.join(mobile, "src/mobile.js"), "utf8"));
   require("./icons.cjs")(path.join(output, "icons"));
   const index = path.join(output, "index.html");
   let html = fs.readFileSync(index, "utf8");

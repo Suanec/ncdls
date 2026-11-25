@@ -33,9 +33,22 @@ vm.runInNewContext(fs.readFileSync(path.join(root, 'web/browser.js'),'utf8'), co
 assert.equal(initialized,false);
 let storedGrade=294, storedMode=0, nativeSaves=0;
 context.W.ICache={getGrade:()=>storedGrade,addGrade(){storedGrade++;},saveData(){}};
+context.fgui={GObject:class {get isDisposed(){return !this._displayObject;} setSize(){this.handleSizeChanged();} handleSizeChanged(){this._displayObject.size();}}};
+const liveObject=new context.fgui.GObject();let sizes=0;liveObject._displayObject={size(){sizes++;}};
 const modeHooks={GetMode:()=>storedMode,GetGrade:()=>storedGrade,Save(){nativeSaves++;storedGrade++;return 'variant';}};
 context.NCDLSWeb.hooks={mode:modeHooks};
-context.NCDLSWeb.start({},{});
+class LoadingUI {
+  onEvtProgress(value) { this.progress0.value=value; }
+}
+context.NCDLSWeb.start({},LoadingUI);
+let applied=0;
+const screen={displayObject:{},progress0:{set value(v){applied++;}}};
+LoadingUI.prototype.onEvtProgress.call(screen,.5);assert.equal(applied,1);
+screen.displayObject=null;screen.isDisposed=true;
+screen.progress0={set value(v){throw new TypeError("null is not an object (evaluating this._displayObject.size)");}};
+assert.doesNotThrow(()=>LoadingUI.prototype.onEvtProgress.call(screen,.8));
+assert.equal(applied,1,'Disposed loading UI must ignore late progress updates');
+liveObject.setSize();assert.equal(sizes,1);liveObject._displayObject=null;assert.doesNotThrow(()=>liveObject.setSize());assert.doesNotThrow(()=>liveObject.handleSizeChanged());assert.equal(sizes,1);
 modeHooks.Save();assert.equal(storedGrade,295);modeHooks.Save();assert.equal(storedGrade,296);
 assert.equal(nativeSaves,0,'Classic wins increment once, without skipping template 1');
 storedMode=5;assert.equal(modeHooks.Save(),'variant');assert.equal(nativeSaves,1);
