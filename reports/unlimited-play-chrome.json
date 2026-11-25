@@ -1,0 +1,147 @@
+{
+  "engine": "chrome",
+  "origin": "https://ncdls.test",
+  "release": "20261125.4",
+  "iphoneHardware": false,
+  "levels": [
+    {
+      "mode": 0,
+      "grade": 294,
+      "template": 294,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 0,
+      "grade": 295,
+      "template": 1,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 0,
+      "grade": 296,
+      "template": 2,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 0,
+      "grade": 588,
+      "template": 294,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 0,
+      "grade": 589,
+      "template": 1,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 0,
+      "grade": 1000000,
+      "template": 106,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 2,
+      "grade": 1000000,
+      "template": 4,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 3,
+      "grade": 1000000,
+      "template": 1,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 4,
+      "grade": 1000000,
+      "template": 10,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 5,
+      "grade": 1000000,
+      "template": 10,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    },
+    {
+      "mode": 0,
+      "grade": 294,
+      "template": 294,
+      "magnet": "1",
+      "refresh": "1",
+      "errors": []
+    }
+  ],
+  "props": {
+    "results": [
+      {
+        "type": "GamePropRefresh",
+        "success": true
+      },
+      {
+        "type": "GamePropRefresh",
+        "success": true
+      },
+      {
+        "type": "GamePropRefresh",
+        "success": true
+      },
+      {
+        "type": "GamePropMagnet",
+        "success": true
+      },
+      {
+        "type": "GamePropMagnet",
+        "success": true
+      }
+    ],
+    "ads": 0,
+    "magnet": "1",
+    "refresh": "1",
+    "render": true,
+    "frame": 1196,
+    "metrics": {
+      "samples": 600,
+      "stale": false,
+      "seconds": 10,
+      "fps": 60,
+      "gap95": 17.5,
+      "maxGap": 17.8,
+      "cpu95": 1.6,
+      "cpuMax": 17.1,
+      "over50": 0,
+      "lastFrameMs": 4,
+      "repairs": 0,
+      "falseWrites": 0,
+      "lastError": ""
+    },
+    "errors": []
+  },
+  "restart": {
+    "mode": 5,
+    "grade": 1000000,
+    "template": 10
+  },
+  "success": true
+}

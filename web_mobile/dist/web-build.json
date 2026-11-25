@@ -2,18 +2,18 @@
   "version": 1,
   "decodedAssets": 885,
   "scripts": [
-    "runtime/game-2d418a6d18dc0e6032db.js"
+    "runtime/game-ee7c2878a46404fae635.js"
   ],
   "files": [
     {
       "path": "browser.js",
-      "bytes": 15203,
-      "sha256": "e5465a49c84796ac11e76780a5249d1ab53ef5533f74e03cd2a3860d7164de4f"
+      "bytes": 15782,
+      "sha256": "bc4cfb1e5fc77d3e814d45231876a96b770a4b98df4a8845a42873e2320013eb"
     },
     {
       "path": "game.html",
       "bytes": 647,
-      "sha256": "59c2538c94aba5b31b9697340559611bff46dfed7f01037f3cf4a99054a5ab70"
+      "sha256": "4b29205da480af5cba5a9fa87d938c6be96b99b34c34e3ce45a21cda63215b87"
     },
     {
       "path": "icons/icon-180.png",
@@ -52,8 +52,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 12156,
-      "sha256": "bb8f43ecf4c8085e1eabcbe119f3bb4be0142189717bb45f45a784c8806c17ec"
+      "bytes": 12278,
+      "sha256": "9d00f59fcc5c5f71f905e3d6ef349eebca217b47965f5e692d669c0929844bcc"
     },
     {
       "path": "json/drama_core.json",
@@ -72,8 +72,8 @@
     },
     {
       "path": "launcher.js",
-      "bytes": 14034,
-      "sha256": "bc94102e674a156002e45da76353d902903023fa006d8c9b4ce9d32172e8e85f"
+      "bytes": 14592,
+      "sha256": "f41a4ca9adf387ff290e03926a9d7db35aaf5dab2b407e43c4ddda2d6a536269"
     },
     {
       "path": "libs/laya.physics.wasm.wasm",
@@ -168,7 +168,17 @@
     {
       "path": "offline-manifest.json",
       "bytes": 415949,
-      "sha256": "a7a0bb068463dea1e4e63b2834db91e695cb68a6daa77a59c6836b1732865ad1"
+      "sha256": "9b32f17e593c073c399b8b69abf3dc5f4594dce7f9e29a594c86e37765710735"
+    },
+    {
+      "path": "offline-packs/0b197e165cc875d24ef3.json",
+      "bytes": 12389666,
+      "sha256": "0b197e165cc875d24ef340196267665a07d14c219edd00f10041360f7016e7d1"
+    },
+    {
+      "path": "offline-packs/0da16e9851eb7cc0983b.json",
+      "bytes": 2798758,
+      "sha256": "0da16e9851eb7cc0983b3019be0283cd789bcaaa29f49a34bf83fc10c9b93b99"
     },
     {
       "path": "offline-packs/22482b1569216aab935b.json",
@@ -179,11 +189,6 @@
       "path": "offline-packs/3439d6dd8d8e15c39ed1.json",
       "bytes": 2789683,
       "sha256": "3439d6dd8d8e15c39ed11b0d6e1e233a104229dbb921d226b98cd2b4ba26c10f"
-    },
-    {
-      "path": "offline-packs/37c22677dea1b1ef26ec.json",
-      "bytes": 12388778,
-      "sha256": "37c22677dea1b1ef26ec63a8deb917a64b83eb7caa8b6b27f9c93535472d5af8"
     },
     {
       "path": "offline-packs/445da9fdfcccb97efe5d.json",
@@ -226,11 +231,6 @@
       "sha256": "8c734653a01afd82363cead21a6967f8085e553c8f172a2dcccfd62542808351"
     },
     {
-      "path": "offline-packs/9ee5cae887ac7bb91b76.json",
-      "bytes": 2797078,
-      "sha256": "9ee5cae887ac7bb91b763a594b6dee973434ddd10861515f58d59aa54eb47996"
-    },
-    {
       "path": "offline-packs/a6aa8a45c0da0c98bbb5.json",
       "bytes": 2518699,
       "sha256": "a6aa8a45c0da0c98bbb5151a20955e4ca16e4ba0a05527aaa4045c7350da462f"
@@ -246,9 +246,9 @@
       "sha256": "d1e435a56fa48bf914343abe1544496e073d95aed28833fd673ef7f79f430a67"
     },
     {
-      "path": "offline-packs/dff4334a486a0acf4e7b.json",
+      "path": "offline-packs/d8aae28cf294df3790e5.json",
       "bytes": 136676,
-      "sha256": "dff4334a486a0acf4e7bd1d8a2629123c9718d7a10dee22bd41f445680319eb0"
+      "sha256": "d8aae28cf294df3790e557a3074fef1d4826b84fc9b3bd8bcf347df8f7dba826"
     },
     {
       "path": "offline-packs/f054ffa2abef1a580016.json",
@@ -9601,14 +9601,14 @@
       "sha256": "5e695dd6345ae39d8efe18943a8aa731c031e9ccf254b12561ea5aa34f2b634b"
     },
     {
-      "path": "runtime/game-2d418a6d18dc0e6032db.js",
-      "bytes": 9291534,
-      "sha256": "2d418a6d18dc0e6032dbb1c27dc084accea2c2c9c883fe3ab3fa1196adfc6ce5"
+      "path": "runtime/game-ee7c2878a46404fae635.js",
+      "bytes": 9292198,
+      "sha256": "ee7c2878a46404fae635079670596bf3c96768f5f997acb4824e240a90e3e470"
     },
     {
       "path": "scripts.json",
       "bytes": 64,
-      "sha256": "802c0a24d63ecb30e60b5e1b9e4a08fc12ab388c1df1e9c242fe822dc3f28d10"
+      "sha256": "374143729cfe8e3f14971a53f82308453c0edc5de0ee3ccd5e60c36cbea0484a"
     },
     {
       "path": "sh.bin",
@@ -9623,7 +9623,7 @@
     {
       "path": "sw.js",
       "bytes": 273674,
-      "sha256": "4c5ac2bafd938b213ec7f228835a0d24bf6f42255497ea1ab64b89ce0b0ac245"
+      "sha256": "efb9088482f0e2bc6ba16791b149cc7d83d31efba1da686911244a538428c45a"
     },
     {
       "path": "texture.png",
@@ -9631,5 +9631,5 @@
       "sha256": "bf9e603d0fd5aa64a961a8d88281e13c756062225f6ae67ee098fffc7cab0e68"
     }
   ],
-  "mobileVersion": "ae86d571e0c8b02a6fa5"
+  "mobileVersion": "e62363f09d9e34143254"
 }

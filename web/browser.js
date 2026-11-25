@@ -103,6 +103,21 @@
         };
         document.addEventListener("pointerdown", recover, true);
       }
+      // Keep the user's displayed grade separate from the modulo template.
+      // Classic Save originally skipped the tutorial template after each cycle.
+      const modes = window.NCDLSWeb.hooks?.mode;
+      if (modes?.Save) {
+        const save = modes.Save;
+        modes.Save = function (...args) {
+          if (this.GetGrade() >= Number.MAX_SAFE_INTEGER) {
+            W.ICache.saveData();
+            return;
+          }
+          if (this.GetMode() !== 0) return save.apply(this, args);
+          W.ICache.addGrade();
+          W.ICache.saveData();
+        };
+      }
       const meter = window.NCDLSWeb.metrics = frameMetrics();
       let watchedStage, timedStage;
       function watchRendering(stage) {

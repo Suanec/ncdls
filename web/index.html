@@ -13,13 +13,13 @@
     <title>挪车打螺丝 · 网页版</title>
     <link rel="icon" href="data:," />
     <style>/*__STARTUP_CSS__*/</style>
-    <link rel="stylesheet" data-href="launcher.css?v=20261125.3" />
+    <link rel="stylesheet" data-href="launcher.css?v=20261125.4" />
   </head>
   <body>
     <main>
       <iframe
         id="game"
-        data-src="game.html?v=20261125.3"
+        data-src="game.html?v=20261125.4"
         title="挪车打螺丝游戏"
         allow="autoplay; fullscreen"
       ></iframe>
@@ -46,24 +46,25 @@
         </div>
         <label for="mode">玩法</label>
         <select id="mode">
-          <option value="0">经典挪车 · 294 关</option>
-          <option value="2">星星 · 12 关</option>
-          <option value="3">海洋 · 27 关</option>
-          <option value="4">冰雪 · 30 关</option>
-          <option value="5">哪吒 · 30 关</option>
+          <option value="0">经典挪车 · 294 套模板</option>
+          <option value="2">星星 · 12 套模板</option>
+          <option value="3">海洋 · 27 套模板</option>
+          <option value="4">冰雪 · 30 套模板</option>
+          <option value="5">哪吒 · 30 套模板</option>
         </select>
         <label for="level">关卡</label
         ><input
           id="level"
           type="number"
           min="1"
-          max="294"
+          step="1"
           value="1"
           required
           inputmode="numeric"
         />
-        <p>选择关卡会切换当前进度，游戏自动保存在本浏览器。</p>
-        <p class="secondary">版本：20261125.3</p>
+        <p id="level-template">输入正整数关卡号，超过模板数量后循环使用。</p>
+        <p>关卡号按输入值保存，游戏自动保存在本浏览器。</p>
+        <p class="secondary">版本：20261125.4</p>
         <p class="secondary">猫咪和打巨龙资源尚未缓存，暂不提供入口。</p>
         <p id="menu-status" role="status"></p>
         <button class="primary" type="submit">进入关卡</button>
@@ -80,7 +81,7 @@
         </section>
       </form>
     </dialog>
-    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261125.3" data-launcher></script>
+    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261125.4" data-launcher></script>
     <script>/*__STARTUP_JS__*/</script>
   </body>
 </html>

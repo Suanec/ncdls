@@ -5,7 +5,18 @@
   const mode = document.querySelector("#mode");
   const level = document.querySelector("#level");
   const status = document.querySelector("#menu-status");
-  const limits = { 0: 294, 2: 12, 3: 27, 4: 30, 5: 30 };
+  const templates = { 0: 294, 2: 12, 3: 27, 4: 30, 5: 30 };
+  const templateHint = document.querySelector("#level-template");
+  const validLevel = value => Number.isSafeInteger(value) && value > 0;
+  const validMode = value => Object.prototype.hasOwnProperty.call(templates, value);
+  function showTemplate() {
+    if (!templateHint) return;
+    const value = Number(level.value), count = templates[mode.value];
+    templateHint.textContent = validLevel(value) && count
+      ? `第 ${value} 关使用模板 ${(value - 1) % count + 1}（共 ${count} 套）。`
+      : "请输入正整数关卡号。";
+  }
+  level.addEventListener("input", showTemplate);
   const restart = document.querySelector("#restart-game");
   let restarting = false;
   function waitForGame(predicate = () => true) {
@@ -47,8 +58,7 @@
       });
       frame.src = gameURL;
       let hooks = await waitForGame();
-      if (Number.isInteger(selectedLevel) && selectedLevel > 0 &&
-          selectedLevel <= limits[selectedMode] &&
+      if (validLevel(selectedLevel) && validMode(selectedMode) &&
           (hooks.mode.GetMode() !== selectedMode || hooks.mode.GetGrade() !== selectedLevel)) {
         const scene = hooks.game.scene3D;
         await hooks.openLevel(selectedMode, selectedLevel);
@@ -76,14 +86,12 @@
     try {
       if (hooks && frame.contentWindow.W?.ICache) {
       mode.value = String(hooks.mode.GetMode());
-      level.max = limits[mode.value];
-      level.value = Math.min(
-        Number(level.max),
-        Math.max(1, hooks.mode.GetGrade() || 1),
-      );
+      const current = hooks.mode.GetGrade();
+      level.value = validLevel(current) ? current : 1;
       }
     } catch { /* Keep the restart action accessible during a failed boot. */ }
     status.textContent = "";
+    showTemplate();
     window.NCDLSDiagnostics?.rememberGameplay();
     dialog.showModal();
   });
@@ -91,8 +99,8 @@
     .querySelector("#close-levels")
     .addEventListener("click", () => dialog.close());
   mode.addEventListener("change", () => {
-    level.max = limits[mode.value];
     level.value = 1;
+    showTemplate();
   });
   document
     .querySelector("#level-form")
@@ -110,8 +118,10 @@
       }
       const value = Number(level.value),
         selected = Number(mode.value);
-      if (!Number.isInteger(value) || value < 1 || value > limits[selected])
+      if (!validLevel(value) || !validMode(selected)) {
+        status.textContent = "请输入有效的正整数关卡号。";
         return;
+      }
       const button = event.submitter;
       button.disabled = true;
       try {
@@ -194,7 +204,7 @@
       const writer = after.renderWrites?.at(-1)?.stack?.split("\n").at(-1)?.replace(/(?:https?:|blob:)[^\s)]+?(?=:\d+:\d+(?:\)|$))/g,"script").trim().slice(0,75);
       const error = (after.errors?.at(-1) || after.metrics?.lastError || "无").split("\n")[0].slice(0,100);
       return [
-        `NCDLS 20261125.3｜模式${after.mode ?? "?"} 关${after.level ?? "?"}｜${system}`,
+        `NCDLS 20261125.4｜模式${after.mode ?? "?"} 关${after.level ?? "?"}｜${system}`,
         `${verdict}；${state}；暂停${bit(after.paused)}/${bit(after.pauseDialog)}；隐藏${bit(after.hidden)}/可见${bit(after.engineVisible)}；绘制${bit(after.rendering)}；GL丢失${bit(after.webglLost)}`,
         `${perf?.stale ? "停帧前" : "菜单前"}${number(perf?.seconds)}秒：引擎${number(perf?.fps)}fps；网页${number(perf?.browserFPS)}fps；慢帧(>50ms)${perf?.over50 ?? "?"}`,
         `帧间隔P95/最长 ${number(perf?.gap95)}/${number(perf?.maxGap)}ms；执行P95/最长 ${number(perf?.cpu95)}/${number(perf?.cpuMax)}ms`,
@@ -219,7 +229,7 @@
           after.frame === null ? '游戏尚未初始化' : before.frame === after.frame ? '检测到游戏帧没有推进' :
           after.rendering === false ? '游戏绘制处于停用状态' : after.paused ? '游戏处于暂停状态' :
           '引擎帧仍在推进';
-        fullReport = {release:'20261125.3',verdict,userAgent:navigator.userAgent,
+        fullReport = {release:'20261125.4',verdict,userAgent:navigator.userAgent,
           viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},gameplayPerf,history:recent,before,after};
         output.value = compact(before,after,verdict,gameplayPerf || before.metrics);
         summary.textContent = verdict + `。摘要 ${output.value.length} 字，复制这一小段即可。`;
@@ -230,7 +240,7 @@
     document.querySelector('#diagnose-export')?.addEventListener('click', () => {
       if (!fullReport) return;
       const url = URL.createObjectURL(new Blob([JSON.stringify(fullReport,null,2)],{type:'application/json'}));
-      const link = document.createElement('a'); link.href=url;link.download='ncdls-diagnostic-20261125.3.json';link.click();
+      const link = document.createElement('a'); link.href=url;link.download='ncdls-diagnostic-20261125.4.json';link.click();
       setTimeout(()=>URL.revokeObjectURL(url),1000);
     });
     document.querySelector('#diagnose-copy').addEventListener('click', async () => {

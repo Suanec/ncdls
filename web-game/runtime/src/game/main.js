@@ -12509,13 +12509,15 @@ define("libs/min/bundle.min.js", function (require, module, exports) {
           })((h = a.Game || (a.Game = {}))));
       })(bf || (bf = {}));
       bj = class extends FGUI.Button {
+        get webUnlimited() {
+          return this.prop === bf.Prop.PropMagnet || this.prop === bf.Prop.PropRefresh;
+        }
         onConstruct() {
           (super.onConstruct(),
             FGUI.onClick(this, this, this.onBtnClick),
             this.dispatcher.on(bf.PropEvt[this.prop], this, this.onEvent),
             this.onEvent(),
-            cp.AdShow(fz),
-            cp.AdShow(e2));
+            this.webUnlimited || (cp.AdShow(fz), cp.AdShow(e2)));
         }
         dispose() {
           (super.dispose(), this.dispatcher.offAllCaller(this));
@@ -12527,7 +12529,7 @@ define("libs/min/bundle.min.js", function (require, module, exports) {
             b ||
               ((b = !0),
               !0 === a
-                ? (dQ.dec(dR + this.prop, 1),
+                ? ((this.webUnlimited ? dQ.set(dR + this.prop, 1) : dQ.dec(dR + this.prop, 1)),
                   dQ.add(eR + this.prop, 1),
                   W.ICache.saveData(),
                   this.onEvent())
@@ -12539,7 +12541,7 @@ define("libs/min/bundle.min.js", function (require, module, exports) {
           this.dispatcher.event(bf.PropEvt[this.prop], [!0, a]);
         }
         propAdd() {
-          (dQ.add(dR + this.prop, 1),
+          ((this.webUnlimited ? dQ.set(dR + this.prop, 1) : dQ.add(dR + this.prop, 1)),
             dQ.add(fx + this.prop, 1),
             W.ICache.saveData(),
             this.onEvent());
@@ -12548,6 +12550,11 @@ define("libs/min/bundle.min.js", function (require, module, exports) {
           let c;
           if (a) return;
           c = dQ.get(dR + this.prop);
+          if (this.webUnlimited && c !== 1) {
+            dQ.set(dR + this.prop, 1);
+            W.ICache.saveData();
+            c = 1;
+          }
           c <= 0
             ? ((this.video.selectedIndex = gK.showVideoPro(this.prop) ? 0 : 1),
               (this.count.selectedIndex = 0))
@@ -12556,6 +12563,12 @@ define("libs/min/bundle.min.js", function (require, module, exports) {
               (this.lab_count.text = String(c)));
         }
         onBtnClick() {
+          // No acquisition popup, video ad, or per-level usage limit for these two.
+          // The real effect still checks its busy state and eligible targets.
+          if (this.webUnlimited) {
+            if (!this.grayed) this.propUse();
+            return;
+          }
           if (!this.grayed)
             if (1 == this.count.selectedIndex) {
               if (bf.prop_use_max > 0 && dQ.get(eR + this.prop) >= bf.prop_use_max)

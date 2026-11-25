@@ -31,7 +31,15 @@ const context = {
 context.window = context;
 vm.runInNewContext(fs.readFileSync(path.join(root, 'web/browser.js'),'utf8'), context);
 assert.equal(initialized,false);
+let storedGrade=294, storedMode=0, nativeSaves=0;
+context.W.ICache={getGrade:()=>storedGrade,addGrade(){storedGrade++;},saveData(){}};
+const modeHooks={GetMode:()=>storedMode,GetGrade:()=>storedGrade,Save(){nativeSaves++;storedGrade++;return 'variant';}};
+context.NCDLSWeb.hooks={mode:modeHooks};
 context.NCDLSWeb.start({},{});
+modeHooks.Save();assert.equal(storedGrade,295);modeHooks.Save();assert.equal(storedGrade,296);
+assert.equal(nativeSaves,0,'Classic wins increment once, without skipping template 1');
+storedMode=5;assert.equal(modeHooks.Save(),'variant');assert.equal(nativeSaves,1);
+storedGrade=Number.MAX_SAFE_INTEGER;modeHooks.Save();assert.equal(storedGrade,Number.MAX_SAFE_INTEGER);
 assert.equal(atCreation,true,'Bootstrap must preserve the engine renderer preference');
 assert.equal(context.NCDLSWeb.renderCompatibility,'engine-default');
 assert.equal(context.MediaMetaMap.ani9.base_url,'https://example.test/ncdls');
@@ -106,6 +114,9 @@ async function checkRestart(selectedMode, selectedLevel, badBoot=false) {
   assert.match(context.NCDLSWeb.audioWarning,/unavailable/);
   assert.equal(context.NCDLSWeb.errors.length,previousErrors);
   await checkRestart(0,100);
+  await checkRestart(0,1000000);
+  await checkRestart(2,1000000);
+  await checkRestart(5,999999);
   await checkRestart(5,3);
   await checkRestart(0,1,true);
   console.log('Default renderer preservation, context-loss recovery, classic/variant restart and failed-boot recovery passed.');

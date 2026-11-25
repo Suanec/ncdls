@@ -110,6 +110,7 @@ try {
     if (source === "src/shared/W.js")
       code = require("./web-runtime-compat.cjs")(code);
     if (source === "src/game/main.js") {
+      code = require("./web-props-compat.cjs")(code);
       code = code.replace(
         /\(console\.(log|info|warn|error) = \(\) => \{\}\)/g,
         "void 0",
