@@ -1,0 +1,73 @@
+{
+  "release": "20261126.1",
+  "commit": "e4ccc116917e8334ec037f4c01c8ad71ad9084b6",
+  "checks": [
+    {
+      "path": "index.html",
+      "bytes": 13307,
+      "sha256": "e99ea7873096af603eab44a77bcf9551cd24884ff5518320f9bc1bedc828fd25",
+      "matchesLocal": true
+    },
+    {
+      "path": "game.html",
+      "bytes": 647,
+      "sha256": "09cfb69301dfe5c6a85496829c245e7d77699f1cc138664beb3ef72a3f3366f4",
+      "matchesLocal": true
+    },
+    {
+      "path": "browser.js",
+      "bytes": 21834,
+      "sha256": "6bfaa14c2cc26c05c48d919c32793af03ebe55cb5c3e8ad7580d8d8c00ea9cf4",
+      "matchesLocal": true
+    },
+    {
+      "path": "launcher.js",
+      "bytes": 14666,
+      "sha256": "22f2191ba6e7462633fd222457a8f402ba455fca62ea82712ad3022b77e67c5b",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts.json",
+      "bytes": 64,
+      "sha256": "374143729cfe8e3f14971a53f82308453c0edc5de0ee3ccd5e60c36cbea0484a",
+      "matchesLocal": true
+    },
+    {
+      "path": "sw.js",
+      "bytes": 275856,
+      "sha256": "c874edc46de9165c3ffea6b02ba29efa9e48ec97721954d7e372001cdeccdd21",
+      "matchesLocal": false
+    }
+  ],
+  "workflow": {
+    "url": "https://github.com/Suanec/ncdls/actions/runs/45747536802",
+    "conclusion": "success"
+  },
+  "success": true,
+  "iphoneHardware": false,
+  "scope": "Live static files and cache manifest verification; real runtime fault tests are in the separate browser reports.",
+  "cache": {
+    "liveVersion": "aca0e732a393b2798dda",
+    "localVersion": "fe42b5454825149d0f7a",
+    "serviceWorkerLogicMatches": true,
+    "serviceWorkerEntriesMatchLiveBuild": true,
+    "icons": [
+      {
+        "path": "icons/icon-180.png",
+        "decodedImageMatches": true,
+        "manifestHashMatches": true
+      },
+      {
+        "path": "icons/icon-192.png",
+        "decodedImageMatches": true,
+        "manifestHashMatches": true
+      },
+      {
+        "path": "icons/icon-512.png",
+        "decodedImageMatches": true,
+        "manifestHashMatches": true
+      }
+    ],
+    "difference": "PNG compressed bytes differ between local and CI builds; decoded image data is equal. This changes the derived pack, manifest and cache version, not game logic."
+  }
+}

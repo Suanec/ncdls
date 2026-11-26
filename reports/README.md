@@ -11,6 +11,7 @@
 | 报告 | 版本与范围 |
 | --- | --- |
 | [audio-playback-baseline-webkit](audio-playback-baseline-webkit.json)、[chrome](audio-playback-chrome.json)、[webkit](audio-playback-webkit.json) | `.5` 基线 / `20261126.1` 修复：HTML 背景音乐失败、真实点击重试、切关/重启保留进度、非音频错误与简短失败页；桌面故障注入，非真机播放策略复现 |
+| [audio-playback-release](audio-playback-release.json) | `20261126.1`：Pages 发布成功，线上页面/修复脚本一致，缓存清单匹配；本地与 CI 图标仅压缩字节不同，非手机游玩测试 |
 | [resource-loading-chrome](resource-loading-chrome.json)、[webkit](resource-loading-webkit.json) | `20261125.5`：首次加载选择、坏图片校验与重取、缓存重开、销毁对象保护；不是截图原现场的真机复现 |
 | [web-network-20261125.5](web-network-20261125.5.json) | `.5` 本地隔离 Chrome：启动、经典 2/294、道具路径；327 GET，未观察到第三方请求尝试；无 Service Worker、非全功能抓包 |
 | [unlimited-play-chrome](unlimited-play-chrome.json)、[webkit](unlimited-play-webkit.json) | `20261125.4`：关号循环、安全整数边界、磁铁/刷新数量与重启保存 |
