@@ -1,0 +1,65 @@
+{
+  "release": "20261126.2",
+  "commit": "21800f6",
+  "iphoneHardware": false,
+  "scope": "Live file hashes and deployment verification; no physical phone installation.",
+  "checks": [
+    {
+      "path": "index.html",
+      "bytes": 13329,
+      "sha256": "7fd797c296cf01f01f0526c3bb132d108b07013ffb9bfb63d2f5265aa19a3f69",
+      "matchesLocal": true
+    },
+    {
+      "path": "browser.js",
+      "bytes": 21984,
+      "sha256": "f2c2bb4acedf52f4f55d4c3eb75d3d6db89fd18a37a714db32498a94a3f5efae",
+      "matchesLocal": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 532,
+      "sha256": "fc02841d0ef5dff21ac1227105b446244e376736cc840ce45c119e92f47b1c21",
+      "matchesLocal": true
+    },
+    {
+      "path": "icons/car-8-180.png",
+      "bytes": 33847,
+      "sha256": "df35ed589605187950003c014d17bd6e78fda95ee7a5b1fbce7b2fbbd2def1f6",
+      "matchesLocal": true
+    },
+    {
+      "path": "icons/car-8-192.png",
+      "bytes": 39291,
+      "sha256": "86d56af14210626a192d89a16a45c8496fbe4282320ce0ae65a3db0901cfe2ac",
+      "matchesLocal": true
+    },
+    {
+      "path": "icons/car-8-512.png",
+      "bytes": 209295,
+      "sha256": "c01be3932e7dec734612878b5fd01b0f40cfcabc0a6d35991c6950e46bf3b751",
+      "matchesLocal": true
+    },
+    {
+      "path": "sw.js",
+      "bytes": 275863,
+      "sha256": "89c211bc2ffaf145adac22fec927926a51358a195db698f402d72e92eafcc5e4",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts.json",
+      "bytes": 64,
+      "sha256": "374143729cfe8e3f14971a53f82308453c0edc5de0ee3ccd5e60c36cbea0484a",
+      "matchesLocal": true
+    }
+  ],
+  "success": true,
+  "workflow": {
+    "runUrl": "https://github.com/Suanec/ncdls/actions/runs/45750805905",
+    "title": "Disable device vibration and restore reliable home screen icons",
+    "state": {
+      "status": "WORKFLOW_RUN_STATUS_COMPLETED",
+      "conclusion": "WORKFLOW_RUN_CONCLUSION_SUCCESS"
+    }
+  }
+}
