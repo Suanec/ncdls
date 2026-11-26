@@ -7,28 +7,28 @@
   "files": [
     {
       "path": "browser.js",
-      "bytes": 21834,
-      "sha256": "6bfaa14c2cc26c05c48d919c32793af03ebe55cb5c3e8ad7580d8d8c00ea9cf4"
+      "bytes": 21984,
+      "sha256": "f2c2bb4acedf52f4f55d4c3eb75d3d6db89fd18a37a714db32498a94a3f5efae"
     },
     {
       "path": "game.html",
       "bytes": 647,
-      "sha256": "09cfb69301dfe5c6a85496829c245e7d77699f1cc138664beb3ef72a3f3366f4"
+      "sha256": "9f3a1680450236d9826ea2742fe84a67a0477a38f012ffade172ac03cf0b86d6"
     },
     {
-      "path": "icons/icon-180.png",
-      "bytes": 1071,
-      "sha256": "9a96038d6e88af93156113d2184f2fc9f5fc617d3c5516b49fe2ce7177eaa73d"
+      "path": "icons/car-8-180.png",
+      "bytes": 33847,
+      "sha256": "df35ed589605187950003c014d17bd6e78fda95ee7a5b1fbce7b2fbbd2def1f6"
     },
     {
-      "path": "icons/icon-192.png",
-      "bytes": 1161,
-      "sha256": "bb28f3883c0c4b850241ea493d399d379fc6ddf4d718ec582151421f60e98d59"
+      "path": "icons/car-8-192.png",
+      "bytes": 39291,
+      "sha256": "86d56af14210626a192d89a16a45c8496fbe4282320ce0ae65a3db0901cfe2ac"
     },
     {
-      "path": "icons/icon-512.png",
-      "bytes": 5799,
-      "sha256": "58f3729914e485f459dd840d5f153c4528b40a81b5eba519eaed3cec0308afff"
+      "path": "icons/car-8-512.png",
+      "bytes": 209295,
+      "sha256": "c01be3932e7dec734612878b5fd01b0f40cfcabc0a6d35991c6950e46bf3b751"
     },
     {
       "path": "img/rank/paihang_3.png",
@@ -52,8 +52,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 13307,
-      "sha256": "e99ea7873096af603eab44a77bcf9551cd24884ff5518320f9bc1bedc828fd25"
+      "bytes": 13329,
+      "sha256": "7fd797c296cf01f01f0526c3bb132d108b07013ffb9bfb63d2f5265aa19a3f69"
     },
     {
       "path": "json/drama_core.json",
@@ -73,7 +73,7 @@
     {
       "path": "launcher.js",
       "bytes": 14666,
-      "sha256": "22f2191ba6e7462633fd222457a8f402ba455fca62ea82712ad3022b77e67c5b"
+      "sha256": "38336c1d2d6d8a704905afd9bd1ca1927b32f30130473959aee87f0f26fed417"
     },
     {
       "path": "libs/laya.physics.wasm.wasm",
@@ -152,8 +152,8 @@
     },
     {
       "path": "manifest.webmanifest",
-      "bytes": 530,
-      "sha256": "dec735435e50f3e4681e18467d972a45ff5a0ba0117d85c64955683d0b4865cb"
+      "bytes": 532,
+      "sha256": "fc02841d0ef5dff21ac1227105b446244e376736cc840ce45c119e92f47b1c21"
     },
     {
       "path": "mobile.css",
@@ -167,8 +167,8 @@
     },
     {
       "path": "offline-manifest.json",
-      "bytes": 415949,
-      "sha256": "609a135f0dd2e95f7dcd47e16b0fcd81b78795b1d2742f073e54bded032fc999"
+      "bytes": 415959,
+      "sha256": "6259048c8850ee309592827915eb08d6bb23eee04bf55234a661a6c0f0670aed"
     },
     {
       "path": "offline-packs/0b197e165cc875d24ef3.json",
@@ -176,9 +176,14 @@
       "sha256": "0b197e165cc875d24ef340196267665a07d14c219edd00f10041360f7016e7d1"
     },
     {
-      "path": "offline-packs/22482b1569216aab935b.json",
-      "bytes": 2485009,
-      "sha256": "22482b1569216aab935bd60c38386d9baa0ce9afd6deaef3efe104bf9af5cea4"
+      "path": "offline-packs/1f3cd9271952ca56fd9a.json",
+      "bytes": 2689232,
+      "sha256": "1f3cd9271952ca56fd9a2455b785649a3c2351832a9887e6c3488daaf7319640"
+    },
+    {
+      "path": "offline-packs/3011743a4367c9740970.json",
+      "bytes": 2706866,
+      "sha256": "3011743a4367c97409702f290dc765af238381e18ae07bfad5d3385a9bde0224"
     },
     {
       "path": "offline-packs/3439d6dd8d8e15c39ed1.json",
@@ -206,19 +211,19 @@
       "sha256": "575c3a6fe519aa1820edd81a94e57e0e78eb239e1d7ea0de56d9be66fa8c1a34"
     },
     {
-      "path": "offline-packs/637814d4261a024f9bd8.json",
-      "bytes": 1980119,
-      "sha256": "637814d4261a024f9bd89fdbdbbe18cf7e5b16de384d3ffaa753985195ba484c"
-    },
-    {
       "path": "offline-packs/804e7f215f5fce67a681.json",
       "bytes": 2799589,
       "sha256": "804e7f215f5fce67a68119760f242856a488c470a6520ca3262f669b65b637e5"
     },
     {
-      "path": "offline-packs/8138b502e477055fffd1.json",
-      "bytes": 2805636,
-      "sha256": "8138b502e477055fffd1159f20783aa01cc520c78e5f45cdc20b1304a490dd46"
+      "path": "offline-packs/8124cb4d274a6bf1ffeb.json",
+      "bytes": 2244361,
+      "sha256": "8124cb4d274a6bf1ffeb6853696850c7c9be9112e079910cd7d1bf0d158d079a"
+    },
+    {
+      "path": "offline-packs/849f2d558989e5ecc0c1.json",
+      "bytes": 2791846,
+      "sha256": "849f2d558989e5ecc0c1e6329f3e2356a2d958aa40175a7dcde219b9161a3c8a"
     },
     {
       "path": "offline-packs/8c734653a01afd82363c.json",
@@ -229,6 +234,11 @@
       "path": "offline-packs/a6aa8a45c0da0c98bbb5.json",
       "bytes": 2518699,
       "sha256": "a6aa8a45c0da0c98bbb5151a20955e4ca16e4ba0a05527aaa4045c7350da462f"
+    },
+    {
+      "path": "offline-packs/bf4b33bc8d3559f840a8.json",
+      "bytes": 2801096,
+      "sha256": "bf4b33bc8d3559f840a8a6e0316e6e9e453e9002a190d5218bcbe5482cd0c185"
     },
     {
       "path": "offline-packs/c85a4731f49687cd9943.json",
@@ -244,16 +254,6 @@
       "path": "offline-packs/d8aae28cf294df3790e5.json",
       "bytes": 136676,
       "sha256": "d8aae28cf294df3790e557a3074fef1d4826b84fc9b3bd8bcf347df8f7dba826"
-    },
-    {
-      "path": "offline-packs/ddd43ed8ef2ce8ce3822.json",
-      "bytes": 2803984,
-      "sha256": "ddd43ed8ef2ce8ce3822d3e6d6e8d934e40085a9d5e1ae6e8f54cadf95159c58"
-    },
-    {
-      "path": "offline-packs/dfd94932cbec22d0d218.json",
-      "bytes": 2792546,
-      "sha256": "dfd94932cbec22d0d2188579ea5bcbd372837a585bddf78171cf5892f49141bd"
     },
     {
       "path": "offline-packs/f054ffa2abef1a580016.json",
@@ -9622,8 +9622,8 @@
     },
     {
       "path": "sw.js",
-      "bytes": 275856,
-      "sha256": "98a35ce47b729a47a6e2a51d5f00c1ec872ebb16f90348dc7e694b5d49405c85"
+      "bytes": 275863,
+      "sha256": "89c211bc2ffaf145adac22fec927926a51358a195db698f402d72e92eafcc5e4"
     },
     {
       "path": "texture.png",
@@ -9631,5 +9631,5 @@
       "sha256": "bf9e603d0fd5aa64a961a8d88281e13c756062225f6ae67ee098fffc7cab0e68"
     }
   ],
-  "mobileVersion": "fe42b5454825149d0f7a"
+  "mobileVersion": "94194446fb89e664f34c"
 }

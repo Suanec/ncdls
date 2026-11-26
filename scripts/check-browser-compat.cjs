@@ -12,6 +12,7 @@ const status = element(), boot = element(), reload = element();
 const docHandlers = {}, winHandlers = {};
 let initialized = false, atCreation;
 const context = {
+  Ad:{Global:{shake_switch:1},vibrateShort(){throw Error("Device vibration reached");},vibrateLong(){throw Error("Device vibration reached");}},
   navigator:{}, URL, console: {error() {}}, HTMLCanvasElement: class {},
   performance: {now:()=>0,getEntriesByType:()=>[]},
   setInterval:()=>1,clearInterval(){},setTimeout,clearTimeout,
@@ -50,6 +51,11 @@ class LoadingUI {
   onEvtProgress(value) { this.progress0.value=value; }
 }
 context.NCDLSWeb.start({},LoadingUI);
+for (const enabled of [0, 1]) {
+  context.Ad.Global.shake_switch = enabled;
+  context.Ad.vibrateShort("light"); context.Ad.vibrateLong();
+  assert.equal(context.Ad.Global.shake_switch, enabled, "Keep the user's switch state");
+}
 let applied=0;
 const screen={displayObject:{},progress0:{set value(v){applied++;}}};
 LoadingUI.prototype.onEvtProgress.call(screen,.5);assert.equal(applied,1);

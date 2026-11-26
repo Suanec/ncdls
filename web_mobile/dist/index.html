@@ -11,7 +11,7 @@
       content="挪车打螺丝本地网页版，复用原游戏资源、玩法与关卡。"
     />
     <title>挪车打螺丝 · 离线版</title>
-    <link rel="icon" href="data:," data-href="icons/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/car-8-192.png" />
     <style>:root{font-family:system-ui,-apple-system,"PingFang SC",sans-serif;background:#152c43;color:#183a56}
 body{margin:0}main{height:100vh;display:flex;align-items:center;justify-content:center}
 iframe{border:0;width:min(100vw,46.176vh);height:100%;background:#c9e7fd}
@@ -29,9 +29,9 @@ iframe{border:0;width:min(100vw,46.176vh);height:100%;background:#c9e7fd}
 dialog{border:0;border-radius:22px;width:360px;max-width:calc(100vw - 28px);box-sizing:border-box;padding:24px}
 dialog::backdrop{background:#10253e88}
 </style>
-    <link rel="stylesheet" data-href="launcher.css?v=20261126.1" />
-  <link rel="manifest" data-href="manifest.webmanifest" />
-    <link rel="apple-touch-icon" data-href="icons/icon-180.png" />
+    <link rel="stylesheet" data-href="launcher.css?v=20261126.2" />
+  <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/car-8-180.png" />
     <meta name="theme-color" content="#183a56" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="挪车螺丝" />
@@ -41,7 +41,7 @@ dialog::backdrop{background:#10253e88}
     <main>
       <iframe
         id="game"
-        data-src="game.html?v=20261126.1"
+        data-src="game.html?v=20261126.2"
         title="挪车打螺丝游戏"
         allow="autoplay; fullscreen"
       ></iframe>
@@ -86,7 +86,7 @@ dialog::backdrop{background:#10253e88}
         />
         <p id="level-template">输入正整数关卡号，超过模板数量后循环使用。</p>
         <p>关卡号按输入值保存，游戏自动保存在本浏览器。</p>
-        <p class="secondary">版本：20261126.1</p>
+        <p class="secondary">版本：20261126.2</p>
         <p class="secondary">猫咪和打巨龙资源尚未缓存，暂不提供入口。</p>
         <p id="menu-status" role="status"></p>
         <button class="primary" type="submit">进入关卡</button>
@@ -103,7 +103,7 @@ dialog::backdrop{background:#10253e88}
         </section>
       </form>
     </dialog>
-    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261126.1" data-launcher></script>
+    <script type="application/x-ncdls-script" data-src="launcher.js?v=20261126.2" data-launcher></script>
     <script>(() => {
   "use strict";
   const frame = document.querySelector("#game");

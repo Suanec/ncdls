@@ -1,6 +1,6 @@
 # 故障、踩坑与验证边界
 
-以 `20261126.1` 为当前代码基准。这里保留问题、证据、无效尝试和最终处理；历史报告中的“当前版本”“尚未修复”只代表当时，不能覆盖本文结论。
+以 `20261126.2` 为当前代码基准。这里保留问题、证据、无效尝试和最终处理；历史报告中的“当前版本”“尚未修复”只代表当时，不能覆盖本文结论。
 
 ## 1. 从缓存拿到文件，却不能直接运行
 
@@ -105,3 +105,11 @@
 | fast/低帧开关、画布/DPR | 配置和负载线索，不直接证明硬件不足 |
 
 确认过的回归、故障注入、用户真机反馈要分别记录。关卡有对象、没有 JS 错误、静态哈希通过，都不能单独证明画面正确；部署成功也不等于手机已应用新版。
+
+## 12. 添加到主屏幕后只剩一个字
+
+图标文件没有被移除。此前首屏加速将 `apple-touch-icon`、manifest 等地址写在 `data-href` 中，等待 JavaScript 首屏绘制后才补 `href`，存在系统取图标时无法识别的兼容性风险；没有手机安装过程日志，尚不能认定这就是本次退化成文字的唯一原因。
+
+`20261126.2` 改为初始 HTML 直接声明图标和 manifest，使用新文件名的红色汽车 PNG。素材来自 `assets/res/atlas/laya_icon/collectui/car_8.png`，固定生成 180/192/512 像素，构建时直接复制，避免不同环境压缩图标导致缓存指纹变化。遵循 [Apple 的图标声明方式](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)。
+
+同版按用户要求让 `Ad.vibrateShort/Long` 在浏览器适配层不执行设备调用，保留设置值、按钮状态和画面动画。Chrome/WebKit 检查包括禁用页面 JavaScript 后仍可读取图标地址、PNG 解码，以及真实设置对象切换/保存/重开；安装到真实 iPhone 主屏幕仍待确认。见 [Chrome](../reports/settings-icons-chrome.json)、[WebKit](../reports/settings-icons-webkit.json)。

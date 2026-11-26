@@ -1,0 +1,46 @@
+{
+  "engine": "chrome",
+  "release": "20261126.2",
+  "iphoneHardware": false,
+  "scope": "Static install metadata and real game settings in an isolated desktop browser; no iOS home-screen installation.",
+  "success": true,
+  "staticLinks": [
+    {
+      "rel": "icon",
+      "href": "icons/car-8-192.png",
+      "deferred": false
+    },
+    {
+      "rel": "manifest",
+      "href": "manifest.webmanifest",
+      "deferred": false
+    },
+    {
+      "rel": "apple-touch-icon",
+      "href": "icons/car-8-180.png",
+      "deferred": false
+    }
+  ],
+  "staticIconDecoded": true,
+  "initial": {
+    "enabled": 1,
+    "controller": 1
+  },
+  "toggles": [
+    {
+      "enabled": 0,
+      "controller": 0,
+      "platformCalls": 0
+    },
+    {
+      "enabled": 1,
+      "controller": 1,
+      "platformCalls": 0
+    }
+  ],
+  "reopened": {
+    "enabled": 0,
+    "platformCalls": 0,
+    "errors": []
+  }
+}

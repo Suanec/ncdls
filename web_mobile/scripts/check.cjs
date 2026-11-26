@@ -65,8 +65,19 @@ const app = JSON.parse(
 );
 assert.equal(app.scope, "./");
 assert.equal(app.start_url, "./");
-for (const icon of app.icons)
-  assert(fs.existsSync(path.join(output, icon.src)));
+const html = fs.readFileSync(path.join(output, "index.html"), "utf8");
+for (const rel of ["icon", "apple-touch-icon", "manifest"]) {
+  const link = html.match(new RegExp(`<link[^>]*rel="${rel}"[^>]*>`))?.[0];
+  assert(link && /\shref="[^"]+"/.test(link) && !link.includes("data-href"),
+    `${rel} must be discoverable in HTML before JavaScript runs`);
+}
+for (const icon of [...app.icons, {src:"icons/car-8-180.png",sizes:"180x180"}]) {
+  const data=fs.readFileSync(path.join(output, icon.src));
+  assert.equal(data.subarray(1,4).toString(),"PNG");
+  assert.equal(`${data.readUInt32BE(16)}x${data.readUInt32BE(20)}`,icon.sizes);
+  assert(data.equals(fs.readFileSync(path.join(mobile,"src",icon.src))),
+    "Icon bytes must be reproducible across build environments");
+}
 assert(
   fs
     .readFileSync(path.join(output, "sw.js"), "utf8")

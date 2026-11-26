@@ -202,6 +202,8 @@
     errors: [],
     audioWarning: "",
     start(config, loadingUI) {
+      // Keep the saved setting and its UI, but never reach a device vibration API.
+      if (window.Ad) Ad.vibrateShort = Ad.vibrateLong = () => {};
       protectAudioPlayback();
       // Keep the user's displayed grade separate from the modulo template.
       // Classic Save originally skipped the tutorial template after each cycle.
