@@ -32,6 +32,7 @@ npm run mobile    # 构建并启动带离线/存档菜单的版本，http://127.
 | 故障、失败尝试、最终修复与遗留问题 | [故障与踩坑](docs/TROUBLESHOOTING.md) |
 | 实际联网范围与旧 SDK 域名 | [联网说明](docs/NETWORK.md) |
 | 从缓存还原到网页发布的完整学习复盘 | [学习报告](docs/LEARNING_REPORT.md) |
+| 混淆代码如何阅读、平台检查的注释版 JS | [平台检查学习副本](docs/study/README.md) |
 | 测试证据的版本、范围和历史性质 | [报告索引](reports/README.md) |
 
 ## 当前行为
