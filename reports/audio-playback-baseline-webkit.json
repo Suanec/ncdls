@@ -1,0 +1,28 @@
+{
+  "engine": "webkit",
+  "baseline": true,
+  "iphoneHardware": false,
+  "scope": "Real runtime, synthetic native audio play failures; not an iPhone autoplay-policy reproduction.",
+  "cases": [
+    {
+      "fault": "reject",
+      "boot": {
+        "attempts": 1,
+        "warning": "",
+        "errors": [
+          "Audio requires user interaction"
+        ],
+        "frame": 7,
+        "gaming": false,
+        "render": true,
+        "mode": 0,
+        "level": 1
+      },
+      "pageErrors": [
+        "Unhandled Promise Rejection: NotAllowedError: Audio requires user interaction"
+      ]
+    }
+  ],
+  "release": "20261125.5",
+  "success": true
+}

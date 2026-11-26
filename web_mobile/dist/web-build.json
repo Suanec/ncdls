@@ -7,13 +7,13 @@
   "files": [
     {
       "path": "browser.js",
-      "bytes": 18763,
-      "sha256": "ec901b4ccca8d9e461938baef35d2c742530ee2f900b8b22b39d90dc0fb1f10f"
+      "bytes": 21834,
+      "sha256": "6bfaa14c2cc26c05c48d919c32793af03ebe55cb5c3e8ad7580d8d8c00ea9cf4"
     },
     {
       "path": "game.html",
       "bytes": 647,
-      "sha256": "b82ad6050006953558bb816d2062828ed848aae657863c3786455d4115e17431"
+      "sha256": "09cfb69301dfe5c6a85496829c245e7d77699f1cc138664beb3ef72a3f3366f4"
     },
     {
       "path": "icons/icon-180.png",
@@ -53,7 +53,7 @@
     {
       "path": "index.html",
       "bytes": 13307,
-      "sha256": "c0a6ae7b1c60329b0b7ec83ee9b31ad64ad41bb9a5b53795367a573c80a28fc1"
+      "sha256": "e99ea7873096af603eab44a77bcf9551cd24884ff5518320f9bc1bedc828fd25"
     },
     {
       "path": "json/drama_core.json",
@@ -72,8 +72,8 @@
     },
     {
       "path": "launcher.js",
-      "bytes": 14592,
-      "sha256": "0b8757d97b36fda9f9efb452c07db1358d429e615e169611ea08da45ceda7cfa"
+      "bytes": 14666,
+      "sha256": "22f2191ba6e7462633fd222457a8f402ba455fca62ea82712ad3022b77e67c5b"
     },
     {
       "path": "libs/laya.physics.wasm.wasm",
@@ -168,7 +168,7 @@
     {
       "path": "offline-manifest.json",
       "bytes": 415949,
-      "sha256": "ca91ba44455f48a1fe74de239be3534283c0c88a83e7a04b6185ee17eedd364a"
+      "sha256": "609a135f0dd2e95f7dcd47e16b0fcd81b78795b1d2742f073e54bded032fc999"
     },
     {
       "path": "offline-packs/0b197e165cc875d24ef3.json",
@@ -194,11 +194,6 @@
       "path": "offline-packs/4d250652b39cbeb61c81.json",
       "bytes": 2675102,
       "sha256": "4d250652b39cbeb61c8161c04db1dcae64bbbbd8510a42d849ea1dcfafe72cc9"
-    },
-    {
-      "path": "offline-packs/52e1db89e5db96cb2e56.json",
-      "bytes": 2788354,
-      "sha256": "52e1db89e5db96cb2e56580ee8a306d1c470863624d75b31c66c9928539317b7"
     },
     {
       "path": "offline-packs/56029a7f2e5cb8171b3a.json",
@@ -254,6 +249,11 @@
       "path": "offline-packs/ddd43ed8ef2ce8ce3822.json",
       "bytes": 2803984,
       "sha256": "ddd43ed8ef2ce8ce3822d3e6d6e8d934e40085a9d5e1ae6e8f54cadf95159c58"
+    },
+    {
+      "path": "offline-packs/dfd94932cbec22d0d218.json",
+      "bytes": 2792546,
+      "sha256": "dfd94932cbec22d0d2188579ea5bcbd372837a585bddf78171cf5892f49141bd"
     },
     {
       "path": "offline-packs/f054ffa2abef1a580016.json",
@@ -9623,7 +9623,7 @@
     {
       "path": "sw.js",
       "bytes": 275856,
-      "sha256": "768c48467a64f734e345238afab5ee714884e3a8f7c41db33d672ce72a3999b6"
+      "sha256": "98a35ce47b729a47a6e2a51d5f00c1ec872ebb16f90348dc7e694b5d49405c85"
     },
     {
       "path": "texture.png",
@@ -9631,5 +9631,5 @@
       "sha256": "bf9e603d0fd5aa64a961a8d88281e13c756062225f6ae67ee098fffc7cab0e68"
     }
   ],
-  "mobileVersion": "aa9fd1ca5b20cfb12465"
+  "mobileVersion": "fe42b5454825149d0f7a"
 }

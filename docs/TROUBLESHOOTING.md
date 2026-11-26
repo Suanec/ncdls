@@ -1,6 +1,6 @@
 # 故障、踩坑与验证边界
 
-以 `20261125.5` 为当前代码基准。这里保留问题、证据、无效尝试和最终处理；历史报告中的“当前版本”“尚未修复”只代表当时，不能覆盖本文结论。
+以 `20261126.1` 为当前代码基准。这里保留问题、证据、无效尝试和最终处理；历史报告中的“当前版本”“尚未修复”只代表当时，不能覆盖本文结论。
 
 ## 1. 从缓存拿到文件，却不能直接运行
 
@@ -62,9 +62,17 @@
 
 证据：[未修复基线](../reports/platform-freeze-baseline.json)、[Chrome](../reports/platform-freeze-chrome.json)、[WebKit](../reports/platform-freeze-webkit.json)。不据此承诺所有设备固定 60/120 FPS。
 
-## 8. Failed to start the audio device
+## 8. 音频失败被误当加载/重启失败
 
-`AudioContext.resume()` 拒绝未被接住，音频恢复失败被全局异常处理误当游戏加载失败。`20261125.3` 在恢复调用点处理同步/异步拒绝，保留音频警告，下一次点击可重试；不因此重开关卡，也不吞掉其他运行错误。
+`20261125.3` 修复的是 `AudioContext.resume()` 拒绝：在恢复调用点接住同步/异步错误，保留警告并允许下次点击重试。当时没有覆盖背景音乐使用的 HTML 音频路径。
+
+11 月 26 日手机截图显示“重启未完成”，堆栈从 `play@[native code]` 开始。对应 `.5` 合并运行文件的 22730 → 22896 → 23447 → 23476 → 237801 行，即 `AudioSoundChannel.play → AudioSound.play → SoundManager.playSound/playMusic → GameUI.onConstruct`。引擎未处理原生 `audio.play()` 的拒绝，页面将其当成致命错误；重启又将诊断里的完整堆栈显示给玩家。
+
+**`20261126.1`** 在浏览器适配层保护 Laya 自己的音频元素：捕获原生播放的同步异常/Promise 拒绝，游戏继续运行；下次真实点击只重试仍有效的背景音乐。静音、隐藏页面、已停止或被替换的音轨不强行恢复，失败的单次音效释放。原有 Web Audio 恢复继续保留，其他游戏异常仍按错误记录，不做全局忽略。重启页使用简短操作提示，原始堆栈留在诊断里；同时补存异常名称和消息，避免 Safari 只有堆栈而丢掉原因。
+
+[`play()` 可能返回被拒绝的 Promise](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play)，原因可以是播放策略、格式或设备状态；截图本身没有完整异常名称，不能确定手机这次的底层拒绝原因。
+
+证据：[旧版 WebKit 基线](../reports/audio-playback-baseline-webkit.json)、[新版 Chrome](../reports/audio-playback-chrome.json)、[新版 WebKit](../reports/audio-playback-webkit.json)。测试开启背景音乐并注入播放拒绝/同步异常，验证首次进入、点击重试、哪吒第 1000000 关重启和存档保留；还确认非音频错误仍失败且页面不泄露堆栈。这是桌面浏览器故障注入，不等于已在用户手机复现浏览器的原始拒绝条件。
 
 ## 9. 资源未齐、等待很久，最后空引用
 

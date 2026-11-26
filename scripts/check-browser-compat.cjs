@@ -28,6 +28,15 @@ const context = {
   addEventListener: (type, fn) => {winHandlers[type] = fn;},
   fetch: async () => ({ok:true,json:async()=>[]}),
 };
+class AudioChannel {
+  constructor(audio) { this._audio=audio;this.isStopped=false;this.stops=0; }
+  play() { this.isStopped=false;this._audio.play(); }
+  resume() { this.play(); }
+  __resumePlay() { this.play(); }
+  stop() { this.isStopped=true;this._audio=null;this.stops++; }
+}
+context.Laya.AudioSoundChannel=AudioChannel;
+context.Laya.AudioSound={_musicAudio:null,_makeMusicOK(){context.Laya.AudioSound._musicAudio.play();}};
 context.window = context;
 vm.runInNewContext(fs.readFileSync(path.join(root, 'web/browser.js'),'utf8'), context);
 assert.equal(initialized,false);
@@ -81,14 +90,14 @@ assert(prevented);
 assert.equal(reload.hidden,false);
 assert.match(status.textContent,/绘图环境已中断/);
 
-async function checkRestart(selectedMode, selectedLevel, badBoot=false) {
+async function checkRestart(selectedMode, selectedLevel, badBoot=false, fatal=false) {
   const ids = ['#levels','#mode','#level','#menu-status','#restart-game','#open-levels','#close-levels','#level-form'];
   const nodes = Object.fromEntries(ids.map(id=>[id,element()]));
   nodes['#levels'].showModal=function(){this.open=true;};
   nodes['#levels'].close=function(){this.open=false;};
   let saved=0, opened, current, load, documentId=0;
   const frame = {getAttribute(){return 'game.html?v=test';},addEventListener(type,fn){load=fn;},focus(){}};
-  const createGame = (mode, level) => ({NCDLSWeb:{errors:[],hooks:{
+  const createGame = (mode, level) => ({NCDLSWeb:{errors:fatal&&documentId>0?['play@[native code]\nvalue@blob:https://game.test/private-stack:1:2']:[],hooks:{
     mode:{GetMode:()=>mode,GetGrade:()=>{if(badBoot&&documentId===0)throw Error('not loaded');return level;}},
     game:{hfsm:{isGaming:true},initing:false,scene3D:{}},
     openLevel:async(m,l)=>{opened=[m,l];mode=m;level=l;current.NCDLSWeb.hooks.game.scene3D={};},
@@ -105,6 +114,11 @@ async function checkRestart(selectedMode, selectedLevel, badBoot=false) {
   await nodes['#restart-game'].handlers.click();
   assert.equal(saved,1);
   assert.equal(documentId,2);
+  if(fatal) {
+    assert.match(nodes['#menu-status'].textContent,/重启未完成/);
+    assert(!/blob:|native code|private-stack/.test(nodes['#menu-status'].textContent));
+    return;
+  }
   assert.equal(nodes['#levels'].open,false);
   assert.equal(nodes['#restart-game'].disabled,false);
   if(selectedMode!==0&&!badBoot)assert.deepEqual(opened,[selectedMode,selectedLevel]);
@@ -126,6 +140,38 @@ async function checkRestart(selectedMode, selectedLevel, badBoot=false) {
   context.Laya.SoundManager._recoverWebAudio();
   assert.match(context.NCDLSWeb.audioWarning,/unavailable/);
   assert.equal(context.NCDLSWeb.errors.length,previousErrors);
+  // HTML audio has a separate failure path from AudioContext.resume.
+  audio.state='running';
+  let plays=0, behavior=()=>Promise.reject(Error('media blocked'));
+  const media={play(){plays++;return behavior();}}, manager=context.Laya.SoundManager;
+  const ch=manager._musicChannel=new AudioChannel(media);
+  context.Laya.AudioSound._musicAudio=media;
+  const flush=()=>new Promise(resolve=>setImmediate(resolve));
+  ch.play();ch.play();await flush();
+  assert.equal(plays,1,'Deduplicate overlapping native play attempts');
+  assert.match(context.NCDLSWeb.audioWarning,/media blocked/);
+  assert.equal(context.NCDLSWeb.errors.length,previousErrors);
+  manager.musicMuted=true;docHandlers.pointerdown();await flush();assert.equal(plays,1,'Respect muted music');
+  manager.musicMuted=false;context.document.hidden=true;docHandlers.pointerdown();await flush();assert.equal(plays,1,'No hidden-page retry');
+  context.document.hidden=false;behavior=()=>Promise.resolve();docHandlers.pointerdown();await flush();assert.equal(plays,2);
+  assert(!/media blocked/.test(context.NCDLSWeb.audioWarning));
+  behavior=()=>{throw Error('native play unavailable');};
+  for(const method of ['play','resume','__resumePlay'])assert.doesNotThrow(()=>ch[method]());
+  assert.doesNotThrow(()=>context.Laya.AudioSound._makeMusicOK.call(context.document));
+  assert.match(context.NCDLSWeb.audioWarning,/native play unavailable/);
+  const beforeStop=plays;ch.stop();docHandlers.pointerdown();await flush();assert.equal(plays,beforeStop,'Do not resurrect stopped music');
+  let rejectOld;
+  behavior=()=>new Promise((_,reject)=>{rejectOld=reject;});
+  const old=manager._musicChannel=new AudioChannel(media);old.play();
+  behavior=()=>Promise.resolve();const fresh=manager._musicChannel=new AudioChannel(media);fresh.play();await flush();
+  rejectOld(Error('stale channel rejection'));await flush();
+  assert(!/stale channel/.test(context.NCDLSWeb.audioWarning),'Ignore failures from replaced channels');
+  const effect=new AudioChannel({play(){return Promise.reject(Error('effect unavailable'));}});
+  effect.play();await flush();assert.equal(effect.stops,1,'Failed one-shot sounds are released, not replayed');
+  const fatalCount=context.NCDLSWeb.errors.length;
+  winHandlers.unhandledrejection({reason:Error('unrelated gameplay error')});
+  assert.equal(context.NCDLSWeb.errors.length,fatalCount+1,'Unrelated rejections remain visible to diagnostics');
+  await checkRestart(0,100,false,true);
   await checkRestart(0,100);
   await checkRestart(0,1000000);
   await checkRestart(2,1000000);

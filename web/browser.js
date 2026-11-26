@@ -110,30 +110,99 @@
       resourceOverlay=false;window.parent.postMessage({type:"ncdls:ready"},location.origin);
     }
   });
+  function protectAudioPlayback() {
+    const manager = Laya.SoundManager;
+    if (!manager) return;
+    const warnings = { context: "", media: "" }, media = new WeakMap();
+    let audioPending = false, blockedMusic = null;
+    const warning = (kind, error) => {
+      warnings[kind] = error ? String(error.message || error).slice(0, 120) : "";
+      window.NCDLSWeb.audioWarning = warnings.media || warnings.context;
+    };
+    const recover = manager._recoverWebAudio = () => {
+      const context = Laya.WebAudioSound?.ctx;
+      if (!context || context.state === "running" || !context.resume || audioPending) return;
+      audioPending = true;
+      try {
+        Promise.resolve(context.resume()).then(() => {
+          if (context.state === "running") warning("context", null);
+        }, error => warning("context", error)).finally(() => { audioPending = false; });
+      } catch (error) { warning("context", error); audioPending = false; }
+    };
+    // Guard only media elements owned by Laya audio channels. Do not suppress
+    // unrelated errors or modify the global HTMLMediaElement/video prototype.
+    function guard(element, channel) {
+      if (!element || typeof element.play !== "function") return;
+      let state = media.get(element);
+      if (!state) {
+        state = { element, native: element.play, channel: null, pending: null, serial: 0 };
+        media.set(element, state);
+        element.play = function (...args) {
+          if (state.pending) return state.pending;
+          const owner = state.channel, serial = ++state.serial;
+          const finish = error => {
+            // A stopped/replaced channel must not be resurrected by an old promise.
+            if (serial !== state.serial || owner !== state.channel) return;
+            state.pending = null;
+            if (owner && (owner.isStopped || owner._audio !== element)) return;
+            if (!error) {
+              if (!blockedMusic || blockedMusic === state) {
+                blockedMusic = null;
+                warning("media", null);
+              }
+              return;
+            }
+            warning("media", error);
+            if (owner && element === Laya.AudioSound?._musicAudio) blockedMusic = state;
+            else if (owner) {
+              // Drop a failed one-shot sound instead of replaying stale effects later.
+              try { owner.stop(); } catch (cleanupError) { warning("media", cleanupError); }
+            }
+          };
+          let result;
+          try { result = state.native.apply(this, args); }
+          catch (error) { finish(error); return; }
+          if (!result || typeof result.then !== "function") { finish(null); return result; }
+          state.pending = Promise.resolve(result).then(() => finish(null), finish);
+          return state.pending;
+        };
+      }
+      if (channel && state.channel !== channel) {
+        state.channel = channel; state.serial++; state.pending = null;
+        if (blockedMusic === state) blockedMusic = null;
+      }
+    }
+    const channel = Laya.AudioSoundChannel?.prototype;
+    if (channel) for (const name of ["play", "resume", "__resumePlay"]) {
+      const original = channel[name];
+      if (typeof original !== "function") continue;
+      channel[name] = function (...args) {
+        guard(this._audio, this);
+        return original.apply(this, args);
+      };
+    }
+    const unlock = Laya.AudioSound?._makeMusicOK;
+    if (unlock) Laya.AudioSound._makeMusicOK = function (...args) {
+      guard(Laya.AudioSound._musicAudio, manager._musicChannel);
+      return unlock.apply(this, args);
+    };
+    document.addEventListener("pointerdown", () => {
+      recover();
+      const state = blockedMusic, current = manager._musicChannel;
+      if (!state) return;
+      if (!current || current !== state.channel || current.isStopped || current._audio !== state.element) {
+        blockedMusic = null;
+        return;
+      }
+      if (document.hidden || manager._isActive === false || manager.muted || manager.musicMuted) return;
+      state.element.play();
+    }, true);
+  }
   window.NCDLSWeb = {
     errors: [],
     audioWarning: "",
     start(config, loadingUI) {
-      // Repair the precise inconsistent state captured on iOS 15: the document
-      // and engine are visible, but rendering remains disabled. Run before a
-      // real render frame, not a background timer; leave game/dialog pause alone.
-      // AudioContext.resume can reject on iOS after interruption. It is optional
-      // audio recovery, not a game/renderer failure. Retry on the next real input.
-      if (Laya.SoundManager && Laya.WebAudioSound) {
-        let audioPending = false;
-        const warning = error => { window.NCDLSWeb.audioWarning = String(error?.message || error).slice(0,120); };
-        const recover = Laya.SoundManager._recoverWebAudio = () => {
-          const context = Laya.WebAudioSound.ctx;
-          if (!context || context.state === "running" || !context.resume || audioPending) return;
-          audioPending = true;
-          try {
-            Promise.resolve(context.resume()).then(() => {
-              if (context.state === "running") window.NCDLSWeb.audioWarning = "";
-            }, warning).finally(() => { audioPending = false; });
-          } catch (error) { warning(error); audioPending = false; }
-        };
-        document.addEventListener("pointerdown", recover, true);
-      }
+      protectAudioPlayback();
       // Keep the user's displayed grade separate from the modulo template.
       // Classic Save originally skipped the tutorial template after each cycle.
       const modes = window.NCDLSWeb.hooks?.mode;
@@ -264,12 +333,15 @@
   function fail(error) {
     bootFailed = true;
     clearInterval(assetTimer);
-    const message = error?.stack || error?.message || String(error);
+    const description = (error?.name ? error.name + ": " : "") + (error?.message || String(error));
+    const message = error?.stack?.includes(description) ? error.stack
+      : [description, error?.stack].filter(Boolean).join("\n");
     window.NCDLSWeb.errors.push(message);
     console.error("[web]", error);
     const friendly = resourceFailed ? "资源更新暂未完成，请检查网络后重新加载。已下载的资源和存档会保留。"
       : /绘图环境|运行文件|加载清单|网络|站点正在更新/.test(error?.message || "") ? error.message
       : "游戏加载暂未完成，请重新加载。已下载的资源和存档会保留。";
+    window.NCDLSWeb.errorMessage = friendly;
     report({stage:"error",title:resourceFailed?"资源更新暂未完成":"加载未完成",detail:friendly});
     document.querySelector("#boot").classList.remove("hidden");
     reload.hidden = false;
